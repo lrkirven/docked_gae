@@ -74,7 +74,7 @@ public class AppRegister extends HttpServlet {
     		String llId = user.getFederatedIdentity() + "::" + UUID.randomUUID().toString();
     		newUser.setLLId(llId);
     		String[] addrList = emailAddr.split("@");
-    		newUser.setUsername(addrList[0]);
+    		newUser.setDisplayName(addrList[0]);
     		newUser.setFederatedId(user.getFederatedIdentity());
     		newUser.setAuthDomain(user.getAuthDomain());
     		userDao.addUser(newUser);
@@ -88,7 +88,7 @@ public class AppRegister extends HttpServlet {
     		String llId = emailAddr + "::" + UUID.randomUUID().toString();
     		newUser.setLLId(llId);
     		String[] addrList = emailAddr.split("@");
-    		newUser.setUsername(addrList[0]);
+    		newUser.setDisplayName(addrList[0]);
     		userDao.addUser(newUser);
     		logger.info("Created new user --- llId=" + llId + " emailAddr=" + emailAddr);
 	    }

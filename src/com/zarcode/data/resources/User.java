@@ -41,25 +41,42 @@ public class User extends ResourceBase {
 	private static final String ANONYMOUS = "ABC123";
 	
 	private static final String ANONYMOUS_KEY = "ABCDEF7891011121314";
-	
+
 	@POST
 	@Produces("text/plain")
-	@Path("/register")
-	public String addUserStr(String userStr) {
-		List<MsgEventDO> res = null;
+	@Path("/update/{llId}")
+	public UserDO update(@PathParam("llId") String llId, @QueryParam("field") String field, @QueryParam("value") String value) {
+		UserDO res = null;
 		UserDao dao = null;
 		int rows = 0;
 		String resp = null;
 		UserDO newUser = null;
 	
-		logger.info(userStr);
+		logger.info("Incoming llId --> " + llId);
 		
-		if (userStr != null && userStr.length() > 0) {
-			newUser = new Gson().fromJson(userStr, UserDO.class);
+		if (llId == null || llId.length() == 0) {
+			logger.warning("*** Incoming llId is not VALID ***");
+			return res;
+		}
+		
+		if (!ANONYMOUS.equalsIgnoreCase(llId)) {
+			AppPropDO prop = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
+			BlockTea.BIG_ENDIAN = true;
+			String plainText = BlockTea.decrypt(llId, prop.getStringValue());
+			logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
+			llId = plainText;
+		}
+		else {
+			logger.warning("*** Anonymous user can update the displayName ***");
+			return res;
+		}
+		
+		dao = new UserDao();
+		res = dao.getUserByLLID(llId, false);
+		
+		if (res != null) {
 			try {
-				if (newUser != null) {
-					dao.registerUser(newUser);
-				}
+				dao.updateUser(res, field, value);
 			}
 			catch (Exception e) {
 				logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
@@ -68,7 +85,7 @@ public class User extends ResourceBase {
 		else {
 			logger.warning("User JSON instance is empty");
 		}
-		return resp;
+		return res;
 	}
 	
 	@GET
@@ -189,7 +206,7 @@ public class User extends ResourceBase {
 				}
 				else {
 					userDao.updateResource(user.getUserId(), best.getResourceId());
-					logger.info("Updated user [ " + user.getUsername() + " ] at resourceId=" +  best.getResourceId());
+					logger.info("Updated user [ " + user.getDisplayName() + " ] at resourceId=" +  best.getResourceId());
 				}
 				usersAtLake = userDao.getUsersByResourceId(best.getResourceId());
 				int totalUsers = userDao.getTotalUsersByResourceId(best.getResourceId());

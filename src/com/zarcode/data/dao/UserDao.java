@@ -213,6 +213,39 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		
 	} // getAndUpdateUser
 	
+	public UserDO updateUser(UserDO user, String field, String value) {
+		UserDO target = null;
+		String dateString = AppCommon.generateActiveKey();
+		Date now = new Date();
+		
+		logger.info("updateUser(): activeKey=" + dateString);
+		
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			Query query = pm.newQuery(UserDO.class);
+			query.setFilter("userId == userIdParam");
+			query.declareParameters("String userIdParam");
+			List<UserDO> res = (List<UserDO>)query.execute(user.getUserId());
+			if (res != null && res.size() > 0) {
+				target = res.get(0);
+				target.setActiveKey(dateString);
+				target.setLastUpdate(now);
+				if (field.equalsIgnoreCase("displayName")) {
+					target.setDisplayName(value);
+				}
+			}
+			tx.commit();
+		}
+		finally {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
+		}
+		return target;
+		
+	} // updateUser
+	
 	public boolean isValidUser(String id, boolean encrypt) {
 		UserDO target = null;
 		String llId = null;

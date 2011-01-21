@@ -16,7 +16,7 @@
 			UserDao dao = new UserDao();
 			UserDO user = dao.getUserByEmailAddr(emailAddr);	
 			if (user != null) {
-				String nickname = user.getUsername();
+				String nickname = user.getDisplayName();
 				String llId = user.getLLId();
 				AppPropDO p0 = ApplicationProps.getInstance().getProp("PICASA_USER");
 				AppPropDO p1 = ApplicationProps.getInstance().getProp("PICASA_PASSWORD");

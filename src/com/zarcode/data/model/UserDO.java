@@ -22,7 +22,7 @@ public class UserDO extends AbstractLoaderDO implements Serializable {
 	private Long userId = null; 
 	
 	@Persistent
-	private String username = null;
+	private String displayName = null;
 	
 	@Persistent
 	private String emailAddr = null;
@@ -81,12 +81,12 @@ public class UserDO extends AbstractLoaderDO implements Serializable {
 	}
 	
 	@XmlElement
-	public String getUsername() {
-		return username;
+	public String getDisplayName() {
+		return displayName;
 	}
 	
-	public void setUsername(String username) {
-		this.username = username;
+	public void setDisplayName(String d) {
+		this.displayName = d;
 	}
 	
 	@XmlElement

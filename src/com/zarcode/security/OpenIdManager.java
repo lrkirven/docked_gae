@@ -62,7 +62,7 @@ public class OpenIdManager extends HttpServlet {
 		        		newUser.setEmailAddr(emailAddr);
 		        		newUser.setLLId(user.getFederatedIdentity());
 		        		String[] addrList = emailAddr.split("@");
-		        		newUser.setUsername(addrList[0]);
+		        		newUser.setDisplayName(addrList[0]);
 		        		userDao.addUser(newUser);
 		        	}
 		        	HttpSession session = req.getSession(true);
