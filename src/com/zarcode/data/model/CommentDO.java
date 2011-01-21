@@ -21,6 +21,9 @@ import com.zarcode.platform.model.AbstractLoaderDO;
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class CommentDO extends AbstractLoaderDO implements Serializable, Comparable<CommentDO> {
 	
+	/**
+	 * logger
+	 */
 	private Logger logger = Logger.getLogger(CommentDO.class.getName());
 	
 	@NotPersistent
