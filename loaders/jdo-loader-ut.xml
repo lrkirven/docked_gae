@@ -1,0 +1,631 @@
+<jdo-loader clobberClass="com.zarcode.data.model.WaterResourceDO">
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>BURRASTON PONDS</name>
+		<state>UT</state>
+		<lat>39.79601</lat>
+		<lng>-111.864908</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>CANYON VIEW PARK POND</name>
+		<state>UT</state>
+		<lat>40.082608</lat>
+		<lng>-111.601914</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>DIAMOND FORK RIVER</name>
+		<state>UT</state>
+		<lat>40.026694</lat>
+		<lng>-111.504922</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>DEER CREEK RESERVOIR</name>
+		<state>UT</state>
+		<lat>40.441525</lat>
+		<lng>-111.49724</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>GRANTSVILLE RESERVOIR</name>
+		<state>UT</state>
+		<lat>40.541982</lat>
+		<lng>-112.526093</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>RECAPTURE RESERVOIR</name>
+		<state>UT</state>
+		<marker>ABAJO MOUNTAINS</marker>
+		<lat>37.66576</lat>
+		<lng>-109.439156</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>UTAH LAKE</name>
+		<state>UT</state>
+		<lat>40.233491</lat>
+		<lng>-111.807575</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>JORDANELLE RESERVOIR</name>
+		<state>UT</state>
+		<lat>40.616764</lat>
+		<lng>-111.408455</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+		<rec>EMAIL</rec>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>YUBA RESERVOIR STATE PARK</name>
+		<state>UT</state>
+		<lng>-111.902132</lng>
+		<lat>39.277221</lat>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>NINE MILE RESERVOIR</name>
+		<state>UT</state>
+		<lat>39.17451</lat>
+		<lng>-111.708666</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>PALISADE RESERVOIR STATE PARK</name>
+		<state>UT</state>
+		<lat>39.204434</lat>
+		<lng>-111.669037</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>PAYSON LAKE</name>
+		<state>UT</state>
+		<lat>39.934398</lat>
+		<lng>-111.64001</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>PROVO RIVER, LOWER</name>
+		<state>UT</state>
+		<lat>40.354674</lat>
+		<lng>-111.578878</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>THISTLE CREEK</name>
+		<state>UT</state>
+		<lat>39.900597</lat>
+		<lng>-111.486912</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>TIBBLE FORK RESERVOIR</name>
+		<state>UT</state>
+		<lat>40.482317</lat>
+		<lng>-111.644104</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>VIVIAN PARK POND</name>
+		<state>UT</state>
+		<lat>40.355402</lat>
+		<lng>-111.572118</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>PROVO RIVER, MIDDLE</name>
+		<state>UT</state>
+		<lat>40.546698</lat>
+		<lng>-111.4358</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>SETTLEMENT CANYON RESERVOIR</name>
+		<state>UT</state>
+		<lat>40.509861</lat>
+		<lng>-112.293885</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>STRAWBERRY RESERVOIR</name>
+		<state>UT</state>
+		<lat>40.172919</lat>
+		<lng>-111.129856</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>CLEVELAND RESERVOIR</name>
+		<state>UT</state>
+		<lat>39.580399</lat>
+		<lng>-111.235335</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>JOES VALLEY RESERVOIR</name>
+		<state>UT</state>
+		<lat>39.294873</lat>
+		<lng>-111.275811</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>LA SAL MOUNTAINS</name>
+		<state>UT</state>
+		<lat>38.450981</lat>
+		<lng>-109.241238</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>MILLSITE RESERVOIR STATE PARK</name>
+		<state>UT</state>
+		<lat>39.09978</lat>
+		<lng>-111.194959</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>SCOFIELD RESERVOIR</name>
+		<state>UT</state>
+		<lat>39.77756</lat>
+		<lng>-111.150241</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>HUNTINGTON NORTH RESERVOIR</name>
+		<state>UT</state>
+		<lat>39.590851</lat>
+		<lng>-111.267436</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>BEAR LAKE</name>
+		<state>UT</state>
+		<lat>41.998947</lat>
+		<lng>-111.329384</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>BLACKSMITH FORK RIVER</name>
+		<state>UT</state>
+		<lat>41.625783</lat>
+		<lng>-111.79855</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Birch Creek Reservoir</name>
+		<state>UT</state>
+		<lat>41.5055</lat>
+		<lng>-111.3199</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Causey Reservoir</name>
+		<state>UT</state>
+		<lat>41.298657</lat>
+		<lng>-111.585917</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Cutler Reservoir Marsh</name>
+		<state>UT</state>
+		<lat>41.802875</lat>
+		<lng>-111.955204</lng>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<rec>EMAIL</rec>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>East Canyon Reservoir State Park</name>
+		<state>UT</state>
+		<lat>40.908408</lat>
+		<lng>-111.590209</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Echo Reservoir</name>
+		<state>LA</state>
+		<lat>40.947576</lat>
+		<lng>-111.406789</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Hyrum Reservoir State Park</name>
+		<state>UT</state>
+		<lat>41.619559</lat>
+		<lng>-111.857135</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lost Creek Reservoir</name>
+		<state>UT</state>
+		<lat>41.192174</lat>
+		<lng>-111.393142</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Logan River</name>
+		<state>UT</state>
+		<lat>41.741772</lat>
+		<lng>-111.954682</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Little Creek Reservoir</name>
+		<state>UT</state>
+		<lat>41.675838</lat>
+		<lng>-111.229327</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Mantua Reservoir</name>
+		<state>UT</state>
+		<lat>41.504505</lat>
+		<lng>-111.937215</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Mirror Lake</name>
+		<state>UT</state>
+		<lat>38.310693</lat>
+		<lng>-112.367399</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Newton Reservoir</name>
+		<state>UT</state>
+		<lat>41.906886</lat>
+		<lng>-111.982791</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Ogden River</name>
+		<state>UT</state>
+		<lat>41.25191</lat>
+		<lng>-111.878958</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Pineview Reservoir</name>
+		<state>UT</state>
+		<lat>41.26944</lat>
+		<lng>-111.799979</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Porcupine Reservoir</name>
+		<state>UT</state>
+		<lat>41.518966</lat>
+		<lng>-111.736887</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Rockport Reservoir</name>
+		<state>UT</state>
+		<lat>40.767746</lat>
+		<lng>-111.395066</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Weber River</name>
+		<state>UT</state>
+		<lat>40.850261</lat>
+		<lng>-111.391597</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Willard Bay Reservoir</name>
+		<state>UT</state>
+		<lat>41.380067</lat>
+		<lng>-112.083578</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Duck Fork Reservoir</name>
+		<state>UT</state>
+		<lat>39.169475</lat>
+		<lng>-111.450684</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Percy Quin State Park</name>
+		<state>UT</state>
+		<lat>31.19298</lat>
+		<lng>-90.518374</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Browne Lake</name>
+		<state>UT</state>
+		<lat>40.864274</lat>
+		<lng>-109.813464</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Bullock Draw Reservoir</name>
+		<marker>Bullock Reservoir</marker>
+		<state>UT</state>
+		<lat>40.35545</lat>
+		<lng>-109.816554</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Crouse Reservoir</name>
+		<state>UT</state>
+		<lat>40.724797</lat>
+		<lng>-109.18278</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Currant Creek Reservoir</name>
+		<state>UT</state>
+		<lat>40.340797</lat>
+		<lng>-111.059468</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>East Park Reservoir</name>
+		<state>UT</state>
+		<lat>40.785133</lat>
+		<lng>-109.549406</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Flaming Gorge</name>
+		<state>UT</state>
+		<lat>40.998078</lat>
+		<lng>-109.571657</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Matt Warner</name>
+		<state>UT</state>
+		<lat>40.773044</lat>
+		<lng>-109.296505</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Pelican Lake</name>
+		<state>UT</state>
+		<lat>40.195112</lat>
+		<lng>-109.67871</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Red Fleet Reservoir</name>
+		<state>UT</state>
+		<lat>40.579105</lat>
+		<lng>-109.427447</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Starvation Reservoir</name>
+		<state>UT</state>
+		<lat>40.211608</lat>
+		<lng>-110.4351</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Steinaker Reservoir</name>
+		<state>UT</state>
+		<lat>40.516484</lat>
+		<lng>-109.534471</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Baker Reservoir</name>
+		<state>UT</state>
+		<lat>37.377819</lat>
+		<lng>-113.639084</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Aspen Mirror Lake</name>
+		<state>UT</state>
+		<lat>37.524221</lat>
+		<lng>-112.67368</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Fish Lake</name>
+		<state>UT</state>
+		<lat>38.550669</lat>
+		<lng>-111.707883</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Forsyth Reservoir</name>
+		<state>UT</state>
+		<lat>38.525181</lat>
+		<lng>-111.531193</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Quail Lake</name>
+		<state>UT</state>
+		<lat>37.188093</lat>
+		<lng>-113.387067</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Kolob Reservoir</name>
+		<state>UT</state>
+		<lat>37.440155</lat>
+		<lng>-113.048122</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>MILL MEADOW RESERVOIR</name>
+		<state>UT</state>
+		<lat>38.508862</lat>
+		<lng>-111.566212</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>MINERSVILLE RESERVOIR</name>
+		<state>UT</state>
+		<lat>38.2322</lat>
+		<lng>-112.819476</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>NEWCASTLE RESERVOIR</name>
+		<state>UT</state>
+		<lat>37.649554</lat>
+		<lng>-113.521521</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>OTTER CREEK RESERVOIR STATE PARK</name>
+		<state>UT</state>
+		<lat>38.203291</lat>
+		<lng>-111.991224</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>PANGUITCH LAKE</name>
+		<state>UT</state>
+		<lat>37.714866</lat>
+		<lng>-112.640684</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>PIUTE RESERVOIR</name>
+		<state>UT</state>
+		<lat>38.293211</lat>
+		<lng>-112.208548</lng>
+		<rec>EMAIL</rec>
+		<fromParty>dwrlists@utah.gov</fromParty>
+		<source>UTAH</source>
+	</dataObject>
+</jdo-loader>

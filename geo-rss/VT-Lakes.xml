@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Vermont Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048afa6b2c306b67ca5</guid>
+    <pubDate>Fri, 09 Jul 2010 20:40:51 +0000</pubDate>
+    <title>Harriman Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VT:HARRIMAN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.915703 -72.909737
+            42.824364 -72.854462
+            42.753063 -72.927246
+            42.915703 -72.909737
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048afa6ec44f363b128</guid>
+    <pubDate>Fri, 09 Jul 2010 20:41:51 +0000</pubDate>
+    <title>Lake Bomoseen</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VT:BOMOSEEN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.726452 -73.175812
+            43.644524 -73.191261
+            43.595810 -73.239670
+            43.665386 -73.229713
+            43.726452 -73.175812
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048afa784e34925b939</guid>
+    <pubDate>Fri, 09 Jul 2010 20:44:31 +0000</pubDate>
+    <title>Lake Memphremagog</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VT:MEMPHREMAGOG</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            45.280685 -72.193909
+            45.260387 -72.137604
+            44.888958 -72.204895
+            45.159767 -72.355957
+            45.280685 -72.193909
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048afa7be3d4f0a6252</guid>
+    <pubDate>Fri, 09 Jul 2010 20:45:31 +0000</pubDate>
+    <title>Lake Willoughby</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VT:WILLOUGHBY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.799866 -72.078209
+            44.685986 -71.969032
+            44.704777 -72.099152
+            44.799866 -72.078209
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048afa7f86f0eaff52e</guid>
+    <pubDate>Fri, 09 Jul 2010 20:46:32 +0000</pubDate>
+    <title>Seymour Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VT:SEYMOUR</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.912304 -72.042160
+            44.915222 -71.972122
+            44.849541 -71.955986
+            44.912304 -72.042160
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048afa83202f6214851</guid>
+    <pubDate>Fri, 09 Jul 2010 20:47:33 +0000</pubDate>
+    <title>Somerset Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VT:SOMERSET</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.039787 -72.991791
+            43.041794 -72.902527
+            42.953407 -72.944412
+            43.039787 -72.991791
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

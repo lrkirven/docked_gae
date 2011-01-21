@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>North Dakota Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048af9c0bc786e072b5</guid>
+    <pubDate>Fri, 09 Jul 2010 19:53:11 +0000</pubDate>
+    <title>Arrowwood Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ND:ARROWHEAD</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            47.347664 -98.863220
+            47.299953 -98.724518
+            47.244747 -98.871117
+            47.347664 -98.863220
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af9c451f3ded04ad</guid>
+    <pubDate>Fri, 09 Jul 2010 19:54:12 +0000</pubDate>
+    <title>Devils Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ND:DEVILS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            47.956364 -98.592682
+            47.886883 -98.629761
+            48.050545 -99.379578
+            48.167915 -98.959351
+            47.956364 -98.592682
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af9cb822dbf25f96</guid>
+    <pubDate>Fri, 09 Jul 2010 19:56:12 +0000</pubDate>
+    <title>Dry Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ND:DRY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.327953 -99.029388
+            48.296898 -98.883133
+            48.179363 -98.969650
+            48.327953 -99.029388
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af9cf65306ccc0a5</guid>
+    <pubDate>Fri, 09 Jul 2010 19:57:17 +0000</pubDate>
+    <title>Jamestown Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ND:JAMESTOWN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            46.999691 -98.697052
+            46.930805 -98.696022
+            46.928226 -98.719711
+            47.095371 -98.793526
+            47.129482 -98.771896
+            46.999691 -98.697052
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af9da0c35459d5d9</guid>
+    <pubDate>Fri, 09 Jul 2010 20:00:16 +0000</pubDate>
+    <title>Lake Ashtabula</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ND:ASHTABULA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            47.035503 -98.103104
+            46.962448 -98.126450
+            47.200443 -97.904663
+            47.369987 -97.987747
+            47.035503 -98.103104
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af9e339ec3d7a3b4</guid>
+    <pubDate>Fri, 09 Jul 2010 20:02:50 +0000</pubDate>
+    <title>Lake Sakakawea</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ND:SAKAKAWEA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            47.474983 -101.328278
+            47.351849 -102.664490
+            48.094593 -102.884216
+            47.932907 -103.463745
+            48.133102 -103.757629
+            48.266743 -102.249756
+            47.645039 -102.095947
+            47.684341 -101.428528
+            47.474983 -101.328278
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af9f530d9f678c1b</guid>
+    <pubDate>Fri, 09 Jul 2010 20:07:51 +0000</pubDate>
+    <title>Lake Darling</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ND:DARLING</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.852066 -101.863861
+            48.408237 -101.567230
+            48.552071 -101.479340
+            48.852066 -101.863861
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048afa5cde70033967c</guid>
+    <pubDate>Fri, 09 Jul 2010 20:36:51 +0000</pubDate>
+    <title>Audubon Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ND:AUDUBON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            47.615883 -101.394196
+            47.538994 -101.356430
+            47.540382 -101.035080
+            47.696823 -101.103745
+            47.615883 -101.394196
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048afa64aea962aca37</guid>
+    <pubDate>Fri, 09 Jul 2010 20:39:02 +0000</pubDate>
+    <title>Stump Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ND:STUMP</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            47.949924 -98.412094
+            47.872604 -98.314590
+            47.829754 -98.335190
+            47.900692 -98.501358
+            47.949924 -98.412094
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

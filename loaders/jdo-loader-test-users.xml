@@ -1,0 +1,34 @@
+<jdo-loader loaderDao="com.zarcode.data.dao.UserDao">
+	<dataObject namespace="com.zarcode.data.model.UserDO">
+		<username>John Boyd</username>
+		<emailAddr>john@yahoo.com</emailAddr>
+		<llId>1515151514141163228</llId>
+		<deviceId>12</deviceId>
+		<lat>33.194742</lat>
+		<lng>-97.082748</lng>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.UserDO">
+		<username>Petey Lewisville</username>
+		<emailAddr>pete@yahoo.com</emailAddr>
+		<llId>1515151514141163228</llId>
+		<deviceId>12</deviceId>
+		<lat>33.028527</lat>
+		<lng>-97.024727</lng>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.UserDO">
+		<username>Buddy Soto</username>
+		<emailAddr>buddy@yahoo.com</emailAddr>
+		<llId>1515151514141163228</llId>
+		<deviceId>12</deviceId>
+		<lat>32.587321</lat>
+		<lng>-97.006531</lng>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.UserDO">
+		<username>Johnny Mansfield</username>
+		<emailAddr>john@yahoo.com</emailAddr>
+		<llId>1515151514141163228</llId>
+		<deviceId>12</deviceId>
+		<lat>32.553759</lat>
+		<lng>-97.054596</lng>
+	</dataObject>
+</jdo-loader>

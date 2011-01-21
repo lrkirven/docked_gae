@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>New York Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048a17e4d9eacbbd343</guid>
+    <pubDate>Mon, 28 Jun 2010 14:25:35 +0000</pubDate>
+    <title>Ashokan Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:ASHOKAN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.993690 -74.278221
+            42.004662 -74.082870
+            41.973530 -74.096947
+            41.939320 -74.169044
+            41.926037 -74.281136
+            41.993690 -74.278221
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a17f96bdcb84718d</guid>
+    <pubDate>Mon, 28 Jun 2010 14:31:20 +0000</pubDate>
+    <title>Black Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:BLACK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.459759 -75.683441
+            44.625664 -75.480881
+            44.599758 -75.452042
+            44.374424 -75.655975
+            44.459759 -75.683441
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a17fd07689b0274e</guid>
+    <pubDate>Mon, 28 Jun 2010 14:32:20 +0000</pubDate>
+    <title>Blue Mountain Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:BLUEMTN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.834030 -74.550476
+            43.828335 -74.455719
+            43.837498 -74.374695
+            43.879829 -74.461555
+            43.834030 -74.550476
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a1809d1c56301d8c</guid>
+    <pubDate>Mon, 28 Jun 2010 14:35:55 +0000</pubDate>
+    <title>Canandaigua Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:CANANDAIGUA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.878227 -77.279549
+            42.876469 -77.249168
+            42.798927 -77.262039
+            42.658707 -77.337570
+            42.671833 -77.387695
+            42.878227 -77.279549
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a181177c81c3c094</guid>
+    <pubDate>Mon, 28 Jun 2010 14:38:03 +0000</pubDate>
+    <title>Cannonsville Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:CANNONSVILLE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.057449 -75.401917
+            42.188847 -75.281067
+            42.073761 -75.186310
+            42.057449 -75.401917
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a18188cded0ebaef</guid>
+    <pubDate>Mon, 28 Jun 2010 14:40:02 +0000</pubDate>
+    <title>Carry Falls Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:CARRYFALLS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.449715 -74.795609
+            44.462948 -74.706001
+            44.306652 -74.709435
+            44.449715 -74.795609
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a18234e8c20bee60</guid>
+    <pubDate>Mon, 28 Jun 2010 14:43:03 +0000</pubDate>
+    <title>Cayuga Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:CAYUGA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.962452 -76.742249
+            42.389996 -76.460724
+            42.717758 -76.801300
+            42.962452 -76.742249
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a1826e98f766c6d2</guid>
+    <pubDate>Mon, 28 Jun 2010 14:44:03 +0000</pubDate>
+    <title>Seneca Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:SENECA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.875965 -77.007294
+            42.878983 -76.890564
+            42.375793 -76.841125
+            42.373764 -76.912537
+            42.875965 -77.007294
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a182cf635c1661d4</guid>
+    <pubDate>Mon, 28 Jun 2010 14:45:45 +0000</pubDate>
+    <title>Oneida Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:ONEIDA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.258205 -76.136627
+            43.259205 -75.706787
+            43.116020 -75.724640
+            43.177139 -76.080322
+            43.258205 -76.136627
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a18342524fedfe14</guid>
+    <pubDate>Mon, 28 Jun 2010 14:47:45 +0000</pubDate>
+    <title>Chautauqua Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:CHAUTAUQUA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.243515 -79.515610
+            42.266640 -79.477501
+            42.111214 -79.240608
+            42.083954 -79.361115
+            42.243515 -79.515610
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a183dfa5e29ea4f1</guid>
+    <pubDate>Mon, 28 Jun 2010 14:50:30 +0000</pubDate>
+    <title>Conesus Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:CONESUS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.846016 -77.714195
+            42.825623 -77.682953
+            42.725578 -77.702866
+            42.707668 -77.746124
+            42.846016 -77.714195
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a1846b8931490745</guid>
+    <pubDate>Mon, 28 Jun 2010 14:52:57 +0000</pubDate>
+    <title>Cranberry Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:CRANBERRY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.242985 -74.829597
+            44.166199 -74.722481
+            44.105831 -74.896545
+            44.134914 -74.942551
+            44.242985 -74.829597
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a184ac022d658704</guid>
+    <pubDate>Mon, 28 Jun 2010 14:54:04 +0000</pubDate>
+    <title>Great Sacandaga Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:SACANDAGA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.126045 -74.336243
+            43.046814 -74.209900
+            43.316685 -73.848038
+            43.327675 -74.051971
+            43.126045 -74.336243
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a185209fd549b2cf</guid>
+    <pubDate>Mon, 28 Jun 2010 14:56:07 +0000</pubDate>
+    <title>Indian Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:INDIAN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.774567 -74.259338
+            43.576908 -74.355469
+            43.626633 -74.460526
+            43.774567 -74.259338
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a1855a308ba690aa</guid>
+    <pubDate>Mon, 28 Jun 2010 14:57:07 +0000</pubDate>
+    <title>Keuka Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:KEUKA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.666283 -77.053986
+            42.419399 -77.124023
+            42.396080 -77.237320
+            42.599094 -77.167282
+            42.666283 -77.053986
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a186067ea2f66611</guid>
+    <pubDate>Mon, 28 Jun 2010 15:00:08 +0000</pubDate>
+    <title>Lake Champlain</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:CHAMPLAIN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            45.127804 -73.355713
+            45.083218 -73.070068
+            43.787949 -73.381805
+            44.184174 -73.536987
+            45.127804 -73.355713
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a1869ccf6954d03e</guid>
+    <pubDate>Mon, 28 Jun 2010 15:02:45 +0000</pubDate>
+    <title>Lake George</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:GEORGE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.492783 -73.736115
+            43.371117 -73.683929
+            43.788940 -73.388672
+            43.861267 -73.438110
+            43.492783 -73.736115
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a187177f753802ea</guid>
+    <pubDate>Mon, 28 Jun 2010 15:04:54 +0000</pubDate>
+    <title>Lake Placid</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NYPLACID</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.302109 -74.015411
+            44.278393 -73.979187
+            44.339687 -73.937988
+            44.355034 -73.967171
+            44.302109 -74.015411
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a187717da1128aee</guid>
+    <pubDate>Mon, 28 Jun 2010 15:06:28 +0000</pubDate>
+    <title>Long Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:LONG</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.113720 -74.318390
+            44.090546 -74.292297
+            43.900860 -74.486275
+            43.910259 -74.503098
+            44.113720 -74.318390
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a187e46ed177a2af</guid>
+    <pubDate>Mon, 28 Jun 2010 15:08:29 +0000</pubDate>
+    <title>Upper Saranac Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:UPPERSARANAC</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.227489 -74.317703
+            44.340794 -74.277191
+            44.350368 -74.330063
+            44.268066 -74.354439
+            44.227489 -74.317703
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a189034c29c127cc</guid>
+    <pubDate>Mon, 28 Jun 2010 15:13:30 +0000</pubDate>
+    <title>Lows Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:LOWS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.123577 -74.656387
+            44.110020 -74.771919
+            44.086475 -74.839554
+            44.046387 -74.816208
+            44.111992 -74.615021
+            44.123577 -74.656387
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a189c2c56f394729</guid>
+    <pubDate>Mon, 28 Jun 2010 15:16:50 +0000</pubDate>
+    <title>Tupper Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:TUPPER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.247906 -74.531593
+            44.237083 -74.465332
+            44.184666 -74.414520
+            44.116184 -74.538116
+            44.208298 -74.603348
+            44.247906 -74.531593
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a18a6693d2fddebc</guid>
+    <pubDate>Mon, 28 Jun 2010 15:19:42 +0000</pubDate>
+    <title>Skaneateles Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:SKANEATELES</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.942348 -76.466904
+            42.946369 -76.396179
+            42.767178 -76.245117
+            42.749027 -76.312408
+            42.942348 -76.466904
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a18a9ffbe88a0bec</guid>
+    <pubDate>Mon, 28 Jun 2010 15:20:42 +0000</pubDate>
+    <title>Owasco Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:OWASCO</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.900364 -76.562691
+            42.909416 -76.528702
+            42.756340 -76.447334
+            42.741467 -76.490936
+            42.900364 -76.562691
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a18aef660a15e380</guid>
+    <pubDate>Mon, 28 Jun 2010 15:22:06 +0000</pubDate>
+    <title>Otsego Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:OTSEGO</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.819832 -74.903069
+            42.703381 -74.934311
+            42.698334 -74.916458
+            42.803967 -74.841614
+            42.819832 -74.903069
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a18b29edf09749da</guid>
+    <pubDate>Mon, 28 Jun 2010 15:23:07 +0000</pubDate>
+    <title>Pepacton Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:PEPACTON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.072742 -75.000572
+            42.121910 -74.894485
+            42.128529 -74.667206
+            42.060764 -74.825478
+            42.072742 -75.000572
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a18b88a52045392c</guid>
+    <pubDate>Mon, 28 Jun 2010 15:24:46 +0000</pubDate>
+    <title>Schroon Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:SCHROON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.872406 -73.754997
+            43.720745 -73.814735
+            43.762665 -73.752594
+            43.873642 -73.725815
+            43.872406 -73.754997
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a18bfb8239ad5bf8</guid>
+    <pubDate>Mon, 28 Jun 2010 15:26:47 +0000</pubDate>
+    <title>Union Falls Pond</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:UNIONFALLS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.434761 -73.971634
+            44.521233 -73.946915
+            44.505566 -73.896103
+            44.438927 -73.952408
+            44.434761 -73.971634
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a18c5297b2c7023b</guid>
+    <pubDate>Mon, 28 Jun 2010 15:28:18 +0000</pubDate>
+    <title>Saratoga Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:SARATOGA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.093464 -73.670540
+            43.017200 -73.784866
+            42.973507 -73.747444
+            43.093464 -73.670540
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a18ce6b79d241e12</guid>
+    <pubDate>Mon, 28 Jun 2010 15:30:53 +0000</pubDate>
+    <title>Raquette Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:RAQUETTE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.864239 -74.713898
+            43.803314 -74.656563
+            43.801331 -74.589615
+            43.893932 -74.574852
+            43.864239 -74.713898
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a18d3ad6d541a3aa</guid>
+    <pubDate>Mon, 28 Jun 2010 15:32:22 +0000</pubDate>
+    <title>Piseco Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NY:PISECO</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.448059 -74.525246
+            43.432602 -74.505325
+            43.387711 -74.552711
+            43.390453 -74.597343
+            43.448059 -74.525246
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Delaware Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048afa8c99a74fcb1f7</guid>
+    <pubDate>Fri, 09 Jul 2010 20:50:12 +0000</pubDate>
+    <title>Lums Pond</title>
+    <description><![CDATA[<div dir="ltr">reportKey=DE:LUMS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.588226 -75.743179
+            39.544292 -75.732620
+            39.561764 -75.675201
+            39.588226 -75.743179
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048afa93c4589226917</guid>
+    <pubDate>Fri, 09 Jul 2010 20:52:12 +0000</pubDate>
+    <title>Records Pond</title>
+    <description><![CDATA[<div dir="ltr">repotKey=DE:RECORDS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.557293 -75.539848
+            38.568905 -75.572807
+            38.550716 -75.571259
+            38.557293 -75.539848
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

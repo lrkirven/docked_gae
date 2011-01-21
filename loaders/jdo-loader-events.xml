@@ -1,0 +1,27 @@
+<jdo-loader loaderDao="com.zarcode.data.dao.EventDao">
+	<!-- Data Sources -->
+	<dataObject namespace="com.zarcode.data.model.EventDO">
+		<lat>33.143588</lat>
+		<lng>-96.955032</lng>
+		<title>Fun at Lake Lewisville</title>
+		<username>lrkirven</username>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.EventDO">
+		<lat>33.101033</lat>
+		<lng>-97.061806</lng>
+		<title>Fun at Lake Lewisville - Hickory Creek</title>
+		<username>lrkirven</username>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.EventDO">
+		<lat>33.433447</lat>
+		<lng>-96.983185</lng>
+		<title>Fun at Ray Roberts Lake East</title>
+		<username>lrkirven</username>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.EventDO">
+		<lat>33.477845</lat>
+		<lng>-97.108154</lng>
+		<title>Fun at Ray Roberts Lake West</title>
+		<username>lrkirven</username>
+	</dataObject>
+</jdo-loader>

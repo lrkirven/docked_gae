@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>West Virginia Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048a1bf5e4733409951</guid>
+    <pubDate>Mon, 28 Jun 2010 19:16:40 +0000</pubDate>
+    <title>Beech Fork Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WV:BEECHFORK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.329536 -82.444496
+            38.247887 -82.390938
+            38.320381 -82.310600
+            38.329536 -82.444496
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a1bfca3fc365e2e5</guid>
+    <pubDate>Mon, 28 Jun 2010 19:18:34 +0000</pubDate>
+    <title>Cheat Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WV:CHEAT</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.720390 -79.870605
+            39.720127 -79.824944
+            39.631870 -79.848976
+            39.687904 -79.910774
+            39.720390 -79.870605
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a1c1891f1283778d</guid>
+    <pubDate>Mon, 28 Jun 2010 19:26:22 +0000</pubDate>
+    <title>East Lynn Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WV:EASTLYNN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.158318 -82.392654
+            38.085663 -82.280731
+            38.051876 -82.307510
+            38.091877 -82.405701
+            38.158318 -82.392654
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a1c2dd048a8ba78d</guid>
+    <pubDate>Mon, 28 Jun 2010 19:32:19 +0000</pubDate>
+    <title>Mt Storm Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WV:MTNSTORM</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.216560 -79.223785
+            39.149765 -79.253998
+            39.189690 -79.353218
+            39.216560 -79.223785
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a1c3c24208a2414b</guid>
+    <pubDate>Mon, 28 Jun 2010 19:36:19 +0000</pubDate>
+    <title>Stonewall Jackson Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WV:STONEWALLJACKSON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.012516 -80.487213
+            38.976227 -80.411339
+            38.935112 -80.416832
+            38.930305 -80.537338
+            39.012516 -80.487213
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a1c4454790dc4988</guid>
+    <pubDate>Mon, 28 Jun 2010 19:38:36 +0000</pubDate>
+    <title>Summerville Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WV:SUMMERVILLE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.302063 -80.765648
+            38.197720 -80.861092
+            38.231171 -80.933876
+            38.270531 -80.898514
+            38.302063 -80.765648
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a1c4fc0a03844376</guid>
+    <pubDate>Mon, 28 Jun 2010 19:41:48 +0000</pubDate>
+    <title>Tygart Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WV:TYGART</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.318893 -80.036774
+            39.250336 -80.038147
+            39.247410 -79.914551
+            39.318893 -80.036774
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

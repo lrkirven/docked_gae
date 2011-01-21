@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Montana Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048a45b3a7ae2bdd31d</guid>
+    <pubDate>Wed, 30 Jun 2010 21:04:38 +0000</pubDate>
+    <title>Ashley Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:ASHLEY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.228104 -114.518738
+            48.223530 -114.694519
+            48.151886 -114.621735
+            48.228104 -114.518738
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45b74058b5050f9</guid>
+    <pubDate>Wed, 30 Jun 2010 21:05:38 +0000</pubDate>
+    <title>Flathead Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:FLATHEAD</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.212776 -114.249573
+            48.154179 -114.065552
+            47.692200 -113.991394
+            47.680183 -114.498138
+            48.212776 -114.249573
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45c203e6ade9c3e</guid>
+    <pubDate>Wed, 30 Jun 2010 21:08:39 +0000</pubDate>
+    <title>Fort Peck Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:FORTPECK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.114765 -106.314697
+            47.578381 -108.429565
+            47.353710 -107.943420
+            47.517200 -106.105957
+            48.114765 -106.314697
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45c5a5ef901d6ab</guid>
+    <pubDate>Wed, 30 Jun 2010 21:09:40 +0000</pubDate>
+    <title>Bull Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:BULL</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.303978 -115.857353
+            48.238167 -115.832291
+            48.196075 -115.856667
+            48.275883 -115.872116
+            48.303978 -115.857353
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45c9515ed5efdb1</guid>
+    <pubDate>Wed, 30 Jun 2010 21:10:41 +0000</pubDate>
+    <title>Whitefish Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:WHITEFISH</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.500229 -114.421921
+            48.428288 -114.323044
+            48.405502 -114.355316
+            48.475197 -114.443893
+            48.500229 -114.421921
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45ce2e86ec1d543</guid>
+    <pubDate>Wed, 30 Jun 2010 21:12:03 +0000</pubDate>
+    <title>Canyon Ferry Lake</title>
+    <description><![CDATA[<div dir="ltr">repotKey=MT:CANYONFERRY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            46.694668 -111.754303
+            46.402828 -111.321716
+            46.322273 -111.585388
+            46.694668 -111.754303
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45d5632201ca754</guid>
+    <pubDate>Wed, 30 Jun 2010 21:14:04 +0000</pubDate>
+    <title>Deadmans Basin Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:DEADMANS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            46.368252 -109.497986
+            46.318481 -109.427261
+            46.363041 -109.363403
+            46.368252 -109.497986
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45d8fa8b0ac74f7</guid>
+    <pubDate>Wed, 30 Jun 2010 21:15:04 +0000</pubDate>
+    <title>Fresno Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:FRESNO</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.824947 -110.225830
+            48.618385 -109.848175
+            48.572971 -109.990997
+            48.824947 -110.225830
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45dd92e3451fc03</guid>
+    <pubDate>Wed, 30 Jun 2010 21:16:21 +0000</pubDate>
+    <title>Lake Elwell</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:ELWELL</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.440132 -111.246185
+            48.253029 -110.953674
+            48.342560 -111.684265
+            48.440132 -111.246185
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45e263f2f615cbf</guid>
+    <pubDate>Wed, 30 Jun 2010 21:17:42 +0000</pubDate>
+    <title>Georgetown Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:GEORGETOWN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            46.232101 -113.282089
+            46.163662 -113.249130
+            46.153675 -113.364487
+            46.232101 -113.282089
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45e6878d829fe19</guid>
+    <pubDate>Wed, 30 Jun 2010 21:18:51 +0000</pubDate>
+    <title>Gibson Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:GIBSON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            47.638096 -112.887268
+            47.574211 -112.784271
+            47.617737 -112.700500
+            47.638096 -112.887268
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45ea1faafbd6f26</guid>
+    <pubDate>Wed, 30 Jun 2010 21:19:52 +0000</pubDate>
+    <title>Hungry Horse Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:HUNGRYHORSE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.365376 -114.057312
+            48.366287 -113.870544
+            47.997272 -113.506622
+            47.945786 -113.642578
+            48.365376 -114.057312
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45edb72456f6dc6</guid>
+    <pubDate>Wed, 30 Jun 2010 21:20:52 +0000</pubDate>
+    <title>Lake McDonald</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:MCDONALD</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.562977 -114.018860
+            48.662849 -113.877411
+            48.628368 -113.837585
+            48.494766 -113.992767
+            48.562977 -114.018860
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45f14d798e26c7f</guid>
+    <pubDate>Wed, 30 Jun 2010 21:21:52 +0000</pubDate>
+    <title>Hauser Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:HAUSER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            46.649906 -111.826401
+            46.653206 -111.738510
+            46.701733 -111.758423
+            46.799587 -111.922531
+            46.649906 -111.826401
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45f4e6a2dd2a86c</guid>
+    <pubDate>Wed, 30 Jun 2010 21:22:52 +0000</pubDate>
+    <title>Lake Helena</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:HELENA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            46.698906 -111.983643
+            46.746449 -111.890945
+            46.699848 -111.861420
+            46.669228 -111.964417
+            46.698906 -111.983643
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a45ff6cb248ff500</guid>
+    <pubDate>Wed, 30 Jun 2010 21:25:49 +0000</pubDate>
+    <title>Hebgen Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:HEBGEN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.874363 -111.352615
+            44.784271 -111.119843
+            44.720882 -111.114349
+            44.719906 -111.244125
+            44.874363 -111.352615
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a460305ac1869e48</guid>
+    <pubDate>Wed, 30 Jun 2010 21:26:49 +0000</pubDate>
+    <title>Holter Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:HOLTER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            47.029884 -112.019348
+            46.906185 -111.847687
+            46.862068 -112.004242
+            47.029884 -112.019348
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a4606a174efa2467</guid>
+    <pubDate>Wed, 30 Jun 2010 21:27:50 +0000</pubDate>
+    <title>Lake Frances</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:FRANCES</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.351685 -112.276154
+            48.255772 -112.162170
+            48.255772 -112.372284
+            48.351685 -112.276154
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a460dcbdc8f31da2</guid>
+    <pubDate>Wed, 30 Jun 2010 21:29:50 +0000</pubDate>
+    <title>Lake Koocanusa</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:KOOCANUSA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.405502 -115.361938
+            49.102646 -115.287781
+            49.478832 -115.463562
+            49.113434 -115.106506
+            48.405502 -115.213623
+            48.405502 -115.361938
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a4611675fca68513</guid>
+    <pubDate>Wed, 30 Jun 2010 21:30:51 +0000</pubDate>
+    <title>Nelson Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:NELSON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.545025 -107.516327
+            48.499546 -107.512550
+            48.467003 -107.589111
+            48.497044 -107.700005
+            48.545025 -107.516327
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a4616cd386f00e75</guid>
+    <pubDate>Wed, 30 Jun 2010 21:32:21 +0000</pubDate>
+    <title>Noxon Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:NOXON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.094593 -115.981293
+            47.939346 -115.589905
+            47.681107 -115.363312
+            47.860168 -115.761566
+            48.094593 -115.981293
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a461a7092189afd1</guid>
+    <pubDate>Wed, 30 Jun 2010 21:33:22 +0000</pubDate>
+    <title>Placid Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:PLACID</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            47.157738 -113.527908
+            47.104954 -113.566360
+            47.095604 -113.476410
+            47.157738 -113.527908
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a461e06f23ab0253</guid>
+    <pubDate>Wed, 30 Jun 2010 21:34:22 +0000</pubDate>
+    <title>St Mary Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:STMARY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            48.841221 -113.426285
+            48.669651 -113.635712
+            48.641075 -113.476410
+            48.835796 -113.369293
+            48.841221 -113.426285
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a4625393fb4d878b</guid>
+    <pubDate>Wed, 30 Jun 2010 21:36:23 +0000</pubDate>
+    <title>Willow Creek Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:WILLOWCREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            47.586716 -112.472878
+            47.549885 -112.400093
+            47.533195 -112.482147
+            47.586716 -112.472878
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048a46253a12ece8401</guid>
+    <pubDate>Wed, 30 Jun 2010 21:36:23 +0000</pubDate>
+    <title>Freezeout Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MT:FREEZEOUT</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            47.730087 -112.101059
+            47.615421 -112.055740
+            47.633469 -111.992569
+            47.732857 -112.051620
+            47.730087 -112.101059
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

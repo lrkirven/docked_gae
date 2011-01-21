@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Maryland Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048acfb8774ec3d9ba3</guid>
+    <pubDate>Wed, 07 Jul 2010 17:44:24 +0000</pubDate>
+    <title>Deep Creek Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MD:DEEPCREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.577644 -79.347382
+            39.489735 -79.234772
+            39.439903 -79.305496
+            39.508808 -79.398537
+            39.577644 -79.347382
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048acfbdb4307e38a62</guid>
+    <pubDate>Wed, 07 Jul 2010 17:45:52 +0000</pubDate>
+    <title>Liberty Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MD:LIBERTY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.513313 -76.857605
+            39.403572 -76.858635
+            39.369076 -76.889877
+            39.443352 -76.967812
+            39.513313 -76.857605
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048acfc1e1996fdb586</guid>
+    <pubDate>Wed, 07 Jul 2010 17:47:02 +0000</pubDate>
+    <title>Little Seneca Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MD:LITTLESENECA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.215363 -77.308731
+            39.186363 -77.262039
+            39.180244 -77.324348
+            39.215363 -77.308731
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048acfc69b276323dc0</guid>
+    <pubDate>Wed, 07 Jul 2010 17:48:21 +0000</pubDate>
+    <title>Loch Raven Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MD:LOCHRAVEN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.513313 -76.632042
+            39.465355 -76.534538
+            39.422138 -76.537971
+            39.427708 -76.592216
+            39.513313 -76.632042
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048acfca3456ff9db96</guid>
+    <pubDate>Wed, 07 Jul 2010 17:49:22 +0000</pubDate>
+    <title>Prettyboy Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MD:PRETTYBOY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.690018 -76.772118
+            39.606747 -76.673927
+            39.628696 -76.788940
+            39.690018 -76.772118
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048acfd16c671a77b72</guid>
+    <pubDate>Wed, 07 Jul 2010 17:51:23 +0000</pubDate>
+    <title>Rocky Gorge Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MD:ROCKYGORGE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.120338 -76.869278
+            39.110615 -76.881294
+            39.133255 -76.974159
+            39.153091 -76.980515
+            39.136719 -76.882324
+            39.120338 -76.869278
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048acfdc1bddc725c58</guid>
+    <pubDate>Wed, 07 Jul 2010 17:54:22 +0000</pubDate>
+    <title>St. Mary&#39;s Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MD:STMARYS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.275383 -76.556335
+            38.248020 -76.517715
+            38.246674 -76.559258
+            38.275383 -76.556335
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048acfe008ddb29f8c1</guid>
+    <pubDate>Wed, 07 Jul 2010 17:55:28 +0000</pubDate>
+    <title>Triadelphia Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MD:TRIADELPHIA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.204327 -76.986694
+            39.185566 -77.013817
+            39.246212 -77.057076
+            39.253391 -77.049179
+            39.204327 -76.986694
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

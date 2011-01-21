@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	
+	 <!-- Servlets -->
+  <servlet>
+    <servlet-name>LLRegisterServlet</servlet-name>
+    <servlet-class>com.zarcode.server.RegisterServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LLRegisterServlet</servlet-name>
+    <url-pattern>/llregistrar/register</url-pattern>
+  </servlet-mapping>
+  
+    <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>Jersey Web Application</servlet-name>
+     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+     <init-param>
+     <param-name>com.sun.jersey.config.property.packages</param-name>
+     <param-value>com.zarcode.data.resources;org.codehaus.jackson.jaxrs</param-value>
+     </init-param>
+     <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Jersey Web Application</servlet-name>
+    <url-pattern>/resources/*</url-pattern>
+  </servlet-mapping>
+  
+  	<!-- Clear OLD message history -->
+	<servlet>
+        <servlet-name>Cleaner</servlet-name>
+        <servlet-class>com.zarcode.data.maint.Cleaner</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Cleaner</servlet-name>
+        <url-pattern>/cleaner</url-pattern>
+    </servlet-mapping>
+	
+  	<servlet>
+        <servlet-name>OpenIdManager</servlet-name>
+        <servlet-class>com.zarcode.security.OpenIdManager</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OpenIdManager</servlet-name>
+        <url-pattern>/_ah/login_required</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
+        <servlet-name>LogoutAgent</servlet-name>
+        <jsp-file>/logout.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutAgent</servlet-name>
+        <url-pattern>/_ah/openid_logout</url-pattern>
+    </servlet-mapping>
+	
+	<servlet> 
+  		<servlet-name>register</servlet-name> 
+  		<servlet-class>com.zarcode.security.AppRegister</servlet-class> 
+   	</servlet> 
+	<servlet-mapping> 
+  		<servlet-name>register</servlet-name> 
+  		<url-pattern>/register</url-pattern> 
+	</servlet-mapping>
+	
+	<servlet>
+        <servlet-name>RegisterOptions</servlet-name>
+        <jsp-file>/llregistrar.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterOptions</servlet-name>
+        <url-pattern>/registerOptions</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
+        <servlet-name>LoginComplete</servlet-name>
+        <jsp-file>/loginComplete.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginComplete</servlet-name>
+        <url-pattern>/loginComplete</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
+        <servlet-name>LoginErrorNotSecure</servlet-name>
+        <jsp-file>/loginErrorNotSecure.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginErrorNotSecure</servlet-name>
+        <url-pattern>/loginErrorNotSecure</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
+        <servlet-name>UnauthorizedUser</servlet-name>
+        <jsp-file>/unauthorizedUser.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnauthorizedUser</servlet-name>
+        <url-pattern>/unauthorizedUser</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
+        <servlet-name>RegisterReturn</servlet-name>
+        <jsp-file>/registerReturn.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterReturn</servlet-name>
+        <url-pattern>/registerReturn</url-pattern>
+    </servlet-mapping>
+	
+	<servlet> 
+  		<servlet-name>loginQuery</servlet-name> 
+  		<servlet-class>com.zarcode.security.LoginQuery</servlet-class> 
+   	</servlet> 
+	<servlet-mapping> 
+  		<servlet-name>loginQuery</servlet-name> 
+  		<url-pattern>/loginQuery</url-pattern> 
+	</servlet-mapping>
+	
+	<security-constraint>
+    	<web-resource-collection>
+        	<url-pattern>/register</url-pattern>
+    	</web-resource-collection>
+    	<auth-constraint>
+     	   <role-name>*</role-name>
+    	</auth-constraint>
+	</security-constraint>
+
+	<servlet> 
+  		<servlet-name>crawler</servlet-name> 
+  		<servlet-class>com.zarcode.data.webcrawler.CronCrawler</servlet-class> 
+   </servlet> 
+	<servlet-mapping> 
+  		<servlet-name>crawler</servlet-name> 
+  		<url-pattern>/crawler</url-pattern> 
+	</servlet-mapping> 
+	
+	<servlet> 
+  		<servlet-name>georssload</servlet-name> 
+  		<servlet-class>com.zarcode.data.webcrawler.GeoRSSCrawler</servlet-class> 
+   </servlet> 
+	<servlet-mapping> 
+  		<servlet-name>georssload</servlet-name> 
+  		<url-pattern>/georssload</url-pattern> 
+	</servlet-mapping>
+	
+	<!-- produces RSS Feed from messages of closest lake --> 
+	<servlet> 
+  		<servlet-name>rssfeed</servlet-name> 
+  		<servlet-class>com.zarcode.data.rssfeed.LLRssFeeder</servlet-class> 
+	</servlet> 
+	<servlet-mapping> 
+  		<servlet-name>rssfeed</servlet-name> 
+  		<url-pattern>/rssfeed</url-pattern> 
+	</servlet-mapping>
+	
+	 <security-constraint> 
+        <web-resource-collection> 
+            <url-pattern>/georssload</url-pattern> 
+        </web-resource-collection> 
+        <auth-constraint> 
+            <role-name>admin</role-name> 
+        </auth-constraint> 
+    </security-constraint> 
+ 
+  <!--  handle incoming mail --> 
+  <!-- 
+  <servlet> 
+  		<servlet-name>mailhandler</servlet-name> 
+  		<servlet-class>com.zarcode.data.email.MailHandlerServlet</servlet-class> 
+   </servlet> 
+	<servlet-mapping> 
+  		<servlet-name>mailhandler</servlet-name> 
+  		<url-pattern>/_ah/mail/*</url-pattern> 
+	</servlet-mapping> 
+	<security-constraint> 
+  		<web-resource-collection> 
+    		<url-pattern>/_ah/mail/*</url-pattern> 
+  		</web-resource-collection> 
+  		<auth-constraint> 
+   	 		<role-name>admin</role-name> 
+  		</auth-constraint> 
+	</security-constraint>
+	-->
+	
+    <security-constraint> 
+        <web-resource-collection> 
+            <url-pattern>/crawler</url-pattern> 
+        </web-resource-collection> 
+        <auth-constraint> 
+            <role-name>admin</role-name> 
+        </auth-constraint> 
+    </security-constraint>
+	
+	 <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/cleaner</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <servlet>
+        <servlet-name>BuzzMap</servlet-name>
+        <jsp-file>/buzzmap.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BuzzMap</servlet-name>
+        <url-pattern>/buzzmap</url-pattern>
+    </servlet-mapping>
+  
+  	<!-- App Admin --> 
+ 	<servlet>
+        <servlet-name>App Admin</servlet-name>
+        <jsp-file>/admin.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>App Admin</servlet-name>
+        <url-pattern>/_admin</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>com.zarcode.platform.loader.JDOLoaderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadServlet</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    <security-constraint> 
+        <web-resource-collection> 
+            <url-pattern>/upload</url-pattern> 
+        </web-resource-collection> 
+        <auth-constraint> 
+            <role-name>admin</role-name> 
+        </auth-constraint> 
+    </security-constraint>
+    
+</web-app>

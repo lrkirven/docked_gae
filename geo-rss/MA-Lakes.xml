@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Mass Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048acff3e74434d38bc</guid>
+    <pubDate>Wed, 07 Jul 2010 18:01:01 +0000</pubDate>
+    <title>Assawompset Pond</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MA:ASSAWOMPSET</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.843479 -70.953140
+            41.862785 -70.912628
+            41.842327 -70.882240
+            41.827362 -70.887733
+            41.819817 -70.930305
+            41.843479 -70.953140
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048acff77d37f48a9e2</guid>
+    <pubDate>Wed, 07 Jul 2010 18:02:01 +0000</pubDate>
+    <title>Cheshire Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MA:CHESHIRE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.492985 -73.201050
+            42.517788 -73.214264
+            42.560665 -73.168427
+            42.552826 -73.160873
+            42.492985 -73.201050
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048acffeb5b5acc9830</guid>
+    <pubDate>Wed, 07 Jul 2010 18:04:03 +0000</pubDate>
+    <title>Congamond Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MA:CONGAMOND</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.051205 -72.763481
+            42.046871 -72.743401
+            42.004150 -72.756958
+            42.008362 -72.776871
+            42.051205 -72.763481
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ad0027ed17ef54ff</guid>
+    <pubDate>Wed, 07 Jul 2010 18:05:06 +0000</pubDate>
+    <title>Lake Chaubunagungamaug</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MA:CHAUBUNAGUNGAMAUG</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.072742 -71.856422
+            42.042919 -71.865173
+            42.024048 -71.845436
+            42.023666 -71.799950
+            42.072742 -71.856422
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ad009ab07209512d</guid>
+    <pubDate>Wed, 07 Jul 2010 18:07:06 +0000</pubDate>
+    <title>Long Pond</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MA:LONG</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.880554 -70.613251
+            41.851276 -70.587669
+            41.842197 -70.618744
+            41.851151 -70.631271
+            41.880554 -70.613251
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ad00da6304a95713</guid>
+    <pubDate>Wed, 07 Jul 2010 18:08:13 +0000</pubDate>
+    <title>Otis Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reprotKey=MA:OTIS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.180069 -73.040031
+            42.156658 -73.073158
+            42.122417 -73.060455
+            42.131840 -73.014107
+            42.180069 -73.040031
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ad01140d1d34cad4</guid>
+    <pubDate>Wed, 07 Jul 2010 18:09:14 +0000</pubDate>
+    <title>Quabbin Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MA:QUABBIN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.537903 -72.303772
+            42.476654 -72.169189
+            42.272228 -72.296906
+            42.278831 -72.373123
+            42.453354 -72.386856
+            42.537903 -72.303772
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ad0187b1e930f85c</guid>
+    <pubDate>Wed, 07 Jul 2010 18:11:15 +0000</pubDate>
+    <title>Watuppa Pond</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MA:WATUPPA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.746727 -71.100769
+            41.734428 -71.074333
+            41.626221 -71.127892
+            41.660088 -71.153984
+            41.746727 -71.100769
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ad022a079800d22a</guid>
+    <pubDate>Wed, 07 Jul 2010 18:14:05 +0000</pubDate>
+    <title>Wachusett Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MA:WACHUSETT</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.444489 -71.744156
+            42.386951 -71.809731
+            42.330887 -71.756516
+            42.398361 -71.668968
+            42.444489 -71.744156
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

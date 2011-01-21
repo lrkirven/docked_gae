@@ -1,0 +1,465 @@
+<jdo-loader clobberClass="com.zarcode.data.model.WaterResourceDO">
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Ross Barnett Reservoir - Main Lake</name>
+		<state>MS</state>
+		<lat>32.45039</lat>
+		<lng>-90.028496</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=33</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Ross Barnett Reservoir - Pelahatchie Bay</name>
+		<state>MS</state>
+		<lat>32.388949</lat>
+		<lng>-90.003433</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=1</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Aberdeen Lake</name>
+		<state>MS</state>
+		<lat>33.841905</lat>
+		<lng>-88.520966</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=1</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Columbus Lake</name>
+		<state>MS</state>
+		<lat>33.527229</lat>
+		<lng>-88.48629</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=2</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Bay Springs</name>
+		<state>MS</state>
+		<lat>34.558315</lat>
+		<lng>-88.318748</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=4</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Lamar Bruce</name>
+		<state>MS</state>
+		<lat>34.397987</lat>
+		<lng>-88.665676</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=5</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Monroe</name>
+		<state>MS</state>
+		<lat>33.947774</lat>
+		<lng>-88.565555</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=6</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Oktibbeha County Lake</name>
+		<state>MS</state>
+		<lat>33.508015</lat>
+		<lng>-88.940077</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=7</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Tombigbee State Park</name>
+		<state>MS</state>
+		<lat>34.232916</lat>
+		<lng>-88.628168</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=53</url>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Lowndes</name>
+		<state>MS</state>
+		<lat>33.429364</lat>
+		<lng>-88.298965</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=44</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Alicevile Lake</name>
+		<state>MS</state>
+		<lat>33.262518</lat>
+		<lng>-88.298235</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=3</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>JP Coleman Pickwick Lake </name>
+		<state>MS</state>
+		<lat>35.042646</lat>
+		<lng>-88.192577</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=45</url>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Trace State Park</name>
+		<state>TN</state>
+		<lat>35.68822</lat>
+		<lng>-88.283429</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=47</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Tippah County Lake</name>
+		<state>TN</state>
+		<lat>34.792731</lat>
+		<lng>-88.952565</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=52</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Elvis Presley Lake</name>
+		<state>MS</state>
+		<lat>34.30133</lat>
+		<lng>-88.653874</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=129</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Desoto</name>
+		<state>MS</state>
+		<lat>34.137668</lat>
+		<lng>-90.852127</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=120</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Whittington</name>
+		<state>MS</state>
+		<lat>33.666211</lat>
+		<lng>-91.114769</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=109</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Beulah Lake</name>
+		<state>MS</state>
+		<lat>33.765449</lat>
+		<lng>-91.011686</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=112</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Washington</name>
+		<state>MS</state>
+		<lat>33.077302</lat>
+		<lng>-91.046619</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=108</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Ferguson</name>
+		<state>MS</state>
+		<lat>33.391319</lat>
+		<lng>-91.084385</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=110</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Moon Lake</name>
+		<state>MS</state>
+		<lat>34.416115</lat>
+		<lng>-90.509148</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=111</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Bee Lake</name>
+		<state>MS</state>
+		<lat>33.06655</lat>
+		<lng>-90.371733</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=118</url>
+		<source>WDWFP</source>
+	</dataObject>	
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Tunica Cutoff</name>
+		<state>MS</state>
+		<lat>34.649449</lat>
+		<lng>-90.492668</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=12</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Horn Lake</name>
+		<state>MS</state>
+		<lat>34.977971</lat>
+		<lng>-90.168056</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=14</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Arkabutla</name>
+		<state>MS</state>
+		<lat>34.72426</lat>
+		<lng>-90.079308</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=8</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Sardis Lake</name>
+		<state>MS</state>
+		<lat>34.475713</lat>
+		<lng>-89.672127</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=9</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Enid Lake</name>
+		<state>MS</state>
+		<lat>34.15294</lat>
+		<lng>-89.802074</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=10</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Grenada Lake</name>
+		<state>MS</state>
+		<lat>33.830498</lat>
+		<lng>-89.728432</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=11</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Charlie Capps</name>
+		<state>MS</state>
+		<lat>33.864429</lat>
+		<lng>-90.960617</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=15</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Chotard and Albermarle</name>
+		<state>MS</state>
+		<lat>32.630268</lat>
+		<lng>-91.004906</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=19</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Wolf Lake</name>
+		<state>MS</state>
+		<lat>32.924843</lat>
+		<lng>-90.495586</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=49</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Eagle Lake</name>
+		<state>LA</state>
+		<lat>32.505274</lat>
+		<lng>-91.005592</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=127</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Kemper County Lake</name>
+		<state>MS</state>
+		<lat>32.696419</lat>
+		<lng>-88.73831</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=37</url>
+		<rec>WEB</rec>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Neshoba County Lake</name>
+		<state>MS</state>
+		<lat>32.71572</lat>
+		<lng>-89.013591</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=38</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Claude Bennett</name>
+		<state>MS</state>
+		<lat>32.102426</lat>
+		<lng>-89.035177</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=39</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Simpson County Lake</name>
+		<state>MS</state>
+		<lat>31.916015</lat>
+		<lng>-89.791431</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=40</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Ross Barnett</name>
+		<state>MS</state>
+		<lat>31.830936</lat>
+		<lng>-89.590502</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=41</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Okatibbee Lake</name>
+		<marker>Okatibbee Reservoir</marker>
+		<state>MS</state>
+		<lat>32.514539</lat>
+		<lng>-88.801804</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=136</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Tom Bailey</name>
+		<state>MS</state>
+		<lat>32.423334</lat>
+		<lng>-88.521395</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=21</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Mary Crawford</name>
+		<state>MS</state>
+		<lat>31.578316</lat>
+		<lng>-90.157585</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=25</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Bill Waller</name>
+		<state>MS</state>
+		<lat>31.195953</lat>
+		<lng>-89.717445</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=26</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Walthall</name>
+		<state>MS</state>
+		<lat>31.061941</lat>
+		<lng>-90.132265</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=27</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Columbia</name>
+		<state>MS</state>
+		<lat>31.185784</lat>
+		<lng>-89.736156</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=128</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Calling Panther Lake</name>
+		<state>MS</state>
+		<lat>31.994228</lat>
+		<lng>-90.449131</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=135</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Natchez State Park</name>
+		<state>MS</state>
+		<lat>31.59579</lat>
+		<lng>-91.206436</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=23</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Lincoln State Park</name>
+		<marker>Lake Lincoln</marker>
+		<state>MS</state>
+		<lat>31.681817</lat>
+		<lng>-90.339653</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=24</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Percy Quin State Park</name>
+		<state>MS</state>
+		<lat>31.19298</lat>
+		<lng>-90.518374</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=28</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Pascagoula River</name>
+		<state>MS</state>
+		<lat>30.754818</lat>
+		<lng>-88.666921</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=28</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Bogue Homa</name>
+		<state>MS</state>
+		<lat>31.712543</lat>
+		<lng>-89.015608</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=22</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Mike Conner</name>
+		<state>MS</state>
+		<lat>31.5724</lat>
+		<lng>-89.6498</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=43</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Perry</name>
+		<state>MS</state>
+		<lat>31.132975</lat>
+		<lng>-88.902397</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=31</url>
+		<source>WDWFP</source>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Lake Jeff Davis</name>
+		<state>MS</state>
+		<lat>31.564751</lat>
+		<lng>-89.839411</lng>
+		<rec>WEB</rec>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=31</url>
+		<source>WDWFP</source>
+	</dataObject>
+</jdo-loader>

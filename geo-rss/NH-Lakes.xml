@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>New Hampshire Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048af95cc9c0e60b020</guid>
+    <pubDate>Fri, 09 Jul 2010 19:25:15 +0000</pubDate>
+    <title>Bow Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:BOW</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.270206 -71.199471
+            43.226818 -71.210632
+            43.240200 -71.126175
+            43.270206 -71.199471
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af9605ff7ae507d1</guid>
+    <pubDate>Fri, 09 Jul 2010 19:26:15 +0000</pubDate>
+    <title>Conway Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:CONWAY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.989849 -71.087036
+            43.981701 -71.001717
+            43.913723 -71.068840
+            43.989849 -71.087036
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af964cbf0a67402e</guid>
+    <pubDate>Fri, 09 Jul 2010 19:27:29 +0000</pubDate>
+    <title>First Connecticut Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:FIRSTCONN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            45.093155 -71.312599
+            45.049271 -71.232948
+            45.134342 -71.198616
+            45.093155 -71.312599
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af964cc102a240d5</guid>
+    <pubDate>Fri, 09 Jul 2010 19:27:29 +0000</pubDate>
+    <title>Second Connecticut Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:SECONDCONN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            45.180828 -71.202736
+            45.169209 -71.124802
+            45.107452 -71.180763
+            45.180828 -71.202736
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af96b751e44d6be6</guid>
+    <pubDate>Fri, 09 Jul 2010 19:29:21 +0000</pubDate>
+    <title>Great East Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:GREATEAST</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.609982 -70.992966
+            43.572182 -70.904045
+            43.565716 -71.028328
+            43.609982 -70.992966
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af97258261d1d95e</guid>
+    <pubDate>Fri, 09 Jul 2010 19:31:16 +0000</pubDate>
+    <title>Lake Francis</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:FRANCIS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            45.070004 -71.292519
+            45.022339 -71.280151
+            45.041870 -71.430878
+            45.070004 -71.292519
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af97660c4a5a7cbb</guid>
+    <pubDate>Fri, 09 Jul 2010 19:32:24 +0000</pubDate>
+    <title>Lake Wentworth</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:WENTWORTH</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.600037 -71.199989
+            43.624893 -71.155869
+            43.587605 -71.114502
+            43.567955 -71.165657
+            43.600037 -71.199989
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af98094e88360d7e</guid>
+    <pubDate>Fri, 09 Jul 2010 19:35:15 +0000</pubDate>
+    <title>Lake Winnipesaukee</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:WINNIPESAUKEE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.769608 -71.422119
+            43.662407 -71.551208
+            43.461391 -71.222305
+            43.562981 -71.179733
+            43.691708 -71.299896
+            43.769608 -71.422119
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af9842c6b8234112</guid>
+    <pubDate>Fri, 09 Jul 2010 19:36:15 +0000</pubDate>
+    <title>Squam Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:SQUAM</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.773075 -71.426239
+            43.661415 -71.558075
+            43.723972 -71.632233
+            43.805794 -71.517563
+            43.773075 -71.426239
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af987c51a89fbf5b</guid>
+    <pubDate>Fri, 09 Jul 2010 19:37:16 +0000</pubDate>
+    <title>Winnisquam Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:WINNISQUAM</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.621166 -71.534729
+            43.524158 -71.468124
+            43.439461 -71.530609
+            43.461391 -71.589661
+            43.621166 -71.534729
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af98f03d8f347770</guid>
+    <pubDate>Fri, 09 Jul 2010 19:39:17 +0000</pubDate>
+    <title>Massabesic Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:MASSABESIC</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.993347 -71.412163
+            43.018955 -71.368217
+            42.988827 -71.320152
+            42.941345 -71.385040
+            42.993347 -71.412163
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af993fe3c396d231</guid>
+    <pubDate>Fri, 09 Jul 2010 19:40:41 +0000</pubDate>
+    <title>Moore Reservoir </title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:MOORE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.293877 -71.875992
+            44.334164 -72.024307
+            44.446037 -71.682358
+            44.293877 -71.875992
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af9998470eb3e64e</guid>
+    <pubDate>Fri, 09 Jul 2010 19:42:13 +0000</pubDate>
+    <title>Newfound Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:NEWFOUND</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.692204 -71.880798
+            43.731415 -71.735229
+            43.593819 -71.722870
+            43.692204 -71.880798
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af99d1d63b71b860</guid>
+    <pubDate>Fri, 09 Jul 2010 19:43:14 +0000</pubDate>
+    <title>Ossipee Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:OSSIPEE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.816444 -71.188660
+            43.845177 -71.090126
+            43.793404 -71.053734
+            43.758698 -71.145058
+            43.816444 -71.188660
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af9a44b56558a5f0</guid>
+    <pubDate>Fri, 09 Jul 2010 19:45:14 +0000</pubDate>
+    <title>Sunapee Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:SUNAPEE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.458900 -72.100525
+            43.442699 -71.991348
+            43.308193 -72.034607
+            43.405048 -72.127304
+            43.458900 -72.100525
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048af9af0e4cf3f165a</guid>
+    <pubDate>Fri, 09 Jul 2010 19:48:15 +0000</pubDate>
+    <title>Umbagog Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NH:UMBAGOG</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.853924 -71.069870
+            44.739418 -71.136475
+            44.677929 -71.020432
+            44.790119 -70.955887
+            44.853924 -71.069870
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

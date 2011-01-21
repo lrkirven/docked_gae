@@ -1,0 +1,18 @@
+<jdo-loader>
+	<!-- Data Sources -->
+	<dataObject namespace="com.zarcode.data.model.OpenIdProviderDO">
+		<name>Google</name>
+		<url>google.com/accounts/o8/id</url>
+		<imageUrl>images/googleB.png</imageUrl>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.OpenIdProviderDO">
+		<name>Yahoo</name>
+		<url>yahoo.com</url>
+		<imageUrl>images/yahooB.png</imageUrl>
+	</dataObject>
+	<dataObject namespace="com.zarcode.data.model.OpenIdProviderDO">
+		<name>AOL</name>
+		<url>aol.com</url>
+		<imageUrl>images/aolB.png</imageUrl>
+	</dataObject>
+</jdo-loader>

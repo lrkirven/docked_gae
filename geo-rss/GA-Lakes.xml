@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Georgia Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23b39f1d3b</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Allatoona Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:ALLATOONA</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.204418 -84.729309
+            34.209530 -84.734116
+            34.047539 -84.724503
+            34.056641 -84.673004
+            34.146477 -84.538422
+            34.202148 -84.552155
+            34.229973 -84.572067
+            34.222023 -84.689484
+            34.204418 -84.729309
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23ba704c6f</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Lake Blackshear</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:BLACKSHEAR</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            31.843733 -83.963013
+            31.842566 -83.897095
+            31.963230 -83.913574
+            32.095955 -83.971939
+            32.106426 -84.002151
+            31.843733 -83.963013
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23bd112bf9</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Blue Ridge Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:BLUERIDGE</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.887623 -84.277840
+            34.848465 -84.307709
+            34.797455 -84.246597
+            34.861145 -84.233551
+            34.887623 -84.277840
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23bfc84531</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Lake Burton</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:BURTON</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.876919 -83.536606
+            34.859455 -83.582954
+            34.847340 -83.591194
+            34.795197 -83.574371
+            34.790405 -83.539696
+            34.852409 -83.509483
+            34.876919 -83.536606
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23c1a3825b</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Carters Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:CARTERS</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.619648 -84.675407
+            34.591389 -84.648285
+            34.584606 -84.622192
+            34.602127 -84.599876
+            34.649590 -84.597130
+            34.650719 -84.659615
+            34.619648 -84.675407
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23c3913c28</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Reregulation Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:REREGULATION</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.619648 -84.686737
+            34.596760 -84.699783
+            34.577824 -84.659958
+            34.616821 -84.676781
+            34.619648 -84.686737
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23c55a2d05</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Chatuge Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:CHATUGE</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            35.040115 -83.774185
+            35.042645 -83.776932
+            34.983032 -83.842506
+            34.920280 -83.742599
+            34.919437 -83.710670
+            35.022404 -83.715477
+            35.040115 -83.774185
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23c711430e</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Clarks Hill Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:CLARKSHILL</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.059486 -82.633667
+            33.985500 -82.667999
+            33.892078 -82.591095
+            33.833920 -82.483978
+            33.664925 -82.603455
+            33.590599 -82.545776
+            33.634060 -82.277985
+            33.669498 -82.173615
+            33.805397 -82.229919
+            34.059486 -82.633667
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23c93d31d0</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Lake Eufaula</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:EUFAULA</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.008072 -85.177002
+            31.708300 -85.170128
+            31.612457 -85.082245
+            31.615967 -85.032806
+            32.190723 -85.028687
+            32.008072 -85.177002
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23cad97b29</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Lake Hartwell</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:HARTWELL</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.723557 -82.856140
+            34.608345 -82.949524
+            34.615128 -83.218689
+            34.370644 -82.964630
+            34.323025 -82.797089
+            34.557465 -82.775116
+            34.723557 -82.856140
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23cc2f9876</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Lake Keowee</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:KEOWEE</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.950115 -82.922058
+            34.760796 -83.025055
+            34.681782 -82.953644
+            34.831841 -82.838287
+            34.910709 -82.845154
+            34.960247 -82.931671
+            34.950115 -82.922058
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23cd85f968</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Lake Jocassee</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:JOCASSEE</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.959122 -82.961884
+            34.974876 -82.905579
+            35.069344 -82.884979
+            35.012001 -83.069000
+            34.959122 -82.961884
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23d0d0ff67</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Lake Juliette</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:JULIETTE</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.092693 -83.829117
+            33.062199 -83.866882
+            33.033421 -83.817444
+            33.025360 -83.757706
+            33.044933 -83.754959
+            33.092693 -83.829117
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23d1fbcb8b</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Lake Lanier</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:LANIER</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.462410 -83.989105
+            34.472599 -84.000092
+            34.207260 -84.152527
+            34.132267 -84.081116
+            34.179996 -83.935547
+            34.448822 -83.692474
+            34.462410 -83.989105
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23d36a265b</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Nottley Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:NOTTLEY</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.935764 -84.147377
+            34.885368 -84.067039
+            34.862835 -83.997688
+            34.871002 -83.970566
+            34.974594 -84.075623
+            34.935764 -84.147377
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23d59b02a1</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Oconee Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:OCONEE</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.665497 -83.290787
+            33.623768 -83.366318
+            33.491589 -83.343658
+            33.414822 -83.292160
+            33.258213 -83.271561
+            33.319626 -83.089600
+            33.490444 -83.175430
+            33.665497 -83.290787
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23d75f2636</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Lake Russell</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:RUSSELL</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.502525 -83.481331
+            34.492550 -83.514809
+            34.480877 -83.490173
+            34.502525 -83.481331
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23d87c9def</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Lake Seminole</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:SEMINOLE</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.982319 -85.003967
+            30.642637 -84.972382
+            30.783138 -84.633179
+            30.886906 -84.524689
+            30.982319 -85.003967
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23d9d93c40</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>Lake Sinclair</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:SINCLAIR</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.243855 -83.407516
+            33.182674 -83.419533
+            33.151638 -83.383141
+            33.149052 -83.321342
+            33.130363 -83.199806
+            33.151924 -83.170280
+            33.215714 -83.203926
+            33.267685 -83.226242
+            33.255054 -83.264008
+            33.243855 -83.407516
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ecaf23ddcc3136</guid>
+    <pubDate>Wed, 09 Jun 2010 20:31:37 +0000</pubDate>
+    <title>West Point Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:WESTPOINT</div>]]></description>
+    <author>lrkirven</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.267391 -85.115891
+            33.019028 -85.341797
+            32.891121 -85.183868
+            33.172043 -84.955902
+            33.267391 -85.115891
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004889ed3860d53ddb55</guid>
+    <pubDate>Wed, 09 Jun 2010 20:34:01 +0000</pubDate>
+    <title>High Falls Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:HIGHFALLS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.227200 -84.069786
+            33.134678 -84.028587
+            33.187557 -84.007645
+            33.240124 -84.050217
+            33.227200 -84.069786
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000488cd0a0443e85d2b3</guid>
+    <pubDate>Sat, 12 Jun 2010 03:42:04 +0000</pubDate>
+    <title>Banks Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:BANKSLAKE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            31.039845 -83.077583
+            31.024988 -83.150368
+            30.998507 -83.112434
+            31.039845 -83.077583
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000488cd1bea295a5a76c</guid>
+    <pubDate>Sat, 12 Jun 2010 03:47:04 +0000</pubDate>
+    <title>Lake Jackson</title>
+    <description><![CDATA[<div dir="ltr">reportKey=GA:LAKEJACKSON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.313889 -83.840103
+            33.457798 -83.799591
+            33.444046 -83.946533
+            33.315037 -83.893661
+            33.313889 -83.840103
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

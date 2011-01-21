@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Rhode Island Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048afa993919be3f143</guid>
+    <pubDate>Fri, 09 Jul 2010 20:53:43 +0000</pubDate>
+    <title>Worden Pond</title>
+    <description><![CDATA[<div dir="ltr">reportKey=RI:WORDEN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.461769 -71.613007
+            41.411835 -71.587257
+            41.455078 -71.529236
+            41.461769 -71.613007
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048afa9cdcd744d22c0</guid>
+    <pubDate>Fri, 09 Jul 2010 20:54:45 +0000</pubDate>
+    <title>Watchaug Pond</title>
+    <description><![CDATA[<div dir="ltr">reportKey=RI:WATCHAUG</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.406300 -71.693344
+            41.377583 -71.670853
+            41.359158 -71.712051
+            41.391750 -71.728874
+            41.406300 -71.693344
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048afaa475d9f2f13f9</guid>
+    <pubDate>Fri, 09 Jul 2010 20:56:52 +0000</pubDate>
+    <title>Scituate Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=RI:SCITUATE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.834270 -71.588974
+            41.792561 -71.674118
+            41.736481 -71.600990
+            41.761837 -71.568031
+            41.834270 -71.588974
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

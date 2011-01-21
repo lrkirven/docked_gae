@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Nebraska Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048ae641f93464943e1</guid>
+    <pubDate>Thu, 08 Jul 2010 20:37:40 +0000</pubDate>
+    <title>Box Butte Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NE:BOXBUTTE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.466019 -103.173981
+            42.475388 -103.067551
+            42.434608 -103.068581
+            42.466019 -103.173981
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae64590959cc2459</guid>
+    <pubDate>Thu, 08 Jul 2010 20:38:41 +0000</pubDate>
+    <title>Branched Oak Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NE:BRANCHEDOAK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.002186 -96.910568
+            40.988579 -96.848946
+            40.955662 -96.847748
+            40.960327 -96.910568
+            41.002186 -96.910568
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae64984054887499</guid>
+    <pubDate>Thu, 08 Jul 2010 20:39:47 +0000</pubDate>
+    <title>Calamus Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NE:CALAMUS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.980419 -99.431763
+            41.851662 -99.138565
+            41.794865 -99.229202
+            41.980419 -99.431763
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae64d19756972efd</guid>
+    <pubDate>Thu, 08 Jul 2010 20:40:47 +0000</pubDate>
+    <title>Elwood Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NE:ELWOOD</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            40.667358 -99.881172
+            40.612648 -99.825897
+            40.588406 -99.890785
+            40.667358 -99.881172
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae650b9884ae3b6d</guid>
+    <pubDate>Thu, 08 Jul 2010 20:41:48 +0000</pubDate>
+    <title>Enders Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NE:ENDERS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            40.437279 -101.647911
+            40.468891 -101.509552
+            40.388134 -101.508865
+            40.437279 -101.647911
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae653a9486e56a59</guid>
+    <pubDate>Thu, 08 Jul 2010 20:42:37 +0000</pubDate>
+    <title>Harlan County Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NE:HARLANCOUNTY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            40.116940 -99.397430
+            40.009209 -99.387131
+            40.007633 -99.193497
+            40.120613 -99.193497
+            40.116940 -99.397430
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae65ad5458a3f1fe</guid>
+    <pubDate>Thu, 08 Jul 2010 20:44:37 +0000</pubDate>
+    <title>Lake McConaughy</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NE:MCCONAUGHY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.249420 -101.616669
+            41.140915 -101.643448
+            41.406170 -102.404938
+            41.249420 -101.616669
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae65e6bbf05a7d0e</guid>
+    <pubDate>Thu, 08 Jul 2010 20:45:38 +0000</pubDate>
+    <title>Lake Minatare</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NE:MINATARE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.953617 -103.455505
+            41.902023 -103.487778
+            41.948002 -103.547173
+            41.953617 -103.455505
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae665e389c81f419</guid>
+    <pubDate>Thu, 08 Jul 2010 20:47:43 +0000</pubDate>
+    <title>Sherman Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NE:SHERMAN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.363152 -98.961411
+            41.271484 -98.912827
+            41.337124 -98.830948
+            41.363152 -98.961411
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae6697c2ee1287a5</guid>
+    <pubDate>Thu, 08 Jul 2010 20:48:43 +0000</pubDate>
+    <title>Sutherland Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NE:SUTHERLAND</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.130054 -101.210175
+            41.053726 -101.130867
+            41.134193 -101.058083
+            41.130054 -101.210175
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae66d50f92c07763</guid>
+    <pubDate>Thu, 08 Jul 2010 20:49:47 +0000</pubDate>
+    <title>Swanson Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NE:SWANSON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            40.207195 -101.043663
+            40.122978 -101.041603
+            40.126129 -101.281242
+            40.207195 -101.043663
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Kentucky Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">0004893b3c82af468a72d</guid>
+    <pubDate>Thu, 17 Jun 2010 15:10:18 +0000</pubDate>
+    <title>Barren River Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:BARREN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.985004 -86.033249
+            36.892254 -86.138306
+            36.722374 -86.070328
+            36.722923 -86.017456
+            36.945503 -85.979004
+            36.985004 -86.033249
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893b43b1521d1e523</guid>
+    <pubDate>Thu, 17 Jun 2010 15:12:18 +0000</pubDate>
+    <title>Cave Run Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:CAVERUN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.092957 -83.571281
+            38.135635 -83.511887
+            38.037006 -83.350182
+            37.981281 -83.510170
+            38.092957 -83.571281
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893b46ebd5d6560c0</guid>
+    <pubDate>Thu, 17 Jun 2010 15:13:12 +0000</pubDate>
+    <title>Dale Hollow Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:DALEHOLLOW</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.742737 -85.321198
+            36.484245 -85.507965
+            36.420177 -85.047913
+            36.660156 -85.148849
+            36.742737 -85.321198
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893b51dde307ddbe4</guid>
+    <pubDate>Thu, 17 Jun 2010 15:16:16 +0000</pubDate>
+    <title>Green River Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:GREENRIVER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.333858 -85.275879
+            37.201347 -85.170822
+            37.154572 -85.306778
+            37.295631 -85.380249
+            37.333858 -85.275879
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893b5c6b0b1384dd0</guid>
+    <pubDate>Thu, 17 Jun 2010 15:19:13 +0000</pubDate>
+    <title>Herrington Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:HERRINGTON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.804901 -84.692917
+            37.748730 -84.750595
+            37.660179 -84.755745
+            37.626469 -84.655838
+            37.804901 -84.692917
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893b6e51a9fe89a10</guid>
+    <pubDate>Thu, 17 Jun 2010 15:24:13 +0000</pubDate>
+    <title>Kentucky Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:KENTUCKY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.033802 -88.272400
+            36.912842 -88.125458
+            35.991341 -87.756042
+            35.605949 -88.047180
+            36.307369 -88.158409
+            36.763088 -88.238747
+            36.999809 -88.320457
+            37.033802 -88.272400
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893b80386e969b41a</guid>
+    <pubDate>Thu, 17 Jun 2010 15:29:14 +0000</pubDate>
+    <title>Lake Barkley</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:BARKLEY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.015987 -88.245621
+            36.970741 -88.186569
+            36.857372 -88.011475
+            36.716869 -88.001862
+            36.483143 -87.898865
+            36.368221 -87.626953
+            36.910370 -87.849419
+            37.085850 -87.990181
+            37.015987 -88.245621
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893b9c6b44791b289</guid>
+    <pubDate>Thu, 17 Jun 2010 15:37:07 +0000</pubDate>
+    <title>Lake Cumberland</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:CUMBERLAND</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.044216 -85.016327
+            36.814781 -85.231934
+            36.716869 -85.080872
+            36.980614 -84.310455
+            37.132950 -84.710083
+            37.044216 -85.016327
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893ba72dd1a10467b</guid>
+    <pubDate>Thu, 17 Jun 2010 15:40:07 +0000</pubDate>
+    <title>Laurel River Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:LAUREL</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.035721 -84.195099
+            36.995148 -84.282646
+            36.912842 -84.246941
+            36.909550 -84.150810
+            36.974854 -84.113731
+            37.035721 -84.195099
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893baac68650cae07</guid>
+    <pubDate>Thu, 17 Jun 2010 15:41:08 +0000</pubDate>
+    <title>Nolin River Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:NOLINRIVER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.250008 -86.266708
+            37.348328 -86.006813
+            37.421982 -86.169891
+            37.367157 -86.247482
+            37.250008 -86.266708
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893bb31ecf2497705</guid>
+    <pubDate>Thu, 17 Jun 2010 15:43:28 +0000</pubDate>
+    <title>Rough River Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:ROUGHRIVER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.587032 -86.537247
+            37.688168 -86.428070
+            37.594646 -86.245422
+            37.508636 -86.412964
+            37.587032 -86.537247
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893bc17be1ee092e3</guid>
+    <pubDate>Thu, 17 Jun 2010 15:47:29 +0000</pubDate>
+    <title>Taylorsville Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:TAYLORSVILLE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.051876 -85.266609
+            37.975868 -85.103531
+            37.921722 -85.144043
+            37.992104 -85.317764
+            38.051876 -85.266609
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893bcfd29c4fbebd8</guid>
+    <pubDate>Thu, 17 Jun 2010 15:51:29 +0000</pubDate>
+    <title>Yatesville Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:YATESVILLE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.138607 -82.703018
+            38.092419 -82.651520
+            38.062420 -82.690659
+            38.044846 -82.793823
+            38.064854 -82.825584
+            38.138607 -82.703018
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893bde253e9060368</guid>
+    <pubDate>Thu, 17 Jun 2010 15:55:29 +0000</pubDate>
+    <title>Elmer Davis Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:ELMERDAVIS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.507675 -84.889725
+            38.513588 -84.858353
+            38.495823 -84.855949
+            38.493874 -84.884666
+            38.507675 -84.889725
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893be5aae7423e551</guid>
+    <pubDate>Thu, 17 Jun 2010 15:57:36 +0000</pubDate>
+    <title>Kincaid Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:KINCAID</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.744446 -84.271484
+            38.720474 -84.299812
+            38.691273 -84.247971
+            38.744446 -84.271484
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893be943e24d3f397</guid>
+    <pubDate>Thu, 17 Jun 2010 15:58:36 +0000</pubDate>
+    <title>Guist Creek Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:GUISTCREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.198666 -85.170303
+            38.203655 -85.094772
+            38.245327 -85.118637
+            38.236832 -85.150223
+            38.198666 -85.170303
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893bed0cadaabbc4e</guid>
+    <pubDate>Thu, 17 Jun 2010 15:59:39 +0000</pubDate>
+    <title>Beaver Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:BEAVER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.958275 -85.022850
+            37.979927 -84.994698
+            37.979115 -85.042931
+            37.958275 -85.022850
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893bf811fde4d1c63</guid>
+    <pubDate>Thu, 17 Jun 2010 16:02:44 +0000</pubDate>
+    <title>Lake Linville</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:LINVILLE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.411892 -84.352341
+            37.382843 -84.330711
+            37.365654 -84.369850
+            37.411892 -84.352341
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893bff3c6ac3224b8</guid>
+    <pubDate>Thu, 17 Jun 2010 16:04:45 +0000</pubDate>
+    <title>Wood Creek Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:WOODCREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.215839 -84.196213
+            37.208046 -84.178360
+            37.170780 -84.128410
+            37.150261 -84.166519
+            37.210236 -84.221535
+            37.215839 -84.196213
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004893c0da16f0505d63</guid>
+    <pubDate>Thu, 17 Jun 2010 16:08:46 +0000</pubDate>
+    <title>Lake Malone</title>
+    <description><![CDATA[<div dir="ltr">reportKey=KY:MALONE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.091061 -87.114372
+            37.001183 -87.077293
+            37.081474 -86.989746
+            37.091061 -87.114372
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

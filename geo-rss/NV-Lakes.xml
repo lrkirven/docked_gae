@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Nevada Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048ae202a94b69e3a83</guid>
+    <pubDate>Thu, 08 Jul 2010 15:33:38 +0000</pubDate>
+    <title>Lake Lahontan</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NV:LAHONTAN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.419220 -119.220886
+            39.481785 -119.023819
+            39.261501 -119.107590
+            39.419220 -119.220886
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae20e861aa4a5675</guid>
+    <pubDate>Thu, 08 Jul 2010 15:36:57 +0000</pubDate>
+    <title>Lake Tahoe</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NV:TAHOE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.240231 -120.137558
+            39.256714 -119.929504
+            38.936981 -119.917145
+            38.912941 -120.215149
+            39.240231 -120.137558
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae212b534152ef7c</guid>
+    <pubDate>Thu, 08 Jul 2010 15:38:07 +0000</pubDate>
+    <title>Pyramid Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NV:PYRAMID</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            40.238655 -119.822388
+            39.686054 -119.450226
+            40.237606 -119.207153
+            40.238655 -119.822388
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae21c1fec3cd1582</guid>
+    <pubDate>Thu, 08 Jul 2010 15:40:45 +0000</pubDate>
+    <title>Ruby Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NV:RUBY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            40.072819 -115.601578
+            40.045490 -115.446396
+            40.292622 -115.456696
+            40.072819 -115.601578
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae22a718bf915b4c</guid>
+    <pubDate>Thu, 08 Jul 2010 15:44:46 +0000</pubDate>
+    <title>Rye Patch Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NV:RYEPATCH</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            40.724884 -118.287048
+            40.646782 -118.372192
+            40.448517 -118.313141
+            40.682720 -118.211517
+            40.724884 -118.287048
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae232bc5da17bf3f</guid>
+    <pubDate>Thu, 08 Jul 2010 15:47:05 +0000</pubDate>
+    <title>Topaz Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NV:TOPAZ</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.708019 -119.543610
+            38.663261 -119.559402
+            38.634575 -119.504128
+            38.695961 -119.489708
+            38.708019 -119.543610
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae23993849b9b027</guid>
+    <pubDate>Thu, 08 Jul 2010 15:49:00 +0000</pubDate>
+    <title>Washoe Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NV:WASHOE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.362972 -119.794922
+            39.227997 -119.855347
+            39.221615 -119.720764
+            39.362972 -119.794922
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae23cb9e6f9489c2</guid>
+    <pubDate>Thu, 08 Jul 2010 15:49:52 +0000</pubDate>
+    <title>Wild Horse Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NV:WILDHORSE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.701370 -115.873489
+            41.616982 -115.783882
+            41.720848 -115.749207
+            41.701370 -115.873489
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

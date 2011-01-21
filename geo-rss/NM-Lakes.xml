@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>New Mexico Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00048ae242b091addb62a</guid>
+    <pubDate>Thu, 08 Jul 2010 15:51:32 +0000</pubDate>
+    <title>Abiquiu Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NM:ABIQUIU</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.144527 -106.373749
+            36.284134 -106.592102
+            36.306271 -106.452026
+            36.144527 -106.373749
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae24e451070ea0bd</guid>
+    <pubDate>Thu, 08 Jul 2010 15:54:47 +0000</pubDate>
+    <title>Brantley Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NM:BRANTLEY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.585007 -104.428482
+            32.502811 -104.357758
+            32.722019 -104.262314
+            32.585007 -104.428482
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae25585202c09f34</guid>
+    <pubDate>Thu, 08 Jul 2010 15:56:48 +0000</pubDate>
+    <title>Caballo Lake</title>
+    <description><![CDATA[<div dir="ltr">reprotKey=NM:CABALLO</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.039177 -107.255402
+            33.046082 -107.298317
+            32.917637 -107.316170
+            32.869205 -107.284241
+            33.039177 -107.255402
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae25901568af4c62</guid>
+    <pubDate>Thu, 08 Jul 2010 15:57:47 +0000</pubDate>
+    <title>Conchas Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NM:CONCHAS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            35.577477 -104.229355
+            35.377293 -104.110565
+            35.332493 -104.344025
+            35.577477 -104.229355
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae25c0d1e692ef62</guid>
+    <pubDate>Thu, 08 Jul 2010 15:58:38 +0000</pubDate>
+    <title>Eagle Nest Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NM:EAGLENEST</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.552948 -105.272713
+            36.526466 -105.209541
+            36.478725 -105.271683
+            36.552948 -105.272713
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae25fa26f581572d</guid>
+    <pubDate>Thu, 08 Jul 2010 15:59:38 +0000</pubDate>
+    <title>El Vado Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NM:ELVADO</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.665665 -106.795349
+            36.541088 -106.736984
+            36.660709 -106.717072
+            36.665665 -106.795349
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae26337f2d6d0046</guid>
+    <pubDate>Thu, 08 Jul 2010 16:00:38 +0000</pubDate>
+    <title>Heron Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NM:HERON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.713570 -106.757584
+            36.647488 -106.706085
+            36.748787 -106.582489
+            36.713570 -106.757584
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae266d03e0dd80dc</guid>
+    <pubDate>Thu, 08 Jul 2010 16:01:39 +0000</pubDate>
+    <title>Navajo Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NM:NAVAJO</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.925743 -107.852783
+            36.686043 -107.453156
+            37.127476 -107.233429
+            36.925743 -107.852783
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae26a689a2a4c4c9</guid>
+    <pubDate>Thu, 08 Jul 2010 16:02:39 +0000</pubDate>
+    <title>Elephant Butte Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NM:ELEPHANTBUTTE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.365517 -107.208710
+            33.130077 -107.228622
+            33.120876 -107.128372
+            33.371826 -107.143478
+            33.365517 -107.208710
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae282c8dee2ef622</guid>
+    <pubDate>Thu, 08 Jul 2010 16:09:28 +0000</pubDate>
+    <title>Sumner Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NM:SUMNER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.750641 -104.574051
+            34.581779 -104.390030
+            34.653545 -104.294586
+            34.750641 -104.574051
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00048ae2866d18d2640ca</guid>
+    <pubDate>Thu, 08 Jul 2010 16:10:29 +0000</pubDate>
+    <title>Ute Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=NM:UTE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            35.443890 -103.478851
+            35.324650 -103.430786
+            35.303921 -103.724670
+            35.443890 -103.478851
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

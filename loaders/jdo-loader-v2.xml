@@ -1,0 +1,21 @@
+<jdo-loader>
+	<!-- Data Sources -->
+	<dataObject namespace="com.zarcode.data.model.WaterResourceDO">
+		<name>Ross Barnett Reservoir - Main Lake</name>
+		<state>MS</state>
+		<lat>32.45039</lat>
+		<lng>-90.028496</lng>
+		<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=33</url>
+		<source>WDWFP</source>
+		<!--
+		<dataObject namespace="com.zarcode.data.model.WaterResourceDO" memberName="parent">
+			<name>Ross Barnett Reservoir - Pelahatchie Bay</name>
+			<state>MS</state>
+			<lat>32.388949</lat>
+			<lng>-90.003433</lng>
+			<url>http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=1</url>
+			<source>WDWFP</source>
+		</dataObject>
+		-->
+	</dataObject>
+</jdo-loader>

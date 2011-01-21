@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+  <cron>
+    <url>/cleaner</url>
+    <description>Removes older messages fro the system</description>
+    <schedule>every wednesday 02:00</schedule>
+    <timezone>America/Chicago</timezone>
+  </cron>
+</cronentries>

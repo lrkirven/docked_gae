@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Wyoming Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">000489e5d42f5c9804687</guid>
+    <pubDate>Sat, 26 Jun 2010 02:41:47 +0000</pubDate>
+    <title>Alcova Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:ALCOVA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.563702 -106.802216
+            42.486782 -106.775436
+            42.543976 -106.678619
+            42.563702 -106.802216
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e5d7c5728e7ad59</guid>
+    <pubDate>Sat, 26 Jun 2010 02:42:47 +0000</pubDate>
+    <title>Bighorn Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:BIGHORN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.997826 -108.303223
+            44.756485 -108.176880
+            44.918140 -108.097229
+            44.997826 -108.303223
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e5da6a03b2ba384</guid>
+    <pubDate>Sat, 26 Jun 2010 02:43:31 +0000</pubDate>
+    <title>Boulder Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:BOULDER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.841106 -109.709641
+            42.866024 -109.623466
+            42.850422 -109.615913
+            42.824615 -109.702606
+            42.841106 -109.709641
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e5dd48caacfb51f</guid>
+    <pubDate>Sat, 26 Jun 2010 02:44:19 +0000</pubDate>
+    <title>Big Sandy Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:BIGSANDY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.305752 -109.494553
+            42.220890 -109.433441
+            42.302197 -109.362030
+            42.305752 -109.494553
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e5e0de4c80be93a</guid>
+    <pubDate>Sat, 26 Jun 2010 02:45:20 +0000</pubDate>
+    <title>Boysen Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:BOYSEN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.480827 -108.356781
+            43.127048 -108.182373
+            43.392075 -108.056030
+            43.480827 -108.356781
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e5e5e15de7a4bb0</guid>
+    <pubDate>Sat, 26 Jun 2010 02:46:44 +0000</pubDate>
+    <title>Buffalo Bill Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:BUFFALOBILL</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.496994 -109.359283
+            44.521481 -109.136124
+            44.389145 -109.175949
+            44.496994 -109.359283
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e5eb1d99f594998</guid>
+    <pubDate>Sat, 26 Jun 2010 02:48:11 +0000</pubDate>
+    <title>Yellowstone Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:YELLOWSTONE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.629574 -110.313721
+            44.142799 -110.093994
+            44.441624 -110.692749
+            44.629574 -110.313721
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e5f416ac54bca9d</guid>
+    <pubDate>Sat, 26 Jun 2010 02:50:42 +0000</pubDate>
+    <title>Fontenelle Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:FONTENELLE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.215298 -110.207977
+            42.029915 -110.006104
+            41.998283 -110.183258
+            42.215298 -110.207977
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e5fb3f6812cf333</guid>
+    <pubDate>Sat, 26 Jun 2010 02:52:42 +0000</pubDate>
+    <title>Fremont Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:FREMONT</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.030754 -109.798737
+            42.897598 -109.853668
+            42.892063 -109.806976
+            43.028744 -109.745865
+            43.030754 -109.798737
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e5fed4d6b9297e6</guid>
+    <pubDate>Sat, 26 Jun 2010 02:53:42 +0000</pubDate>
+    <title>Glendo Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:GLENDO</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.344334 -105.015564
+            42.583424 -104.801331
+            42.650627 -105.167313
+            42.544987 -105.024490
+            42.344334 -105.015564
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e602697cf0804d1</guid>
+    <pubDate>Sat, 26 Jun 2010 02:54:42 +0000</pubDate>
+    <title>Grayrocks Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:GRAYROCKS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.212246 -104.650269
+            42.078857 -104.740906
+            42.126747 -104.854889
+            42.212246 -104.650269
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e60789223e29df5</guid>
+    <pubDate>Sat, 26 Jun 2010 02:56:08 +0000</pubDate>
+    <title>Guernsey Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:GUERNSEY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.399120 -104.815063
+            42.303722 -104.909821
+            42.274261 -104.734039
+            42.399120 -104.815063
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e60e300176a73c2</guid>
+    <pubDate>Sat, 26 Jun 2010 02:58:00 +0000</pubDate>
+    <title>Heart Lake</title>
+    <description><![CDATA[<div dir="ltr">reporKey=WY:HEART</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.305916 -110.505981
+            44.252087 -110.513191
+            44.244213 -110.425644
+            44.305916 -110.505981
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e611c79e79cf7d6</guid>
+    <pubDate>Sat, 26 Jun 2010 02:59:00 +0000</pubDate>
+    <title>Jackson Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:JACKSON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.093502 -110.739441
+            43.854336 -110.540314
+            43.700645 -110.777893
+            44.093502 -110.739441
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e6155ce6dc87199</guid>
+    <pubDate>Sat, 26 Jun 2010 03:00:00 +0000</pubDate>
+    <title>Keyhole Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:KEYHOLE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.328758 -104.920120
+            44.320408 -104.714813
+            44.458290 -104.807510
+            44.328758 -104.920120
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e61a8a190a015bc</guid>
+    <pubDate>Sat, 26 Jun 2010 03:01:27 +0000</pubDate>
+    <title>Lake Hattie Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:HATTIE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.228249 -106.018753
+            41.270580 -105.891380
+            41.209396 -105.900307
+            41.228249 -106.018753
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e61e212b4212b4b</guid>
+    <pubDate>Sat, 26 Jun 2010 03:02:27 +0000</pubDate>
+    <title>Lewis Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:LEWIS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.330971 -110.577049
+            44.262169 -110.633698
+            44.327534 -110.680046
+            44.330971 -110.577049
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e620cced319a6f5</guid>
+    <pubDate>Sat, 26 Jun 2010 03:03:12 +0000</pubDate>
+    <title>Shoshone Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:SHOSHONE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            44.430347 -110.707169
+            44.357243 -110.631638
+            44.312057 -110.854797
+            44.430347 -110.707169
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e62462866549913</guid>
+    <pubDate>Sat, 26 Jun 2010 03:04:12 +0000</pubDate>
+    <title>Ocean Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:OCEAN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.227196 -108.713837
+            43.220188 -108.503723
+            43.099979 -108.597107
+            43.227196 -108.713837
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e627fc5974b60c7</guid>
+    <pubDate>Sat, 26 Jun 2010 03:05:13 +0000</pubDate>
+    <title>Pathfinder Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:PATHFINDER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.535881 -107.113953
+            42.559151 -106.837921
+            42.185795 -106.869507
+            42.535881 -107.113953
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e62b921cd0170b4</guid>
+    <pubDate>Sat, 26 Jun 2010 03:06:13 +0000</pubDate>
+    <title>Seminoe Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:SEMINOE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.191898 -106.951904
+            41.826595 -106.990356
+            42.018692 -106.443787
+            42.191898 -106.951904
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e62f27c2fe9b41a</guid>
+    <pubDate>Sat, 26 Jun 2010 03:07:13 +0000</pubDate>
+    <title>Woodruff Narrows Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=WY:WOODRUFF</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            41.510376 -111.038475
+            41.428055 -111.028175
+            41.501377 -110.949211
+            41.510376 -111.038475
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Missouri Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">0004892bcc123609fe45c</guid>
+    <pubDate>Wed, 16 Jun 2010 20:45:07 +0000</pubDate>
+    <title>Blind Pony Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:BLINDPONY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.048519 -93.361473
+            39.031387 -93.373833
+            39.030388 -93.363449
+            39.046253 -93.353920
+            39.048519 -93.361473
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892bd33b6ddb0a56c</guid>
+    <pubDate>Wed, 16 Jun 2010 20:47:07 +0000</pubDate>
+    <title>Lake of the Ozarks</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:LAKESOZARKS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.961521 -92.791901
+            38.264065 -93.346710
+            38.341656 -92.754822
+            38.080528 -92.488403
+            37.961521 -92.791901
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892bda69fb24fd54e</guid>
+    <pubDate>Wed, 16 Jun 2010 20:49:07 +0000</pubDate>
+    <title>Truman Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reortKey=MO:TRUMAN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.355118 -93.816376
+            38.400333 -93.554764
+            38.308796 -93.357697
+            38.025375 -93.307571
+            38.037815 -93.722992
+            38.355118 -93.816376
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892be89025e846be9</guid>
+    <pubDate>Wed, 16 Jun 2010 20:53:05 +0000</pubDate>
+    <title>Mark Twain Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:MARKTWAIN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.447861 -91.967239
+            39.389507 -91.828537
+            39.449982 -91.623573
+            39.599339 -91.663055
+            39.546413 -91.889648
+            39.447861 -91.967239
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892bef6c6d6379927</guid>
+    <pubDate>Wed, 16 Jun 2010 20:55:00 +0000</pubDate>
+    <title>Pomme de Terre Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:POMMEDETERRE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.952320 -93.374176
+            37.747913 -93.424301
+            37.836361 -93.199081
+            37.952320 -93.374176
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892bf3044e2104820</guid>
+    <pubDate>Wed, 16 Jun 2010 20:56:00 +0000</pubDate>
+    <title>Smithville Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:SMITHVILLE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.499271 -94.560013
+            39.370667 -94.563446
+            39.373322 -94.447403
+            39.410999 -94.429207
+            39.529202 -94.461136
+            39.499271 -94.560013
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892bfa360705009cb</guid>
+    <pubDate>Wed, 16 Jun 2010 20:58:01 +0000</pubDate>
+    <title>Stockton Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKay=MO:STOCKTON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.724022 -93.793030
+            37.343960 -93.920746
+            37.552200 -93.477173
+            37.724022 -93.793030
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892bffa37535547a6</guid>
+    <pubDate>Wed, 16 Jun 2010 20:59:32 +0000</pubDate>
+    <title>Table Rock Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:TABLEROCK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.805984 -93.514252
+            36.614426 -93.279419
+            36.448902 -93.253326
+            36.466576 -93.830109
+            36.805984 -93.514252
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892c06e9829586e78</guid>
+    <pubDate>Wed, 16 Jun 2010 21:01:34 +0000</pubDate>
+    <title>Thomas Hill Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:THOMASHILL</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.655132 -92.664352
+            39.528938 -92.656631
+            39.578438 -92.602043
+            39.682354 -92.596207
+            39.655132 -92.664352
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892c11b05f37d7659</guid>
+    <pubDate>Wed, 16 Jun 2010 21:04:35 +0000</pubDate>
+    <title>Wappapello Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:WAPPAPELLO</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.904606 -90.310364
+            36.941387 -90.262299
+            37.025581 -90.299377
+            37.095718 -90.452156
+            36.973759 -90.425720
+            36.904606 -90.310364
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892c1864090c1a462</guid>
+    <pubDate>Wed, 16 Jun 2010 21:06:27 +0000</pubDate>
+    <title>Clearwater Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:CLEARWATER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.218300 -90.779686
+            37.147182 -90.756340
+            37.129940 -90.780373
+            37.149918 -90.843201
+            37.218300 -90.779686
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892c1f0a46c728cea</guid>
+    <pubDate>Wed, 16 Jun 2010 21:08:19 +0000</pubDate>
+    <title>Council Bluff</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:COUNCILBLUFF</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.741806 -90.896072
+            37.730675 -90.943970
+            37.697948 -90.907745
+            37.741806 -90.896072
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892c2634d6f0a5086</guid>
+    <pubDate>Wed, 16 Jun 2010 21:10:19 +0000</pubDate>
+    <title>Cypress Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:CYPRESS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.325054 -89.829071
+            37.327274 -89.824951
+            37.323589 -89.824905
+            37.325054 -89.829071
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892c29ca291b9e38d</guid>
+    <pubDate>Wed, 16 Jun 2010 21:11:19 +0000</pubDate>
+    <title>Perry County Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:PERYYCOUNTY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.729420 -89.912064
+            37.711937 -89.897949
+            37.713772 -89.922882
+            37.729420 -89.912064
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892c32c2df14dbf4d</guid>
+    <pubDate>Wed, 16 Jun 2010 21:13:50 +0000</pubDate>
+    <title>Lake Taneycomo</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:TANEYCOMO</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.703384 -93.074112
+            36.657127 -93.097801
+            36.629307 -93.234787
+            36.726227 -93.181572
+            36.703384 -93.074112
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004892c3bfdee5989ecc</guid>
+    <pubDate>Wed, 16 Jun 2010 21:16:24 +0000</pubDate>
+    <title>Busch Memorial</title>
+    <description><![CDATA[<div dir="ltr">reportKey=MO:BUSCH</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.747391 -90.755653
+            38.697838 -90.697121
+            38.673851 -90.794624
+            38.732929 -90.805092
+            38.747391 -90.755653
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

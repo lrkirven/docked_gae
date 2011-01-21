@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>Virginia Lakes</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">000489dfb0abb573bf5e0</guid>
+    <pubDate>Fri, 25 Jun 2010 19:22:21 +0000</pubDate>
+    <title>Claytor Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:CLAYTOR</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.074352 -80.670547
+            37.089146 -80.562057
+            36.925743 -80.746765
+            36.983356 -80.753632
+            37.074352 -80.670547
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489dfb4426cfdb6415</guid>
+    <pubDate>Fri, 25 Jun 2010 19:23:21 +0000</pubDate>
+    <title>Diascund Creek Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:DIASCUND</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.407120 -76.920609
+            37.444199 -76.858635
+            37.466274 -76.895714
+            37.455917 -76.949783
+            37.407120 -76.920609
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489dfe9dfb462505ae</guid>
+    <pubDate>Fri, 25 Jun 2010 19:38:21 +0000</pubDate>
+    <title>Lake Anna</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:ANNA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.961521 -77.756424
+            38.024837 -77.691193
+            38.195023 -77.895126
+            38.118351 -77.984390
+            37.961521 -77.756424
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489dfed781d9801d3a</guid>
+    <pubDate>Fri, 25 Jun 2010 19:39:21 +0000</pubDate>
+    <title>Lake Chesdin</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:CHESDIN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.325397 -77.698059
+            37.215565 -77.494812
+            37.204628 -77.519188
+            37.265038 -77.743034
+            37.325397 -77.698059
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489dff64a3d5ef1c64</guid>
+    <pubDate>Fri, 25 Jun 2010 19:41:49 +0000</pubDate>
+    <title>Lake Drummond</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:DRUMMOND</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.636883 -76.484413
+            36.576660 -76.502441
+            36.589619 -76.412315
+            36.636883 -76.484413
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489dff9e32546bc1c8</guid>
+    <pubDate>Fri, 25 Jun 2010 19:42:49 +0000</pubDate>
+    <title>Lake Moomaw</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:MOOMAW</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.045929 -79.885368
+            37.964230 -80.024757
+            37.916576 -79.977036
+            38.045929 -79.885368
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e0010cfe865a201</guid>
+    <pubDate>Fri, 25 Jun 2010 19:44:50 +0000</pubDate>
+    <title>Leesville Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:LEESVILLE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.084763 -79.519043
+            36.985554 -79.459991
+            37.119812 -79.332275
+            37.084763 -79.519043
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e004a3844f95c02</guid>
+    <pubDate>Fri, 25 Jun 2010 19:45:50 +0000</pubDate>
+    <title>Smith Mountain Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:SMITHMTN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.070518 -79.512177
+            36.871380 -79.670792
+            37.220486 -79.856186
+            37.252193 -79.788895
+            37.070518 -79.512177
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e00dca665658811</guid>
+    <pubDate>Fri, 25 Jun 2010 19:48:23 +0000</pubDate>
+    <title>Philpott Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:PHILPOTT</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.867947 -80.128616
+            36.759930 -80.067162
+            36.780418 -80.007248
+            36.879894 -80.077972
+            36.867947 -80.128616
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e0189dbb59e935a</guid>
+    <pubDate>Fri, 25 Jun 2010 19:51:25 +0000</pubDate>
+    <title>Fairy Stone Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:FAIRYSTONE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.821239 -80.102180
+            36.795815 -80.088097
+            36.792789 -80.125175
+            36.821239 -80.102180
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e02360e3199780e</guid>
+    <pubDate>Fri, 25 Jun 2010 19:54:26 +0000</pubDate>
+    <title>South Holston Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:SOUTHHOLSTON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.532810 -82.201080
+            36.694302 -81.841278
+            36.470444 -82.085724
+            36.532810 -82.201080
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e02de51e83d6f89</guid>
+    <pubDate>Fri, 25 Jun 2010 19:57:22 +0000</pubDate>
+    <title>Swift Creek Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:SWIFTCREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.450603 -77.674370
+            37.418163 -77.638321
+            37.398392 -77.683640
+            37.437523 -77.705612
+            37.455647 -77.702866
+            37.450603 -77.674370
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e03c395d67c58a6</guid>
+    <pubDate>Fri, 25 Jun 2010 20:01:22 +0000</pubDate>
+    <title>Lake Prince</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:PRINCE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.813271 -76.620026
+            36.793755 -76.635300
+            36.801723 -76.705170
+            36.824539 -76.667915
+            36.813271 -76.620026
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e03fd237ed96375</guid>
+    <pubDate>Fri, 25 Jun 2010 20:02:23 +0000</pubDate>
+    <title>Burnt Mills Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:BURNTMILLS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.867397 -76.692291
+            36.886074 -76.652298
+            36.847618 -76.609039
+            36.832233 -76.639938
+            36.867397 -76.692291
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e04702d303f3eb5</guid>
+    <pubDate>Fri, 25 Jun 2010 20:04:23 +0000</pubDate>
+    <title>Western Branch Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:WESTERNBRANCH</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.832371 -76.639938
+            36.846661 -76.611275
+            36.806126 -76.576591
+            36.790592 -76.587753
+            36.798290 -76.630836
+            36.813820 -76.618820
+            36.832371 -76.639938
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e051c6a298bd424</guid>
+    <pubDate>Fri, 25 Jun 2010 20:07:24 +0000</pubDate>
+    <title>Lake Meade</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:MEADE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.759377 -76.608521
+            36.750645 -76.611526
+            36.735374 -76.595306
+            36.738266 -76.582863
+            36.755733 -76.584831
+            36.763504 -76.594620
+            36.759377 -76.608521
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e059271e312cfde</guid>
+    <pubDate>Fri, 25 Jun 2010 20:09:28 +0000</pubDate>
+    <title>Lake Kilby</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:KILBY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.743561 -76.604401
+            36.734894 -76.595047
+            36.714943 -76.603973
+            36.719898 -76.620110
+            36.743561 -76.604401
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">000489e05cc07df6907dd</guid>
+    <pubDate>Fri, 25 Jun 2010 20:10:28 +0000</pubDate>
+    <title>Lake Cohoon</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:COHOON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.762886 -76.608696
+            36.749958 -76.612473
+            36.744663 -76.679848
+            36.772373 -76.665176
+            36.775055 -76.618912
+            36.762886 -76.608696
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>
