@@ -195,7 +195,7 @@
   		
  		$.ajax({
  			type: "GET",
-  			url: "resources/events/bylatlng?lat=" + center.lat() + "&lng=" + center.lng(),
+  			url: "resources/buzz/bylatlng?lat=" + center.lat() + "&lng=" + center.lng(),
   			dataType: "json",
   			success: function(json) {
     			console.log("Got response from service: " + json);

@@ -20,16 +20,16 @@
 				String llId = user.getLLId();
 				AppPropDO p0 = ApplicationProps.getInstance().getProp("PICASA_USER");
 				AppPropDO p1 = ApplicationProps.getInstance().getProp("PICASA_PASSWORD");
-				AppPropDO p2 = ApplicationProps.getInstance().getProp("FB_LAZYLAKER_API_KEY");
-				AppPropDO p3 = ApplicationProps.getInstance().getProp("FB_LAZYLAKER_SECRET");
+				AppPropDO p2 = ApplicationProps.getInstance().getProp("FB_API_KEY");
+				AppPropDO p3 = ApplicationProps.getInstance().getProp("FB_SECRET");
 				SecurityTokenDO token = new SecurityTokenDO();
 				token.encryptThenSetEmailAddr(emailAddr);
 				token.encryptThenSetLLId(llId);
 				token.setNickname(nickname);
 				token.encryptThenSetPicasaUser(p0.getStringValue());
 				token.encryptThenSetPicasaPassword(p1.getStringValue());
-				token.encryptThenSetFbLazyLakerKey(p2.getStringValue());
-				token.encryptThenSetFbLazyLakerSecret(p3.getStringValue());
+				token.encryptThenSetFbKey(p2.getStringValue());
+				token.encryptThenSetFbSecret(p3.getStringValue());
 				pageContext.setAttribute("securityToken", token);
 			}
 		}
@@ -43,7 +43,7 @@
 	<llId><jsp:getProperty name="securityToken" property="llId" /></llId>
 	<picasaUser><jsp:getProperty name="securityToken" property="picasaUser" /></picasaUser>
 	<picasaPassword><jsp:getProperty name="securityToken" property="picasaPassword" /></picasaPassword>
-	<fbLazyLakerKey><jsp:getProperty name="securityToken" property="fbLazyLakerKey" /></fbLazyLakerKey>
-	<fbLazyLakerSecret><jsp:getProperty name="securityToken" property="fbLazyLakerSecret" /></fbLazyLakerSecret>
+	<fbKey><jsp:getProperty name="securityToken" property="fbKey" /></fbKey>
+	<fbSecret><jsp:getProperty name="securityToken" property="fbSecret" /></fbSecret>
 	<serverCode><jsp:getProperty name="securityToken" property="serverSecret" /></serverCode>
 </securityToken>

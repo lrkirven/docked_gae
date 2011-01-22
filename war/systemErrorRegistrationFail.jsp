@@ -10,6 +10,6 @@
 <head>
 </head>
 <body>
-	<b>Docked Sign In<b><br><br>Login is not secure so cannot process request.<br>
+	<b>Docked Sign In<b><br><br>System Error *** Registration Failed<br>
 </body>
 </html> 

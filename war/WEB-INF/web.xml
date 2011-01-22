@@ -99,6 +99,15 @@
     </servlet-mapping>
 	
 	<servlet>
+        <servlet-name>RegistrationFail</servlet-name>
+        <jsp-file>/systemErrorRegistrationFail.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrationFail</servlet-name>
+        <url-pattern>/registrationFail</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
         <servlet-name>UnauthorizedUser</servlet-name>
         <jsp-file>/unauthorizedUser.jsp</jsp-file>
     </servlet>
