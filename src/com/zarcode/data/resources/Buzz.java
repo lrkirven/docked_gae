@@ -20,21 +20,23 @@ import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
 import com.google.gson.Gson;
+import com.zarcode.app.AppCommon;
 import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.Util;
-import com.zarcode.data.dao.EventDao;
+import com.zarcode.data.dao.BuzzDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.WaterResourceDao;
-import com.zarcode.platform.model.AppPropDO;
+import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.data.model.CommentDO;
-import com.zarcode.data.model.MsgEventDO;
+import com.zarcode.data.model.UserDO;
 import com.zarcode.data.model.WaterResourceDO;
+import com.zarcode.platform.model.AppPropDO;
 import com.zarcode.security.BlockTea;
 
-@Path("/events")
-public class MsgEvent extends ResourceBase {
+@Path("/buzz")
+public class Buzz extends ResourceBase {
 	
-	private Logger logger = Logger.getLogger(MsgEvent.class.getName());
+	private Logger logger = Logger.getLogger(Buzz.class.getName());
 	
 	@Context 
 	HttpHeaders headers = null;
@@ -55,31 +57,16 @@ public class MsgEvent extends ResourceBase {
 	@POST
 	@Produces("application/json")
 	@Path("/{resourceId}/msgEvent")
-	public MsgEventDO addMsgEventToRegion(@PathParam("resourceId") Long resourceId, @QueryParam("id") String id, String event,  @QueryParam("fbPostFlag") int fbPostFlag) {
-		List<MsgEventDO> res = null;
-		EventDao dao = null;
+	public BuzzMsgDO addMsgEventToRegion(@PathParam("resourceId") Long resourceId, @QueryParam("id") String llId, String rawBuzzMsg,  @QueryParam("fbPostFlag") int fbPostFlag) {
+		List<BuzzMsgDO> res = null;
+		BuzzDao dao = null;
 		WaterResourceDao waterResDao = null;
 		UserDao userDao = null;
 		int rows = 0;
-		MsgEventDO evt = null;
-		MsgEventDO newEvent = null;
+		BuzzMsgDO buzzMsg = null;
+		BuzzMsgDO newEvent = null;
 	
-		logger.info("Process NEW event: " + event);
-		
-		if (fbPostFlag == 1) {
-			logger.info("Let's try to post this message to fb as well ...");
-			/*
-			 TinyFBClient fb = new TinyFBClient( "Application ID", "Secret Key");
-			 TreeMap<String, String> tm = new TreeMap<String, String>();
-			 int status;
-			 ClientResponse c = null;
-
-			 // get friends and display one at random
-			 tm.put("method", "friends.get");
-			 currentUsersFriends = fb.call(tm);
-			 JSONArray resultArray = new JSONArray(currentUsersFriends);
-			 */
-		}
+		logger.info("Process NEW event: " + rawBuzzMsg);
 		
 		if (context != null) {
 			if (!context.isSecure()) {
@@ -88,28 +75,36 @@ public class MsgEvent extends ResourceBase {
 			}
 		}
 		
-		userDao = new UserDao();
-		
-		if (!userDao.isValidUser(id, false)) {
-			logger.warning("*** REJECTED AN INVALID ID [" + id + "] FROM NETWORK ***");
-			return newEvent;
+		if (!AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
+			AppPropDO prop = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
+			BlockTea.BIG_ENDIAN = false;
+			String plainText = BlockTea.decrypt(llId, prop.getStringValue());
+			logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
+			llId = plainText;
 		}
 		
-		if (event != null && event.length() > 0) {
-			evt = new Gson().fromJson(event, MsgEventDO.class);
+		userDao = new UserDao();
+		UserDO user = userDao.getUserByLLID(llId, false);
+		if (user == null) {
+			logger.warning("*** REJECTED -- Unable to find a matching user for llId=" + llId);
+			return buzzMsg;
+		}
+		
+		if (rawBuzzMsg != null && rawBuzzMsg.length() > 0) {
+			buzzMsg = new Gson().fromJson(rawBuzzMsg, BuzzMsgDO.class);
 			try {
-				if (evt != null) {
-					evt.postCreation();
-					dao = new EventDao();
-					newEvent = dao.addEvent(evt);
+				if (buzzMsg != null) {
+					buzzMsg.postCreation();
+					dao = new BuzzDao();
+					newEvent = dao.addMsg(buzzMsg);
 					//
 					// since event was created inside lake area, update last communication
 					//
-					if (evt.getResourceId() > 0) {
+					if (buzzMsg.getResourceId() > 0) {
 						try {
 							waterResDao = new WaterResourceDao();
-							waterResDao.updateLastUpdate(evt.getResourceId());
-							logger.info("Updated lastUpdated for resource=" + evt.getResourceId());
+							waterResDao.updateLastUpdate(buzzMsg.getResourceId());
+							logger.info("Updated lastUpdated for resource=" + buzzMsg.getResourceId());
 						}
 						catch (JDOObjectNotFoundException ex) {
 							logger.severe("Unable to update lastUpdated timestamp for water resource");
@@ -132,16 +127,17 @@ public class MsgEvent extends ResourceBase {
 	@POST
 	@Produces("application/json")
 	@Path("/{resourceId}/comment")
-	public CommentDO addCommentToMsgEvent(@PathParam("resourceId") Long resourceId, @QueryParam("id") String id, String comment) {
-		List<MsgEventDO> res = null;
-		EventDao dao = null;
+	public CommentDO addCommentToMsgEvent(@PathParam("resourceId") Long resourceId, @QueryParam("id") String id, String rawCommentObj) {
+		List<BuzzMsgDO> res = null;
+		BuzzDao dao = null;
 		UserDao userDao = null;
 		WaterResourceDao waterResDao = null;
 		int rows = 0;
 		CommentDO comm = null;
 		CommentDO newComm = null;
+		String llId = null;
 	
-		logger.info("Process NEW comment: " + comment);
+		logger.info("Process NEW comment: " + rawCommentObj);
 		
 		if (context != null) {
 			if (!context.isSecure()) {
@@ -153,20 +149,31 @@ public class MsgEvent extends ResourceBase {
 		// validate user
 		//
 		userDao = new UserDao();
-		if (!userDao.isValidUser(id, false)) {
-			logger.warning("*** REJECTED AN INVALID ID [" + id + "] FROM NETWORK ***");
-			return newComm;
+		if (!AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
+			AppPropDO prop = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
+			BlockTea.BIG_ENDIAN = false;
+			String plainText = BlockTea.decrypt(llId, prop.getStringValue());
+			logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
+			llId = plainText;
 		}
 		
-		if (comment != null && comment.length() > 0) {
-			comm = new Gson().fromJson(comment, CommentDO.class);
+		userDao = new UserDao();
+		UserDO user = userDao.getUserByLLID(llId, false);
+		if (user == null) {
+			logger.warning("*** REJECTED -- Unable to find a matching user for llId=" + llId);
+			return comm;
+		}
+		
+		if (rawCommentObj != null && rawCommentObj.length() > 0) {
+			comm = new Gson().fromJson(rawCommentObj, CommentDO.class);
 			try {
-				if (comm != null && comm.getMsgEventId() > 0) {
+				if (comm != null && comm.getMsgId() > 0) {
 					comm.postCreation();
-					dao = new EventDao();
+					userDao.updateProfileUrl(user, comm.getProfileUrl());
+					dao = new BuzzDao();
 					newComm = dao.addComment(comm);
 					newComm.postReturn();
-					dao.incrementCommentCounter(comm.getMsgEventId());
+					dao.incrementCommentCounter(comm.getMsgId());
 					//
 					// since event was created inside lake area, update last communication
 					//
@@ -202,21 +209,21 @@ public class MsgEvent extends ResourceBase {
 	@GET 
 	@Path("/bylatlng")
 	@Produces("application/json")
-	public List<MsgEventDO> getMsgEventsByLatLng(@QueryParam("lat") double lat, @QueryParam("lng") double lng) {
+	public List<BuzzMsgDO> getMsgEventsByLatLng(@QueryParam("lat") double lat, @QueryParam("lng") double lng) {
 		int i = 0;
-		List<MsgEventDO> results = null;
-		List<MsgEventDO> list = null;
+		List<BuzzMsgDO> results = null;
+		List<BuzzMsgDO> list = null;
 		List<WaterResourceDO> resourceList = null;
 		WaterResourceDO res = null;
-		EventDao eventDao = null;
+		BuzzDao eventDao = null;
 		WaterResourceDao waterResDao = null;
 		boolean bFindAll = false;
 		
 		logger.info("Entered");
 		
 		try {
-			eventDao = new EventDao();
-			results = new ArrayList<MsgEventDO>();
+			eventDao = new BuzzDao();
+			results = new ArrayList<BuzzMsgDO>();
 			waterResDao = new WaterResourceDao();
 			logger.info("QUERY: Searching for local water resources ...");
 			resourceList = waterResDao.findClosest(lat, lng, 3);
@@ -249,9 +256,9 @@ public class MsgEvent extends ResourceBase {
 			//
 			if (results.size() > 0) {
 				Collections.sort(results);
-				if (results.size() >= EventDao.PAGESIZE) {
-					int start = results.size() - EventDao.PAGESIZE;
-					results = results.subList(start, EventDao.PAGESIZE);
+				if (results.size() >= BuzzDao.PAGESIZE) {
+					int start = results.size() - BuzzDao.PAGESIZE;
+					results = results.subList(start, BuzzDao.PAGESIZE);
 				}
 			}
 		
@@ -294,22 +301,22 @@ public class MsgEvent extends ResourceBase {
 	@GET 
 	@Path("/{resourceId}")
 	@Produces("application/json")
-	public List<MsgEventDO> getMsgEventsByRegion(@PathParam("resourceId") Long resourceId, @QueryParam("lat") double lat, @QueryParam("lng") double lng) {
+	public List<BuzzMsgDO> getMsgEventsByRegion(@PathParam("resourceId") Long resourceId, @QueryParam("lat") double lat, @QueryParam("lng") double lng) {
 		int i = 0;
-		List<MsgEventDO> results = null;
-		List<MsgEventDO> list = null;
+		List<BuzzMsgDO> results = null;
+		List<BuzzMsgDO> list = null;
 		List<WaterResourceDO> resourceList = null;
 		WaterResourceDO res = null;
-		EventDao eventDao = null;
+		BuzzDao eventDao = null;
 		WaterResourceDao waterResDao = null;
 		boolean bFindAll = false;
 		
 		logger.info("Entered");
 		try {
-			eventDao = new EventDao();
+			eventDao = new BuzzDao();
 			
 			if (bFindAll) {
-				results = new ArrayList<MsgEventDO>();
+				results = new ArrayList<BuzzMsgDO>();
 				waterResDao = new WaterResourceDao();
 				logger.info("QUERY: Searching for local water resources ...");
 				resourceList = waterResDao.findClosest(lat, lng, 3);
@@ -336,9 +343,9 @@ public class MsgEvent extends ResourceBase {
 				//
 				if (results.size() > 0) {
 					Collections.sort(results);
-					if (results.size() >= EventDao.PAGESIZE) {
-						int start = results.size() - EventDao.PAGESIZE;
-						results = results.subList(start, EventDao.PAGESIZE);
+					if (results.size() >= BuzzDao.PAGESIZE) {
+						int start = results.size() - BuzzDao.PAGESIZE;
+						results = results.subList(start, BuzzDao.PAGESIZE);
 					}
 				}
 			}
@@ -346,8 +353,8 @@ public class MsgEvent extends ResourceBase {
 				logger.info("Trying query with resourceId=" + resourceId);
 				list = eventDao.getNextEventsByResourceId(resourceId);
 				results = list;
-				if (results != null && results.size() > EventDao.PAGESIZE) {
-					results = results.subList(0, EventDao.PAGESIZE);
+				if (results != null && results.size() > BuzzDao.PAGESIZE) {
+					results = results.subList(0, BuzzDao.PAGESIZE);
 				}
 			}
 		}

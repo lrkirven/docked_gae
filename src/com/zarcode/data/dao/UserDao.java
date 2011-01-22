@@ -72,15 +72,19 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 	
 	public boolean userExists(String emailAddr) {
 		boolean found = false;
-		Query query = pm.newQuery(UserDO.class);
-		query.setFilter("emailAddr == emailAddrParam");
-		query.declareParameters("String emailAddrParam");
-		List<UserDO> res = (List<UserDO>)query.execute(emailAddr);
-		//
-		// if result contains something, user is there
-		//
-		if (res != null && res.size() > 0) {
-			found = true;
+	
+		if (emailAddr != null) {
+			String eAddr = emailAddr.toLowerCase();
+			Query query = pm.newQuery(UserDO.class);
+			query.setFilter("emailAddr == emailAddrParam");
+			query.declareParameters("String emailAddrParam");
+			List<UserDO> res = (List<UserDO>)query.execute(eAddr);
+			//
+			// if result contains something, user is there
+			//
+			if (res != null && res.size() > 0) {
+				found = true;
+			}
 		}
 		
 		return found;
@@ -96,6 +100,10 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 			Date now = new Date();
 			user.setCreateDate(now);
 			user.setLastUpdate(now);
+			if (user.getEmailAddr() != null) {
+				String email = user.getEmailAddr();
+				user.setEmailAddr(email.toLowerCase());
+			}
 			String dateString = AppCommon.generateActiveKey();
 			logger.info("activeKey: " + dateString);
 			user.setActiveKey(dateString);
@@ -213,12 +221,12 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		
 	} // getAndUpdateUser
 	
-	public UserDO updateUser(UserDO user, String field, String value) {
+	public UserDO updateDisplayName(UserDO user, String value) {
 		UserDO target = null;
 		String dateString = AppCommon.generateActiveKey();
 		Date now = new Date();
 		
-		logger.info("updateUser(): activeKey=" + dateString);
+		logger.info("updateDisplayName(): activeKey=" + dateString);
 		
 		Transaction tx = pm.currentTransaction();
 		try {
@@ -231,9 +239,7 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 				target = res.get(0);
 				target.setActiveKey(dateString);
 				target.setLastUpdate(now);
-				if (field.equalsIgnoreCase("displayName")) {
-					target.setDisplayName(value);
-				}
+				target.setDisplayName(value);
 			}
 			tx.commit();
 		}
@@ -244,7 +250,38 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		}
 		return target;
 		
-	} // updateUser
+	} // updateDisplayName
+	
+	public UserDO updateProfileUrl(UserDO user, String value) {
+		UserDO target = null;
+		String dateString = AppCommon.generateActiveKey();
+		Date now = new Date();
+		
+		logger.info("updateProfileUrl(): activeKey=" + dateString);
+		
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			Query query = pm.newQuery(UserDO.class);
+			query.setFilter("userId == userIdParam");
+			query.declareParameters("String userIdParam");
+			List<UserDO> res = (List<UserDO>)query.execute(user.getUserId());
+			if (res != null && res.size() > 0) {
+				target = res.get(0);
+				target.setActiveKey(dateString);
+				target.setLastUpdate(now);
+				target.setProfileUrl(value);
+			}
+			tx.commit();
+		}
+		finally {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
+		}
+		return target;
+		
+	} // updateProfileUrl
 	
 	public boolean isValidUser(String id, boolean encrypt) {
 		UserDO target = null;
@@ -318,6 +355,25 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		return res;
 	}
 	
+	public String getDisplayName(String llId) {
+		UserDO res = null;
+		List<UserDO> list = null;
+		UserDO target = null;
+		String displayName = null;
+		
+		Query query = pm.newQuery(UserDO.class);
+		query.setFilter("llId == llIdParam");
+		query.declareParameters("String llIdParam");
+		list = (List<UserDO>)query.execute(llId);
+		if (list != null && list.size() > 0) {
+			target = list.get(0);
+			if (target != null) {
+				displayName = target.getDisplayName();
+			}
+		}
+		return displayName;
+	}
+	
 	public UserDO getUserByLLID(String llId, boolean encrypted) {
 		UserDO res = null;
 		List<UserDO> list = null;
@@ -345,16 +401,19 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		List<UserDO> list = null;
 		UserDO target = null;
 		
-		Query query = pm.newQuery(UserDO.class);
-		query.setFilter("emailAddr == emailAddrParam");
-		query.declareParameters("String emailAddrParam");
-		list = (List<UserDO>)query.execute(emailAddr);
-		if (list != null && list.size() > 0) {
-			res = list.get(0);
-			logger.info("Found the user with emailAddr=" + emailAddr);
-		}
-		else {
-			logger.info("Unable to find user with emailAddr=" + emailAddr);
+		if (emailAddr != null) {
+			String email = emailAddr.toLowerCase();
+			Query query = pm.newQuery(UserDO.class);
+			query.setFilter("emailAddr == emailAddrParam");
+			query.declareParameters("String emailAddrParam");
+			list = (List<UserDO>)query.execute(email);
+			if (list != null && list.size() > 0) {
+				res = list.get(0);
+				logger.info("Found the user with emailAddr=" + emailAddr);
+			}
+			else {
+				logger.info("Unable to find user with emailAddr=" + emailAddr);
+			}
 		}
 		return res;
 	}

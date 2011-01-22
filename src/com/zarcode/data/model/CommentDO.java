@@ -37,13 +37,13 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 	private Long commentId = null; 
 	
 	@Persistent
-	private Long msgEventId = null; 
+	private Long msgId = null; 
 	
 	@Persistent
 	private Long timestamp = null;
 	
 	@Persistent
-	private String username = null;
+	private String llId = null;
 	
 	@Persistent
 	private Long resourceId = null;
@@ -96,12 +96,12 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 	}
 	
 	@XmlElement
-	public Long getMsgEventId() {
-		return msgEventId;
+	public Long getMsgId() {
+		return msgId;
 	}
 
-	public void setMsgEventId(Long msgEventId) {
-		this.msgEventId = msgEventId;
+	public void setMsgId(Long msgId) {
+		this.msgId = msgId;
 	}
 	
 	@XmlElement
@@ -159,12 +159,12 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 	}
 	
 	@XmlElement
-	public String getUsername() {
-		return username;
+	public String getLlId() {
+		return llId;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String llId) {
+		this.llId = llId;
 	}
 	
 	@XmlElement
@@ -195,7 +195,7 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 	}
 	
 	public String toString() {
-		return "CommentDO::" + commentId + " (username=" + username + " timestamp=" + timestamp + ")";
+		return "CommentDO::" + commentId + " (llId=" + llId + " timestamp=" + timestamp + ")";
 	}
 
 }

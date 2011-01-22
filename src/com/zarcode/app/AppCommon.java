@@ -6,11 +6,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Logger;
 
-import com.zarcode.data.resources.MsgEvent;
-
 public class AppCommon {
 	
 	private static Logger logger = Logger.getLogger(AppCommon.class.getName());
+	
+	public static final String ANONYMOUS = "ABC123";
+	
+	public static final String APPNAME = "Docked";
 	
 	public static double distanceBtwAB(double lat1, double lng1, double lat2, double lng2) {
 		double earthR = 6371; // km

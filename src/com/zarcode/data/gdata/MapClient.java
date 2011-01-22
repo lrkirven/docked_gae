@@ -18,7 +18,7 @@ import com.google.gdata.util.ServiceException;
 import com.google.gdata.util.XmlBlob;
 import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.Util;
-import com.zarcode.data.model.MsgEventDO;
+import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.platform.gdata.GDataClient;
 
 public class MapClient extends GDataClient {
@@ -184,7 +184,7 @@ public class MapClient extends GDataClient {
 		return res;
 	}
 	
-	public String addMediaEventToMap(MsgEventDO event) {
+	public String addMediaEventToMap(BuzzMsgDO event) {
 		String featureId = null;
 		String styleName = "#style6";
 		String htmlStr = "<table style=\"width:auto\"><tr><td><img src=\"" + event.getPhotoUrl() + "\"></td></tr></table>";
@@ -213,7 +213,7 @@ public class MapClient extends GDataClient {
 		
 		try {
 			FeatureEntry entry = 
-				addFeature(event.getEventId().toString(), sb.toString());
+				addFeature(event.getMsgId().toString(), sb.toString());
 			featureId = entry.getId();
 		}
 		catch (Exception e) {

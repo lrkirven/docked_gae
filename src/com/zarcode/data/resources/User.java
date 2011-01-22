@@ -1,5 +1,7 @@
 package com.zarcode.data.resources;
 
+import java.net.URI;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -14,13 +16,14 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 
 import com.google.gson.Gson;
+import com.zarcode.app.AppCommon;
 import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.model.LocalStatusDO;
-import com.zarcode.data.model.MsgEventDO;
 import com.zarcode.data.model.ReadOnlyUserDO;
+import com.zarcode.data.model.UpdateTaskDO;
 import com.zarcode.data.model.UserDO;
 import com.zarcode.data.model.WaterResourceDO;
 import com.zarcode.platform.model.AppPropDO;
@@ -38,54 +41,81 @@ public class User extends ResourceBase {
 	
 	private static final int MAXPAGE = 10;
 	
-	private static final String ANONYMOUS = "ABC123";
-	
 	private static final String ANONYMOUS_KEY = "ABCDEF7891011121314";
 
 	@POST
-	@Produces("text/plain")
-	@Path("/update/{llId}")
-	public UserDO update(@PathParam("llId") String llId, @QueryParam("field") String field, @QueryParam("value") String value) {
+	@Produces("application/json")
+	@Path("/update")
+	public UpdateTaskDO update(String rawUpdateTask) {
 		UserDO res = null;
 		UserDao dao = null;
 		int rows = 0;
 		String resp = null;
 		UserDO newUser = null;
+		UpdateTaskDO task = null;
+		String llId = null;
+		String object = null;
+		String field = null;
+		String value = null;
 	
-		logger.info("Incoming llId --> " + llId);
+		if (rawUpdateTask != null && rawUpdateTask.length() > 0) {
+			task = new Gson().fromJson(rawUpdateTask, UpdateTaskDO.class);
+			try {
+				llId = task.getLlId();
+				logger.info("BEFORE llId [" + llId + "]");
+				// llId = new URI(llId).toASCIIString();
+				llId = URLDecoder.decode(llId);
+				logger.info("AFTER llId [" + llId + "]");
+				field = task.getField();
+				value = task.getValue();
+				// value = new URI(value).toASCIIString();
+				value = URLDecoder.decode(value);
+			}
+			catch (Exception e1) {
+				logger.warning("EXCEPTION ::: " + e1.getMessage());
+				return null;
+			}
+		}
 		
 		if (llId == null || llId.length() == 0) {
 			logger.warning("*** Incoming llId is not VALID ***");
-			return res;
+			return null;
 		}
 		
-		if (!ANONYMOUS.equalsIgnoreCase(llId)) {
+		if (!AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
 			AppPropDO prop = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
-			BlockTea.BIG_ENDIAN = true;
+			BlockTea.BIG_ENDIAN = false;
 			String plainText = BlockTea.decrypt(llId, prop.getStringValue());
 			logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
 			llId = plainText;
 		}
 		else {
 			logger.warning("*** Anonymous user can update the displayName ***");
-			return res;
+			return null;
 		}
 		
 		dao = new UserDao();
 		res = dao.getUserByLLID(llId, false);
-		
 		if (res != null) {
 			try {
-				dao.updateUser(res, field, value);
+				if (field != null && field.equalsIgnoreCase("displayName")) {
+					newUser = dao.updateDisplayName(res, value);
+				}
+				if (field != null && field.equalsIgnoreCase("profileUrl")) {
+					newUser = dao.updateProfileUrl(res, value);
+				}
+				if (newUser != null) {
+					task.setResult(1);
+				}
 			}
 			catch (Exception e) {
 				logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
 			}
 		}
 		else {
-			logger.warning("User JSON instance is empty");
+			logger.warning("**** Unable to find user account with llId = " + llId);
 		}
-		return res;
+		return task;
 	}
 	
 	@GET
@@ -134,13 +164,13 @@ public class User extends ResourceBase {
 			return empty;
 		}
 		
-		if (ANONYMOUS.equalsIgnoreCase(llId)) {
+		if (AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
 			anonymous = true;
 			logger.info("ANONYMOUS user accessing the service.");
 		}
 		else {
 			AppPropDO prop = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
-			BlockTea.BIG_ENDIAN = true;
+			BlockTea.BIG_ENDIAN = false;
 			String plainText = BlockTea.decrypt(llId, prop.getStringValue());
 			logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
 			llId = plainText;

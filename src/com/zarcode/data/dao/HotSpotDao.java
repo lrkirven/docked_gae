@@ -247,11 +247,11 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 	}
 
 	/*
-	public List<MsgEventDO> getEventsByIds(List<Long> keys) {
+	public List<BuzzMsgDO> getEventsByIds(List<Long> keys) {
 		int i = 0; 
-		MsgEventDO event = null;
-		List<MsgEventDO> list = null;
-		list = (List<MsgEventDO>)pm.getObjectsById(keys);
+		BuzzMsgDO event = null;
+		List<BuzzMsgDO> list = null;
+		list = (List<BuzzMsgDO>)pm.getObjectsById(keys);
 		return list;
 	}
 	*/

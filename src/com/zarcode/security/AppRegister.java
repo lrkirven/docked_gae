@@ -21,6 +21,8 @@ import java.util.logging.Logger;
 
 import com.zarcode.common.ApplicationProps;
 import com.zarcode.data.dao.UserDao;
+import com.zarcode.data.exception.InvalidEmailAddrException;
+import com.zarcode.data.exception.MissingUserAccountException;
 import com.zarcode.platform.model.AppPropDO;
 import com.zarcode.data.model.UserDO;
 
@@ -50,7 +52,13 @@ public class AppRegister extends HttpServlet {
 		        if (user != null) {
 		        	userDao = new UserDao();
 		        	if (!userDao.userExists(user.getEmail())) {
-		        		createNewUserAccountByGoogleUser(user);
+		        		try {
+		        			createNewUserAccountByGoogleUser(user);
+		        		}
+		        		catch (Exception e) {
+		        			logger.severe("EXCEPTION ::: Trying to register user -- " + e.getMessage());
+		        			resp.sendRedirect("/registrationFail");
+		        		}
 		        	}
 		        	HttpSession session = req.getSession(true);
 					session.setAttribute("REGISTERING_EMAILADDR", user.getEmail());
@@ -66,30 +74,55 @@ public class AppRegister extends HttpServlet {
 	    }
 	    
 	    
-	    public static void createNewUserAccountByGoogleUser(User user) {
+	    public static void createNewUserAccountByGoogleUser(User user) throws MissingUserAccountException {
 	    	UserDao userDao = new UserDao();
 	    	UserDO newUser = new UserDO();
-    		String emailAddr = user.getEmail();
-    		newUser.setEmailAddr(emailAddr);
-    		String llId = user.getFederatedIdentity() + "::" + UUID.randomUUID().toString();
-    		newUser.setLLId(llId);
-    		String[] addrList = emailAddr.split("@");
-    		newUser.setDisplayName(addrList[0]);
-    		newUser.setFederatedId(user.getFederatedIdentity());
-    		newUser.setAuthDomain(user.getAuthDomain());
-    		userDao.addUser(newUser);
-    		logger.info("Created new user --- llId=" + llId + " emailAddr=" + emailAddr);
+	    	if (user != null) {
+    			String emailAddr = user.getEmail();
+    			newUser.setEmailAddr(emailAddr);
+    			String llId = user.getFederatedIdentity() + "::" + UUID.randomUUID().toString();
+    			newUser.setLLId(llId);
+    			String[] addrList = emailAddr.split("@");
+    			newUser.setDisplayName(addrList[0]);
+    			newUser.setFederatedId(user.getFederatedIdentity());
+    			newUser.setAuthDomain(user.getAuthDomain());
+    			userDao.addUser(newUser);
+    			logger.info("Created new user --- llId=" + llId + " emailAddr=" + emailAddr);
+	    	}
+	    	else {
+	    		throw new MissingUserAccountException();
+	    	}
 	    }
 	    
-	    public static void createNewUserAccountByEmailAddr(String emailAddr) {
+	    public static void createNewUserAccountByEmailAddr(String emailAddr) throws InvalidEmailAddrException {
 	    	UserDao userDao = new UserDao();
 	    	UserDO newUser = new UserDO();
-    		newUser.setEmailAddr(emailAddr);
-    		String llId = emailAddr + "::" + UUID.randomUUID().toString();
-    		newUser.setLLId(llId);
-    		String[] addrList = emailAddr.split("@");
-    		newUser.setDisplayName(addrList[0]);
-    		userDao.addUser(newUser);
-    		logger.info("Created new user --- llId=" + llId + " emailAddr=" + emailAddr);
+	    	if (emailAddr != null && emailAddr.length() > 0) {
+	    		String email = emailAddr.toLowerCase();
+    			newUser.setEmailAddr(email);
+    			String randomVal = UUID.randomUUID().toString();
+    			/**
+    			 * MAJOR HACK 
+    			 */
+    			String lastChar = null;
+    			for (;;) {
+    				lastChar = randomVal.substring(randomVal.length()-1, randomVal.length());
+    				if (lastChar != null && lastChar.equals("0")) {
+    					randomVal = randomVal.substring(0, randomVal.length()-1);
+    				}
+    				else {
+    					break;
+    				}
+    			}
+    			String llId = email + "::" + randomVal;
+    			newUser.setLLId(llId);
+    			String[] addrList = email.split("@");
+    			newUser.setDisplayName(addrList[0]);
+    			userDao.addUser(newUser);
+    			logger.info("Created new user --- llId=" + llId + " emailAddr=" + email);
+	    	}
+	    	else {
+	    		throw new InvalidEmailAddrException();
+	    	}
 	    }
 }

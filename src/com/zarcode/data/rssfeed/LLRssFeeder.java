@@ -1,41 +1,27 @@
 package com.zarcode.data.rssfeed;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
-
-import com.sun.syndication.feed.synd.*;
-import com.sun.syndication.io.SyndFeedOutput;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.tidy.Tidy;
-
-import com.zarcode.common.EmailHelper;
-import com.zarcode.common.EscapeChars;
+import com.sun.syndication.feed.synd.SyndContent;
+import com.sun.syndication.feed.synd.SyndContentImpl;
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndEntryImpl;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.SyndFeedImpl;
+import com.sun.syndication.io.SyndFeedOutput;
+import com.zarcode.app.AppCommon;
 import com.zarcode.common.Util;
-import com.zarcode.data.dao.EventDao;
-import com.zarcode.data.dao.ReportDao;
+import com.zarcode.data.dao.BuzzDao;
+import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.WaterResourceDao;
-import com.zarcode.data.exception.WebCrawlException;
-import com.zarcode.platform.loader.JDOLoaderServlet;
-import com.zarcode.data.model.MsgEventDO;
-import com.zarcode.data.model.ReportDO;
+import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.data.model.WaterResourceDO;
 
 /**
@@ -80,7 +66,8 @@ public class LLRssFeeder extends HttpServlet {
     	String lngParam = null;
     	String feedType = "rss_2.0";
     	WaterResourceDO top = null;
-    	EventDao eventDao = null;
+    	BuzzDao buzzDao = null;
+    	UserDao userDao = new UserDao();
     	
     	//
     	// get closest water resources for the user
@@ -97,21 +84,24 @@ public class LLRssFeeder extends HttpServlet {
 	    	try {
 	    		if (res != null && res.size() > 0) {
 	    		
-	    			if (eventDao == null) {
-	    				eventDao = new EventDao();
+	    			if (buzzDao == null) {
+	    				buzzDao = new BuzzDao();
+	    			}
+	    			if (userDao == null) {
+	    				userDao = new UserDao();
 	    			}
 	    			
 	    			top = res.get(0);
 		    	    feed = new SyndFeedImpl();
 		    	    feed.setFeedType(feedType);
-		    	    feed.setAuthor("LazyLaker");
+		    	    feed.setAuthor(AppCommon.APPNAME);
 		    	    feed.setTitle(top.getName());
 		    	    feed.setLink("http://www.lazylaker.net/");
 		    	    feed.setDescription("This lake can be found in " + top.getRegion());
-		    	    List<MsgEventDO> msgs = eventDao.getNextEventsByResourceId(top.getResourceId());
-					if (msgs != null && msgs.size() > EventDao.PAGESIZE) {
+		    	    List<BuzzMsgDO> msgs = buzzDao.getNextEventsByResourceId(top.getResourceId());
+					if (msgs != null && msgs.size() > BuzzDao.PAGESIZE) {
 						logger.info("Found " + msgs.size() + " msg(s) for location: " + top.getName());
-						msgs = msgs.subList(0, EventDao.PAGESIZE);
+						msgs = msgs.subList(0, BuzzDao.PAGESIZE);
 					}
 					else {
 						logger.warning("Unable to find any message(s) for " + top.getName());
@@ -125,21 +115,23 @@ public class LLRssFeeder extends HttpServlet {
 			    	    entries = new ArrayList();
 			    	    	
 				    	String title = null;
+				    	String displayName = null;
 			    	    for (j=0; j<msgs.size(); j++) {
-			    	    	MsgEventDO e = msgs.get(j);
+			    	    	BuzzMsgDO e = msgs.get(j);
 				    	    entry = new SyndEntryImpl();
+				    	    displayName = userDao.getDisplayName(e.getLlId());
 				    	    if (e.getTitle() != null && e.getTitle().length() > 0) {
 				    	    	title = e.getTitle();
 				    	    }
 				    	    else {
-				    	    	title = e.getUsername() + " at " + e.getLocation();
+				    	    	title = displayName + " at " + e.getLocation();
 				    	    }
 				    	    entry.setTitle(title);
 				    	    if (e.getPhotoUrl() != null) {
 				    	    	entry.setLink(e.getPhotoUrl());
 				    	    }
 				    	    entry.setPublishedDate(e.getCreateDate());
-				    	    entry.setAuthor(e.getUsername());
+				    	    entry.setAuthor(displayName);
 				    	    description = new SyndContentImpl();
 				    	    description.setType("text/plain");
 				    	    description.setValue(e.getMessageData());

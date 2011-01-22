@@ -20,13 +20,13 @@ import javax.ws.rs.core.UriInfo;
 
 import com.google.gson.Gson;
 import com.zarcode.common.Util;
-import com.zarcode.data.dao.EventDao;
+import com.zarcode.data.dao.BuzzDao;
 import com.zarcode.data.dao.HotSpotDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.model.CommentDO;
 import com.zarcode.data.model.HotSpotDO;
-import com.zarcode.data.model.MsgEventDO;
+import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.data.model.WaterResourceDO;
 
 @Path("/hotSpots")
@@ -54,7 +54,7 @@ public class HotSpot extends ResourceBase {
 	@Produces("application/json")
 	@Path("/{resourceId}/hotSpot")
 	public HotSpotDO addHotSpot(@PathParam("resourceId") Long resourceId, @QueryParam("id") String id,  @QueryParam("e") String emailAddr, String hotSpot) {
-		List<MsgEventDO> res = null;
+		List<BuzzMsgDO> res = null;
 		HotSpotDao dao = null;
 		WaterResourceDao waterResDao = null;
 		UserDao userDao = null;
@@ -115,8 +115,8 @@ public class HotSpot extends ResourceBase {
 	@Produces("application/json")
 	@Path("/{resourceId}/comment")
 	public CommentDO addCommentToMsgEvent(@PathParam("resourceId") Long resourceId, @QueryParam("id") String id, String comment) {
-		List<MsgEventDO> res = null;
-		EventDao dao = null;
+		List<BuzzMsgDO> res = null;
+		BuzzDao dao = null;
 		UserDao userDao = null;
 		WaterResourceDao waterResDao = null;
 		int rows = 0;
@@ -143,12 +143,12 @@ public class HotSpot extends ResourceBase {
 		if (comment != null && comment.length() > 0) {
 			comm = new Gson().fromJson(comment, CommentDO.class);
 			try {
-				if (comm != null && comm.getMsgEventId() > 0) {
+				if (comm != null && comm.getMsgId() > 0) {
 					comm.postCreation();
-					dao = new EventDao();
+					dao = new BuzzDao();
 					newComm = dao.addComment(comm);
 					newComm.postReturn();
-					dao.incrementCommentCounter(comm.getMsgEventId());
+					dao.incrementCommentCounter(comm.getMsgId());
 					//
 					// since event was created inside lake area, update last communication
 					//
@@ -184,20 +184,20 @@ public class HotSpot extends ResourceBase {
 	@GET 
 	@Path("/bylatlng")
 	@Produces("application/json")
-	public List<MsgEventDO> getMsgEventsByLatLng(@QueryParam("lat") double lat, @QueryParam("lng") double lng) {
+	public List<BuzzMsgDO> getMsgEventsByLatLng(@QueryParam("lat") double lat, @QueryParam("lng") double lng) {
 		int i = 0;
-		List<MsgEventDO> results = null;
-		List<MsgEventDO> list = null;
+		List<BuzzMsgDO> results = null;
+		List<BuzzMsgDO> list = null;
 		List<WaterResourceDO> resourceList = null;
 		WaterResourceDO res = null;
-		EventDao eventDao = null;
+		BuzzDao eventDao = null;
 		WaterResourceDao waterResDao = null;
 		boolean bFindAll = false;
 		
 		logger.info("Entered");
 		try {
-			eventDao = new EventDao();
-			results = new ArrayList<MsgEventDO>();
+			eventDao = new BuzzDao();
+			results = new ArrayList<BuzzMsgDO>();
 			waterResDao = new WaterResourceDao();
 			logger.info("QUERY: Searching for local water resources ...");
 			resourceList = waterResDao.findClosest(lat, lng, 3);
@@ -230,9 +230,9 @@ public class HotSpot extends ResourceBase {
 			//
 			if (results.size() > 0) {
 				Collections.sort(results);
-				if (results.size() >= EventDao.PAGESIZE) {
-					int start = results.size() - EventDao.PAGESIZE;
-					results = results.subList(start, EventDao.PAGESIZE);
+				if (results.size() >= BuzzDao.PAGESIZE) {
+					int start = results.size() - BuzzDao.PAGESIZE;
+					results = results.subList(start, BuzzDao.PAGESIZE);
 				}
 			}
 		
@@ -249,22 +249,22 @@ public class HotSpot extends ResourceBase {
 	@GET 
 	@Path("/{resourceId}")
 	@Produces("application/json")
-	public List<MsgEventDO> getMsgEventsByRegion(@PathParam("resourceId") Long resourceId, @QueryParam("lat") double lat, @QueryParam("lng") double lng) {
+	public List<BuzzMsgDO> getMsgEventsByRegion(@PathParam("resourceId") Long resourceId, @QueryParam("lat") double lat, @QueryParam("lng") double lng) {
 		int i = 0;
-		List<MsgEventDO> results = null;
-		List<MsgEventDO> list = null;
+		List<BuzzMsgDO> results = null;
+		List<BuzzMsgDO> list = null;
 		List<WaterResourceDO> resourceList = null;
 		WaterResourceDO res = null;
-		EventDao eventDao = null;
+		BuzzDao eventDao = null;
 		WaterResourceDao waterResDao = null;
 		boolean bFindAll = false;
 		
 		logger.info("Entered");
 		try {
-			eventDao = new EventDao();
+			eventDao = new BuzzDao();
 			
 			if (bFindAll) {
-				results = new ArrayList<MsgEventDO>();
+				results = new ArrayList<BuzzMsgDO>();
 				waterResDao = new WaterResourceDao();
 				logger.info("QUERY: Searching for local water resources ...");
 				resourceList = waterResDao.findClosest(lat, lng, 3);
@@ -291,9 +291,9 @@ public class HotSpot extends ResourceBase {
 				//
 				if (results.size() > 0) {
 					Collections.sort(results);
-					if (results.size() >= EventDao.PAGESIZE) {
-						int start = results.size() - EventDao.PAGESIZE;
-						results = results.subList(start, EventDao.PAGESIZE);
+					if (results.size() >= BuzzDao.PAGESIZE) {
+						int start = results.size() - BuzzDao.PAGESIZE;
+						results = results.subList(start, BuzzDao.PAGESIZE);
 					}
 				}
 			}
@@ -301,8 +301,8 @@ public class HotSpot extends ResourceBase {
 				logger.info("Trying query with resourceId=" + resourceId);
 				list = eventDao.getNextEventsByResourceId(resourceId);
 				results = list;
-				if (results != null && results.size() > EventDao.PAGESIZE) {
-					results = results.subList(0, EventDao.PAGESIZE);
+				if (results != null && results.size() > BuzzDao.PAGESIZE) {
+					results = results.subList(0, BuzzDao.PAGESIZE);
 				}
 			}
 		}

@@ -19,10 +19,10 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.zarcode.common.Util;
-import com.zarcode.data.dao.EventDao;
+import com.zarcode.data.dao.BuzzDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.WaterResourceDao;
-import com.zarcode.data.model.MsgEventDO;
+import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.data.model.ReadOnlyUserDO;
 
 public class Cleaner extends HttpServlet {
@@ -36,11 +36,11 @@ public class Cleaner extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 	    	int i = 0;
 	    	long msecInDay = 86400000;
-	    	EventDao eventDao = null;
+	    	BuzzDao eventDao = null;
 	    	UserDao userDao = null;
-			List<MsgEventDO> list = null;
+			List<BuzzMsgDO> list = null;
 			List<ReadOnlyUserDO> tempUsers = null;
-			MsgEventDO msg = null;
+			BuzzMsgDO msg = null;
 			ReadOnlyUserDO tempUser = null;
 			Calendar now = Calendar.getInstance();
 			
@@ -53,8 +53,8 @@ public class Cleaner extends HttpServlet {
 			int anonymousUsersDeleted = 0;
 			
 			try {
-				eventDao = new EventDao();
-				list = eventDao.getAllEvents();
+				eventDao = new BuzzDao();
+				list = eventDao.getAllMsgs();
 				if (list != null && list.size() > 0) {
 					for (i=0; i<list.size(); i++) {
 						msg = list.get(i);

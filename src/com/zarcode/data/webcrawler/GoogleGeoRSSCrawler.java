@@ -36,6 +36,7 @@ import com.google.appengine.api.labs.taskqueue.QueueFactory;
 import static com.google.appengine.api.labs.taskqueue.TaskOptions.Builder.*;
 
 import com.google.apphosting.api.DeadlineExceededException;
+import com.zarcode.app.AppCommon;
 import com.zarcode.common.EmailHelper;
 import com.zarcode.common.EscapeChars;
 import com.zarcode.common.Util;
@@ -269,7 +270,7 @@ public class GoogleGeoRSSCrawler extends WebCrawler {
 	 					}
 	 				}
 	 				logger.info("Processing is done on index=" + i);
-	 				EmailHelper.sendAppAlert("LazyLaker: GeoRSSFeed Status", "Completed GeoRSS processing\nURL: " + url + "\nLAST INDEX: " + i);
+	 				EmailHelper.sendAppAlert(AppCommon.APPNAME + ": GeoRSSFeed Status", "Completed GeoRSS processing\nURL: " + url + "\nLAST INDEX: " + i);
 	 			}
 	 			else {
 	 				throw new WebCrawlException("GeoRSS Feed is empty!", urlStr);

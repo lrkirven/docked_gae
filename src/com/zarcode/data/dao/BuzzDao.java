@@ -14,13 +14,14 @@ import ch.hsr.geohash.queries.GeoHashCircleQuery;
 
 import com.zarcode.data.model.CommentDO;
 import com.zarcode.data.model.EventSequenceDO;
-import com.zarcode.data.model.MsgEventDO;
+import com.zarcode.data.model.BuzzMsgDO;
+import com.zarcode.data.model.UserDO;
 import com.zarcode.platform.dao.BaseDao;
 import com.zarcode.platform.loader.AbstractLoaderDao;
 
-public class EventDao extends BaseDao implements AbstractLoaderDao {
+public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 	
-	private Logger logger = Logger.getLogger(EventDao.class.getName());
+	private Logger logger = Logger.getLogger(BuzzDao.class.getName());
 
 	public static final int PAGESIZE = 50;
 
@@ -44,49 +45,8 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
     	pm.makePersistent(seq);
 	}
 	
-	/*
-	private Long getNextSequence() {
-		Long nextSeqNum = null;
-		EventSequenceDO seq = null;
-		Date now = new Date();
-		
-		//
-		// first time for EventSequence 
-		//
-		try {
-			 seq = pm.getObjectById(EventSequenceDO.class, SEQ_KEY);
-		}
-		catch (JDOObjectNotFoundException e) {
-            createSequenceSingleton();
-		}
-
-		Transaction tx = pm.currentTransaction();
-		
-        try {
-            tx.begin();
-            seq = pm.getObjectById(EventSequenceDO.class, SEQ_KEY);
-            if (seq == null) {
-            	createSequenceSingleton();
-            }
-            // nextSeqNum = seq.incrementSequenceBy(1);
-            // this.sequenceVer = seq.getSequenceVer();
-            nextSeqNum = now.getTime(); 
-            this.sequenceVer = new Long(CURRENT_VER);
-            
-            pm.makePersistent(seq);
-            tx.commit();
-        } 
-        finally {
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-        }
-        return nextSeqNum;
-	}
-	*/
-	
 	public void loadObject(Object dataObject) {
-		addEvent((MsgEventDO)dataObject);
+		addMsg((BuzzMsgDO)dataObject);
 	}
 	
 	public long deleteAll(Class cls) {
@@ -96,24 +56,24 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 		return rows;
 	}
 	
-	public void deleteInstance(MsgEventDO m) {
+	public void deleteInstance(BuzzMsgDO m) {
 		long rows = 0;
 		pm.deletePersistent(m);
 	}
 	
-	public MsgEventDO addEvent(MsgEventDO event) {
-		MsgEventDO res = null;
+	public BuzzMsgDO addMsg(BuzzMsgDO event) {
+		BuzzMsgDO res = null;
 		Long eventId = null;
 		Date now = new Date();
 		if (event != null) {
 			Long tm = now.getTime();
-			event.setEventId(null);
+			event.setMsgId(null);
 			event.setCreateDate(new Date());
 			event.setTimestamp(tm);
 			event.setVersion(this.version);
   	      	pm.makePersistent(event); 
   	      	res = event;
-  	      	eventId = event.getEventId();
+  	      	eventId = event.getMsgId();
   	      	logger.info("Added new event --> " + event);
 		}
         return res; 
@@ -136,18 +96,18 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
         return res; 
 	}
 	
-	private List<MsgEventDO> getAllByKeys(List<Long> listOfKeys) {
+	private List<BuzzMsgDO> getAllByKeys(List<Long> listOfKeys) {
 		int i = 0;
 		Long key = null;
-		MsgEventDO event = null;
-		List<MsgEventDO> listOfEvents = null;
+		BuzzMsgDO event = null;
+		List<BuzzMsgDO> listOfEvents = null;
 	
 		if (listOfKeys != null) {
-			listOfEvents =  new ArrayList<MsgEventDO>();
+			listOfEvents =  new ArrayList<BuzzMsgDO>();
 			for (i=0; i<listOfKeys.size(); i++) {
 				key = listOfKeys.get(i);
-				logger.info("Get MsgEventDO by key=" + key);
-				event = (MsgEventDO)pm.getObjectById(MsgEventDO.class, key);
+				logger.info("Get BuzzMsgDO by key=" + key);
+				event = (BuzzMsgDO)pm.getObjectById(BuzzMsgDO.class, key);
 				listOfEvents.add(event);
 			}
 		}
@@ -155,7 +115,7 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 		
 	}
 	
-	public List<CommentDO> getCommentsViaMsgEvent(MsgEventDO msgEvent) {
+	public List<CommentDO> getComments4BuzzMsg(BuzzMsgDO msgEvent) {
 		int i = 0;
 		List<CommentDO> list = null;
 		Date now = new Date();
@@ -164,8 +124,8 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 		sb.append("(");
 		sb.append("timestamp > ");
 		sb.append(0);
-		sb.append(" && msgEventId == ");
-		sb.append(msgEvent.getEventId());
+		sb.append(" && msgId == ");
+		sb.append(msgEvent.getMsgId());
 		sb.append(")");
 		Query query = pm.newQuery(CommentDO.class, sb.toString());
 		query.setOrdering("timestamp desc");
@@ -181,12 +141,15 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 		return list;
 	}
 	
-	public List<MsgEventDO> getNextEventsByResourceId(Long resourceId) {
+	public List<BuzzMsgDO> getNextEventsByResourceId(Long resourceId) {
 		int i = 0;
+		String profileUrl = null;
 		List<Long> listOfKeys = null;
-		List<MsgEventDO> listOfEvents = null;
+		List<BuzzMsgDO> listOfEvents = null;
 		Transaction tx = pm.currentTransaction();
 		Date now = new Date();
+		UserDao userDao = new UserDao();
+		UserDO user = null;
 		
 		logger.info("Getting messages by resourceId=" + resourceId);
 		
@@ -207,17 +170,22 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 			sb.append(" && resourceId == ");
 			sb.append(resourceId);
 			sb.append(")");
-			Query query = pm.newQuery(MsgEventDO.class, sb.toString());
+			Query query = pm.newQuery(BuzzMsgDO.class, sb.toString());
 			query.setOrdering("timestamp desc");
-			listOfEvents = (List<MsgEventDO>)query.execute();
+			listOfEvents = (List<BuzzMsgDO>)query.execute();
 			if (listOfEvents != null && listOfEvents.size() > 0) {
 				int len = listOfEvents.size();
 				for (i=0; i<len; i++) {
-					MsgEventDO m = (listOfEvents.get(i));
-					m.postReturn();
-					List<CommentDO> listOfComments = getCommentsViaMsgEvent(m);
+					BuzzMsgDO msg = (listOfEvents.get(i));
+					msg.postReturn();
+					List<CommentDO> listOfComments = getComments4BuzzMsg(msg);
 					if (listOfComments.size() > 0) {
-						m.setComments(listOfComments);
+						msg.setComments(listOfComments);
+					}
+					user = userDao.getUserByLLID(msg.getLlId(), false);
+					if (user != null) {
+						msg.setProfileUrl(user.getProfileUrl());
+						msg.setUsername(user.getDisplayName());
 					}
 				}
 			}
@@ -230,10 +198,10 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 		return listOfEvents;
 	}
 	
-	public List<MsgEventDO> getPrevEventsByResourceId(Long resourceId, Long lastSeq) {
+	public List<BuzzMsgDO> getPrevEventsByResourceId(Long resourceId, Long lastSeq) {
 		int i = 0;
 		List<Long> listOfKeys = null;
-		List<MsgEventDO> listOfEvents = null;
+		List<BuzzMsgDO> listOfEvents = null;
 		Transaction tx = pm.currentTransaction();
 		Date now = new Date();
 		try {
@@ -247,10 +215,10 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 			sb.append(" && resourceId == ");
 			sb.append(resourceId);
 			sb.append(")");
-			Query query = pm.newQuery(MsgEventDO.class, sb.toString());
+			Query query = pm.newQuery(BuzzMsgDO.class, sb.toString());
 			query.setRange(0, PAGESIZE);
 			query.setOrdering("sequenceNum");
-			listOfEvents = (List<MsgEventDO>)query.execute();
+			listOfEvents = (List<BuzzMsgDO>)query.execute();
 		}
 		finally {
 			if (tx.isActive()) {
@@ -260,20 +228,20 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 		return listOfEvents;
 	}
 	
-	public List<MsgEventDO> getAllEvents() {
+	public List<BuzzMsgDO> getAllMsgs() {
 		int i = 0;
 		List<Long> listOfKeys = null;
-		List<MsgEventDO> listOfEvents = null;
-		Query query = pm.newQuery(MsgEventDO.class);
+		List<BuzzMsgDO> listOfEvents = null;
+		Query query = pm.newQuery(BuzzMsgDO.class);
 		query.setOrdering("timestamp asc");
-		listOfEvents = (List<MsgEventDO>)query.execute();
+		listOfEvents = (List<BuzzMsgDO>)query.execute();
 		return listOfEvents;
 	}
 	
-	public List<MsgEventDO> getNextEvents(Long lastSeq, Long seqVer) {
+	public List<BuzzMsgDO> getNextEvents(Long lastSeq, Long seqVer) {
 		int i = 0;
 		List<Long> listOfKeys = null;
-		List<MsgEventDO> listOfEvents = null;
+		List<BuzzMsgDO> listOfEvents = null;
 		Transaction tx = pm.currentTransaction();
 		Long limit = lastSeq + PAGESIZE;
 		try {
@@ -287,9 +255,9 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 			sb.append(" && sequenceVer == ");
 			sb.append(seqVer);
 			sb.append(")");
-			Query query = pm.newQuery(MsgEventDO.class, sb.toString());
+			Query query = pm.newQuery(BuzzMsgDO.class, sb.toString());
 			query.setOrdering("sequenceNum");
-			listOfEvents = (List<MsgEventDO>)query.execute();
+			listOfEvents = (List<BuzzMsgDO>)query.execute();
 		}
 		finally {
 			if (tx.isActive()) {
@@ -299,9 +267,9 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 		return listOfEvents;
 	}
 	
-	public List<MsgEventDO> getPrevEvents(Long firstSeq, Long seqVer) {
+	public List<BuzzMsgDO> getPrevEvents(Long firstSeq, Long seqVer) {
 		List<Long> listOfKeys = null;
-		List<MsgEventDO> listOfEvents = null;
+		List<BuzzMsgDO> listOfEvents = null;
 		Transaction tx = pm.currentTransaction();
 		Long start = firstSeq - PAGESIZE;
 		
@@ -316,7 +284,7 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 			//
 			StringBuilder sb = new StringBuilder();
 			sb.append("select eventId from ");
-			sb.append(MsgEventDO.class.getName());
+			sb.append(BuzzMsgDO.class.getName());
 			sb.append("where sequenceNum > ");
 			sb.append(start);
 			sb.append(" && sequenceNum < ");
@@ -329,7 +297,7 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 			//
 			// now get all of the objects for these keys
 			//
-			listOfEvents = (List<MsgEventDO>)pm.getObjectsById(listOfKeys);
+			listOfEvents = (List<BuzzMsgDO>)pm.getObjectsById(listOfKeys);
 		}
 		finally {
 			if (tx.isActive()) {
@@ -339,18 +307,18 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 		return listOfEvents;
 	}
 	
-	public MsgEventDO getEventById(Long eventId) {
-		MsgEventDO res = null;
-		res = pm.getObjectById(MsgEventDO.class, eventId);
+	public BuzzMsgDO getMsgById(Long msgId) {
+		BuzzMsgDO res = null;
+		res = pm.getObjectById(BuzzMsgDO.class, msgId);
 		return res;
 	}
 	
 	public void incrementCommentCounter(Long eventId) {
-		MsgEventDO res = null;
+		BuzzMsgDO res = null;
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			res = pm.getObjectById(MsgEventDO.class, eventId);
+			res = pm.getObjectById(BuzzMsgDO.class, eventId);
 			int count = res.getCommentCounter();
 			count++;
 			res.setCommentCounter(count);
@@ -363,29 +331,10 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 		}
 	}
 
-	/*
-	public MsgEventDO updateEventFeatureId(MsgEventDO event, String featureId) {
-		MsgEventDO res = null;
-		Transaction tx = pm.currentTransaction();
-		try {
-			tx.begin();
-			res = pm.getObjectById(MsgEventDO.class, event.getEventId());
-			res.setGoogleMapFeatureId(featureId);
-			tx.commit();
-		}
-		finally {
-			if (tx.isActive()) {
-				tx.rollback();
-			}
-		}
-		return res;
-	}
-	*/
-	
-	public List<MsgEventDO> findClosest(double lat, double lng, long last, boolean next) {
+	public List<BuzzMsgDO> findClosest(double lat, double lng, long last, boolean next) {
 		int i = 0;
 		int retryCounter = 0;
-		List<MsgEventDO> res = null;
+		List<BuzzMsgDO> res = null;
 		List<GeoHash> geoKeys = null;
 		GeoHashCircleQuery geoQuery = null;
 		double radius = DEFAULT_RADIUS;
@@ -417,12 +366,12 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 			}
 		}
 		
-		List<MsgEventDO> results = null;
+		List<BuzzMsgDO> results = null;
 		
 		if (res != null && res.size() > 0) {
 			if (last > 0) {
-				results = new ArrayList<MsgEventDO>();
-				MsgEventDO e = null;
+				results = new ArrayList<BuzzMsgDO>();
+				BuzzMsgDO e = null;
 				int leng = res.size();
 				for (i=0; i<leng; i++) {
 					e = res.get(i);
@@ -446,10 +395,10 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 		return results;
 	}
 	
-	private List<MsgEventDO> _findClosest(List<GeoHash> geoKeys) {
+	private List<BuzzMsgDO> _findClosest(List<GeoHash> geoKeys) {
 		int i = 0;
 		GeoHash hash = null;
-		List<MsgEventDO> res = null;
+		List<BuzzMsgDO> res = null;
 		
 		logger.info("# of geo hash key(s) found: " + geoKeys.size());
 		
@@ -503,9 +452,9 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 			}
 			sb.append(")");
 			logger.info("Query string: " + sb.toString());
-			Query query = pm.newQuery(MsgEventDO.class, sb.toString());
+			Query query = pm.newQuery(BuzzMsgDO.class, sb.toString());
 			query.setOrdering("sequenceNum");
-			res = (List<MsgEventDO>)query.execute();
+			res = (List<BuzzMsgDO>)query.execute();
 			// tx.commit();
 		}
 		finally {
@@ -519,11 +468,10 @@ public class EventDao extends BaseDao implements AbstractLoaderDao {
 		return res;
 	}
 	
-	public List<MsgEventDO> getEventsByIds(List<Long> keys) {
+	public List<BuzzMsgDO> getMsgsByIds(List<Long> keys) {
 		int i = 0; 
-		MsgEventDO event = null;
-		List<MsgEventDO> list = null;
-		list = (List<MsgEventDO>)pm.getObjectsById(keys);
+		List<BuzzMsgDO> list = null;
+		list = (List<BuzzMsgDO>)pm.getObjectsById(keys);
 		return list;
 	}
 	

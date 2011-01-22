@@ -34,7 +34,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import com.zarcode.data.dao.EventDao;
+import com.zarcode.data.dao.BuzzDao;
 import com.zarcode.data.dao.ReportDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.WaterResourceDao;
@@ -65,7 +65,7 @@ public class Lake extends ResourceBase {
 		int radius = 30;
 		StringBuilder sb = null;
 		List<EventDO> list = null;
-		EventDao eventDao = null;
+		BuzzDao eventDao = null;
 		List<FeatureEntry> features = null;
 		MapClient mapClient = null;
 		int counter = 0;
@@ -113,8 +113,8 @@ public class Lake extends ResourceBase {
 	public String showGeoHash(@QueryParam("lat") double lat, @QueryParam("lng") double lng, @QueryParam("radius") int radius) {
 		int i = 0;
 		StringBuilder sb = null;
-		List<MsgEventDO> list = null;
-		EventDao eventDao = null;
+		List<BuzzMsgDO> list = null;
+		BuzzDao eventDao = null;
 		List<FeatureEntry> features = null;
 		MapClient mapClient = null;
 		int counter = 0;
@@ -128,7 +128,7 @@ public class Lake extends ResourceBase {
 		int i = 0;
 		StringBuilder sb = null;
 		List<EventDO> list = null;
-		EventDao eventDao = null;
+		BuzzDao eventDao = null;
 		List<FeatureEntry> features = null;
 		MapClient mapClient = null;
 		int counter = 0;
@@ -222,7 +222,7 @@ public class Lake extends ResourceBase {
 		int i = 0;
 		StringBuilder sb = null;
 		List<EventDO> list = null;
-		EventDao eventDao = null;
+		BuzzDao eventDao = null;
 		List<FeatureEntry> features = null;
 		MapClient mapClient = null;
 		int counter = 0;

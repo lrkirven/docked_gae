@@ -69,6 +69,9 @@ public class UserDO extends AbstractLoaderDO implements Serializable {
 	@Persistent
 	private Date createDate = null;
 	
+	@Persistent
+	private String profileUrl = null;
+	
 	public UserDO() {
 	}
 	
@@ -87,6 +90,15 @@ public class UserDO extends AbstractLoaderDO implements Serializable {
 	
 	public void setDisplayName(String d) {
 		this.displayName = d;
+	}
+	
+	@XmlElement
+	public String getProfileUrl() {
+		return profileUrl;
+	}
+	
+	public void setProfileUrl(String p) {
+		this.profileUrl = p;
 	}
 	
 	@XmlElement

@@ -20,11 +20,11 @@ import com.google.appengine.api.datastore.Text;
 import com.zarcode.app.AppCommon;
 import com.zarcode.platform.model.AbstractLoaderDO;
 
-@XmlRootElement(name = "MsgEvent") 
+@XmlRootElement(name = "BuzzMsg") 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
-public class MsgEventDO extends AbstractLoaderDO implements Serializable, Comparable<MsgEventDO> {
+public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Comparable<BuzzMsgDO> {
 	
-	private Logger logger = Logger.getLogger(MsgEventDO.class.getName());
+	private Logger logger = Logger.getLogger(BuzzMsgDO.class.getName());
 	
 	@NotPersistent
 	private String timeDisplay = null;
@@ -34,10 +34,16 @@ public class MsgEventDO extends AbstractLoaderDO implements Serializable, Compar
 	
 	@NotPersistent
 	private String messageData = null;
+	
+	@NotPersistent
+	private String profileUrl = null;
+	
+	@NotPersistent
+	private String username = null;
 
 	@PrimaryKey 
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Long eventId = null; 
+	private Long msgId = null; 
 	
 	@Persistent
 	private String title = null;
@@ -52,7 +58,7 @@ public class MsgEventDO extends AbstractLoaderDO implements Serializable, Compar
 	private String photoUrl = null;
 	
 	@Persistent
-	private String username = null;
+	private String llId = null;
 	
 	@Persistent
 	private String location = null;
@@ -90,8 +96,6 @@ public class MsgEventDO extends AbstractLoaderDO implements Serializable, Compar
 	@Persistent
 	private int commentCounter = 0;
 	
-	@Persistent
-	private String profileUrl = null;
 	
 	public void postCreation() {
 		logger.info("lat=" + lat + " lng=" + lng);
@@ -106,7 +110,6 @@ public class MsgEventDO extends AbstractLoaderDO implements Serializable, Compar
 			this.messageData = messageDataText.getValue();
 		}
 		timeDisplay = AppCommon.generateTimeOffset(createDate);
-		logger.info("postReturn: timeDisplay=" + timeDisplay);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -115,7 +118,7 @@ public class MsgEventDO extends AbstractLoaderDO implements Serializable, Compar
 	//
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public int compareTo(MsgEventDO n) {
+	public int compareTo(BuzzMsgDO n) {
 		if (n.timestamp < this.timestamp) {
 			return 1;
 		}
@@ -129,12 +132,12 @@ public class MsgEventDO extends AbstractLoaderDO implements Serializable, Compar
 	
 	
 	@XmlElement
-	public Long getEventId() {
-		return eventId;
+	public Long getMsgId() {
+		return msgId;
 	}
 
-	public void setEventId(Long eventId) {
-		this.eventId = eventId;
+	public void setMsgId(Long msgId) {
+		this.msgId = msgId;
 	}
 	
 	@XmlElement
@@ -240,12 +243,12 @@ public class MsgEventDO extends AbstractLoaderDO implements Serializable, Compar
 	}
 	
 	@XmlElement
-	public String getUsername() {
-		return username;
+	public String getLlId() {
+		return llId;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setLlId(String llId) {
+		this.llId = llId;
 	}
 	
 	@XmlElement
@@ -284,6 +287,15 @@ public class MsgEventDO extends AbstractLoaderDO implements Serializable, Compar
 		this.profileUrl = url;
 	}
 	
+	@XmlElement
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
     @XmlElement
 	public Date getCreateDate() {
 		return createDate;
@@ -294,7 +306,7 @@ public class MsgEventDO extends AbstractLoaderDO implements Serializable, Compar
 	}
 	
 	public String toString() {
-		return "MsgEventDO::" + eventId + " (username=" + username + " timestamp=" + timestamp + ")";
+		return "BuzzMsgDO::" + msgId + " (llId=" + llId + " timestamp=" + timestamp + ")";
 	}
 
 }

@@ -1,10 +1,15 @@
 package com.zarcode.data.model;
 
+import java.util.logging.Logger;
+
 import com.zarcode.common.ApplicationProps;
+import com.zarcode.data.resources.Lake;
 import com.zarcode.platform.model.AppPropDO;
 import com.zarcode.security.BlockTea;
 
 public class SecurityTokenDO {
+	
+	private Logger logger = Logger.getLogger(SecurityTokenDO.class.getName());
 
 	private String nickname = null;
 	
@@ -24,9 +29,9 @@ public class SecurityTokenDO {
 	
 	private String picasaPassword = null;
 	
-	private String fbLazyLakerKey = null;
+	private String fbKey = null;
 	
-	private String fbLazyLakerSecret = null;
+	private String fbSecret = null;
 	
 	private String serverSecret = null;
 	
@@ -41,34 +46,34 @@ public class SecurityTokenDO {
 	public void postCreation() {
 	}
 	
-	public String getFbLazyLakerKey() {
-		return fbLazyLakerKey;
+	public String getFbKey() {
+		return fbKey;
 	}
 	
-	public void setFbLazyLakerKey(String fbLazyLakerKey) {
-		this.fbLazyLakerKey = fbLazyLakerKey;
+	public void setFbKey(String fbKey) {
+		this.fbKey = fbKey;
 	}
 	
-	public void encryptThenSetFbLazyLakerKey(String key) {
+	public void encryptThenSetFbKey(String key) {
 		AppPropDO prop = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
 		BlockTea.BIG_ENDIAN = false;
 		String cipherText = BlockTea.encrypt(key, prop.getStringValue());
-		this.fbLazyLakerSecret = cipherText;
+		this.fbKey = cipherText;
 	}
 	
-	public String getFbLazyLakerSecret() {
-		return fbLazyLakerSecret;
+	public String getFbSecret() {
+		return fbSecret;
 	}
 	
-	public void setFbLazyLakerSecret(String fbLazyLakerSecret) {
-		this.fbLazyLakerSecret = fbLazyLakerSecret;
+	public void setFbSecret(String fbSecret) {
+		this.fbSecret = fbSecret;
 	}
 	
-	public void encryptThenSetFbLazyLakerSecret(String secret) {
+	public void encryptThenSetFbSecret(String secret) {
 		AppPropDO prop = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
 		BlockTea.BIG_ENDIAN = false;
 		String cipherText = BlockTea.encrypt(secret, prop.getStringValue());
-		this.fbLazyLakerSecret = cipherText;
+		this.fbSecret = cipherText;
 	}
 	
 	public String getPicasaUser() {
@@ -161,6 +166,9 @@ public class SecurityTokenDO {
 		BlockTea.BIG_ENDIAN = false;
 		String cipherText = BlockTea.encrypt(llId, prop.getStringValue());
 		this.llId = cipherText;
+		AppPropDO p2 = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
+		String c2s = BlockTea.encrypt(llId, p2.getStringValue());
+		logger.info("C-to-S encrypted ---> " + c2s);
 	}
 	
 	public String getUserId() {
