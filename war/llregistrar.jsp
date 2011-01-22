@@ -14,6 +14,7 @@
 
 <html>
   <head>
+  	<title>Docked</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     
     <!--                                           -->
@@ -27,11 +28,6 @@
     <!--                                                               -->
     <link type="text/css" rel="stylesheet" href="llregistrar.css">
 
-    <!--                                           -->
-    <!-- Any title is fine                         -->
-    <!--                                           -->
-    <title>LazyLaker</title>
-    
     <!--                                           -->
     <!-- This script loads your compiled module.   -->
     <!-- If you add any GWT meta tags, they must   -->

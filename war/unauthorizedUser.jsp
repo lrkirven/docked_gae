@@ -2,6 +2,7 @@
 <%@ page import="java.net.URLDecoder" %>
 <html>
 <head>
+	<title>Docked</title>
 	<style type="text/css">
 	#box {
 	    position:absolute;

@@ -8,6 +8,7 @@
 <%@ page import="com.zarcode.data.dao.UserDao" %>
 <html>
 <head>
+	<title>Docked</title>
 </head>
 <body>
 	<b>Docked Sign In<b><br><br>Login is not secure so cannot process request.<br>
