@@ -13,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
 import com.google.gson.Gson;
@@ -22,6 +23,7 @@ import com.zarcode.common.Util;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.model.LocalStatusDO;
+import com.zarcode.data.model.PingDataDO;
 import com.zarcode.data.model.ReadOnlyUserDO;
 import com.zarcode.data.model.UpdateTaskDO;
 import com.zarcode.data.model.UserDO;
@@ -36,6 +38,9 @@ public class User extends ResourceBase {
 	
 	@Context 
 	UriInfo uriInfo = null;
+	
+	@Context 
+	SecurityContext context = null;
     
 	String container = null;
 	
@@ -57,6 +62,13 @@ public class User extends ResourceBase {
 		String object = null;
 		String field = null;
 		String value = null;
+		
+		if (context != null) {
+			if (!context.isSecure()) {
+				logger.warning("*** REJECTED -- Request is not SECURE ***");
+				return null;
+			}
+		}
 	
 		if (rawUpdateTask != null && rawUpdateTask.length() > 0) {
 			task = new Gson().fromJson(rawUpdateTask, UpdateTaskDO.class);
@@ -146,13 +158,14 @@ public class User extends ResourceBase {
 		logger.info("Decrypted ---->" + decrypted + "<---");
 	}
 	
-	@GET
+	@POST
 	@Produces("application/json")
-	@Path("/ping/{llId}")
-    public LocalStatusDO ping(@PathParam("llId") String llId, @QueryParam("lat") double lat, @QueryParam("lng") double lng, @QueryParam("devId") String deviceId) {
+	@Path("/ping")
+    public LocalStatusDO ping(String rawPingData) {
 		String resp = null;
 		UserDao userDao = null;
 		UserDO user = null;
+		PingDataDO pingData = null;
 		ReadOnlyUserDO readOnlyUser = null;
 		WaterResourceDao waterResDao = null;
 		List<UserDO> usersAtLake = null;
@@ -160,8 +173,44 @@ public class User extends ResourceBase {
 		LocalStatusDO empty = new LocalStatusDO();
 		boolean anonymous = false;
 		
+		String llId = null;
+		double lat = 0;
+		double lng = 0;
+		String deviceId = null;
+		
+		if (context != null) {
+			if (!context.isSecure()) {
+				logger.warning("*** REJECTED -- Request is not SECURE ***");
+				return null;
+			}
+		}
+		
+		if (rawPingData != null && rawPingData.length() > 0) {
+			pingData = new Gson().fromJson(rawPingData, PingDataDO.class);
+			try {
+				llId = pingData.getLlId();
+				logger.info("BEFORE llId [" + llId + "]");
+				llId = URLDecoder.decode(llId);
+				logger.info("AFTER llId [" + llId + "]");
+				lat = pingData.getLat();
+				lng = pingData.getLng();
+				deviceId = pingData.getDeviceId();
+				deviceId = URLDecoder.decode(deviceId);
+			}
+			catch (Exception e1) {
+				logger.warning("EXCEPTION ::: " + e1.getMessage());
+				return null;
+			}
+		}
+		
 		if (llId == null || llId.length() == 0) {
 			return empty;
+		}
+		
+		// URL Decode parameters
+		llId = URLDecoder.decode(llId);
+		if (deviceId != null) {
+			deviceId = URLDecoder.decode(deviceId);
 		}
 		
 		if (AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {

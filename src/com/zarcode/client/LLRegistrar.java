@@ -182,7 +182,7 @@ public class LLRegistrar implements EntryPoint {
 			 */
 			private void registerEmailAddr() {
 				manualRegisterBtn.setEnabled(false);
-				dialogBox.setAnimationEnabled(true);
+				
 				final String emailAddrProvided = emailAddrField.getText();
 				serverResponseLabel.setText("");
 				registerService.manualRegister(emailAddrProvided,
@@ -201,10 +201,10 @@ public class LLRegistrar implements EntryPoint {
 								Window.open(registerReturnUri, "_self", ""); 
 							}
 							else {
-								dialogBox.setText("Email Address Registration");
-								serverResponseLabel.removeStyleName("serverResponseLabelError");
-								serverResponseLabel.setHTML(result);
 								dialogBox.center();
+								dialogBox.setAnimationEnabled(true);
+								dialogBox.setWidth("300px");
+								dialogBox.setText(result);
 								closeButton.setFocus(true);
 								dialogBox.show();
 							}
