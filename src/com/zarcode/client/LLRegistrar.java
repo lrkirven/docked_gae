@@ -3,8 +3,6 @@ package com.zarcode.client;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -12,11 +10,9 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
-import com.google.gwt.event.logical.shared.ResizeEvent;
-import com.google.gwt.event.logical.shared.ResizeHandler;
-import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -28,12 +24,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
-import com.google.gwt.user.client.ui.Anchor;
-import com.google.gwt.http.client.URL;
-import com.zarcode.security.BlockTea;
-import com.zarcode.security.OpenIdManager;
-import com.zarcode.shared.model.OpenIdProviderDO;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -181,8 +171,8 @@ public class LLRegistrar implements EntryPoint {
 			 * Send the name from the nameField to the server and wait for a response.
 			 */
 			private void registerEmailAddr() {
+				Window.setTitle(Common.APPNAME);
 				manualRegisterBtn.setEnabled(false);
-				
 				final String emailAddrProvided = emailAddrField.getText();
 				serverResponseLabel.setText("");
 				registerService.manualRegister(emailAddrProvided,
@@ -201,12 +191,18 @@ public class LLRegistrar implements EntryPoint {
 								Window.open(registerReturnUri, "_self", ""); 
 							}
 							else {
+								emailAddrField.setText("");
+								/*
+								Window.alert(result);
+								*/
 								dialogBox.center();
 								dialogBox.setAnimationEnabled(true);
-								dialogBox.setWidth("300px");
+								dialogBox.setWidth("320px");
 								dialogBox.setText(result);
 								closeButton.setFocus(true);
-								dialogBox.show();
+								/*
+								manualRegisterBtn.setEnabled(true);
+								*/
 							}
 						}
 					}
@@ -223,6 +219,7 @@ public class LLRegistrar implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
+		Window.setTitle(Common.APPNAME);
 		closeButton = new Button("Close", new ClickListener() {
 	        public void onClick(Widget sender) {
 	        	dialogBox.hide();

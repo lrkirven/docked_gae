@@ -58,7 +58,7 @@ public class RegisterServiceImpl extends RemoteServiceServlet implements Registe
 			
 			UserDao userDao = new UserDao();
 			if (userDao.userExists(emailAddr)) {
-				res = "Email address is already been registered.";
+				res = "Email address has already been registered.";
 			}
 			else {
 				IsEMailResult result = IsEMail.is_email_verbose(emailAddr, CHECK_DNS);
@@ -75,13 +75,13 @@ public class RegisterServiceImpl extends RemoteServiceServlet implements Registe
 					break;
 		
 				case ERROR:
-					res = "Your email address is not VALID. Please select another email account for registration.";
+					res = "Your email address is not VALID. Please select another email acct for registration.";
 					break;
 				}
 			}
 		}
 		catch (Exception e) {
-			res = "Your email address did not pass our verification process (DNS). Please select another email account for registration.";
+			res = "Your email address did not pass our verification process. Please select another email acct for registration.";
 		}
 		return res;
 	}
