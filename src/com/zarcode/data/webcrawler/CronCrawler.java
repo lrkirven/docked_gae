@@ -18,6 +18,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.tidy.Tidy;
 
+import com.zarcode.app.AppCommon;
 import com.zarcode.common.EmailHelper;
 import com.zarcode.common.Util;
 import com.zarcode.data.exception.WebCrawlException;
@@ -99,7 +100,7 @@ public class CronCrawler extends HttpServlet {
     			sb.append("\n\n");
     			sb.append("[EXCEPTION]\n");
     			sb.append(Util.getStackTrace(e));
-    			EmailHelper.sendAppAlert("*** pix fishing crawling changes ****", sb.toString());
+    			EmailHelper.sendAppAlert("*** pix fishing crawling changes ****", sb.toString(), AppCommon.APPNAME);
     			logger.severe("Crawling failed for state=" + state + " [EXCEPTION]\n" + Util.getStackTrace(e));
     		}
     	}

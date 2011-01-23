@@ -270,7 +270,7 @@ public class GoogleGeoRSSCrawler extends WebCrawler {
 	 					}
 	 				}
 	 				logger.info("Processing is done on index=" + i);
-	 				EmailHelper.sendAppAlert(AppCommon.APPNAME + ": GeoRSSFeed Status", "Completed GeoRSS processing\nURL: " + url + "\nLAST INDEX: " + i);
+	 				EmailHelper.sendAppAlert(AppCommon.APPNAME + ": GeoRSSFeed Status", "Completed GeoRSS processing\nURL: " + url + "\nLAST INDEX: " + i, AppCommon.APPNAME);
 	 			}
 	 			else {
 	 				throw new WebCrawlException("GeoRSS Feed is empty!", urlStr);
