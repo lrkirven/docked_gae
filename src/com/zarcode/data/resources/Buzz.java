@@ -1,5 +1,6 @@
 package com.zarcode.data.resources;
 
+import java.net.URLDecoder;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,38 +57,24 @@ public class Buzz extends ResourceBase {
 	
 	@POST
 	@Produces("application/json")
-	@Path("/{resourceId}/msgEvent")
-	public BuzzMsgDO addMsgEventToRegion(@PathParam("resourceId") Long resourceId, @QueryParam("id") String llId, String rawBuzzMsg,  @QueryParam("fbPostFlag") int fbPostFlag) {
+	@Path("/{resourceId}/newMsg")
+	public BuzzMsgDO addMsgEventToRegion(@PathParam("resourceId") Long resourceId, String rawBuzzMsg) {
 		List<BuzzMsgDO> res = null;
 		BuzzDao dao = null;
 		WaterResourceDao waterResDao = null;
 		UserDao userDao = null;
 		int rows = 0;
 		BuzzMsgDO buzzMsg = null;
-		BuzzMsgDO newEvent = null;
+		BuzzMsgDO newBuzzMsg = null;
+		String llId = null;
 	
 		logger.info("Process NEW event: " + rawBuzzMsg);
 		
 		if (context != null) {
 			if (!context.isSecure()) {
 				logger.warning("*** REJECTED -- Request is not SECURE ***");
-				return newEvent;
+				return newBuzzMsg;
 			}
-		}
-		
-		if (!AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
-			AppPropDO prop = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
-			BlockTea.BIG_ENDIAN = false;
-			String plainText = BlockTea.decrypt(llId, prop.getStringValue());
-			logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
-			llId = plainText;
-		}
-		
-		userDao = new UserDao();
-		UserDO user = userDao.getUserByLLID(llId, false);
-		if (user == null) {
-			logger.warning("*** REJECTED -- Unable to find a matching user for llId=" + llId);
-			return buzzMsg;
 		}
 		
 		if (rawBuzzMsg != null && rawBuzzMsg.length() > 0) {
@@ -95,8 +82,44 @@ public class Buzz extends ResourceBase {
 			try {
 				if (buzzMsg != null) {
 					buzzMsg.postCreation();
+				
+					//
+					// URL decode
+					//
+					llId = URLDecoder.decode(buzzMsg.getLlId());
+					logger.info("URL DECODED -- llId [" + llId + "]");
+					
+					if (AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
+						logger.warning("*** REJECTED -- ANONYMOUS users cannot post buzzMsgs");
+						return newBuzzMsg;
+					}
+				
+					//
+					// decrypt user token
+					//
+					AppPropDO prop = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
+					BlockTea.BIG_ENDIAN = false;
+					String plainText = BlockTea.decrypt(llId, prop.getStringValue());
+					logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
+					llId = plainText;
+					
+					//
+					// check if this is a REAL user
+					//
+					userDao = new UserDao();
+					UserDO user = userDao.getUserByLLID(llId, false);
+					if (user == null) {
+						logger.warning("*** REJECTED -- Unable to find a matching user for llId=" + llId);
+						return newBuzzMsg;
+					}
+					
+					//
+					// message is saved with a clear llId
+					//
+					buzzMsg.setLlId(llId);
+					
 					dao = new BuzzDao();
-					newEvent = dao.addMsg(buzzMsg);
+					newBuzzMsg = dao.addMsg(buzzMsg);
 					//
 					// since event was created inside lake area, update last communication
 					//
@@ -110,7 +133,7 @@ public class Buzz extends ResourceBase {
 							logger.severe("Unable to update lastUpdated timestamp for water resource");
 						}
 					}
-					logger.info("Successfully added new event -- " + newEvent);
+					logger.info("Successfully added new event -- " + newBuzzMsg);
 				}
 			}
 			catch (Exception e) {
@@ -120,8 +143,7 @@ public class Buzz extends ResourceBase {
 		else {
 			logger.warning("Event JSON instance is empty");
 		}
-		logger.info("Returning: " + newEvent);
-		return newEvent;
+		return newBuzzMsg;
 	}
 	
 	@POST
@@ -215,14 +237,14 @@ public class Buzz extends ResourceBase {
 		List<BuzzMsgDO> list = null;
 		List<WaterResourceDO> resourceList = null;
 		WaterResourceDO res = null;
-		BuzzDao eventDao = null;
+		BuzzDao buzzDao = null;
 		WaterResourceDao waterResDao = null;
 		boolean bFindAll = false;
 		
 		logger.info("Entered");
 		
 		try {
-			eventDao = new BuzzDao();
+			buzzDao = new BuzzDao();
 			results = new ArrayList<BuzzMsgDO>();
 			waterResDao = new WaterResourceDao();
 			logger.info("QUERY: Searching for local water resources ...");
@@ -235,7 +257,7 @@ public class Buzz extends ResourceBase {
 				logger.info("RESULT: Found " + resourceList.size() + " local lakes ...");
 				for (i=0; i<resourceList.size(); i++) {
 					res = resourceList.get(i);
-					list = eventDao.getNextEventsByResourceId(res.getResourceId());
+					list = buzzDao.getNextEventsByResourceId(res.getResourceId());
 					if (list != null && list.size() > 0) {
 						logger.info("Num of message(s): " + list.size() + " -- at resource --> "  + res.getName() + 
 								" id=" +  res.getResourceId());
@@ -275,7 +297,7 @@ public class Buzz extends ResourceBase {
 	private void testEncrypt() {
 		AppPropDO prop = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
 		byte key[] = prop.getStringValue().getBytes();
-		String src = "lrkirven@gmail.com";
+		String src = "lrkirven@gmail.com000";
 		byte plainSource[] = src.getBytes();
 		logger.info("*** Test 1");
 		BlockTea.BIG_ENDIAN = false;
@@ -311,7 +333,6 @@ public class Buzz extends ResourceBase {
 		WaterResourceDao waterResDao = null;
 		boolean bFindAll = false;
 		
-		logger.info("Entered");
 		try {
 			eventDao = new BuzzDao();
 			

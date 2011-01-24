@@ -207,12 +207,6 @@ public class User extends ResourceBase {
 			return empty;
 		}
 		
-		// URL Decode parameters
-		llId = URLDecoder.decode(llId);
-		if (deviceId != null) {
-			deviceId = URLDecoder.decode(deviceId);
-		}
-		
 		if (AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
 			anonymous = true;
 			logger.info("ANONYMOUS user accessing the service.");
