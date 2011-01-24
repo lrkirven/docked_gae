@@ -9,35 +9,11 @@
 <%@ page import="com.zarcode.data.dao.UserDao" %>
 <%
 	String redirectURL = "http://maps.google.com/";
-	String llId = request.getParameter("id");
 	String lat = request.getParameter("lat");
 	String lng = request.getParameter("lng");
-	if (llId != null) {
-		Double latObj = null;
-		Double lngObj = null;
-		if ("ABC123".equalsIgnoreCase(llId)) {
-			latObj = Double.parseDouble(lat);
-			pageContext.setAttribute("lat", lat);
-			lngObj = Double.parseDouble(lng);
-			pageContext.setAttribute("lng", lng);
-			pageContext.setAttribute("draggable", "false");
-		}
-		else {
-			UserDao userDao = new UserDao();
-			UserDO userDO = userDao.getUserByLLID(llId, true);	
-			if (userDO != null) {
-				latObj = new Double(userDO.getLat());
-				pageContext.setAttribute("lat", latObj);
-				lngObj = new Double(userDO.getLng());
-				pageContext.setAttribute("lng", lngObj);
-				pageContext.setAttribute("draggable", "true");
-			}
-		}
-	}
-	else {
-		System.out.println("Unable to find 'id' in request");
-    	response.sendRedirect(redirectURL);
-	}	
+	pageContext.setAttribute("lat", lat);
+	pageContext.setAttribute("lng", lng);
+	pageContext.setAttribute("draggable", "true");	
 %>
 
 <html>
@@ -117,8 +93,9 @@
 	//	
 	function initializeMap() {
 		var latlng = new google.maps.LatLng(<%= pageContext.getAttribute("lat") %>, <%= pageContext.getAttribute("lng") %> );
+		var minZoomLevel = 11;
  		var myOptions = {
-   	  		zoom: 11,
+   	  		zoom: minZoomLevel,
    	  		navigationControl: true,
      		center: latlng,
      		draggable: <%= pageContext.getAttribute("draggable") %>,
@@ -130,6 +107,11 @@
     	google.maps.event.addListener(map, 'bounds_changed', function() {
     		boundsChangedFlag = true;
 		});
+		google.maps.event.addListener(map, 'zoom_changed', function() {
+     		if (map.getZoom() < minZoomLevel) { 
+     			map.setZoom(minZoomLevel);
+     		}
+   		});
 		google.maps.event.addListener(map, 'idle', function() {
 			if (boundsChangedFlag) {
 				boundsChangedFlag = false;
@@ -184,15 +166,13 @@
  			mc.clearMarkers();
  		}
  		
-    	console.log("CLIENT: Trying to retrieve ACTIVE users ...");
+    	console.log("CLIENT: Trying to retrieve buzz msgs ...");
     	
 		var foundUser = false;
  		var markers = [];
  		var bounds = new google.maps.LatLngBounds();
  		var center = map.getCenter();
  			
-  		// url: "resources/users/active",
-  		
  		$.ajax({
  			type: "GET",
   			url: "resources/buzz/bylatlng?lat=" + center.lat() + "&lng=" + center.lng(),
