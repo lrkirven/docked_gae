@@ -214,4 +214,12 @@ public class SecurityTokenDO {
 		this.status = s;
 	}
 	
+	public String getErrorMsg() {
+		return errorMsg;
+	}
+	
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
+	
 }

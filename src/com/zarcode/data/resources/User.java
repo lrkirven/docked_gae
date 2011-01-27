@@ -81,14 +81,14 @@ public class User extends ResourceBase {
 			rToken = new Gson().fromJson(rawRegisterToken, RegisterTokenDO.class);
 			try {
 				emailAddr = rToken.getEmailAddr();
-				logger.info("BEFORE llId [" + emailAddr + "]");
-				// llId = new URI(llId).toASCIIString();
 				emailAddr = URLDecoder.decode(emailAddr);
-				logger.info("AFTER llId [" + emailAddr + "]");
+				logger.info("emailAddr [" + emailAddr + "]");
 				displayName = rToken.getDisplayName();
 				displayName = URLDecoder.decode(displayName);
+				logger.info("displayName [" + displayName + "]");
 				registerSecret = rToken.getRegisterSecret();
 				registerSecret = URLDecoder.decode(registerSecret);
+				logger.info("registerSecret [" + registerSecret + "]");
 			}
 			catch (Exception e1) {
 				logger.warning("EXCEPTION ::: " + e1.getMessage());
