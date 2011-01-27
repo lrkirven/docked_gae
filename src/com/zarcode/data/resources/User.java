@@ -1,6 +1,5 @@
 package com.zarcode.data.resources;
 
-import java.net.URI;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +15,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
+import com.dominicsayers.isemail.IsEMail;
+import com.dominicsayers.isemail.IsEMailResult;
+import com.dominicsayers.isemail.GeneralState;
 import com.google.gson.Gson;
 import com.zarcode.app.AppCommon;
 import com.zarcode.common.ApplicationProps;
@@ -25,6 +27,7 @@ import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.model.LocalStatusDO;
 import com.zarcode.data.model.PingDataDO;
 import com.zarcode.data.model.ReadOnlyUserDO;
+import com.zarcode.data.model.RegisterTokenDO;
 import com.zarcode.data.model.SecurityTokenDO;
 import com.zarcode.data.model.UpdateTaskDO;
 import com.zarcode.data.model.UserDO;
@@ -63,27 +66,28 @@ public class User extends ResourceBase {
 		String emailAddr = null;
 		String displayName = null;
 		String value = null;
-		SecurityTokenDO token = null;
+		SecurityTokenDO sToken = null;
+		RegisterTokenDO rToken = null;
 		String registerSecret = null;
 		
 		if (context != null) {
 			if (!context.isSecure()) {
 				logger.warning("*** REJECTED -- Request is not SECURE ***");
-				return null;
+				return (new SecurityTokenDO(88, "Request must be secure"));
 			}
 		}
 	
 		if (rawRegisterToken != null && rawRegisterToken.length() > 0) {
-			token = new Gson().fromJson(rawRegisterToken, SecurityTokenDO.class);
+			rToken = new Gson().fromJson(rawRegisterToken, RegisterTokenDO.class);
 			try {
-				emailAddr = token.getEmailAddr();
+				emailAddr = rToken.getEmailAddr();
 				logger.info("BEFORE llId [" + emailAddr + "]");
 				// llId = new URI(llId).toASCIIString();
 				emailAddr = URLDecoder.decode(emailAddr);
 				logger.info("AFTER llId [" + emailAddr + "]");
-				displayName = task.getValue();
-				// value = new URI(value).toASCIIString();
+				displayName = rToken.getDisplayName();
 				displayName = URLDecoder.decode(displayName);
+				registerSecret = rToken.getRegisterSecret();
 				registerSecret = URLDecoder.decode(registerSecret);
 			}
 			catch (Exception e1) {
@@ -91,10 +95,10 @@ public class User extends ResourceBase {
 				return null;
 			}
 		}
-	
-		//
-		// get register secret and decrypt with anonymous key
-		//
+
+		/*
+		 * Check register secret
+		 */
 		if (registerSecret != null) {
 			AppPropDO p = ApplicationProps.getInstance().getProp("REGISTER_SECRET");
 			BlockTea.BIG_ENDIAN = false;
@@ -102,13 +106,30 @@ public class User extends ResourceBase {
 			String savedSecret = p.getStringValue();
 			if (!savedSecret.equalsIgnoreCase(plainTextSecret)) {
 				logger.warning("*** Register Secret [" + savedSecret + "] does not match incoming secret [" + plainTextSecret + "]");
-				return null;
+				return (new SecurityTokenDO(77, "Registration secret is not matching expected secret."));
 			}
 		}
 		
-		if (emailAddr == null || emailAddr.length() == 0) {
-			logger.warning("*** Incoming email address is not VALID ***");
-			return null;
+		/*
+		 * Invalid email address
+		 */
+		try {
+			IsEMailResult result = IsEMail.is_email_verbose(emailAddr, false);
+			if (result.getState() != GeneralState.OK) {
+				logger.warning("*** Incoming email address is not VALID ***");
+				return (new SecurityTokenDO(66, "Incoming email address is not VALID"));
+			}
+		}
+		catch (Exception e1) {
+			return (new SecurityTokenDO(66, "Incoming email address is not VALID [" + e1.getMessage() + "]"));
+		}
+	
+		/*
+		 * Duplicate email address
+		 */
+		dao = new UserDao();
+		if (dao.userExists(emailAddr)) {
+			return (new SecurityTokenDO(55, "Email address has already been registered"));
 		}
 		
 		try {
@@ -119,18 +140,19 @@ public class User extends ResourceBase {
 			AppPropDO p1 = ApplicationProps.getInstance().getProp("PICASA_PASSWORD");
 			AppPropDO p2 = ApplicationProps.getInstance().getProp("FB_API_KEY");
 			AppPropDO p3 = ApplicationProps.getInstance().getProp("FB_SECRET");
-			token.encryptThenSetEmailAddr(emailAddr);
-			token.encryptThenSetLLId(llId);
-			token.setNickname(nickname);
-			token.encryptThenSetPicasaUser(p0.getStringValue());
-			token.encryptThenSetPicasaPassword(p1.getStringValue());
-			token.encryptThenSetFbKey(p2.getStringValue());
-			token.encryptThenSetFbSecret(p3.getStringValue());
+			sToken.encryptThenSetEmailAddr(emailAddr);
+			sToken.encryptThenSetLLId(llId);
+			sToken.setNickname(nickname);
+			sToken.encryptThenSetPicasaUser(p0.getStringValue());
+			sToken.encryptThenSetPicasaPassword(p1.getStringValue());
+			sToken.encryptThenSetFbKey(p2.getStringValue());
+			sToken.encryptThenSetFbSecret(p3.getStringValue());
 		}
 		catch (Exception e) {
-			logger.severe("EXCEPTION ::: " + e.getMessage());
+			logger.severe("EXCEPTION :: " + e.getStackTrace());
+			return (new SecurityTokenDO(44, "System is not allowing registration. Please contact support."));
 		}
-		return token;
+		return sToken;
 		
 	} // register
 

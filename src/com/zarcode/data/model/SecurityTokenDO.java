@@ -38,12 +38,21 @@ public class SecurityTokenDO {
 	
 	private String serverSecret = null;
 	
+	private int status = 0;
+	
+	private String errorMsg = null;
+	
 	public SecurityTokenDO() {
 		AppPropDO p1 = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
 		AppPropDO p2 = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
 		BlockTea.BIG_ENDIAN = false;
 		String cipherText = BlockTea.encrypt(p2.getStringValue(), p1.getStringValue());
 		this.serverSecret = cipherText;
+	}
+	
+	public SecurityTokenDO(int status, String errorMsg) {
+		this.status = status;
+		this.errorMsg = errorMsg;
 	}
 	
 	public void postCreation() {
@@ -195,6 +204,14 @@ public class SecurityTokenDO {
 		BlockTea.BIG_ENDIAN = false;
 		String cipherText = BlockTea.encrypt(userId, prop.getStringValue());
 		this.userId = cipherText;
+	}
+	
+	public int getStatus() {
+		return status;
+	}
+	
+	public void setStatus(int s) {
+		this.status = s;
 	}
 	
 }
