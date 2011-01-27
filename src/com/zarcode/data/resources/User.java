@@ -25,10 +25,12 @@ import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.model.LocalStatusDO;
 import com.zarcode.data.model.PingDataDO;
 import com.zarcode.data.model.ReadOnlyUserDO;
+import com.zarcode.data.model.SecurityTokenDO;
 import com.zarcode.data.model.UpdateTaskDO;
 import com.zarcode.data.model.UserDO;
 import com.zarcode.data.model.WaterResourceDO;
 import com.zarcode.platform.model.AppPropDO;
+import com.zarcode.security.AppRegister;
 import com.zarcode.security.BlockTea;
 
 @Path("/users")
@@ -47,6 +49,90 @@ public class User extends ResourceBase {
 	private static final int MAXPAGE = 10;
 	
 	private static final String ANONYMOUS_KEY = "ABCDEF7891011121314";
+	
+	@POST
+	@Produces("application/json")
+	@Path("/register")
+	public SecurityTokenDO register(String rawRegisterToken) {
+		UserDO res = null;
+		UserDao dao = null;
+		int rows = 0;
+		String resp = null;
+		UserDO newUser = null;
+		UpdateTaskDO task = null;
+		String emailAddr = null;
+		String displayName = null;
+		String value = null;
+		SecurityTokenDO token = null;
+		String registerSecret = null;
+		
+		if (context != null) {
+			if (!context.isSecure()) {
+				logger.warning("*** REJECTED -- Request is not SECURE ***");
+				return null;
+			}
+		}
+	
+		if (rawRegisterToken != null && rawRegisterToken.length() > 0) {
+			token = new Gson().fromJson(rawRegisterToken, SecurityTokenDO.class);
+			try {
+				emailAddr = token.getEmailAddr();
+				logger.info("BEFORE llId [" + emailAddr + "]");
+				// llId = new URI(llId).toASCIIString();
+				emailAddr = URLDecoder.decode(emailAddr);
+				logger.info("AFTER llId [" + emailAddr + "]");
+				displayName = task.getValue();
+				// value = new URI(value).toASCIIString();
+				displayName = URLDecoder.decode(displayName);
+				registerSecret = URLDecoder.decode(registerSecret);
+			}
+			catch (Exception e1) {
+				logger.warning("EXCEPTION ::: " + e1.getMessage());
+				return null;
+			}
+		}
+	
+		//
+		// get register secret and decrypt with anonymous key
+		//
+		if (registerSecret != null) {
+			AppPropDO p = ApplicationProps.getInstance().getProp("REGISTER_SECRET");
+			BlockTea.BIG_ENDIAN = false;
+			String plainTextSecret = BlockTea.decrypt(registerSecret, ANONYMOUS_KEY);
+			String savedSecret = p.getStringValue();
+			if (!savedSecret.equalsIgnoreCase(plainTextSecret)) {
+				logger.warning("*** Register Secret [" + savedSecret + "] does not match incoming secret [" + plainTextSecret + "]");
+				return null;
+			}
+		}
+		
+		if (emailAddr == null || emailAddr.length() == 0) {
+			logger.warning("*** Incoming email address is not VALID ***");
+			return null;
+		}
+		
+		try {
+			newUser = AppRegister.createNewUserAccountByEmailAddr2(emailAddr, displayName);
+			String nickname = newUser.getDisplayName();
+			String llId = newUser.getLLId();
+			AppPropDO p0 = ApplicationProps.getInstance().getProp("PICASA_USER");
+			AppPropDO p1 = ApplicationProps.getInstance().getProp("PICASA_PASSWORD");
+			AppPropDO p2 = ApplicationProps.getInstance().getProp("FB_API_KEY");
+			AppPropDO p3 = ApplicationProps.getInstance().getProp("FB_SECRET");
+			token.encryptThenSetEmailAddr(emailAddr);
+			token.encryptThenSetLLId(llId);
+			token.setNickname(nickname);
+			token.encryptThenSetPicasaUser(p0.getStringValue());
+			token.encryptThenSetPicasaPassword(p1.getStringValue());
+			token.encryptThenSetFbKey(p2.getStringValue());
+			token.encryptThenSetFbSecret(p3.getStringValue());
+		}
+		catch (Exception e) {
+			logger.severe("EXCEPTION ::: " + e.getMessage());
+		}
+		return token;
+		
+	} // register
 
 	@POST
 	@Produces("application/json")

@@ -104,6 +104,7 @@ public class AppRegister extends HttpServlet {
     			/**
     			 * MAJOR HACK 
     			 */
+    			/*
     			String lastChar = null;
     			for (;;) {
     				lastChar = randomVal.substring(randomVal.length()-1, randomVal.length());
@@ -114,6 +115,7 @@ public class AppRegister extends HttpServlet {
     					break;
     				}
     			}
+    			*/
     			String llId = email + "::" + randomVal;
     			newUser.setLLId(llId);
     			String[] addrList = email.split("@");
@@ -124,5 +126,26 @@ public class AppRegister extends HttpServlet {
 	    	else {
 	    		throw new InvalidEmailAddrException();
 	    	}
+	    }
+	    
+	    public static UserDO createNewUserAccountByEmailAddr2(String emailAddr, String displayName) throws InvalidEmailAddrException {
+	    	UserDao userDao = new UserDao();
+	    	UserDO newUser = new UserDO();
+	    	if (emailAddr != null && emailAddr.length() > 0) {
+	    		String email = emailAddr.toLowerCase();
+    			newUser.setEmailAddr(email);
+    			newUser.setDisplayName(displayName);
+    			String randomVal = UUID.randomUUID().toString();
+    			String llId = email + "::" + randomVal;
+    			newUser.setLLId(llId);
+    			String[] addrList = email.split("@");
+    			newUser.setDisplayName(addrList[0]);
+    			userDao.addUser(newUser);
+    			logger.info("Created new user --- llId=" + llId + " emailAddr=" + email);
+	    	}
+	    	else {
+	    		throw new InvalidEmailAddrException();
+	    	}
+	    	return newUser;
 	    }
 }

@@ -2,11 +2,14 @@ package com.zarcode.data.model;
 
 import java.util.logging.Logger;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.zarcode.common.ApplicationProps;
 import com.zarcode.data.resources.Lake;
 import com.zarcode.platform.model.AppPropDO;
 import com.zarcode.security.BlockTea;
 
+@XmlRootElement(name = "SecurityToken") 
 public class SecurityTokenDO {
 	
 	private Logger logger = Logger.getLogger(SecurityTokenDO.class.getName());

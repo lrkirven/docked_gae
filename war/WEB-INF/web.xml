@@ -44,6 +44,7 @@
         <url-pattern>/cleaner</url-pattern>
     </servlet-mapping>
 	
+	<!--
   	<servlet>
         <servlet-name>OpenIdManager</servlet-name>
         <servlet-class>com.zarcode.security.OpenIdManager</servlet-class>
@@ -106,6 +107,7 @@
         <servlet-name>RegistrationFail</servlet-name>
         <url-pattern>/registrationFail</url-pattern>
     </servlet-mapping>
+	-->
 	
 	<servlet>
         <servlet-name>UnauthorizedUser</servlet-name>
@@ -116,6 +118,7 @@
         <url-pattern>/unauthorizedUser</url-pattern>
     </servlet-mapping>
 	
+	<!--
 	<servlet>
         <servlet-name>RegisterReturn</servlet-name>
         <jsp-file>/registerReturn.jsp</jsp-file>
@@ -125,15 +128,6 @@
         <url-pattern>/registerReturn</url-pattern>
     </servlet-mapping>
 	
-	<servlet> 
-  		<servlet-name>loginQuery</servlet-name> 
-  		<servlet-class>com.zarcode.security.LoginQuery</servlet-class> 
-   	</servlet> 
-	<servlet-mapping> 
-  		<servlet-name>loginQuery</servlet-name> 
-  		<url-pattern>/loginQuery</url-pattern> 
-	</servlet-mapping>
-	
 	<security-constraint>
     	<web-resource-collection>
         	<url-pattern>/register</url-pattern>
@@ -142,6 +136,7 @@
      	   <role-name>*</role-name>
     	</auth-constraint>
 	</security-constraint>
+	-->
 
 	<servlet> 
   		<servlet-name>crawler</servlet-name> 
