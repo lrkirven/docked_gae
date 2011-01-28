@@ -32,6 +32,8 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 	
 	private static final String SEQ_KEY = "SINGLETON";
 	
+	private static final String UNKNOWN = "UNKNOWN";
+	
 	private static final long CURRENT_VER = 0;
 	
 	private int version = 0;
@@ -186,6 +188,9 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 					if (user != null) {
 						msg.setProfileUrl(user.getProfileUrl());
 						msg.setUsername(user.getDisplayName());
+					}
+					else {
+						msg.setUsername(UNKNOWN);
 					}
 				}
 			}
