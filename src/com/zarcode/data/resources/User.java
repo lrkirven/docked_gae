@@ -117,7 +117,7 @@ public class User extends ResourceBase {
 			IsEMailResult result = IsEMail.is_email_verbose(emailAddr, false);
 			if (result.getState() != GeneralState.OK) {
 				logger.warning("*** Incoming email address is not VALID ***");
-				return (new SecurityTokenDO(66, "Incoming email address is not VALID"));
+				return (new SecurityTokenDO(66, "Email address is not VALID"));
 			}
 		}
 		catch (Exception e1) {
@@ -134,23 +134,33 @@ public class User extends ResourceBase {
 		
 		try {
 			newUser = AppRegister.createNewUserAccountByEmailAddr2(emailAddr, displayName);
-			String nickname = newUser.getDisplayName();
-			String llId = newUser.getLLId();
-			AppPropDO p0 = ApplicationProps.getInstance().getProp("PICASA_USER");
-			AppPropDO p1 = ApplicationProps.getInstance().getProp("PICASA_PASSWORD");
-			AppPropDO p2 = ApplicationProps.getInstance().getProp("FB_API_KEY");
-			AppPropDO p3 = ApplicationProps.getInstance().getProp("FB_SECRET");
-			sToken.encryptThenSetEmailAddr(emailAddr);
-			sToken.encryptThenSetLLId(llId);
-			sToken.setNickname(nickname);
-			sToken.encryptThenSetPicasaUser(p0.getStringValue());
-			sToken.encryptThenSetPicasaPassword(p1.getStringValue());
-			sToken.encryptThenSetFbKey(p2.getStringValue());
-			sToken.encryptThenSetFbSecret(p3.getStringValue());
+			if (newUser != null) {
+				String nickname = newUser.getDisplayName();
+				String llId = newUser.getLLId();
+				logger.warning("Converting user acct to Security Token ---> dispayName=" + nickname + " llId=" + llId);
+				logger.warning("Getting private app paramters ...");
+				AppPropDO p0 = ApplicationProps.getInstance().getProp("PICASA_USER");
+				AppPropDO p1 = ApplicationProps.getInstance().getProp("PICASA_PASSWORD");
+				AppPropDO p2 = ApplicationProps.getInstance().getProp("FB_API_KEY");
+				AppPropDO p3 = ApplicationProps.getInstance().getProp("FB_SECRET");
+				logger.warning("Encrypting data and adding to SecurityToken ...");
+				sToken = new SecurityTokenDO();
+				sToken.encryptThenSetEmailAddr(emailAddr);
+				sToken.encryptThenSetLLId(llId);
+				sToken.setNickname(nickname);
+				sToken.encryptThenSetPicasaUser(p0.getStringValue());
+				sToken.encryptThenSetPicasaPassword(p1.getStringValue());
+				sToken.encryptThenSetFbKey(p2.getStringValue());
+				sToken.encryptThenSetFbSecret(p3.getStringValue());
+				logger.warning("SecurityToken is COMPLETE.");
+			}
+			else {
+				return (new SecurityTokenDO(50, "System is rejecting your registration. Please contact support."));
+			}
 		}
 		catch (Exception e) {
-			logger.severe("EXCEPTION :: " + e.getStackTrace());
-			return (new SecurityTokenDO(44, "System is not allowing registration. Please contact support."));
+			logger.severe("EXCEPTION :: " + e.getMessage());
+			return (new SecurityTokenDO(44, "System is rejecting your registration. Please contact support."));
 		}
 		return sToken;
 		

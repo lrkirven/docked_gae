@@ -84,7 +84,9 @@ public class AppRegister extends HttpServlet {
     			newUser.setLLId(llId);
     			String[] addrList = emailAddr.split("@");
     			newUser.setDisplayName(addrList[0]);
+    			/*
     			newUser.setFederatedId(user.getFederatedIdentity());
+    			*/
     			newUser.setAuthDomain(user.getAuthDomain());
     			userDao.addUser(newUser);
     			logger.info("Created new user --- llId=" + llId + " emailAddr=" + emailAddr);
@@ -131,6 +133,7 @@ public class AppRegister extends HttpServlet {
 	    public static UserDO createNewUserAccountByEmailAddr2(String emailAddr, String displayName) throws InvalidEmailAddrException {
 	    	UserDao userDao = new UserDao();
 	    	UserDO newUser = new UserDO();
+	    	UserDO res = null;
 	    	if (emailAddr != null && emailAddr.length() > 0) {
 	    		String email = emailAddr.toLowerCase();
     			newUser.setEmailAddr(email);
@@ -138,14 +141,12 @@ public class AppRegister extends HttpServlet {
     			String randomVal = UUID.randomUUID().toString();
     			String llId = email + "::" + randomVal;
     			newUser.setLLId(llId);
-    			String[] addrList = email.split("@");
-    			newUser.setDisplayName(addrList[0]);
-    			userDao.addUser(newUser);
+    			res = userDao.addUser(newUser);
     			logger.info("Created new user --- llId=" + llId + " emailAddr=" + email);
 	    	}
 	    	else {
 	    		throw new InvalidEmailAddrException();
 	    	}
-	    	return newUser;
+	    	return res;
 	    }
 }

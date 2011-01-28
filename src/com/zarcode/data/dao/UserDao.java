@@ -90,7 +90,8 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		return found;
 	}
 	
-	public void addUser(UserDO user) {
+	public UserDO addUser(UserDO user) {
+		UserDO newUser = null;
 		Transaction tx = pm.currentTransaction();
 		double lat = 0;
 		double lng = 0;
@@ -107,7 +108,7 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 			String dateString = AppCommon.generateActiveKey();
 			logger.info("activeKey: " + dateString);
 			user.setActiveKey(dateString);
-			pm.makePersistent(user); 
+			newUser = pm.makePersistent(user); 
 			//
 			// commit changes
 			//
@@ -118,6 +119,8 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 				tx.rollback();
 			}
 		}
+		return newUser;
+		
 	}  // addUser
 	
 	public void addReadOnlyUser(ReadOnlyUserDO user) {

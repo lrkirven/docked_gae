@@ -34,9 +34,6 @@ public class UserDO extends AbstractLoaderDO implements Serializable {
 	private String deviceId = null;
 	
 	@Persistent
-	private String federatedId = null;
-	
-	@Persistent
 	private String authDomain = null;
 	
 	@Persistent
@@ -157,15 +154,6 @@ public class UserDO extends AbstractLoaderDO implements Serializable {
 	
 	public void setLLId(String llId) {
 		this.llId = llId;
-	}
-	
-	@XmlElement
-	public String getFederatedId() {
-		return federatedId;
-	}
-	
-	public void setFederatedId(String federatedId) {
-		this.federatedId = federatedId;
 	}
 	
 	@XmlElement
