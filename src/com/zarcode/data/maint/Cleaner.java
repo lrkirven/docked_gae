@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gdata.client.photos.PicasawebService;
 import com.google.gdata.data.photos.AlbumEntry;
 import com.google.gdata.data.photos.PhotoEntry;
+import com.zarcode.app.AppCommon;
 import com.zarcode.common.ApplicationProps;
+import com.zarcode.common.EmailHelper;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.BuzzDao;
 import com.zarcode.data.dao.UserDao;
@@ -25,6 +27,8 @@ import com.zarcode.platform.model.AppPropDO;
 public class Cleaner extends HttpServlet {
 
 	private Logger logger = Logger.getLogger(Cleaner.class.getName());
+	
+	private StringBuilder report = null;
 
 	private static int MAX_DAYS_MESSAGE_IN_SYS = 90;
 	private static int MAX_DAYS_ANONYMOUS_USER_IN_SYS = 7;
@@ -73,7 +77,9 @@ public class Cleaner extends HttpServlet {
 			}
 		}
 		catch (Exception e) {
-			logger.severe("EXCEPTION :::: PICASA CLEANER FAILED -- " + e.getMessage());
+			String str = "[EXCEPTION ::: PICASA CLEANING FAILED]\n" + Util.getStackTrace(e);
+			report.append(str + "\n");
+			logger.severe(str);
 		}
 		return totalPhotosDeleted;
 	}
@@ -132,7 +138,9 @@ public class Cleaner extends HttpServlet {
 			
 		}
 		catch (Exception e) {
-			logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
+			String str = "[EXCEPTION ::: PICASA CLEANING FAILED]\n" + Util.getStackTrace(e);
+			report.append(str + "\n");
+			logger.severe(str);
 		}
 		return buzzMsgsDeleted;
 	}
@@ -148,22 +156,31 @@ public class Cleaner extends HttpServlet {
 			ReadOnlyUserDO tempUser = null;
 			Calendar now = Calendar.getInstance();
 			
+			report = new StringBuilder();
+			
 			long msgLife = now.getTimeInMillis() - (MAX_DAYS_MESSAGE_IN_SYS * MSEC_IN_DAY);
 			
 			logger.info("**** CLEANER: STARTING **** [ Timestamp :: " + now.getTimeInMillis() + " ]");
+			report.append("**** CLEANER: STARTING **** [ Timestamp :: " + now.getTimeInMillis() + " ]\n");
 			
 			int buzzMsgsDeleted = cleanBuzzMsgs();
 			logger.info("# of buzz msg(s) deleted: " + buzzMsgsDeleted);
+			report.append("# of buzz msg(s) deleted: " + buzzMsgsDeleted + "\n");
 		
 			int photosDeleted = cleanPicasaPhotos();
 			logger.info("# of picasa photo(s) deleted: " + photosDeleted);
+			report.append("# of picasa photo(s) deleted: " + photosDeleted + "\n");
 			
 			int anonymousUsersDeleted = cleanAnonymousUsers();
 			Calendar done = Calendar.getInstance();
 			logger.info("# of anonymous user(s) deleted: " + anonymousUsersDeleted);
+			report.append("# of anonymous user(s) deleted: " + anonymousUsersDeleted + "\n");
 			
 			long duration = done.getTimeInMillis() - now.getTimeInMillis();
 			logger.info("**** CLEANER: DONE **** [ Elapsed Msec(s): " + duration);
+			report.append("**** CLEANER: DONE **** [ Elapsed Msec(s): " + duration + "\n");
+			
+			EmailHelper.sendAppAlert("*** Docked CleanUp Report ***", report.toString(), AppCommon.APPNAME);
 			
 	    } // doGet
 }
