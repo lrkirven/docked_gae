@@ -18,17 +18,9 @@ import com.google.gdata.data.photos.UserFeed;
 import com.google.gdata.util.AuthenticationException;
 import com.google.gdata.util.ServiceException;
 
-/**
- * This is a simple client that provides high-level operations on the Picasa Web
- * Albums GData API. It can also be used as a command-line application to test
- * out some of the features of the API.
- *
- * 
- */
 public class PicasaClient {
 
-  private static final String API_PREFIX
-      = "http://picasaweb.google.com/data/feed/api/user/";
+  private static final String API_PREFIX = "http://picasaweb.google.com/data/feed/api/user/";
 
   private final PicasawebService service;
 
