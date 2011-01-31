@@ -166,10 +166,12 @@ public class Cleaner extends HttpServlet {
 			int buzzMsgsDeleted = cleanBuzzMsgs();
 			logger.info("# of buzz msg(s) deleted: " + buzzMsgsDeleted);
 			report.append("# of buzz msg(s) deleted: " + buzzMsgsDeleted + "\n");
-		
+	
+			/*
 			int photosDeleted = cleanPicasaPhotos();
 			logger.info("# of picasa photo(s) deleted: " + photosDeleted);
 			report.append("# of picasa photo(s) deleted: " + photosDeleted + "\n");
+			*/
 			
 			int anonymousUsersDeleted = cleanAnonymousUsers();
 			Calendar done = Calendar.getInstance();
