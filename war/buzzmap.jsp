@@ -93,7 +93,7 @@
 	//	
 	function initializeMap() {
 		var latlng = new google.maps.LatLng(<%= pageContext.getAttribute("lat") %>, <%= pageContext.getAttribute("lng") %> );
-		var minZoomLevel = 11;
+		var minZoomLevel = 12;
  		var myOptions = {
    	  		zoom: minZoomLevel,
    	  		navigationControl: true,
