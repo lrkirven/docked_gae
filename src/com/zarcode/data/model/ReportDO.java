@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -12,12 +13,19 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.google.appengine.api.datastore.Text;
+import com.zarcode.app.AppCommon;
 import com.zarcode.platform.model.AbstractLoaderDO;
 
 @XmlRootElement(name = "Report") 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class ReportDO extends AbstractLoaderDO implements Serializable {
 
+	@NotPersistent
+	private String reportBody = null;
+	
+	@NotPersistent
+	private String timeDisplay = null;
+	
 	@PrimaryKey 
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Long reportId;
@@ -38,15 +46,21 @@ public class ReportDO extends AbstractLoaderDO implements Serializable {
 	private Text reportBodyText = null;
 	
 	@Persistent
-	private String reportBody = null;
-	
-	@Persistent
 	private String reportedBy = null;
 	
 	@Persistent
 	private Date lastUpdated = null;
 	
 	public void postCreation() {
+		reportBodyText = new Text(reportBody);
+		lastUpdated = new Date();
+	}
+	
+	public void postReturn() {
+		if (reportBodyText != null) {
+			this.reportBody = reportBodyText.getValue();
+		}
+		timeDisplay = AppCommon.generateTimeOffset(lastUpdated);
 	}
 	
 	public String toString() {
@@ -79,6 +93,15 @@ public class ReportDO extends AbstractLoaderDO implements Serializable {
 
 	public void setReportDate(Date reportDate) {
 		this.reportDate = reportDate;
+	}
+	
+	@XmlElement
+	public String getTimeDisplay() {
+		return timeDisplay;
+	}
+
+	public void setTimeDisplay(String timeDisplay) {
+		this.timeDisplay = timeDisplay;
 	}
 	
 	@XmlElement

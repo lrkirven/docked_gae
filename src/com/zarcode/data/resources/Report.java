@@ -158,6 +158,75 @@ public class Report extends ResourceBase {
 		return list;
 	}
 	
+	@GET 
+	@Path("/reportId/{reportId}")
+	@Produces("application/json")
+	public ReportDO getReportByReportId(@PathParam("reportId") long reportId) {
+		int i = 0;
+		List<ReportDO> list = null;
+		ReportDao reportDao = null;
+		ReportDO res = null;
+		
+		logger.info("getReportByReportId(): Entered -- reportId=" + reportId);
+		
+		try {
+			if (res != null) {
+				reportDao = new ReportDao();
+				res = reportDao.getReportById(reportId);
+			}
+		}
+		catch (Exception e) {
+			logger.severe("getReportByReportId: " + getStackTrace(e));
+		}
+		return res;
+	}
+	
+	@GET 
+	@Path("/state/{state}")
+	@Produces("application/json")
+	public List<ReportDO> getReportsByState(@PathParam("state") String state) {
+		int i = 0;
+		List<ReportDO> list = null;
+		ReportDao reportDao = null;
+		
+		logger.info("getReportsByState(): Entered -- state=" + state);
+	
+		if (state != null & state.length() == 2) {
+			try {
+				state = state.toUpperCase();
+				reportDao = new ReportDao();
+				list = reportDao.getReportsByState(state);
+			}
+			catch (Exception e) {
+				logger.severe("getReportsByState: " + getStackTrace(e));
+			}
+		}
+		return list;
+	}
+	
+	@GET 
+	@Path("/lakes/{state}")
+	@Produces("application/json")
+	public List<ShortReportDO> getLakesByState(@PathParam("state") String state) {
+		int i = 0;
+		List<ShortReportDO> list = null;
+		ReportDao reportDao = null;
+		
+		logger.info("getLakesByState(): Entered -- state=" + state);
+	
+		if (state != null & state.length() == 2) {
+			try {
+				state = state.toUpperCase();
+				reportDao = new ReportDao();
+				list = reportDao.getShortReportsByState(state);
+			}
+			catch (Exception e) {
+				logger.severe("getLakesByState: " + getStackTrace(e));
+			}
+		}
+		return list;
+	}
+	
 	/*
 	private List<RecipeDO> returnPage(List<RecipeDO> res, int pageIndex) {
 		List<RecipeDO> empty = new ArrayList<RecipeDO>();

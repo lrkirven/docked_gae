@@ -232,6 +232,9 @@ public class User extends ResourceBase {
 					newUser = dao.updateDisplayName(res, value);
 				}
 				if (field != null && field.equalsIgnoreCase("profileUrl")) {
+					if ("NULL".equalsIgnoreCase(value)) {
+						value = null;
+					}
 					newUser = dao.updateProfileUrl(res, value);
 				}
 				if (newUser != null) {
