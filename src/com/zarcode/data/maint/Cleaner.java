@@ -162,6 +162,7 @@ public class Cleaner extends HttpServlet {
 			
 			logger.info("**** CLEANER: STARTING **** [ Timestamp :: " + now.getTimeInMillis() + " ]");
 			report.append("**** CLEANER: STARTING **** [ Timestamp :: " + now.getTimeInMillis() + " ]\n");
+			report.append("----------------------------------------------------------\n");
 			
 			int buzzMsgsDeleted = cleanBuzzMsgs();
 			logger.info("# of buzz msg(s) deleted: " + buzzMsgsDeleted);
@@ -179,8 +180,9 @@ public class Cleaner extends HttpServlet {
 			report.append("# of anonymous user(s) deleted: " + anonymousUsersDeleted + "\n");
 			
 			long duration = done.getTimeInMillis() - now.getTimeInMillis();
-			logger.info("**** CLEANER: DONE **** [ Elapsed Msec(s): " + duration);
-			report.append("**** CLEANER: DONE **** [ Elapsed Msec(s): " + duration + "\n");
+			report.append("----------------------------------------------------------\n");
+			logger.info("**** CLEANER: DONE **** [ Elapsed Msec(s): " + duration + " ]");
+			report.append("**** CLEANER: DONE **** [ Elapsed Msec(s): " + duration + " ]\n");
 			
 			EmailHelper.sendAppAlert("*** Docked CleanUp Report ***", report.toString(), AppCommon.APPNAME);
 			
