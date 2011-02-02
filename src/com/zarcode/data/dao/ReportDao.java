@@ -57,6 +57,7 @@ public class ReportDao extends BaseDao {
 	public ReportDO getReportById(Long reportId) {
 		ReportDO res = null;
 		res = pm.getObjectById(ReportDO.class, reportId);
+		res.postReturn();
 		return res;
 	}
 	

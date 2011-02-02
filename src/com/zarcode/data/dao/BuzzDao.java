@@ -315,6 +315,7 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 	public BuzzMsgDO getMsgById(Long msgId) {
 		BuzzMsgDO res = null;
 		res = pm.getObjectById(BuzzMsgDO.class, msgId);
+		res.postReturn();
 		return res;
 	}
 	

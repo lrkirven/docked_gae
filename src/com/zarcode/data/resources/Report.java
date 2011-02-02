@@ -167,13 +167,11 @@ public class Report extends ResourceBase {
 		ReportDao reportDao = null;
 		ReportDO res = null;
 		
-		logger.info("getReportByReportId(): Entered -- reportId=" + reportId);
+		logger.info("Requesting reportId=" + reportId);
 		
 		try {
-			if (res != null) {
-				reportDao = new ReportDao();
-				res = reportDao.getReportById(reportId);
-			}
+			reportDao = new ReportDao();
+			res = reportDao.getReportById(reportId);
 		}
 		catch (Exception e) {
 			logger.severe("getReportByReportId: " + getStackTrace(e));
