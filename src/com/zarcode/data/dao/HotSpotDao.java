@@ -54,17 +54,17 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 		Date now = new Date();
 		if (spot != null) {
 			Long tm = now.getTime();
-			spot.setSpotId(null);
+			spot.setHotSpotId(null);
 			spot.setCreateDate(new Date());
   	      	pm.makePersistent(spot); 
   	      	res = spot;
-  	      	spotId = spot.getSpotId();
+  	      	spotId = spot.getHotSpotId();
   	      	logger.info("Added new hotspot --> " + spot);
 		}
         return res; 
 	}
 	
-	public List<HotSpotDO> getHotSpotsByResource(Long resourceId) {
+	public List<HotSpotDO> getHotSpotsByResourceId(Long resourceId) {
 		int i = 0;
 		List<HotSpotDO> list = null;
 		Transaction tx = pm.currentTransaction();
@@ -86,7 +86,7 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 		return list;
 	}
 	
-	public List<HotSpotDO> getHotSpotsByUser(Long llId) {
+	public List<HotSpotDO> getHotSpotsByUser(String llId) {
 		int i = 0;
 		List<HotSpotDO> list = null;
 		Transaction tx = pm.currentTransaction();
@@ -94,9 +94,9 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 			tx.begin();
 			StringBuilder sb = new StringBuilder();
 			sb.append("(");
-			sb.append("llId == ");
+			sb.append("llId == '");
 			sb.append(llId);
-			sb.append(")");
+			sb.append("')");
 			Query query = pm.newQuery(HotSpotDO.class, sb.toString());
 			list = (List<HotSpotDO>)query.execute();
 		}

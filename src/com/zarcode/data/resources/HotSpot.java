@@ -1,7 +1,5 @@
 package com.zarcode.data.resources;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -23,11 +21,12 @@ import com.zarcode.common.Util;
 import com.zarcode.data.dao.BuzzDao;
 import com.zarcode.data.dao.HotSpotDao;
 import com.zarcode.data.dao.UserDao;
+import com.zarcode.data.dao.UserTokenDao;
 import com.zarcode.data.dao.WaterResourceDao;
+import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.data.model.CommentDO;
 import com.zarcode.data.model.HotSpotDO;
-import com.zarcode.data.model.BuzzMsgDO;
-import com.zarcode.data.model.WaterResourceDO;
+import com.zarcode.data.model.UserTokenDO;
 
 @Path("/hotSpots")
 public class HotSpot extends ResourceBase {
@@ -52,36 +51,35 @@ public class HotSpot extends ResourceBase {
 	
 	@POST
 	@Produces("application/json")
-	@Path("/{resourceId}/hotSpot")
-	public HotSpotDO addHotSpot(@PathParam("resourceId") Long resourceId, @QueryParam("id") String id,  @QueryParam("e") String emailAddr, String hotSpot) {
+	@Path("/lakes/{resourceId}/hotspot")
+	public HotSpotDO addHotSpot(@PathParam("resourceId") Long resourceId, @QueryParam("userToken") String userToken,  String hotSpot) {
 		List<BuzzMsgDO> res = null;
 		HotSpotDao dao = null;
 		WaterResourceDao waterResDao = null;
 		UserDao userDao = null;
 		int rows = 0;
+		String llId = null;
 		HotSpotDO spot = null;
 		HotSpotDO newSpot = null;
 	
 		logger.info("Process NEW hotspot: " + hotSpot);
 		
-		if (context != null) {
-			if (!context.isSecure()) {
-				logger.warning("*** REJECTED -- Request is not SECURE ***");
-				return newSpot;
-			}
-		}
-		
-		userDao = new UserDao();
-		if (!userDao.isValidUser(id, false)) {
-			logger.warning("*** REJECTED AN INVALID ID [" + id + "] FROM NETWORK ***");
+		UserTokenDao tokenDao = new UserTokenDao();
+		UserTokenDO t = tokenDao.getTokenByTokenStr(userToken);
+		if (t == null) {
+			logger.warning("*** REJECTED --- INVALID USER TOKEN ---> " + userToken);
 			return newSpot;
 		}
+		
+		llId = t.getLlId();
 		
 		if (hotSpot != null && hotSpot.length() > 0) {
 			spot = new Gson().fromJson(hotSpot, HotSpotDO.class);
 			try {
 				if (spot != null) {
 					spot.postCreation();
+					spot.setLLId(llId);
+					spot.setResourceId(resourceId);
 					dao = new HotSpotDao();
 					newSpot = dao.addHotSpot(spot);
 					//
@@ -112,130 +110,47 @@ public class HotSpot extends ResourceBase {
 	}
 	
 	@POST
-	@Produces("application/json")
-	@Path("/{resourceId}/comment")
-	public CommentDO addCommentToMsgEvent(@PathParam("resourceId") Long resourceId, @QueryParam("id") String id, String comment) {
-		List<BuzzMsgDO> res = null;
-		BuzzDao dao = null;
-		UserDao userDao = null;
-		WaterResourceDao waterResDao = null;
+	@Produces("text/plain")
+	@Path("/rating/{hotSpotId}")
+	public String addRatingToHotSpot(@PathParam("hotSpotId") Long hotSpotId, @QueryParam("userToken") String userToken, int rating) {
 		int rows = 0;
 		CommentDO comm = null;
 		CommentDO newComm = null;
+		String llId = null;
 	
-		logger.info("Process NEW comment: " + comment);
+		logger.info("Process incoming rating: " + rating);
+	
+		UserTokenDao tokenDao = new UserTokenDao();
+		UserTokenDO t = tokenDao.getTokenByTokenStr(userToken);
+		if (t == null) {
+			logger.warning("*** REJECTED --- INVALID USER TOKEN ---> " + userToken);
+			return "FAIL";
+		}
+		llId = t.getLlId();
+		HotSpotDao dao = new HotSpotDao();
+		HotSpotDO res = dao.getHotSpotById(hotSpotId);
+		if (res == null) {
+			logger.warning("*** REJECTED --- MISSING HOTSPOT ---> " + hotSpotId);
+			return "FAIL";
+		}
+		dao.incrementRating(res.getHotSpotId());
 		
-		if (context != null) {
-			if (!context.isSecure()) {
-				logger.warning("*** REJECTED -- Request is not SECURE ***");
-				return newComm;
-			}
-		}
-		//
-		// validate user
-		//
-		userDao = new UserDao();
-		if (!userDao.isValidUser(id, false)) {
-			logger.warning("*** REJECTED AN INVALID ID [" + id + "] FROM NETWORK ***");
-			return newComm;
-		}
-		
-		if (comment != null && comment.length() > 0) {
-			comm = new Gson().fromJson(comment, CommentDO.class);
-			try {
-				if (comm != null && comm.getMsgId() > 0) {
-					comm.postCreation();
-					dao = new BuzzDao();
-					newComm = dao.addComment(comm);
-					newComm.postReturn();
-					dao.incrementCommentCounter(comm.getMsgId());
-					//
-					// since event was created inside lake area, update last communication
-					//
-					if (comm.getResourceId() > 0) {
-						try {
-							waterResDao = new WaterResourceDao();
-							waterResDao.updateLastUpdate(comm.getResourceId());
-							logger.info("Updated lastUpdated for resource=" + comm.getResourceId());
-						}
-						catch (JDOObjectNotFoundException ex) {
-							logger.severe("Unable to update lastUpdated timestamp for water resource");
-						}
-					}
-					
-					logger.info("Successfully added new comment -- " + newComm);
-				}
-				else {
-					logger.severe("*** Incoming comment did not contain REQUIRED msgEventId ***");
-				}
-			}
-			catch (Exception e) {
-				logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
-			}
-		}
-		else {
-			logger.warning("Event JSON instance is empty");
-		}
-		logger.info("Returning: " + newComm);
-		
-		return newComm;
+		return "SUCCESS";
 	}
 	
 	@GET 
-	@Path("/bylatlng")
+	@Path("/lakes/{resourceId}")
 	@Produces("application/json")
-	public List<BuzzMsgDO> getMsgEventsByLatLng(@QueryParam("lat") double lat, @QueryParam("lng") double lng) {
+	public List<HotSpotDO> getHotSpotsByResourceId(@PathParam("resourceId") Long resourceId) {
 		int i = 0;
-		List<BuzzMsgDO> results = null;
-		List<BuzzMsgDO> list = null;
-		List<WaterResourceDO> resourceList = null;
-		WaterResourceDO res = null;
-		BuzzDao eventDao = null;
-		WaterResourceDao waterResDao = null;
+		List<HotSpotDO> results = null;
+		HotSpotDao dao = null;
 		boolean bFindAll = false;
 		
 		logger.info("Entered");
 		try {
-			eventDao = new BuzzDao();
-			results = new ArrayList<BuzzMsgDO>();
-			waterResDao = new WaterResourceDao();
-			logger.info("QUERY: Searching for local water resources ...");
-			resourceList = waterResDao.findClosest(lat, lng, 3);
-			//
-			// if we have found some local lakes, let's see what recents events that they 
-			// have
-			//
-			if (resourceList != null && resourceList.size() > 0) {
-				logger.info("RESULT: Found " + resourceList.size() + " local lakes ...");
-				for (i=0; i<resourceList.size(); i++) {
-					res = resourceList.get(i);
-					list = eventDao.getNextEventsByResourceId(res.getResourceId());
-					if (list != null && list.size() > 0) {
-						logger.info("Num of message(s): " + list.size() + " -- at resource --> "  + res.getName() + 
-								" id=" +  res.getResourceId());
-						results.addAll(list);
-					}
-					else {
-						logger.info("ZERO messages at resource --> " + res.getName() + 
-								" id=" + res.getResourceId());
-					}
-				}
-				logger.info("# of recent event(s) from resources --> " + (results == null ? 0 : results.size()));
-			}
-			else {
-				logger.info("RESULT: No Matches.");
-			}
-			//
-			// sort events
-			//
-			if (results.size() > 0) {
-				Collections.sort(results);
-				if (results.size() >= BuzzDao.PAGESIZE) {
-					int start = results.size() - BuzzDao.PAGESIZE;
-					results = results.subList(start, BuzzDao.PAGESIZE);
-				}
-			}
-		
+			dao = new HotSpotDao();
+			results = dao.getHotSpotsByResourceId(resourceId);
 		}
 		catch (Exception e) {
 			logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
@@ -243,67 +158,29 @@ public class HotSpot extends ResourceBase {
 		logger.info("Exit");
 		
 		return results;
-		
 	}
 	
 	@GET 
-	@Path("/{resourceId}")
+	@Path("/user/{userToken}")
 	@Produces("application/json")
-	public List<BuzzMsgDO> getMsgEventsByRegion(@PathParam("resourceId") Long resourceId, @QueryParam("lat") double lat, @QueryParam("lng") double lng) {
+	public List<HotSpotDO> getHotSpotsByUserToken(@PathParam("userToken") String userToken) {
 		int i = 0;
-		List<BuzzMsgDO> results = null;
-		List<BuzzMsgDO> list = null;
-		List<WaterResourceDO> resourceList = null;
-		WaterResourceDO res = null;
-		BuzzDao eventDao = null;
-		WaterResourceDao waterResDao = null;
+		List<HotSpotDO> results = null;
+		HotSpotDao dao = null;
+		UserTokenDao tokenDao = null;
 		boolean bFindAll = false;
 		
 		logger.info("Entered");
 		try {
-			eventDao = new BuzzDao();
-			
-			if (bFindAll) {
-				results = new ArrayList<BuzzMsgDO>();
-				waterResDao = new WaterResourceDao();
-				logger.info("QUERY: Searching for local water resources ...");
-				resourceList = waterResDao.findClosest(lat, lng, 3);
-				//
-				// if we have found some local lakes, let's see what recents events that they 
-				// have
-				//
-				if (resourceList != null && resourceList.size() > 0) {
-					logger.info("RESULT: Found " + resourceList.size() + " local lakes ...");
-					for (i=0; i<resourceList.size(); i++) {
-						res = resourceList.get(i);
-						list = eventDao.getNextEventsByResourceId(res.getResourceId());
-						if (list != null && list.size() > 0) {
-							results.addAll(list);
-						}
-					}
-					logger.info("# of recent event(s) from resources --> " + (results == null ? 0 : results.size()));
-				}
-				else {
-					logger.info("RESULT: No Matches.");
-				}
-				//
-				// sort events
-				//
-				if (results.size() > 0) {
-					Collections.sort(results);
-					if (results.size() >= BuzzDao.PAGESIZE) {
-						int start = results.size() - BuzzDao.PAGESIZE;
-						results = results.subList(start, BuzzDao.PAGESIZE);
-					}
-				}
+			dao = new HotSpotDao();
+			tokenDao = new UserTokenDao();
+			UserTokenDO t = tokenDao.getTokenByTokenStr(userToken);
+			if (t != null) {
+				String llId = t.getLlId();
+				results = dao.getHotSpotsByUser(llId);
 			}
 			else {
-				logger.info("Trying query with resourceId=" + resourceId);
-				list = eventDao.getNextEventsByResourceId(resourceId);
-				results = list;
-				if (results != null && results.size() > BuzzDao.PAGESIZE) {
-					results = results.subList(0, BuzzDao.PAGESIZE);
-				}
+				logger.warning("*** Unable to find a matching user token for string=" + userToken);
 			}
 		}
 		catch (Exception e) {
@@ -312,7 +189,7 @@ public class HotSpot extends ResourceBase {
 		logger.info("Exit");
 		
 		return results;
-		
 	}
+	
 	
 } // Event

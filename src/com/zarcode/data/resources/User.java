@@ -15,14 +15,15 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
+import com.dominicsayers.isemail.GeneralState;
 import com.dominicsayers.isemail.IsEMail;
 import com.dominicsayers.isemail.IsEMailResult;
-import com.dominicsayers.isemail.GeneralState;
 import com.google.gson.Gson;
 import com.zarcode.app.AppCommon;
 import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.UserDao;
+import com.zarcode.data.dao.UserTokenDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.model.LocalStatusDO;
 import com.zarcode.data.model.PingDataDO;
@@ -31,6 +32,7 @@ import com.zarcode.data.model.RegisterTokenDO;
 import com.zarcode.data.model.SecurityTokenDO;
 import com.zarcode.data.model.UpdateTaskDO;
 import com.zarcode.data.model.UserDO;
+import com.zarcode.data.model.UserTokenDO;
 import com.zarcode.data.model.WaterResourceDO;
 import com.zarcode.platform.model.AppPropDO;
 import com.zarcode.security.AppRegister;
@@ -289,9 +291,11 @@ public class User extends ResourceBase {
 		PingDataDO pingData = null;
 		ReadOnlyUserDO readOnlyUser = null;
 		WaterResourceDao waterResDao = null;
+		UserTokenDao tokenDao = null;
 		List<UserDO> usersAtLake = null;
 		List<UserDO> totalActiveUsers = null;
 		LocalStatusDO empty = new LocalStatusDO();
+		UserTokenDO userToken = null;
 		boolean anonymous = false;
 		
 		String llId = null;
@@ -375,6 +379,13 @@ public class User extends ResourceBase {
 			}
 			else {
 				user = userDao.getAndUpdateUser(llId, lat, lng);
+				tokenDao = new UserTokenDao();
+				userToken = tokenDao.getTokenByLlId(llId);
+				if (userToken == null || userToken.isExpired()) {
+					userToken = tokenDao.generateToken(llId);
+					logger.info("Generated a new user token=" + userToken.getToken() + " for llId=" + llId);
+				}
+				status.setUserToken(userToken.getToken());
 			}
 	
 			waterResDao = new WaterResourceDao();

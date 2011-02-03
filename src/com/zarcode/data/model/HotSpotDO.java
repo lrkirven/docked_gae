@@ -19,7 +19,7 @@ import com.zarcode.platform.model.AbstractLoaderDO;
 
 @XmlRootElement(name = "HotSpot") 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
-public class HotSpotDO extends AbstractLoaderDO implements Serializable {
+public class HotSpotDO implements Serializable {
 	
 	private Logger logger = Logger.getLogger(HotSpotDO.class.getName());
 	
@@ -31,7 +31,7 @@ public class HotSpotDO extends AbstractLoaderDO implements Serializable {
 
 	@PrimaryKey 
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Long spotId = null; 
+	private Long hotSpotId = null; 
 	
 	@Persistent
 	private String desc = null;
@@ -90,12 +90,12 @@ public class HotSpotDO extends AbstractLoaderDO implements Serializable {
 	
 	
 	@XmlElement
-	public Long getSpotId() {
-		return spotId;
+	public Long getHotSpotId() {
+		return hotSpotId;
 	}
 
-	public void setSpotId(Long spotId) {
-		this.spotId = spotId;
+	public void setHotSpotId(Long hotSpotId) {
+		this.hotSpotId = hotSpotId;
 	}
 	
 	@XmlElement
@@ -201,7 +201,7 @@ public class HotSpotDO extends AbstractLoaderDO implements Serializable {
 	}
 	
 	public String toString() {
-		return "HotSpotDO::" + spotId + " (llId=" + llId + ")";
+		return "HotSpotDO::" + hotSpotId + " (llId=" + llId + ")";
 	}
 
 }

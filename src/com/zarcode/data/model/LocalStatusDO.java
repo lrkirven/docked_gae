@@ -40,7 +40,7 @@ public class LocalStatusDO implements Serializable {
 
 	private Date resourceLastUpdate = null;
 	
-	private boolean loginComplete = false;
+	private String userToken = null;
 
 	@XmlElement
 	public int getNumOfLocalLakers() {
@@ -97,12 +97,12 @@ public class LocalStatusDO implements Serializable {
 	}
 	
 	@XmlElement
-	public boolean getLoginComplete() {
-		return loginComplete;
+	public String getUserToken() {
+		return userToken;
 	}
 
-	public void setLoginComplete(boolean loginComplete) {
-		this.loginComplete = loginComplete;
+	public void setUserToken(String userToken) {
+		this.userToken = userToken;
 	}
 	
 	@XmlElement
