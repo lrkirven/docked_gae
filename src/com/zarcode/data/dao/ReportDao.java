@@ -73,7 +73,7 @@ public class ReportDao extends BaseDao {
 		sb.append("'");
 		Query query = pm.newQuery(ReportDO.class);
 		query.setFilter("state == stateParam");
-		query.setOrdering("state asc, lastUpdated desc");
+		query.setOrdering("keyword asc");
 		query.declareParameters("String stateParam");
 		res = (List<ReportDO>)query.execute(state);
 		
@@ -101,7 +101,7 @@ public class ReportDao extends BaseDao {
 		sb.append("'");
 		Query query = pm.newQuery(ReportDO.class);
 		query.setFilter("state == stateParam");
-		query.setOrdering("state asc, lastUpdated desc");
+		query.setOrdering("keyword asc");
 		query.declareParameters("String stateParam");
 		res = (List<ReportDO>)query.execute(state);
 		
