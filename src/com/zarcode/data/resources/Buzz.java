@@ -118,6 +118,8 @@ public class Buzz extends ResourceBase {
 					//
 					buzzMsg.setLlId(llId);
 					
+					
+					
 					dao = new BuzzDao();
 					newBuzzMsg = dao.addMsg(buzzMsg);
 					//

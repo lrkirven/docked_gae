@@ -24,6 +24,8 @@ import com.zarcode.platform.model.AbstractLoaderDO;
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Comparable<BuzzMsgDO> {
 	
+	private static final int MAX_MESSAGE_LENGTH = 140;
+	
 	private Logger logger = Logger.getLogger(BuzzMsgDO.class.getName());
 	
 	@NotPersistent
@@ -102,6 +104,12 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 		GeoHash geoKey = GeoHash.withCharacterPrecision(lat, lng, 12);
 		setGeoHashKey(geoKey.toBase32());
 		createDate = new Date();
+		/*
+		 * check max message length
+		 */
+		if (messageData != null && messageData.length() > MAX_MESSAGE_LENGTH) {
+			messageData = messageData.substring(0, MAX_MESSAGE_LENGTH);
+		}
 		messageDataText = new Text(messageData);
 	}
 	
