@@ -28,7 +28,7 @@ import com.zarcode.data.model.CommentDO;
 import com.zarcode.data.model.HotSpotDO;
 import com.zarcode.data.model.UserTokenDO;
 
-@Path("/hotSpots")
+@Path("/hotspots")
 public class HotSpot extends ResourceBase {
 	
 	private Logger logger = Logger.getLogger(HotSpot.class.getName());
@@ -161,7 +161,7 @@ public class HotSpot extends ResourceBase {
 	}
 	
 	@GET 
-	@Path("/user/{userToken}")
+	@Path("/users/{userToken}")
 	@Produces("application/json")
 	public List<HotSpotDO> getHotSpotsByUserToken(@PathParam("userToken") String userToken) {
 		int i = 0;
