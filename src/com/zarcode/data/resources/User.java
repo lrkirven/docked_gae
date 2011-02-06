@@ -25,6 +25,9 @@ import com.zarcode.common.Util;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.UserTokenDao;
 import com.zarcode.data.dao.WaterResourceDao;
+import com.zarcode.data.exception.BadUserDataProvidedException;
+import com.zarcode.data.exception.RequestNotSecureException;
+import com.zarcode.data.exception.UnableToDecodeRequestException;
 import com.zarcode.data.model.LocalStatusDO;
 import com.zarcode.data.model.PingDataDO;
 import com.zarcode.data.model.ReadOnlyUserDO;
@@ -74,8 +77,8 @@ public class User extends ResourceBase {
 		
 		if (context != null) {
 			if (!context.isSecure()) {
-				logger.warning("*** REJECTED -- Request is not SECURE ***");
-				return (new SecurityTokenDO(88, "Request must be secure"));
+				logger.severe("Somebody is trying to access the service over http (instead of https).");
+				throw new RequestNotSecureException();
 			}
 		}
 	
@@ -93,8 +96,8 @@ public class User extends ResourceBase {
 				logger.info("registerSecret [" + registerSecret + "]");
 			}
 			catch (Exception e1) {
-				logger.warning("EXCEPTION ::: " + e1.getMessage());
-				return null;
+				logger.severe("Unable to decode incoming JSON from client -- " + Util.getStackTrace(e1));
+				throw new UnableToDecodeRequestException();
 			}
 		}
 
@@ -107,8 +110,8 @@ public class User extends ResourceBase {
 			String plainTextSecret = BlockTea.decrypt(registerSecret, ANONYMOUS_KEY);
 			String savedSecret = p.getStringValue();
 			if (!savedSecret.equalsIgnoreCase(plainTextSecret)) {
-				logger.warning("*** Register Secret [" + savedSecret + "] does not match incoming secret [" + plainTextSecret + "]");
-				return (new SecurityTokenDO(77, "Registration secret is not matching expected secret."));
+				logger.severe("*** Register Secret [" + savedSecret + "] does not match incoming secret [" + plainTextSecret + "]");
+				throw new BadUserDataProvidedException();
 			}
 		}
 		
@@ -305,8 +308,8 @@ public class User extends ResourceBase {
 		
 		if (context != null) {
 			if (!context.isSecure()) {
-				logger.warning("*** REJECTED -- Request is not SECURE ***");
-				return null;
+				logger.severe("Somebody is trying to access the service over http (instead of https).");
+				throw new RequestNotSecureException();
 			}
 		}
 		
@@ -323,8 +326,8 @@ public class User extends ResourceBase {
 				deviceId = URLDecoder.decode(deviceId);
 			}
 			catch (Exception e1) {
-				logger.warning("EXCEPTION ::: " + e1.getMessage());
-				return null;
+				logger.severe("Unable to decode incoming JSON from client -- " + Util.getStackTrace(e1));
+				throw new UnableToDecodeRequestException();
 			}
 		}
 		
@@ -373,8 +376,8 @@ public class User extends ResourceBase {
 					}
 				}
 				else {
-					logger.warning("*** A client is trying to access service with invalid deviceId --> " + plainText);
-					return empty;
+					logger.severe("*** A client is trying to access service with invalid deviceId --> " + plainText);
+					throw new BadUserDataProvidedException();
 				}
 			}
 			else {
