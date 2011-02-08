@@ -75,12 +75,7 @@ public class User extends ResourceBase {
 		RegisterTokenDO rToken = null;
 		String registerSecret = null;
 		
-		if (context != null) {
-			if (!context.isSecure()) {
-				logger.severe("Somebody is trying to access the service over http (instead of https).");
-				throw new RequestNotSecureException();
-			}
-		}
+		checkSSL(context, logger);
 	
 		if (rawRegisterToken != null && rawRegisterToken.length() > 0) {
 			rToken = new Gson().fromJson(rawRegisterToken, RegisterTokenDO.class);
@@ -186,13 +181,9 @@ public class User extends ResourceBase {
 		String field = null;
 		String value = null;
 		
-		if (context != null) {
-			if (!context.isSecure()) {
-				logger.warning("*** REJECTED -- Request is not SECURE ***");
-				return null;
-			}
-		}
-	
+		
+		checkSSL(context, logger);
+		
 		if (rawUpdateTask != null && rawUpdateTask.length() > 0) {
 			task = new Gson().fromJson(rawUpdateTask, UpdateTaskDO.class);
 			try {
@@ -306,12 +297,7 @@ public class User extends ResourceBase {
 		double lng = 0;
 		String deviceId = null;
 		
-		if (context != null) {
-			if (!context.isSecure()) {
-				logger.severe("Somebody is trying to access the service over http (instead of https).");
-				throw new RequestNotSecureException();
-			}
-		}
+		checkSSL(context, logger);
 		
 		if (rawPingData != null && rawPingData.length() > 0) {
 			pingData = new Gson().fromJson(rawPingData, PingDataDO.class);

@@ -42,6 +42,9 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 	
 	@NotPersistent
 	private String username = null;
+	
+	@NotPersistent
+	private String userLocalTime = null;
 
 	@PrimaryKey 
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -308,6 +311,15 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 	public Date getCreateDate() {
 		return createDate;
 	}
+    
+    public void setUserLocalTime(String userLocalTime) {
+		this.userLocalTime = userLocalTime;
+	}
+    
+    @XmlElement
+    public String getUserLocalTime() {
+    	return userLocalTime;
+    }
 
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;

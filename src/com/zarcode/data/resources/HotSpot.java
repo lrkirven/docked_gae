@@ -23,6 +23,8 @@ import com.zarcode.data.dao.HotSpotDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.UserTokenDao;
 import com.zarcode.data.dao.WaterResourceDao;
+import com.zarcode.data.exception.BadRequestAppDataException;
+import com.zarcode.data.exception.BadUserDataProvidedException;
 import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.data.model.CommentDO;
 import com.zarcode.data.model.HotSpotDO;
@@ -124,14 +126,14 @@ public class HotSpot extends ResourceBase {
 		UserTokenDO t = tokenDao.getTokenByTokenStr(userToken);
 		if (t == null) {
 			logger.warning("*** REJECTED --- INVALID USER TOKEN ---> " + userToken);
-			return "FAIL";
+			throw new BadUserDataProvidedException();
 		}
 		llId = t.getLlId();
 		HotSpotDao dao = new HotSpotDao();
 		HotSpotDO res = dao.getHotSpotById(hotSpotId);
 		if (res == null) {
 			logger.warning("*** REJECTED --- MISSING HOTSPOT ---> " + hotSpotId);
-			return "FAIL";
+			throw new BadRequestAppDataException();
 		}
 		dao.incrementRating(res.getHotSpotId());
 		
@@ -154,6 +156,7 @@ public class HotSpot extends ResourceBase {
 		}
 		catch (Exception e) {
 			logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
+			throw new BadRequestAppDataException();
 		}
 		logger.info("Exit");
 		
@@ -181,10 +184,12 @@ public class HotSpot extends ResourceBase {
 			}
 			else {
 				logger.warning("*** Unable to find a matching user token for string=" + userToken);
+				throw new BadUserDataProvidedException();
 			}
 		}
 		catch (Exception e) {
 			logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
+			throw new BadRequestAppDataException();
 		}
 		logger.info("Exit");
 		
@@ -192,4 +197,4 @@ public class HotSpot extends ResourceBase {
 	}
 	
 	
-} // Event
+} // HotSpot

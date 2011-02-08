@@ -3,8 +3,12 @@ package com.zarcode.data.resources;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
+
+import javax.ws.rs.core.SecurityContext;
 
 import com.google.appengine.api.memcache.jsr107cache.GCacheFactory;
+import com.zarcode.data.exception.RequestNotSecureException;
 
 import net.sf.jsr107cache.CacheException;
 import net.sf.jsr107cache.CacheFactory;
@@ -25,5 +29,14 @@ public class ResourceBase {
  	   	} 
 		catch (CacheException e) {
  	   	}
+	}
+	
+	public void checkSSL(SecurityContext context, Logger logger) throws RequestNotSecureException {
+		if (context != null) {
+			if (!context.isSecure()) {
+				logger.severe("Somebody is trying to access the service over http (instead of https).");
+				throw new RequestNotSecureException();
+			}
+		}
 	}
 }

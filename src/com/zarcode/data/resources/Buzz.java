@@ -2,8 +2,11 @@ package com.zarcode.data.resources;
 
 import java.net.URLDecoder;
 import java.nio.ByteBuffer;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -25,10 +28,15 @@ import com.zarcode.app.AppCommon;
 import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.BuzzDao;
+import com.zarcode.data.dao.HotSpotDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.WaterResourceDao;
+import com.zarcode.data.exception.BadRequestAppDataException;
+import com.zarcode.data.exception.BadUserDataProvidedException;
+import com.zarcode.data.exception.UnableToDecodeRequestException;
 import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.data.model.CommentDO;
+import com.zarcode.data.model.HotSpotDO;
 import com.zarcode.data.model.UserDO;
 import com.zarcode.data.model.WaterResourceDO;
 import com.zarcode.platform.model.AppPropDO;
@@ -58,7 +66,7 @@ public class Buzz extends ResourceBase {
 	@POST
 	@Produces("application/json")
 	@Path("/{resourceId}/newMsg")
-	public BuzzMsgDO addMsgEventToRegion(@PathParam("resourceId") Long resourceId, String rawBuzzMsg) {
+	public BuzzMsgDO addBuzzMsgToLake(@PathParam("resourceId") Long resourceId, @QueryParam("addToMyHotSpots") boolean addToMyHotSpots, String rawBuzzMsg) {
 		List<BuzzMsgDO> res = null;
 		BuzzDao dao = null;
 		WaterResourceDao waterResDao = null;
@@ -70,12 +78,7 @@ public class Buzz extends ResourceBase {
 	
 		logger.info("Process NEW event: " + rawBuzzMsg);
 		
-		if (context != null) {
-			if (!context.isSecure()) {
-				logger.warning("*** REJECTED -- Request is not SECURE ***");
-				return newBuzzMsg;
-			}
-		}
+		checkSSL(context, logger);
 		
 		if (rawBuzzMsg != null && rawBuzzMsg.length() > 0) {
 			buzzMsg = new Gson().fromJson(rawBuzzMsg, BuzzMsgDO.class);
@@ -91,7 +94,7 @@ public class Buzz extends ResourceBase {
 					
 					if (AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
 						logger.warning("*** REJECTED -- ANONYMOUS users cannot post buzzMsgs");
-						return newBuzzMsg;
+						throw new BadUserDataProvidedException();
 					}
 				
 					//
@@ -110,7 +113,7 @@ public class Buzz extends ResourceBase {
 					UserDO user = userDao.getUserByLLID(llId, false);
 					if (user == null) {
 						logger.warning("*** REJECTED -- Unable to find a matching user for llId=" + llId);
-						return newBuzzMsg;
+						throw new BadUserDataProvidedException();
 					}
 					
 					//
@@ -133,17 +136,35 @@ public class Buzz extends ResourceBase {
 						}
 						catch (JDOObjectNotFoundException ex) {
 							logger.severe("Unable to update lastUpdated timestamp for water resource");
+							throw new BadRequestAppDataException();
 						}
 					}
-					logger.info("Successfully added new event -- " + newBuzzMsg);
+					logger.info("Successfully added new buzzMsg -- " + newBuzzMsg);
+					
+					if (addToMyHotSpots) {
+						logger.info("Adding generic hotspot for user llId=" + llId);
+						HotSpotDO spot = new HotSpotDO();
+						spot.setLLId(llId);
+						Format formatter = new SimpleDateFormat("MMM d, yyyy");
+						String today = formatter.format(new Date());
+						spot.setDesc("HotSpot @ " + buzzMsg.getLocation() + " at " + buzzMsg.getUserLocalTime());
+						spot.setNotes("*** Generated from Buzz Msg ***");
+						spot.setLat(buzzMsg.getLat());
+						spot.setLng(buzzMsg.getLng());
+						spot.setRating(0);
+						spot.setResourceId(buzzMsg.getResourceId());
+						HotSpotDao hotSpotDao = new HotSpotDao();
+						hotSpotDao.addHotSpot(spot);
+					}
 				}
 			}
 			catch (Exception e) {
 				logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
+				throw new BadRequestAppDataException();
 			}
 		}
 		else {
-			logger.warning("Event JSON instance is empty");
+			throw new UnableToDecodeRequestException();
 		}
 		return newBuzzMsg;
 	}
@@ -151,7 +172,7 @@ public class Buzz extends ResourceBase {
 	@POST
 	@Produces("application/json")
 	@Path("/{resourceId}/comment")
-	public CommentDO addCommentToMsgEvent(@PathParam("resourceId") Long resourceId, @QueryParam("id") String id, String rawCommentObj) {
+	public CommentDO addCommentToBuzzMsg(@PathParam("resourceId") Long resourceId, @QueryParam("id") String id, String rawCommentObj) {
 		List<BuzzMsgDO> res = null;
 		BuzzDao dao = null;
 		UserDao userDao = null;
@@ -163,12 +184,8 @@ public class Buzz extends ResourceBase {
 	
 		logger.info("Process NEW comment: " + rawCommentObj);
 		
-		if (context != null) {
-			if (!context.isSecure()) {
-				logger.warning("*** REJECTED -- Request is not SECURE ***");
-				return newComm;
-			}
-		}
+		checkSSL(context, logger);
+		
 		//
 		// validate user
 		//
@@ -185,7 +202,7 @@ public class Buzz extends ResourceBase {
 		UserDO user = userDao.getUserByLLID(llId, false);
 		if (user == null) {
 			logger.warning("*** REJECTED -- Unable to find a matching user for llId=" + llId);
-			return comm;
+			throw new BadUserDataProvidedException();
 		}
 		
 		if (rawCommentObj != null && rawCommentObj.length() > 0) {
@@ -209,6 +226,7 @@ public class Buzz extends ResourceBase {
 						}
 						catch (JDOObjectNotFoundException ex) {
 							logger.severe("Unable to update lastUpdated timestamp for water resource");
+							throw new BadRequestAppDataException();
 						}
 					}
 					
@@ -216,14 +234,16 @@ public class Buzz extends ResourceBase {
 				}
 				else {
 					logger.severe("*** Incoming comment did not contain REQUIRED msgEventId ***");
+					throw new BadRequestAppDataException();
 				}
 			}
 			catch (Exception e) {
 				logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
+				throw new BadRequestAppDataException();
 			}
 		}
 		else {
-			logger.warning("Event JSON instance is empty");
+			throw new UnableToDecodeRequestException();
 		}
 		logger.info("Returning: " + newComm);
 		
@@ -289,6 +309,7 @@ public class Buzz extends ResourceBase {
 		}
 		catch (Exception e) {
 			logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
+			throw new BadRequestAppDataException();
 		}
 		logger.info("Exit");
 		
@@ -383,6 +404,7 @@ public class Buzz extends ResourceBase {
 		}
 		catch (Exception e) {
 			logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
+			throw new BadRequestAppDataException();
 		}
 		logger.info("Exit");
 		
@@ -390,4 +412,4 @@ public class Buzz extends ResourceBase {
 		
 	}
 	
-} // Event
+} // Buzz

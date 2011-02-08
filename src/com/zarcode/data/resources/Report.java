@@ -28,6 +28,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import com.zarcode.common.Util;
 import com.zarcode.data.dao.ReportDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.model.*;
@@ -47,54 +48,6 @@ public class Report extends ResourceBase {
 	String container = null;
 	
 	private static final int MAXPAGE = 10;
-	
-	
-	/*
-	@GET 
-	@Produces("text/plain")
-	@Path("/init")
-	public int init() {
-		int count = 0;
-		String str = null;
-		RecipeDO recipe1 = null;
-		RecipeDO recipe2 = null;
-		RecipeDO recipe3 = null;
-		GAEDao dao = null;
-		
-		try {
-			dao = new GAEDao();
-		
-			recipe1 = new RecipeDO();
-			recipe1.setAuthor("Billy Bob");
-			recipe1.setRecipeName("Donut Pizza II");
-			recipe1.setDesc("dfsfsdfsdf ssfasa asfsafasf");
-			recipe1.setDirections("Mix in bowl");
-			recipe1.setIngredients("Donuts, Cheese and Pepperoni");
-			dao.insertRecipe(recipe1);
-			count++;
-			
-			recipe2 = new RecipeDO();
-			Long id = new Long(9999);
-			recipe2.setRecipeId(id);
-			recipe2.setAuthor("Joe Kirven");
-			recipe2.setRecipeName("Mouse Pudding");
-			recipe2.setDirections("Mix in bowl");
-			recipe2.setDesc("dfsfsdfsdf ssfasa asfsafasf");
-			recipe2.setIngredients("Fresh rat, fresh pasta");
-			dao.insertRecipe(recipe2);
-			count++;
-		}
-		catch (Exception e) {
-			logger.severe("init(): [EXCEPTION]\n" + getStackTrace(e));
-		}
-		finally {
-			if (dao != null) {
-				dao.close();
-			}
-		}
-		return count;
-	}
-	*/
 	
 	@GET 
 	@Path("/latest/{resname}")
@@ -131,7 +84,8 @@ public class Report extends ResourceBase {
 			}
 		}
 		catch (Exception e) {
-			logger.severe("getLatestReport: " + getStackTrace(e));
+			logger.severe("getLatestReport: " + Util.getStackTrace(e));
+			throw new BadRequestAppDataException();
 		}
 		return latestReport;
 	}
@@ -153,7 +107,8 @@ public class Report extends ResourceBase {
 			}
 		}
 		catch (Exception e) {
-			logger.severe("getReportsByRadius: " + getStackTrace(e));
+			logger.severe("getReportsByRadius: " + Util.getStackTrace(e));
+			throw new BadRequestAppDataException();
 		}
 		return list;
 	}
@@ -174,7 +129,8 @@ public class Report extends ResourceBase {
 			res = reportDao.getReportById(reportId);
 		}
 		catch (Exception e) {
-			logger.severe("getReportByReportId: " + getStackTrace(e));
+			logger.severe("getReportByReportId: " + Util.getStackTrace(e));
+			throw new BadRequestAppDataException();
 		}
 		return res;
 	}
@@ -196,7 +152,8 @@ public class Report extends ResourceBase {
 				list = reportDao.getReportsByState(state);
 			}
 			catch (Exception e) {
-				logger.severe("getReportsByState: " + getStackTrace(e));
+				logger.severe("getReportsByState: " + Util.getStackTrace(e));
+				throw new BadRequestAppDataException();
 			}
 		}
 		return list;
@@ -219,60 +176,11 @@ public class Report extends ResourceBase {
 				list = reportDao.getShortReportsByState(state);
 			}
 			catch (Exception e) {
-				logger.severe("getLakesByState: " + getStackTrace(e));
+				logger.severe("getLakesByState: " + Util.getStackTrace(e));
+				throw new BadRequestAppDataException();
 			}
 		}
 		return list;
 	}
 	
-	/*
-	private List<RecipeDO> returnPage(List<RecipeDO> res, int pageIndex) {
-		List<RecipeDO> empty = new ArrayList<RecipeDO>();
-		//
-		// return empty set
-		//
-		if (res == null) {
-			return empty;
-		}
-	
-		//
-		// return subset
-		//
-		int start = 0;
-		int end = 0;
-		if (pageIndex > 0) {
-			start = pageIndex * MAXPAGE;
-			end = start + MAXPAGE;
-			if (end > (res.size()-1)) {
-				end = (res.size()-1); 
-			}
-			if (start <= end) {
-				logger.info("returnPage(): start=" + start + " end=" + end);
-				return res.subList(start, end);
-			}
-			else {
-				return empty;
-			}
-		}
-		else {
-			if (res != null && res.size() < MAXPAGE) {
-				end = res.size() - 1;
-			}
-			else {
-				end = MAXPAGE - 1;
-			}
-			logger.info("returnPage(): start=" + start + " end=" + end);
-			return (res != null ? res.subList(start, end) : null);
-		}
-	}
-	*/
-	
-	private String getStackTrace(Exception e) {
-		StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        e.printStackTrace(pw);
-        String str = "\n" + sw.toString();
-        return str;
-	}
-
 }
