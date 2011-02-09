@@ -59,6 +59,9 @@ public class HotSpotDO implements Serializable {
 	private double lng = 0;
 	
 	@Persistent
+	private String location = null;
+	
+	@Persistent
 	private String geoHashKey12 = null;
 	
 	@Persistent
@@ -129,6 +132,15 @@ public class HotSpotDO implements Serializable {
 
 	public void setLng(double lng) {
 		this.lng = lng;
+	}
+	
+	@XmlElement
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	
 	@XmlElement

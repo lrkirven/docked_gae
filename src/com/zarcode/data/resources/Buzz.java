@@ -131,11 +131,15 @@ public class Buzz extends ResourceBase {
 					}
 					logger.info("Successfully added new buzzMsg -- " + newBuzzMsg);
 					
+					/*
+					 * if user requested it, we update this HotSpots for this location as well
+					 */
 					if (addToMyHotSpots) {
 						logger.info("Adding generic hotspot for user idClear=" + buzzMsg.getIdClear());
 						HotSpotDO spot = new HotSpotDO();
 						spot.setLLId(buzzMsg.getLlId());
 						spot.setIdClear(buzzMsg.getIdClear());
+						spot.setLocation(buzzMsg.getLocation());
 						spot.setDesc("HotSpot @ " + buzzMsg.getLocation() + " at " + buzzMsg.getUserLocalTime());
 						spot.setNotes("*** Generated from Buzz Msg ***");
 						spot.setLat(buzzMsg.getLat());
