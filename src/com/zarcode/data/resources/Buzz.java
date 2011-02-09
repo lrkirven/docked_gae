@@ -109,7 +109,7 @@ public class Buzz extends ResourceBase {
 					//
 					AppPropDO p2 = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
 					BlockTea.BIG_ENDIAN = false;
-					String llIdCipherText = BlockTea.encrypt(llId, p2.getStringValue());
+					String llIdCipherText = BlockTea.encrypt(buzzMsg.getIdClear(), p2.getStringValue());
 					buzzMsg.setLlId(llIdCipherText);
 					
 					
@@ -132,10 +132,10 @@ public class Buzz extends ResourceBase {
 					logger.info("Successfully added new buzzMsg -- " + newBuzzMsg);
 					
 					if (addToMyHotSpots) {
-						logger.info("Adding generic hotspot for user llId=" + llId);
+						logger.info("Adding generic hotspot for user idClear=" + buzzMsg.getIdClear());
 						HotSpotDO spot = new HotSpotDO();
-						spot.setLLId(llIdCipherText);
-						spot.setIdClear(llId);
+						spot.setLLId(buzzMsg.getLlId());
+						spot.setIdClear(buzzMsg.getIdClear());
 						spot.setDesc("HotSpot @ " + buzzMsg.getLocation() + " at " + buzzMsg.getUserLocalTime());
 						spot.setNotes("*** Generated from Buzz Msg ***");
 						spot.setLat(buzzMsg.getLat());

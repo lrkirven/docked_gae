@@ -19,7 +19,7 @@ public class UserTokenDO  extends AbstractLoaderDO implements Serializable {
 	private Long tokenId = null; 
 
 	@Persistent
-	private String llId = null;
+	private String idClear = null;
 	
 	@Persistent
 	private String token = null;
@@ -47,12 +47,12 @@ public class UserTokenDO  extends AbstractLoaderDO implements Serializable {
 		this.expiredVal = expiredVal;
 	}
 	
-	public String getLlId() {
-		return llId;
+	public String getIdClear() {
+		return idClear;
 	}
 	
-	public void setLlId(String llId) {
-		this.llId = llId;
+	public void setIdClear(String idClear) {
+		this.idClear = idClear;
 	}
 
 	public String getToken() {

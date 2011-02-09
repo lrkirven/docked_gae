@@ -10,6 +10,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import com.zarcode.platform.model.AbstractLoaderDO;
 
@@ -29,6 +30,9 @@ public class UserDO extends AbstractLoaderDO implements Serializable {
 
 	@Persistent
 	private String llId = null;
+	
+	@Persistent
+	private String idClear = null;
 	
 	@Persistent
 	private String deviceId = null;
@@ -154,6 +158,15 @@ public class UserDO extends AbstractLoaderDO implements Serializable {
 	
 	public void setLLId(String llId) {
 		this.llId = llId;
+	}
+	
+	@XmlTransient
+	public String getIdClear() {
+		return idClear;
+	}
+	
+	public void setIdClear(String idClear) {
+		this.idClear = idClear;
 	}
 	
 	@XmlElement

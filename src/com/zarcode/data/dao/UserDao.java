@@ -406,8 +406,8 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		UserDO target = null;
 		
 		Query query = pm.newQuery(UserDO.class);
-		query.setFilter("idClear == idClearParam");
-		query.declareParameters("String idClearParam");
+		query.setFilter("llId == llIdParam");
+		query.declareParameters("String llIdParam");
 		list = (List<UserDO>)query.execute(idClear);
 		if (list != null && list.size() > 0) {
 			res = list.get(0);

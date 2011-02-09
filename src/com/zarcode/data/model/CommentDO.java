@@ -13,6 +13,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import com.google.appengine.api.datastore.Text;
 import com.zarcode.app.AppCommon;
@@ -188,6 +189,7 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 		this.llId = llId;
 	}
 	
+	@XmlTransient
 	public String getIdClear() {
 		return idClear;
 	}

@@ -294,6 +294,7 @@ public class User extends ResourceBase {
 		boolean anonymous = false;
 		
 		String llId = null;
+		String idClear = null;
 		double lat = 0;
 		double lng = 0;
 		String deviceId = null;
@@ -331,7 +332,7 @@ public class User extends ResourceBase {
 			BlockTea.BIG_ENDIAN = false;
 			String plainText = BlockTea.decrypt(llId, prop.getStringValue());
 			logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
-			llId = plainText;
+			idClear = plainText;
 		}
 		
 		
@@ -368,11 +369,11 @@ public class User extends ResourceBase {
 				}
 			}
 			else {
-				user = userDao.getAndUpdateUser(llId, lat, lng);
+				user = userDao.getAndUpdateUser(idClear, lat, lng);
 				tokenDao = new UserTokenDao();
-				userToken = tokenDao.getTokenByLlId(llId);
+				userToken = tokenDao.getTokenByIdClear(idClear);
 				if (userToken == null || userToken.isExpired()) {
-					userToken = tokenDao.generateToken(llId);
+					userToken = tokenDao.generateTokenByIdClear(idClear);
 					logger.info("Generated a new user token=" + userToken.getToken() + " for llId=" + llId);
 				}
 				status.setUserToken(userToken.getToken());

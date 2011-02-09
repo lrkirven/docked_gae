@@ -64,6 +64,7 @@ public class HotSpot extends ResourceBase {
 		UserDao userDao = null;
 		int rows = 0;
 		String llId = null;
+		String idClear = null;
 		HotSpotDO spot = null;
 		HotSpotDO newSpot = null;
 	
@@ -76,7 +77,7 @@ public class HotSpot extends ResourceBase {
 			return newSpot;
 		}
 		
-		llId = t.getLlId();
+		idClear = t.getIdClear();
 		
 		if (hotSpot != null && hotSpot.length() > 0) {
 			spot = new Gson().fromJson(hotSpot, HotSpotDO.class);
@@ -86,8 +87,8 @@ public class HotSpot extends ResourceBase {
 					
 					AppPropDO p2 = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
 					BlockTea.BIG_ENDIAN = false;
-					String llIdCipherText = BlockTea.encrypt(llId, p2.getStringValue());
-					spot.setLLId(llIdCipherText);
+					llId = BlockTea.encrypt(idClear, p2.getStringValue());
+					spot.setLLId(llId);
 					
 					spot.setResourceId(resourceId);
 					dao = new HotSpotDao();
@@ -127,6 +128,7 @@ public class HotSpot extends ResourceBase {
 		CommentDO comm = null;
 		CommentDO newComm = null;
 		String llId = null;
+		String idClear = null;
 	
 		logger.info("Process incoming rating: " + rating);
 	
@@ -136,7 +138,7 @@ public class HotSpot extends ResourceBase {
 			logger.warning("*** REJECTED --- INVALID USER TOKEN ---> " + userToken);
 			throw new BadUserDataProvidedException();
 		}
-		llId = t.getLlId();
+		idClear = t.getIdClear();
 		HotSpotDao dao = new HotSpotDao();
 		HotSpotDO res = dao.getHotSpotById(hotSpotId);
 		if (res == null) {
@@ -188,8 +190,8 @@ public class HotSpot extends ResourceBase {
 			tokenDao = new UserTokenDao();
 			UserTokenDO t = tokenDao.getTokenByTokenStr(userToken);
 			if (t != null) {
-				String llId = t.getLlId();
-				results = dao.getHotSpotsByUser(llId);
+				String idClear = t.getIdClear();
+				results = dao.getHotSpotsByIdClear(idClear);
 			}
 			else {
 				logger.warning("*** Unable to find a matching user token for string=" + userToken);

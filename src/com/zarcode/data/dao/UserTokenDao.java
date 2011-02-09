@@ -20,13 +20,13 @@ public class UserTokenDao extends BaseDao {
 	private static long MSEC_IN_DAY = 86400000;
 
 	
-	public UserTokenDO getTokenByLlId(String llId) {
+	public UserTokenDO getTokenByIdClear(String idClear) {
 		UserTokenDO found = null;
 		List<UserTokenDO> res = null;
 		Query query = pm.newQuery(UserTokenDO.class);
-		query.setFilter("llId == llIdParam");
-		query.declareParameters("String llIdParam");
-		res = (List<UserTokenDO>)query.execute(llId);
+		query.setFilter("idClear == idClearParam");
+		query.declareParameters("String idClearParam");
+		res = (List<UserTokenDO>)query.execute(idClear);
 		if (res != null && res.size() > 0) {
 			found = res.get(0);
 		}
@@ -46,19 +46,19 @@ public class UserTokenDao extends BaseDao {
 		return found;
 	}
 	
-	public UserTokenDO generateToken(String llId) {
+	public UserTokenDO generateTokenByIdClear(String idClear) {
 		UserTokenDO newToken = null;
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			UserTokenDO token = getTokenByLlId(llId);
+			UserTokenDO token = getTokenByIdClear(idClear);
 			if (token == null) {
 				token = new UserTokenDO();
 				Date now = new Date();
 				token.setExpiredVal(now.getTime() + MSEC_IN_DAY);
 				String t = generateUniqueStr();
 				token.setToken(t);
-				token.setLlId(llId);
+				token.setIdClear(idClear);
 				token.setTokenId(null);
 				newToken = pm.makePersistent(token); 
 			}

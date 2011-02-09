@@ -86,7 +86,7 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 		return list;
 	}
 	
-	public List<HotSpotDO> getHotSpotsByUser(String llId) {
+	public List<HotSpotDO> getHotSpotsByIdClear(String idClear) {
 		int i = 0;
 		List<HotSpotDO> list = null;
 		Transaction tx = pm.currentTransaction();
@@ -94,8 +94,8 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 			tx.begin();
 			StringBuilder sb = new StringBuilder();
 			sb.append("(");
-			sb.append("llId == '");
-			sb.append(llId);
+			sb.append("idClear == '");
+			sb.append(idClear);
 			sb.append("')");
 			Query query = pm.newQuery(HotSpotDO.class, sb.toString());
 			list = (List<HotSpotDO>)query.execute();

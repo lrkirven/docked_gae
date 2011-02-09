@@ -12,6 +12,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import ch.hsr.geohash.GeoHash;
 
@@ -175,6 +176,7 @@ public class HotSpotDO implements Serializable {
 		this.llId = llId;
 	}
 	
+	@XmlTransient
 	public String getIdClear() {
 		return idClear;
 	}
