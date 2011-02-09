@@ -76,7 +76,7 @@ public class Buzz extends ResourceBase {
 		BuzzMsgDO newBuzzMsg = null;
 		String llId = null;
 	
-		logger.info("Process NEW event: " + rawBuzzMsg);
+		logger.info("Process Incoming JSON Buzz Msg: " + rawBuzzMsg);
 		
 		checkSSL(context, logger);
 		
