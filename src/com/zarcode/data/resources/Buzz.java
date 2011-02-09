@@ -153,6 +153,7 @@ public class Buzz extends ResourceBase {
 						spot.setLng(buzzMsg.getLng());
 						spot.setRating(0);
 						spot.setResourceId(buzzMsg.getResourceId());
+						spot.postCreation();
 						HotSpotDao hotSpotDao = new HotSpotDao();
 						hotSpotDao.addHotSpot(spot);
 					}

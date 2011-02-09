@@ -76,7 +76,6 @@ public class HotSpotDO implements Serializable {
 		logger.info("lat=" + lat + " lng=" + lng);
 		GeoHash geoKey = GeoHash.withCharacterPrecision(lat, lng, 12);
 		setGeoHashKey(geoKey.toBase32());
-		createDate = new Date();
 	}
 	
 	public void postReturn() {
