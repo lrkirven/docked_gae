@@ -48,23 +48,33 @@ public class UserTokenDao extends BaseDao {
 	
 	public UserTokenDO generateToken(String llId) {
 		UserTokenDO newToken = null;
-		UserTokenDO token = getTokenByLlId(llId);
-		if (token == null) {
-			token = new UserTokenDO();
-			Date now = new Date();
-			token.setExpiredVal(now.getTime() + MSEC_IN_DAY);
-			String t = generateUniqueStr();
-			token.setToken(t);
-			token.setLlId(llId);
-			token.setTokenId(null);
-			newToken = pm.makePersistent(token); 
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			UserTokenDO token = getTokenByLlId(llId);
+			if (token == null) {
+				token = new UserTokenDO();
+				Date now = new Date();
+				token.setExpiredVal(now.getTime() + MSEC_IN_DAY);
+				String t = generateUniqueStr();
+				token.setToken(t);
+				token.setLlId(llId);
+				token.setTokenId(null);
+				newToken = pm.makePersistent(token); 
+			}
+			else {
+				Date now = new Date();
+				token.setExpiredVal(now.getTime() + MSEC_IN_DAY);
+				String t = generateUniqueStr();
+				token.setToken(t);
+				newToken = token;
+			}
+			tx.commit();
 		}
-		else {
-			Date now = new Date();
-			token.setExpiredVal(now.getTime() + MSEC_IN_DAY);
-			String t = generateUniqueStr();
-			token.setToken(t);
-			newToken = token;
+		finally {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
 		}
 		return newToken;
 	}
