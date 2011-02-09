@@ -140,8 +140,8 @@ public class Buzz extends ResourceBase {
 						spot.setLLId(buzzMsg.getLlId());
 						spot.setIdClear(buzzMsg.getIdClear());
 						spot.setLocation(buzzMsg.getLocation());
-						spot.setDesc("HotSpot @ " + buzzMsg.getLocation() + " at " + buzzMsg.getUserLocalTime());
-						spot.setNotes("*** Generated from Buzz Msg ***");
+						spot.setDesc("HotSpot @" + buzzMsg.getLocation());
+						spot.setNotes("*** Generated from Buzz Msg [ " + buzzMsg.getUserLocalTime() + " ] ***");
 						spot.setLat(buzzMsg.getLat());
 						spot.setLng(buzzMsg.getLng());
 						spot.setRating(0);
