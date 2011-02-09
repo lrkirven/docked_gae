@@ -76,6 +76,7 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 			sb.append(resourceId);
 			sb.append(")");
 			Query query = pm.newQuery(HotSpotDO.class, sb.toString());
+			query.setOrdering("category asc, createDate desc");
 			list = (List<HotSpotDO>)query.execute();
 		}
 		finally {
@@ -86,6 +87,12 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 		return list;
 	}
 	
+	/**
+	 * This method retrieves all of the hotspots owned by specific user.
+	 * 
+	 * @param idClear
+	 * @return
+	 */
 	public List<HotSpotDO> getHotSpotsByIdClear(String idClear) {
 		int i = 0;
 		List<HotSpotDO> list = null;
@@ -98,6 +105,7 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 			sb.append(idClear);
 			sb.append("')");
 			Query query = pm.newQuery(HotSpotDO.class, sb.toString());
+			query.setOrdering("category asc, createDate desc");
 			list = (List<HotSpotDO>)query.execute();
 		}
 		finally {
@@ -108,12 +116,23 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 		return list;
 	}
 	
+	/**
+	 * Gets hotspot instance based upon actual hotspot id.
+	 * 
+	 * @param spotId
+	 * @return
+	 */
 	public HotSpotDO getHotSpotById(Long spotId) {
 		HotSpotDO res = null;
 		res = pm.getObjectById(HotSpotDO.class, spotId);
 		return res;
 	}
 	
+	/**
+	 * This method increments the approval rating of this hotspot.
+	 * 
+	 * @param spotId
+	 */
 	public void incrementRating(Long spotId) {
 		HotSpotDO res = null;
 		Transaction tx = pm.currentTransaction();
@@ -132,6 +151,13 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 		}
 	}
 
+	/**
+	 * This method will find all of the HotSpots based upon the provided lat-lng.
+	 * 
+	 * @param lat
+	 * @param lng
+	 * @return
+	 */
 	public List<HotSpotDO> getHotSpotsByLatLng(double lat, double lng) {
 		int i = 0;
 		int retryCounter = 0;
