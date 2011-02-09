@@ -184,7 +184,7 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 					if (listOfComments.size() > 0) {
 						msg.setComments(listOfComments);
 					}
-					user = userDao.getUserByLLID(msg.getLlId(), false);
+					user = userDao.getUserByIdClear(msg.getIdClear());
 					if (user != null) {
 						msg.setProfileUrl(user.getProfileUrl());
 						msg.setUsername(user.getDisplayName());

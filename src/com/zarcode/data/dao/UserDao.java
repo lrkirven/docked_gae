@@ -377,6 +377,7 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		return displayName;
 	}
 	
+	@Deprecated 
 	public UserDO getUserByLLID(String llId, boolean encrypted) {
 		UserDO res = null;
 		List<UserDO> list = null;
@@ -393,6 +394,21 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		query.setFilter("llId == llIdParam");
 		query.declareParameters("String llIdParam");
 		list = (List<UserDO>)query.execute(llId);
+		if (list != null && list.size() > 0) {
+			res = list.get(0);
+		}
+		return res;
+	}
+	
+	public UserDO getUserByIdClear(String idClear) {
+		UserDO res = null;
+		List<UserDO> list = null;
+		UserDO target = null;
+		
+		Query query = pm.newQuery(UserDO.class);
+		query.setFilter("idClear == idClearParam");
+		query.declareParameters("String idClearParam");
+		list = (List<UserDO>)query.execute(idClear);
 		if (list != null && list.size() > 0) {
 			res = list.get(0);
 		}

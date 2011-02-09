@@ -75,7 +75,7 @@ public class User extends ResourceBase {
 		RegisterTokenDO rToken = null;
 		String registerSecret = null;
 		
-		checkSSL(context, logger);
+		requireSSL(context, logger);
 	
 		if (rawRegisterToken != null && rawRegisterToken.length() > 0) {
 			rToken = new Gson().fromJson(rawRegisterToken, RegisterTokenDO.class);
@@ -180,9 +180,10 @@ public class User extends ResourceBase {
 		String object = null;
 		String field = null;
 		String value = null;
+		String plainText = null;
 		
 		
-		checkSSL(context, logger);
+		requireSSL(context, logger);
 		
 		if (rawUpdateTask != null && rawUpdateTask.length() > 0) {
 			task = new Gson().fromJson(rawUpdateTask, UpdateTaskDO.class);
@@ -198,30 +199,30 @@ public class User extends ResourceBase {
 				value = URLDecoder.decode(value);
 			}
 			catch (Exception e1) {
-				logger.warning("EXCEPTION ::: " + e1.getMessage());
-				return null;
+				logger.warning("EXCEPTION ::: " + Util.getStackTrace(e1));
+			throw new BadUserDataProvidedException();
 			}
 		}
 		
 		if (llId == null || llId.length() == 0) {
 			logger.warning("*** Incoming llId is not VALID ***");
-			return null;
+			throw new BadUserDataProvidedException();
 		}
 		
 		if (!AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
 			AppPropDO prop = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
 			BlockTea.BIG_ENDIAN = false;
-			String plainText = BlockTea.decrypt(llId, prop.getStringValue());
+			plainText = BlockTea.decrypt(llId, prop.getStringValue());
 			logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
 			llId = plainText;
 		}
 		else {
 			logger.warning("*** Anonymous user can update the displayName ***");
-			return null;
+			throw new BadUserDataProvidedException();
 		}
 		
 		dao = new UserDao();
-		res = dao.getUserByLLID(llId, false);
+		res = dao.getUserByIdClear(plainText);
 		if (res != null) {
 			try {
 				if (field != null && field.equalsIgnoreCase("displayName")) {
@@ -297,7 +298,7 @@ public class User extends ResourceBase {
 		double lng = 0;
 		String deviceId = null;
 		
-		checkSSL(context, logger);
+		requireSSL(context, logger);
 		
 		if (rawPingData != null && rawPingData.length() > 0) {
 			pingData = new Gson().fromJson(rawPingData, PingDataDO.class);

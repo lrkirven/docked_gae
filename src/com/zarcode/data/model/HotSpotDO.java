@@ -46,6 +46,9 @@ public class HotSpotDO implements Serializable {
 	private String llId = null;
 	
 	@Persistent
+	private String idClear = null;
+	
+	@Persistent
 	private Long resourceId = null;
 	
 	@Persistent
@@ -170,6 +173,14 @@ public class HotSpotDO implements Serializable {
 
 	public void setLLId(String llId) {
 		this.llId = llId;
+	}
+	
+	public String getIdClear() {
+		return idClear;
+	}
+
+	public void setIdClear(String idClear) {
+		this.idClear = idClear;
 	}
 	
 	@XmlElement

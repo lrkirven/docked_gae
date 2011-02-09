@@ -31,7 +31,7 @@ public class ResourceBase {
  	   	}
 	}
 	
-	public void checkSSL(SecurityContext context, Logger logger) throws RequestNotSecureException {
+	public void requireSSL(SecurityContext context, Logger logger) throws RequestNotSecureException {
 		if (context != null) {
 			if (!context.isSecure()) {
 				logger.severe("Somebody is trying to access the service over http (instead of https).");

@@ -17,6 +17,7 @@ import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
 import com.google.gson.Gson;
+import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.BuzzDao;
 import com.zarcode.data.dao.HotSpotDao;
@@ -29,6 +30,8 @@ import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.data.model.CommentDO;
 import com.zarcode.data.model.HotSpotDO;
 import com.zarcode.data.model.UserTokenDO;
+import com.zarcode.platform.model.AppPropDO;
+import com.zarcode.security.BlockTea;
 
 @Path("/hotspots")
 public class HotSpot extends ResourceBase {
@@ -80,7 +83,12 @@ public class HotSpot extends ResourceBase {
 			try {
 				if (spot != null) {
 					spot.postCreation();
-					spot.setLLId(llId);
+					
+					AppPropDO p2 = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
+					BlockTea.BIG_ENDIAN = false;
+					String llIdCipherText = BlockTea.encrypt(llId, p2.getStringValue());
+					spot.setLLId(llIdCipherText);
+					
 					spot.setResourceId(resourceId);
 					dao = new HotSpotDao();
 					newSpot = dao.addHotSpot(spot);
@@ -169,6 +177,7 @@ public class HotSpot extends ResourceBase {
 	public List<HotSpotDO> getHotSpotsByUserToken(@PathParam("userToken") String userToken) {
 		int i = 0;
 		List<HotSpotDO> results = null;
+		HotSpotDO spot = null;
 		HotSpotDao dao = null;
 		UserTokenDao tokenDao = null;
 		boolean bFindAll = false;

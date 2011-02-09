@@ -1,6 +1,7 @@
 package com.zarcode.data.model;
 
 import java.io.Serializable;
+import java.net.URLDecoder;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -15,7 +16,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.google.appengine.api.datastore.Text;
 import com.zarcode.app.AppCommon;
+import com.zarcode.common.ApplicationProps;
 import com.zarcode.platform.model.AbstractLoaderDO;
+import com.zarcode.platform.model.AppPropDO;
+import com.zarcode.security.BlockTea;
 
 @XmlRootElement(name = "Comment") 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
@@ -46,6 +50,9 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 	private String llId = null;
 	
 	@Persistent
+	private String idClear = null;
+	
+	@Persistent
 	private Long resourceId = null;
 	
 	@Persistent
@@ -67,6 +74,20 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 		logger.info("lat=" + lat + " lng=" + lng);
 		createDate = new Date();
 		responseText = new Text(response);
+		
+		/*
+		 * URL decode
+		 */
+		llId = URLDecoder.decode(llId);
+		
+		/*
+		 * decrypt llId
+		 */
+		AppPropDO p1 = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
+		BlockTea.BIG_ENDIAN = false;
+		String plainText = BlockTea.decrypt(llId, p1.getStringValue());
+		logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
+		idClear = plainText;
 	}
 	
 	public void postReturn() {
@@ -165,6 +186,14 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 
 	public void setUsername(String llId) {
 		this.llId = llId;
+	}
+	
+	public String getIdClear() {
+		return idClear;
+	}
+
+	public void setIdClear(String idClear) {
+		this.idClear = idClear;
 	}
 	
 	@XmlElement

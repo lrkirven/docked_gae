@@ -78,7 +78,7 @@ public class Buzz extends ResourceBase {
 	
 		logger.info("Process Incoming JSON Buzz Msg: " + rawBuzzMsg);
 		
-		checkSSL(context, logger);
+		requireSSL(context, logger);
 		
 		if (rawBuzzMsg != null && rawBuzzMsg.length() > 0) {
 			buzzMsg = new Gson().fromJson(rawBuzzMsg, BuzzMsgDO.class);
@@ -86,41 +86,31 @@ public class Buzz extends ResourceBase {
 				if (buzzMsg != null) {
 					buzzMsg.postCreation();
 				
-					//
-					// URL decode
-					//
-					llId = URLDecoder.decode(buzzMsg.getLlId());
-					logger.info("URL DECODED -- llId [" + llId + "]");
-					
-					if (AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
+					/*
+					 * check if user is ANONYMOUS
+					 */
+					if (AppCommon.ANONYMOUS.equalsIgnoreCase(buzzMsg.getLlId())) {
 						logger.warning("*** REJECTED -- ANONYMOUS users cannot post buzzMsgs");
 						throw new BadUserDataProvidedException();
 					}
 				
 					//
-					// decrypt user token
-					//
-					AppPropDO prop = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
-					BlockTea.BIG_ENDIAN = false;
-					String plainText = BlockTea.decrypt(llId, prop.getStringValue());
-					logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
-					llId = plainText;
-					
-					//
 					// check if this is a REAL user
 					//
 					userDao = new UserDao();
-					UserDO user = userDao.getUserByLLID(llId, false);
+					UserDO user = userDao.getUserByIdClear(buzzMsg.getIdClear());
 					if (user == null) {
 						logger.warning("*** REJECTED -- Unable to find a matching user for llId=" + llId);
 						throw new BadUserDataProvidedException();
 					}
-					
+				
 					//
 					// message is saved with a clear llId
 					//
-					buzzMsg.setLlId(llId);
-					
+					AppPropDO p2 = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
+					BlockTea.BIG_ENDIAN = false;
+					String llIdCipherText = BlockTea.encrypt(llId, p2.getStringValue());
+					buzzMsg.setLlId(llIdCipherText);
 					
 					
 					dao = new BuzzDao();
@@ -144,9 +134,8 @@ public class Buzz extends ResourceBase {
 					if (addToMyHotSpots) {
 						logger.info("Adding generic hotspot for user llId=" + llId);
 						HotSpotDO spot = new HotSpotDO();
-						spot.setLLId(llId);
-						Format formatter = new SimpleDateFormat("MMM d, yyyy");
-						String today = formatter.format(new Date());
+						spot.setLLId(llIdCipherText);
+						spot.setIdClear(llId);
 						spot.setDesc("HotSpot @ " + buzzMsg.getLocation() + " at " + buzzMsg.getUserLocalTime());
 						spot.setNotes("*** Generated from Buzz Msg ***");
 						spot.setLat(buzzMsg.getLat());
@@ -185,32 +174,30 @@ public class Buzz extends ResourceBase {
 	
 		logger.info("Process NEW comment: " + rawCommentObj);
 		
-		checkSSL(context, logger);
+		requireSSL(context, logger);
 		
-		//
-		// validate user
-		//
-		userDao = new UserDao();
-		if (!AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
-			AppPropDO prop = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
-			BlockTea.BIG_ENDIAN = false;
-			String plainText = BlockTea.decrypt(llId, prop.getStringValue());
-			logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
-			llId = plainText;
-		}
-		
-		userDao = new UserDao();
-		UserDO user = userDao.getUserByLLID(llId, false);
-		if (user == null) {
-			logger.warning("*** REJECTED -- Unable to find a matching user for llId=" + llId);
-			throw new BadUserDataProvidedException();
-		}
 		
 		if (rawCommentObj != null && rawCommentObj.length() > 0) {
 			comm = new Gson().fromJson(rawCommentObj, CommentDO.class);
 			try {
 				if (comm != null && comm.getMsgId() > 0) {
 					comm.postCreation();
+					
+					if (AppCommon.ANONYMOUS.equalsIgnoreCase(comm.getLlId())) {
+						logger.warning("*** REJECTED -- ANONYMOUS users cannot post buzzMsgs");
+						throw new BadUserDataProvidedException();
+					}
+					
+					//
+					// check if this is a REAL user
+					//
+					userDao = new UserDao();
+					UserDO user = userDao.getUserByIdClear(comm.getIdClear());
+					if (user == null) {
+						logger.warning("*** REJECTED -- Unable to find a matching user for llId=" + llId);
+						throw new BadUserDataProvidedException();
+					}
+					
 					userDao.updateProfileUrl(user, comm.getProfileUrl());
 					dao = new BuzzDao();
 					newComm = dao.addComment(comm);
@@ -347,7 +334,7 @@ public class Buzz extends ResourceBase {
 	@GET 
 	@Path("/{resourceId}")
 	@Produces("application/json")
-	public List<BuzzMsgDO> getMsgEventsByRegion(@PathParam("resourceId") Long resourceId, @QueryParam("lat") double lat, @QueryParam("lng") double lng) {
+	public List<BuzzMsgDO> getBuzzMsgsByLake(@PathParam("resourceId") Long resourceId, @QueryParam("lat") double lat, @QueryParam("lng") double lng) {
 		int i = 0;
 		List<BuzzMsgDO> results = null;
 		List<BuzzMsgDO> list = null;
