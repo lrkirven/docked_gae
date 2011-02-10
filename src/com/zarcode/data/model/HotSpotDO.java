@@ -166,7 +166,7 @@ public class HotSpotDO implements Serializable {
 		return category;
 	}
 
-	public void setCategory(int rating) {
+	public void setCategory(int category) {
 		this.category = category;
 	}
 	

@@ -57,7 +57,7 @@ public class HotSpot extends ResourceBase {
 	@POST
 	@Produces("application/json")
 	@Path("/addOrUpdate")
-	public HotSpotDO addHotSpot(@QueryParam("userToken") String userToken,  String hotSpot) {
+	public HotSpotDO addOrUpdateHotSpot(@QueryParam("userToken") String userToken,  String hotSpot) {
 		List<BuzzMsgDO> res = null;
 		HotSpotDao dao = null;
 		WaterResourceDao waterResDao = null;
