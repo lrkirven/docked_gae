@@ -56,8 +56,8 @@ public class HotSpot extends ResourceBase {
 	
 	@POST
 	@Produces("application/json")
-	@Path("/lakes/{resourceId}/hotspot")
-	public HotSpotDO addHotSpot(@PathParam("resourceId") Long resourceId, @QueryParam("userToken") String userToken,  String hotSpot) {
+	@Path("/addOrUpdate")
+	public HotSpotDO addHotSpot(@QueryParam("userToken") String userToken,  String hotSpot) {
 		List<BuzzMsgDO> res = null;
 		HotSpotDao dao = null;
 		WaterResourceDao waterResDao = null;
@@ -67,6 +67,7 @@ public class HotSpot extends ResourceBase {
 		String idClear = null;
 		HotSpotDO spot = null;
 		HotSpotDO newSpot = null;
+		boolean adding = false;
 	
 		logger.info("Process NEW hotspot: " + hotSpot);
 		
@@ -74,7 +75,7 @@ public class HotSpot extends ResourceBase {
 		UserTokenDO t = tokenDao.getTokenByTokenStr(userToken);
 		if (t == null) {
 			logger.warning("*** REJECTED --- INVALID USER TOKEN ---> " + userToken);
-			return newSpot;
+			throw new BadUserDataProvidedException();
 		}
 		
 		idClear = t.getIdClear();
@@ -83,20 +84,39 @@ public class HotSpot extends ResourceBase {
 			spot = new Gson().fromJson(hotSpot, HotSpotDO.class);
 			try {
 				if (spot != null) {
-					spot.postCreation();
-					
-					AppPropDO p2 = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
-					BlockTea.BIG_ENDIAN = false;
-					llId = BlockTea.encrypt(idClear, p2.getStringValue());
-					spot.setLLId(llId);
-					
-					spot.setResourceId(resourceId);
 					dao = new HotSpotDao();
-					newSpot = dao.addHotSpot(spot);
+					/*
+					 * new hotspot
+					 */
+					if (spot.getHotSpotId() == null) {
+						adding = true;
+						spot.postCreation();
+						
+						/*
+						 * update llId for transport back to client
+						 */
+						AppPropDO p2 = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
+						BlockTea.BIG_ENDIAN = false;
+						llId = BlockTea.encrypt(idClear, p2.getStringValue());
+						spot.setLLId(llId);
+					
+						/*
+						 * add it
+						 */
+						newSpot = dao.addHotSpot(spot);
+						logger.info("Successfully added new hotSpot -- " + newSpot);
+					}
+					/*
+					 * existing hotspot
+					 */
+					else {
+						newSpot = dao.updateHotSpot(spot);
+						logger.info("Successfully updated new hotSpot -- " + newSpot);
+					}
 					//
 					// since event was created inside lake area, update last communication
 					//
-					if (spot.getResourceId() > 0) {
+					if (adding && spot.getResourceId() > 0) {
 						try {
 							waterResDao = new WaterResourceDao();
 							waterResDao.updateLastUpdate(spot.getResourceId());
@@ -106,7 +126,6 @@ public class HotSpot extends ResourceBase {
 							logger.severe("Unable to update lastUpdated timestamp for water resource");
 						}
 					}
-					logger.info("Successfully added new hotSpot -- " + spot);
 				}
 			}
 			catch (Exception e) {
@@ -116,7 +135,6 @@ public class HotSpot extends ResourceBase {
 		else {
 			logger.warning("Event JSON instance is empty");
 		}
-		logger.info("Returning: " + newSpot);
 		return newSpot;
 	}
 	

@@ -48,6 +48,8 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 		pm.deletePersistent(spot);
 	}
 	
+	
+	
 	public HotSpotDO addHotSpot(HotSpotDO spot) {
 		HotSpotDO res = null;
 		Long spotId = null;
@@ -62,6 +64,31 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
   	      	logger.info("Added new hotspot --> " + spot);
 		}
         return res; 
+	}
+	
+	/**
+	 * This method updates an existing hotspot.
+	 * 
+	 * @param spot
+	 * @return
+	 */
+	public HotSpotDO updateHotSpot(HotSpotDO spot) {
+		HotSpotDO res = null;
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			res = pm.getObjectById(HotSpotDO.class, spot.getHotSpotId());
+			res.setDesc(spot.getDesc());
+			res.setNotes(spot.getNotes());
+			res.setCategory(spot.getCategory());
+			tx.commit();
+		}
+		finally {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
+		}
+		return res;
 	}
 	
 	public List<HotSpotDO> getHotSpotsByResourceId(Long resourceId) {
