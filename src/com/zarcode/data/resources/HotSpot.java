@@ -91,6 +91,11 @@ public class HotSpot extends ResourceBase {
 					if (spot.getHotSpotId() == null) {
 						adding = true;
 						spot.postCreation();
+					
+						/*
+						 * update user for hotspot
+						 */
+						spot.setIdClear(idClear);
 						
 						/*
 						 * update llId for transport back to client
