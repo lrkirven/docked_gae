@@ -162,6 +162,15 @@ public class HotSpotDO implements Serializable {
 	}
 	
 	@XmlElement
+	public int getCategory() {
+		return category;
+	}
+
+	public void setCategory(int rating) {
+		this.category = category;
+	}
+	
+	@XmlElement
 	public String getDesc() {
 		return desc;
 	}
