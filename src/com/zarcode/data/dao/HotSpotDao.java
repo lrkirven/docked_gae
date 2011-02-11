@@ -81,6 +81,7 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 			res.setDesc(spot.getDesc());
 			res.setNotes(spot.getNotes());
 			res.setCategory(spot.getCategory());
+			res.setPublicFlag(spot.getPublicFlag());
 			tx.commit();
 		}
 		finally {
@@ -101,6 +102,8 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 			sb.append("(");
 			sb.append("resourceId == ");
 			sb.append(resourceId);
+			sb.append(" && publicFlag == ");
+			sb.append(true);
 			sb.append(")");
 			Query query = pm.newQuery(HotSpotDO.class, sb.toString());
 			query.setOrdering("category asc, createDate desc");

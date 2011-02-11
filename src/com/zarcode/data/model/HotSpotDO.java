@@ -79,6 +79,9 @@ public class HotSpotDO implements Serializable {
 	@Persistent
 	private int rating = 0;
 	
+	@Persistent
+	private boolean publicFlag = true;
+	
 	public void postCreation() {
 		logger.info("lat=" + lat + " lng=" + lng);
 		GeoHash geoKey = GeoHash.withCharacterPrecision(lat, lng, 12);
@@ -141,6 +144,15 @@ public class HotSpotDO implements Serializable {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	
+	@XmlElement
+	public boolean getPublicFlag() {
+		return publicFlag;
+	}
+
+	public void setPublicFlag(boolean publicFlag) {
+		this.publicFlag = publicFlag;
 	}
 	
 	@XmlElement
