@@ -43,10 +43,6 @@
         <property name="category" direction="asc"/>
         <property name="resourceId" direction="asc"/>
         <property name="createDate" direction="desc"/>
-    </datastore-index>
-	<datastore-index kind="HotSpotDO" ancestor="false" source="manual">
-        <property name="category" direction="asc"/>
-        <property name="resourceId" direction="asc"/>
-        <property name="createDate" direction="desc"/>
+		<property name="publicFlag" direction="asc"/>
     </datastore-index>
 </datastore-indexes>
