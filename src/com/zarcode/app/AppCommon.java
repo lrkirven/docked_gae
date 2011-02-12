@@ -51,7 +51,8 @@ public class AppCommon {
 				timeOffset = s;
 			}
 			else if (days > 2) {
-				SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy hh:mm a");
+				SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+				// SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy hh:mm a");
 				String s = formatter.format(d);
 				timeOffset = s;
 			}
@@ -64,26 +65,26 @@ public class AppCommon {
 			else {
 				long hours  = (diff/(1000 * 60 * 60));
 				if (hours == 1) {
-					timeOffset = hours + " hour ago";
+					timeOffset = "1 hr ago";
 				}
 				else if (hours > 1) {
-					timeOffset = hours + " hours ago";
+					timeOffset = hours + " hrs ago";
 				}
 				else {
 					long mins = (diff/(1000 * 60));
 					if (mins == 1) {
-						timeOffset = mins + " minute ago";
+						timeOffset = "a minute ago";
 					}
 					if (mins > 1) {
-						timeOffset = mins + " minutes ago";
+						timeOffset = mins + " mins ago";
 					}
 					else {
 						long secs = (diff/(1000));
 						if (secs > 1) {
-							timeOffset = secs + " seconds ago";
+							timeOffset = secs + " secs ago";
 						}
 						else {
-							timeOffset = "0 seconds ago";
+							timeOffset = "just now";
 						}
 					}
 				}
