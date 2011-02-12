@@ -85,12 +85,9 @@
  		}
  	}; 
  	
-
- 	
- 	
-	//
-	// inital entry
-	//	
+ 	/**
+ 	 * Initializes my map
+ 	 */ 	
 	function initializeMap() {
 		var latlng = new google.maps.LatLng(<%= pageContext.getAttribute("lat") %>, <%= pageContext.getAttribute("lng") %> );
 		var minZoomLevel = 12;

@@ -221,6 +221,15 @@
         <servlet-name>BuzzMap</servlet-name>
         <url-pattern>/buzzmap</url-pattern>
     </servlet-mapping>
+	
+	<servlet>
+        <servlet-name>HotSpotMap</servlet-name>
+        <jsp-file>/hsmap.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HotSpotMap</servlet-name>
+        <url-pattern>/hsmap</url-pattern>
+    </servlet-mapping>
   
   	<!-- App Admin --> 
  	<servlet>

@@ -173,6 +173,28 @@ public class HotSpot extends ResourceBase {
 		return "SUCCESS";
 	}
 	
+	@GET
+	@Produces("application/json")
+	@Path("{hotSpotId}")
+	public HotSpotDO getHotSpotById(@PathParam("hotSpotId") Long hotSpotId) {
+		HotSpotDO res = null;
+
+		/*
+		UserTokenDao tokenDao = new UserTokenDao();
+		UserTokenDO t = tokenDao.getTokenByTokenStr(userToken);
+		if (t == null) {
+			logger.warning("*** REJECTED --- INVALID USER TOKEN ---> " + userToken);
+			throw new BadUserDataProvidedException();
+		}
+		idClear = t.getIdClear();
+		*/
+		
+		HotSpotDao dao = new HotSpotDao();
+		res = dao.getHotSpotById(hotSpotId);
+		
+		return res;
+	}
+	
 	@GET 
 	@Path("/lakes/{resourceId}")
 	@Produces("application/json")
