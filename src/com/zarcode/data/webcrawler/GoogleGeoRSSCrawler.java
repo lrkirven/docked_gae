@@ -91,6 +91,7 @@ public class GoogleGeoRSSCrawler extends WebCrawler {
  		
  		String urlParam = req.getParameter("url");
  		String startIndexParam = req.getParameter("start");
+ 		String keyParam = req.getParameter("key");
  		int startingIndex = Integer.parseInt(startIndexParam);
  		logger.info("Starting index --> " + startingIndex + " Parameter Map: " + req.getParameterMap().toString());
  		
@@ -324,13 +325,18 @@ public class GoogleGeoRSSCrawler extends WebCrawler {
 		double lat = 0;
 		double lng = 0;
 		WGS84Point pt = null;
+		int numOfPoints = 0;
 		
 		if (dataStr != null) {
 			res = new ArrayList<WGS84Point>();
 			dataStr = dataStr.trim();
 			String[] pointList = dataStr.split("\n"); 
 			if (pointList != null && pointList.length > 0) {
-				for (i=0; i<pointList.length; i++) {
+				//
+				// GeoRSS is returning starting pt as the last pt as well.
+				//
+				numOfPoints = pointList.length - 1;
+				for (i=0; i<numOfPoints; i++) {
 					latLngStr = pointList[i];
 					latLngStr = latLngStr.trim();
 					String[] latLngList = latLngStr.split(" ");
