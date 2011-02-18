@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.zarcode.common.ApplicationProps;
-import com.zarcode.data.resources.Lake;
 import com.zarcode.platform.model.AppPropDO;
 import com.zarcode.security.BlockTea;
 

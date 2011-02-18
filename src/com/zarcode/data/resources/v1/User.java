@@ -1,4 +1,4 @@
-package com.zarcode.data.resources;
+package com.zarcode.data.resources.v1;
 
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -26,7 +26,6 @@ import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.UserTokenDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.exception.BadUserDataProvidedException;
-import com.zarcode.data.exception.RequestNotSecureException;
 import com.zarcode.data.exception.UnableToDecodeRequestException;
 import com.zarcode.data.model.LocalStatusDO;
 import com.zarcode.data.model.PingDataDO;
@@ -37,6 +36,7 @@ import com.zarcode.data.model.UpdateTaskDO;
 import com.zarcode.data.model.UserDO;
 import com.zarcode.data.model.UserTokenDO;
 import com.zarcode.data.model.WaterResourceDO;
+import com.zarcode.data.resources.ResourceBase;
 import com.zarcode.platform.model.AppPropDO;
 import com.zarcode.security.AppRegister;
 import com.zarcode.security.BlockTea;
