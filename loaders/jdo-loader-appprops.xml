@@ -1,0 +1,45 @@
+<jdo-loader loaderDao="com.zarcode.data.dao.UserDao">
+	<dataObject namespace="com.zarcode.platform.model.AppPropDO">
+		<name>PICASA_USER</name>
+		<stringValue>lazylaker71@gmail.com</stringValue>
+		<numberValue></numberValue>
+		<dateValue></dateValue>
+	</dataObject>
+	<dataObject namespace="com.zarcode.platform.model.AppPropDO">
+		<name>PICASA_PASSWORD</name>
+		<stringValue>19lazylaker</stringValue>
+		<numberValue></numberValue>
+		<dateValue></dateValue>
+	</dataObject>
+	<dataObject namespace="com.zarcode.platform.model.AppPropDO">
+		<name>FB_API_KEY</name>
+		<stringValue>8851fedb7bd7eef10c642cdaffa7faa9</stringValue>
+		<numberValue></numberValue>
+		<dateValue></dateValue>
+	</dataObject>
+	<dataObject namespace="com.zarcode.platform.model.AppPropDO">
+		<name>FB_SECRET</name>
+		<stringValue>4a4cbd0adac0c8ead93f848f93083ad6</stringValue>
+		<numberValue></numberValue>
+		<dateValue></dateValue>
+	</dataObject>
+	<dataObject namespace="com.zarcode.platform.model.AppPropDO">
+		<name>CLIENT_TO_SERVER_SECRET</name>
+		<stringValue>can't make chicken salad out of chicken shit</stringValue>
+		<numberValue></numberValue>
+		<dateValue></dateValue>
+	</dataObject>
+	<dataObject namespace="com.zarcode.platform.model.AppPropDO">
+		<name>SERVER_TO_CLIENT_SECRET</name>
+		<stringValue>the harder you work; the luckier you get</stringValue>
+		<numberValue></numberValue>
+		<dateValue></dateValue>
+	</dataObject>
+	<dataObject namespace="com.zarcode.platform.model.AppPropDO">
+		<name>REGISTER_SECRET</name>
+		<stringValue>dont worry be happy 137103</stringValue>
+		<numberValue></numberValue>
+		<dateValue></dateValue>
+	</dataObject>
+</jdo-loader>
+

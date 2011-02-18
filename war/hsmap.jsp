@@ -96,7 +96,7 @@
 	};   
 
 	function createMarker(text, latlng) {
- 		var image = 'images/beachflag.png';
+ 		var image = 'images/Marker.png';
     	var marker = new google.maps.Marker({
       		position: latlng, 
       		map: map,

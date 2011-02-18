@@ -125,7 +125,7 @@
 	};   
 
 	function createMarker(text, latlng) {
- 		var image = 'images/buzzMarker.png';
+ 		var image = 'images/ChatBubble2.png';
     	var marker = new google.maps.Marker({
       		position: latlng, 
       		map: map,
