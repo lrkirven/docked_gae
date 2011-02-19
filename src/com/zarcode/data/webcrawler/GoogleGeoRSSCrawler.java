@@ -35,10 +35,8 @@ import com.google.appengine.api.taskqueue.TaskOptions;
 import com.google.apphosting.api.DeadlineExceededException;
 import com.zarcode.common.PlatformCommon;
 import com.zarcode.common.Util;
-import com.zarcode.data.dao.GeoRSSDocDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.exception.WebCrawlException;
-import com.zarcode.data.model.GeoRSSDocumentDO;
 import com.zarcode.data.model.WaterResourceDO;
 
 /**
@@ -179,15 +177,6 @@ public class GoogleGeoRSSCrawler extends WebCrawler {
 	 			 * Cache XML document
 	 			 */
 	 			
-	 	        GeoRSSDocumentDO geoDoc = new GeoRSSDocumentDO();
-	 	        geoDoc.setRssTitle(rssTitle);
-	 	        geoDoc.setRssDesc(rssDesc);
-	 	        geoDoc.setRssLink(rssLink);
-	 	        geoDoc.setDocument(PlatformCommon.doc2bytes(doc));
-	 	        
-	 	        GeoRSSDocDao geoDao = new GeoRSSDocDao();
-	 	        GeoRSSDocumentDO newDoc = geoDao.addDocument(geoDoc);
-	 			
 	 			///////////////////////////////////////////////////////////////////////////////
 	 			//
 	 			// Process actual data in the Geo RSS feed
@@ -196,7 +185,8 @@ public class GoogleGeoRSSCrawler extends WebCrawler {
 	 			
 	 			try {
 	 				Transaction txn = ds.beginTransaction();
-	 		          
+	 		  
+	 				/*
 		 			if (deleteFlag) {
 		 				if (dao.deleteByRegion(rssTitle) > 0) {
 		 					logger.info("Successfully, deleted regions ...");
@@ -205,6 +195,7 @@ public class GoogleGeoRSSCrawler extends WebCrawler {
 		 			Queue queue = QueueFactory.getDefaultQueue();
 		 			String docIdStr = newDoc.getDocId().toString();
 		 			queue.add(TaskOptions.Builder.withUrl("/georsswrite").param("docId", docIdStr));
+		 			*/
 		 			
 		 			txn.commit();
 
