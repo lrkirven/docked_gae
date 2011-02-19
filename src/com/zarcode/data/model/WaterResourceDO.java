@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import ch.hsr.geohash.WGS84Point;
 
 import com.zarcode.app.AppCommon;
+import com.zarcode.common.GeoUtil;
 import com.zarcode.platform.model.AbstractLoaderDO;
 import com.zarcode.utils.SearchJanitorUtils;
 
@@ -60,8 +61,8 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 	@Persistent
 	private Date lastUpdate = null;
 	
-	@NotPersistent
-	private int numActiveUsers = 0;
+	@Persistent
+	private double approxSize = 0;
 	
 	@NotPersistent
 	private String lastUpdateText = null;
@@ -78,7 +79,14 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
         	for (String token : newFtsTokens) {
         		logger.info("Adding token=" + token);
         		fts.add(token);
-        	}         
+        	}   
+        	List<WGS84Point> polygon = getPolygon();
+        	if (polygon != null) {
+        		WGS84Point first = polygon.get(0);
+        		int midIndex = Math.round(polygon.size()/2);
+        		WGS84Point middle =  polygon.get(midIndex);
+        		approxSize = GeoUtil.distanceBtwAB(first.getLat(), first.getLng(), middle.getLat(), middle.getLng());
+        	}
 		}
 		else {
 			logger.warning("*** content is [EMPTY] ***");
@@ -231,15 +239,6 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 
 	public void setLastUpdateText(String t) {
 		this.lastUpdateText = t;
-	}
-	
-	@XmlElement
-	public int getNumActiveUsers() {
-		return numActiveUsers;
-	}
-
-	public void setNumActiveUsers(int n) {
-		this.numActiveUsers = n;
 	}
 	
 	public String toString() {
