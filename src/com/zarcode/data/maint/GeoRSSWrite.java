@@ -56,9 +56,6 @@ public class GeoRSSWrite extends HttpServlet {
     	int k = 0;
     	String msg = null;
     	String urlStr = null;
-    	String rssLink = null;
-    	String rssTitle = null;
-    	String rssDesc = null;
     	String temp = null;
 		int itemCount = 0;
  		int memberCount = 0;
