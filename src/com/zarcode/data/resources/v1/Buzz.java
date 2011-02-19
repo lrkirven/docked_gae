@@ -29,6 +29,7 @@ import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.BuzzDao;
 import com.zarcode.data.dao.HotSpotDao;
+import com.zarcode.data.dao.PegCounterDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.exception.BadRequestAppDataException;
@@ -64,6 +65,23 @@ public class Buzz extends ResourceBase {
 	String container = null;
 	
 	private static final int MAXPAGE = 10;
+	
+	/**
+	 * Increments the number of messages for the day
+	 */
+	private void incrBuzzMsgPegCounter() {
+		PegCounterDao pegDao = new PegCounterDao();
+		Format formatter = new SimpleDateFormat("ddMMMyyyy");
+		String tm = formatter.format(new Date());
+		pegDao.increment(PegCounterDao.NO_BUZZ_MSG + tm, 1);
+	}
+	
+	private void incrBuzzCommentsPegCounter() {
+		PegCounterDao pegDao = new PegCounterDao();
+		Format formatter = new SimpleDateFormat("ddMMMyyyy");
+		String tm = formatter.format(new Date());
+		pegDao.increment(PegCounterDao.NO_BUZZ_COMMENTS + tm, 1);
+	}
 	
 	@POST
 	@Produces("application/json")
@@ -117,6 +135,9 @@ public class Buzz extends ResourceBase {
 					
 					dao = new BuzzDao();
 					newBuzzMsg = dao.addMsg(buzzMsg);
+					incrBuzzMsgPegCounter();
+					incrBuzzCommentsPegCounter();
+					
 					//
 					// since event was created inside lake area, update last communication
 					//

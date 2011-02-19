@@ -500,14 +500,14 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		UserDO target = null;
 		
 		Query query = pm.newQuery(UserDO.class);
-		/*
 		query.setFilter("activeKey == activeKeyParam");
 		query.declareParameters("String activeKeyParam");
-		String dateString = generateActiveKey(); 
+		String dateString = AppCommon.generateActiveKey(); 
 		logger.info("Using activeKey=" + dateString);
 		res = (List<UserDO>)query.execute(dateString);
-		*/
+		/*
 		res = (List<UserDO>)query.execute();
+		*/
 		return res;
 	}
 	

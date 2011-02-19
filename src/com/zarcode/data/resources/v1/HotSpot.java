@@ -1,5 +1,8 @@
 package com.zarcode.data.resources.v1;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -20,6 +23,7 @@ import com.google.gson.Gson;
 import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.HotSpotDao;
+import com.zarcode.data.dao.PegCounterDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.UserTokenDao;
 import com.zarcode.data.dao.WaterResourceDao;
@@ -53,6 +57,17 @@ public class HotSpot extends ResourceBase {
 	String container = null;
 	
 	private static final int MAXPAGE = 10;
+	
+	
+	/**
+	 * Increments the number of messages for the day
+	 */
+	private void incrHotSpotPegCounter() {
+		PegCounterDao pegDao = new PegCounterDao();
+		Format formatter = new SimpleDateFormat("ddMMMyyyy");
+		String tm = formatter.format(new Date());
+		pegDao.increment(PegCounterDao.NO_HOT_SPOTS + tm, 1);
+	}
 	
 	@POST
 	@Produces("application/json")
@@ -109,6 +124,7 @@ public class HotSpot extends ResourceBase {
 						 * add it
 						 */
 						newSpot = dao.addHotSpot(spot);
+						incrHotSpotPegCounter();
 						logger.info("Successfully added new hotSpot -- " + newSpot);
 					}
 					/*

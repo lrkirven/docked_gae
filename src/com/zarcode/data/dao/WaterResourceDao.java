@@ -153,7 +153,7 @@ public class WaterResourceDao extends BaseDao {
   	   	pm.deletePersistentAll(WaterResourceDO.class);
 	}
 	
-	public void deleteByRegion(String region) {
+	public long deleteByRegion(String region) {
 		long rows = 0;
 		Query query = pm.newQuery(WaterResourceDO.class);
 	    query.setFilter("region == regionParam");
@@ -175,6 +175,7 @@ public class WaterResourceDao extends BaseDao {
 	    else {
 	    	logger.warning("Unable to delete GeoHash2ResourceMapDO object(s) for region=" + region);
 	    }
+	    return rows;
 	}
 
 	public WaterResourceDO getResourceByName(String name) {

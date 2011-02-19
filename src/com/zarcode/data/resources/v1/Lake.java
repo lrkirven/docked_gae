@@ -190,7 +190,7 @@ public class Lake extends ResourceBase {
 				users = userDao.getUsersByResourceId(lake.getResourceId());
 				if (users != null && users.size() > 0) {
 					PegCounterDao pegDao = new PegCounterDao();
-					pegDao.update(PegCounterDao.NUM_OF_ACTIVE_USERS, users.size());
+					pegDao.update(PegCounterDao.NO_OF_ACTIVE_USERS, users.size());
 				}
 			}
 		}
