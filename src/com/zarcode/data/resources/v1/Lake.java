@@ -17,6 +17,7 @@ import ch.hsr.geohash.WGS84Point;
 
 import com.google.gdata.data.maps.FeatureEntry;
 import com.zarcode.data.dao.BuzzDao;
+import com.zarcode.data.dao.PegCounterDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.gdata.MapClient;
@@ -188,7 +189,8 @@ public class Lake extends ResourceBase {
 				lake.postReturn();
 				users = userDao.getUsersByResourceId(lake.getResourceId());
 				if (users != null && users.size() > 0) {
-					lake.setNumActiveUsers(users.size());
+					PegCounterDao pegDao = new PegCounterDao();
+					pegDao.update(PegCounterDao.NUM_OF_ACTIVE_USERS, users.size());
 				}
 			}
 		}
