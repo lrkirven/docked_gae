@@ -167,7 +167,7 @@
 	
 	<servlet> 
   		<servlet-name>georsswrite</servlet-name> 
-  		<servlet-class>com.zarcode.data.webcrawler.GeoRSSWrite</servlet-class> 
+  		<servlet-class>com.zarcode.data.maint.GeoRSSWrite</servlet-class> 
    </servlet> 
 	<servlet-mapping> 
   		<servlet-name>georsswrite</servlet-name> 
