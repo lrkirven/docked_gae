@@ -87,6 +87,7 @@ public class GeoRSSWrite extends HttpServlet {
  			logger.severe("EXCEPTION :: " + e.getMessage());
  		}
  		
+ 		
 		///////////////////////////////////////////////////////////////////////////////
 		//
 		// Process actual data in the Geo RSS feed
@@ -97,6 +98,8 @@ public class GeoRSSWrite extends HttpServlet {
  		processGeoRSSHeader(doc);
  		logger.info("GeoRSS header Done.");
  		int resAdded = 0;
+ 		
+ 		dao.deleteByRegion(rssTitle);
 		
 		try {
 			if (doc != null) {
