@@ -248,10 +248,13 @@ public class User extends ResourceBase {
 		return task;
 	}
 	
+	/*
 	@GET
 	@Produces({"application/json", "application/xml"})
 	@Path("/active")
-    public List<UserDO> getActiveUsers() {
+    private List<UserDO> getActiveUsers() {
+    */
+    private List<UserDO> getActiveUsers() {
 		List<UserDO> activeUsers = null;
 		UserDao userDao = null;
 		
@@ -427,11 +430,14 @@ public class User extends ResourceBase {
 		}
         return status;
     }
-	
+
+	/*
 	@GET 
 	@Path("/local")
 	@Produces("application/json")
 	public List<UserDO> getLocalUsers(@QueryParam("lat") double lat, @QueryParam("lng") double lng) {
+	*/
+	private List<UserDO> getLocalUsers(double lat, double lng) {
 		List<UserDO> list = null;
 		List<UserDO> empty = new ArrayList<UserDO>();
 		UserDao userDao = null;
@@ -448,11 +454,14 @@ public class User extends ResourceBase {
 		return (list == null ? empty : list);
 		
 	} // getLocalUsers
-	
+
+	/*
 	@GET 
 	@Path("/lake/{resourceId}")
 	@Produces("application/json")
 	public List<UserDO> getUsersByResourceId(@PathParam("resourceId") Long resourceId) {
+	*/
+	private List<UserDO> getUsersByResourceId(Long resourceId) {
 		List<UserDO> list = null;
 		List<UserDO> empty = new ArrayList<UserDO>();
 		UserDao userDao = null;
@@ -469,7 +478,7 @@ public class User extends ResourceBase {
 		
 		return (list == null ? empty : list);
 		
-	} // getUsersByResourceId
+	} 
 	
 	
 } // User
