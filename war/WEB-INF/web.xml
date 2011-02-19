@@ -156,10 +156,28 @@
   		<url-pattern>/georssload</url-pattern> 
 	</servlet-mapping>
 	
+	<servlet> 
+  		<servlet-name>georssupload</servlet-name> 
+  		<servlet-class>com.zarcode.data.maint.GeoRSSUpload</servlet-class> 
+   </servlet> 
+	<servlet-mapping> 
+  		<servlet-name>georssupload</servlet-name> 
+  		<url-pattern>/georssupload</url-pattern> 
+	</servlet-mapping>
+	
+	<servlet> 
+  		<servlet-name>georsswrite</servlet-name> 
+  		<servlet-class>com.zarcode.data.webcrawler.GeoRSSWrite</servlet-class> 
+   </servlet> 
+	<servlet-mapping> 
+  		<servlet-name>georsswrite</servlet-name> 
+  		<url-pattern>/georsswrite</url-pattern> 
+	</servlet-mapping>
+	
 	<!-- produces RSS Feed from messages of closest lake --> 
 	<servlet> 
   		<servlet-name>rssfeed</servlet-name> 
-  		<servlet-class>com.zarcode.data.rssfeed.LLRssFeeder</servlet-class> 
+  		<servlet-class>com.zarcode.data.rssfeed.RssFeedGenerator</servlet-class> 
 	</servlet> 
 	<servlet-mapping> 
   		<servlet-name>rssfeed</servlet-name> 
@@ -169,6 +187,15 @@
 	 <security-constraint> 
         <web-resource-collection> 
             <url-pattern>/georssload</url-pattern> 
+        </web-resource-collection> 
+        <auth-constraint> 
+            <role-name>admin</role-name> 
+        </auth-constraint> 
+    </security-constraint>
+	
+	<security-constraint> 
+        <web-resource-collection> 
+            <url-pattern>/georsswrite</url-pattern> 
         </web-resource-collection> 
         <auth-constraint> 
             <role-name>admin</role-name> 
