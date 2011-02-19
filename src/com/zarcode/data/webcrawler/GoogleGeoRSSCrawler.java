@@ -1,53 +1,45 @@
 package com.zarcode.data.webcrawler;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.CharacterData;
-import org.w3c.dom.Element;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.google.appengine.api.labs.taskqueue.Queue;
-import com.google.appengine.api.labs.taskqueue.QueueFactory;
-import static com.google.appengine.api.labs.taskqueue.TaskOptions.Builder.*;
+import ch.hsr.geohash.WGS84Point;
 
+import com.google.appengine.api.datastore.DatastoreFailureException;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Transaction;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
+import com.google.appengine.api.taskqueue.TaskOptions;
 import com.google.apphosting.api.DeadlineExceededException;
-import com.zarcode.app.AppCommon;
-import com.zarcode.common.EmailHelper;
-import com.zarcode.common.EscapeChars;
+import com.zarcode.common.PlatformCommon;
 import com.zarcode.common.Util;
-import com.zarcode.data.dao.ReportDao;
+import com.zarcode.data.dao.GeoRSSDocDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.exception.WebCrawlException;
-import com.zarcode.platform.loader.JDOLoaderServlet;
-import com.zarcode.data.model.ReportDO;
+import com.zarcode.data.model.GeoRSSDocumentDO;
 import com.zarcode.data.model.WaterResourceDO;
-
-import ch.hsr.geohash.WGS84Point;
 
 /**
  * This is a web GeoRSS Webcrawler for accessing Google Maps feeds.
@@ -83,16 +75,19 @@ public class GoogleGeoRSSCrawler extends WebCrawler {
  		List<WGS84Point> polygon = null;
 		OutputStream os = null;
  		Document doc = null;
- 		int MAX_TIME_THREHOLD = 20;
+ 		int MAX_TIME_THREHOLD = 40;
  		String[] targetList = null;
- 	
+ 		
+ 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+ 		
  		// starting timestamp
  		Date startTimestamp = new Date();
  		
  		String urlParam = req.getParameter("url");
  		String startIndexParam = req.getParameter("start");
- 		String keyParam = req.getParameter("key");
+ 		String deleteParam = req.getParameter("delete");
  		int startingIndex = Integer.parseInt(startIndexParam);
+ 		boolean deleteFlag = Boolean.parseBoolean(deleteParam);
  		logger.info("Starting index --> " + startingIndex + " Parameter Map: " + req.getParameterMap().toString());
  		
  		if (urlParam != null) {
@@ -130,6 +125,7 @@ public class GoogleGeoRSSCrawler extends WebCrawler {
 	 			
 	 			Node n = null;
 	 			WaterResourceDao dao = new WaterResourceDao();
+	 			
 
 	 			///////////////////////////////////////////////////////////////////////////////
 	 			//
@@ -178,111 +174,51 @@ public class GoogleGeoRSSCrawler extends WebCrawler {
 	 			}
 	 			logger.info("HEADER: [ link: " + rssLink + " title: " + rssTitle + " desc: " + rssDesc + " ]");
 	 			
+	 			
+	 			/*
+	 			 * Cache XML document
+	 			 */
+	 			
+	 	        GeoRSSDocumentDO geoDoc = new GeoRSSDocumentDO();
+	 	        geoDoc.setRssTitle(rssTitle);
+	 	        geoDoc.setRssDesc(rssDesc);
+	 	        geoDoc.setRssLink(rssLink);
+	 	        geoDoc.setDocument(PlatformCommon.doc2bytes(doc));
+	 	        
+	 	        GeoRSSDocDao geoDao = new GeoRSSDocDao();
+	 	        GeoRSSDocumentDO newDoc = geoDao.addDocument(geoDoc);
+	 			
 	 			///////////////////////////////////////////////////////////////////////////////
 	 			//
 	 			// Process actual data in the Geo RSS feed
 	 			//
 	 			///////////////////////////////////////////////////////////////////////////////
+	 			
+	 			try {
+	 				Transaction txn = ds.beginTransaction();
+	 		          
+		 			if (deleteFlag) {
+		 				if (dao.deleteByRegion(rssTitle) > 0) {
+		 					logger.info("Successfully, deleted regions ...");
+		 				}
+		 			}
+		 			Queue queue = QueueFactory.getDefaultQueue();
+		 			String docIdStr = newDoc.getDocId().toString();
+		 			queue.add(TaskOptions.Builder.withUrl("/georsswrite").param("docId", docIdStr));
+		 			
+		 			txn.commit();
 
-	 			NodeList lakeItemList = doc.getElementsByTagName("item");
-	 			if (lakeItemList != null && lakeItemList.getLength() > 0) {
-	 				itemCount = lakeItemList.getLength();
-	 				for (i=startingIndex; i<itemCount; i++) {
-	 				
-	 					/**
-	 					 * check if we are about to the Google Timeout Threshold
-	 					 */
-	 					now = new Date();
-    	        		long durationInSecs = (now.getTime() - startTimestamp.getTime())/1000;
-    	        		if (durationInSecs > MAX_TIME_THREHOLD) {
-    	        			logger.warning("Hitting ending of processing time -- Queuing task to handle late!");
-    	            		Queue queue = QueueFactory.getDefaultQueue();
-    	            		String nextIndex = "" + i;
-    	            		queue.add(url("/georssload").param("url", urlParam).param("start", nextIndex));
-    	            		return;
-    	        		}
-    	        		else {
-    	        			logger.info(i + ") Time is still good ---> " + durationInSecs);
-    	        		}
-    	        		
-	 					itemNode = lakeItemList.item(i);
-	 					
-	 					///////////////////////////////////////////////////////////////////////
-	 					//
-	 					// Process each lake item data item
-	 					//
-	 					///////////////////////////////////////////////////////////////////////
-	 					
-	 					if (itemNode != null) {
-	 						
-	 						// create water resource
-	 						res =  new WaterResourceDO();
-	 						res.setLastUpdate(new Date());
-	 						res.setRegion(rssTitle);
-	 						
-	 						NodeList itemMembers = itemNode.getChildNodes();
-	 						memberCount = itemMembers.getLength();
-	 						for (j=0; j<memberCount; j++) {
-	 							n = itemMembers.item(j);
-	 							if (n != null) {
-	 								if ("guid".equalsIgnoreCase(n.getNodeName())) {
-	 	    	        				temp = n.getFirstChild().getNodeValue();
-	 	    	        				logger.info("Found guid=" + temp);
-	 	    	        				res.setGuid(temp);
-	 	    	        			}
-	 	    	        			else if ("title".equalsIgnoreCase(n.getNodeName())) {
-	 	    	        				temp = n.getFirstChild().getNodeValue();
-	 	    	        				logger.info("Found title=" + temp);
-	 	    	        				res.setName(temp);
-	 	    	        				res.setContent(temp);
-	 	    	        			}
-	 	    	        			else if ("author".equalsIgnoreCase(n.getNodeName())) {
-	 	    	        				temp = n.getFirstChild().getNodeValue();
-	 	    	        				logger.info("Found author=" + temp);
-	 	    	        			}
-	 	    	        			else if ("description".equalsIgnoreCase(n.getNodeName())) {
-	 	           						String descData = getCharacterDataFromElement((Element)n);
-	 	    	        				props = convertKVString2HashMap(descData);
-	 	    	        				if (props != null && props.containsKey("reportKey")) {
-	 	    	        					res.setReportKey((String)props.get("reportKey"));
-	 	    	        				}
-	 	    	        				else {
-	 	    	        					logger.warning("reportKey not found for resource=" + res.getName());
-	 	    	        				}
-	 	    	        			}
-	 	    	        			else if ("gml:Polygon".equalsIgnoreCase(n.getNodeName())) {
-	 	    	        				List<String> textList = new ArrayList<String>();
-	 	    	        				findMatchingNodes(n, Node.TEXT_NODE, textList);
-	    	        					if (textList != null && textList.size() > 0) {
-	    	        						String polygonStr = textList.get(0);
-	    	        						polygonStr = polygonStr.trim();
-	    	        						polygon = convertGMLPosList2Polygon(polygonStr);
-	    	        						logger.info("Converted incoming polygonStr into " + polygon.size() + " object(s).");
-	    	        						res.setPolygon(polygon);
-	    	        					}
-	 	    	        			}
-	 							}
-	 						}
-	 						//
-	 						// add water resource to model
-	 						//
-	 						logger.info("Inserting resource into model!");
-	 						dao.insertResource(res);
-	 					}
-	 				}
-	 				logger.info("Processing is done on index=" + i);
-	 				EmailHelper.sendAppAlert(AppCommon.APPNAME + ": GeoRSSFeed Status", "Completed GeoRSS processing\nURL: " + url + "\nLAST INDEX: " + i, AppCommon.APPNAME);
-	 			}
-	 			else {
-	 				throw new WebCrawlException("GeoRSS Feed is empty!", urlStr);
-	 			}
+	 	        } 
+	 			catch (DatastoreFailureException e) {
+
+	 	         }
 	 			
     		} // for loop for Map URLs
         } 
     	catch (DeadlineExceededException e1) {
     		logger.warning("Google HTTP Request Timeout has fired ... ");
     		Queue queue = QueueFactory.getDefaultQueue();
-    		queue.add(url("/georssload").param("url", urlParam).param("start", "0"));
+    		queue.add(TaskOptions.Builder.withUrl("/georssload").param("url", urlParam).param("start", "0").param("delete", "true"));
     	}
     	catch (ParserConfigurationException e) {
     		logger.severe("Unable to create XML parser to start DOM loading. [EXCEPTION]\n" + Util.getStackTrace(e));

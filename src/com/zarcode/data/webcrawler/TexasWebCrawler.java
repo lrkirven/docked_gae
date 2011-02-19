@@ -26,7 +26,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.tidy.Tidy;
 
-import com.zarcode.common.AppCommon;
 import com.zarcode.common.EscapeChars;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.ReportDao;
