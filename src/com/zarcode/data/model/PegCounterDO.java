@@ -17,7 +17,6 @@ import com.google.appengine.api.datastore.Text;
 import com.zarcode.app.AppCommon;
 import com.zarcode.platform.model.AbstractLoaderDO;
 
-@XmlRootElement(name = "PegCounter") 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class PegCounterDO implements Serializable {
 	
@@ -31,16 +30,15 @@ public class PegCounterDO implements Serializable {
 	private Long pegCounterId = null; 
 	
 	@Persistent
-	private String name = null; 
+	private String pegName = null; 
 	
 	@Persistent
 	private Long counter = null;
 	
 	@Persistent
-	private Long timestamp = null;
+	private Date lastUpdate = null;
 	
 	
-	@XmlElement
 	public Long getPegCounterId() {
 		return pegCounterId;
 	}
@@ -49,8 +47,6 @@ public class PegCounterDO implements Serializable {
 		this.pegCounterId = pegCounterId;
 	}
 	
-	
-	@XmlElement
 	public Long getCounter() {
 		return counter;
 	}
@@ -59,17 +55,24 @@ public class PegCounterDO implements Serializable {
 		this.counter = counter;
 	}
 	
-	@XmlElement
-	public String getName() {
-		return name;
+	public String getPegName() {
+		return pegName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setPegName(String pegName) {
+		this.pegName = pegName;
+	}
+	
+	public Date getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public void setLastUpdate(Date d) {
+		this.lastUpdate = d;
 	}
 	
 	public String toString() {
-		return "PegCounterDO::" + name + " counter=" + counter + ")";
+		return "PegCounterDO::" + pegName + " counter=" + counter + ")";
 	}
 
 }
