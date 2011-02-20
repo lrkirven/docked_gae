@@ -54,6 +54,7 @@ public class PegCounterDao extends BaseDao {
 		
 		Date now = new Date();
 		peg.setPegCounterId(null);
+		peg.setCounter(new Long(0));
 		peg.setLastUpdate(new Date());
 		newPeg = pm.makePersistent(peg); 
 		
