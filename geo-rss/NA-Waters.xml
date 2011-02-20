@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+<channel>
+  <link>http://maps.google.com</link>
+  <title>North America Waters</title>
+  <description><![CDATA[]]></description>
+  <item>
+    <guid isPermaLink="false">00049c91cf56a46d23a6f</guid>
+    <pubDate>Fri, 18 Feb 2011 17:26:09 +0000</pubDate>
+    <title>Gulf of Mexico</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ANY:GULFOFMEXICO</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            24.547123 -80.705566
+            17.936920 -98.085930
+            27.877928 -97.426758
+            29.305561 -94.768066
+            30.391830 -87.143555
+            30.135620 -83.682861
+            29.084970 -82.507317
+            27.800211 -82.727051
+            24.547123 -80.705566
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c91e13e71dc0d76f</guid>
+    <pubDate>Fri, 18 Feb 2011 17:31:09 +0000</pubDate>
+    <title>Lake Huron</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ANY:LAKEHURON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            46.096092 -84.715576
+            45.763691 -82.078857
+            44.684277 -81.156006
+            43.341160 -81.661377
+            42.783306 -82.710571
+            43.548550 -83.891602
+            45.736858 -84.682617
+            46.096092 -84.715576
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c91e5c4bdd041e9f</guid>
+    <pubDate>Fri, 18 Feb 2011 17:32:25 +0000</pubDate>
+    <title>Lake Michigan</title>
+    <description><![CDATA[<div dir="ltr">reporyKey=ANY:LAKEMICHIGAN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            46.096092 -84.726562
+            45.671642 -84.754028
+            44.941471 -85.220947
+            42.763145 -86.110840
+            41.627762 -86.572266
+            41.586689 -87.802734
+            44.762337 -88.066406
+            46.080853 -86.978760
+            46.096092 -84.726562
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c920a9127ace7451</guid>
+    <pubDate>Fri, 18 Feb 2011 17:42:43 +0000</pubDate>
+    <title>Lake Erie</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ANY:LAKEERIE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            42.295597 -83.086853
+            41.730331 -83.501587
+            41.368565 -82.982483
+            41.321136 -82.369995
+            41.500351 -81.636658
+            42.100262 -80.090332
+            42.682434 -78.755493
+            42.952400 -78.901062
+            42.722805 -81.451263
+            42.088032 -82.518311
+            42.295597 -83.086853
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c921768e2090d034</guid>
+    <pubDate>Fri, 18 Feb 2011 17:46:18 +0000</pubDate>
+    <title>Lake Ontario</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ANY:LAKEONTARIO</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            43.165123 -79.969482
+            43.755226 -79.381714
+            44.363132 -76.014404
+            43.221191 -76.195679
+            43.165123 -79.969482
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c921b0b2104471d9</guid>
+    <pubDate>Fri, 18 Feb 2011 17:47:19 +0000</pubDate>
+    <title>Chesapeake Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ANY:CHESAPEAKEBAY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            39.736763 -75.849609
+            37.935532 -75.509033
+            36.738884 -76.003418
+            37.295906 -77.294312
+            38.492294 -77.503052
+            39.736763 -75.849609
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c9221ae10b183011</guid>
+    <pubDate>Fri, 18 Feb 2011 17:49:11 +0000</pubDate>
+    <title>Lake Superior</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ANY:LAKESUPERIOR</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            46.800060 -92.515869
+            49.296471 -87.956543
+            48.180740 -84.627686
+            46.430286 -84.177246
+            46.248249 -90.307617
+            46.800060 -92.515869
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c923344f5dd5abe1</guid>
+    <pubDate>Fri, 18 Feb 2011 17:54:06 +0000</pubDate>
+    <title>Gulf of Alaska</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ANY:GULFOFALASKA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            55.578346 -161.279297
+            59.998985 -151.215820
+            60.435543 -142.558594
+            58.193871 -135.000000
+            54.546581 -130.825195
+            55.578346 -161.279297
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c923a6d7a2ec019f</guid>
+    <pubDate>Fri, 18 Feb 2011 17:56:06 +0000</pubDate>
+    <title>Pacific Ocean</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ANY:PACIFICOCEAN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            54.470039 -130.825195
+            48.414619 -124.672852
+            46.271038 -123.881836
+            42.747013 -124.584961
+            36.385914 -121.816406
+            32.602364 -117.158203
+            0.175781 -92.109375
+            0.527336 179.824219
+            56.022949 179.824219
+            54.470039 -130.825195
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c92452aeb1ec39b9</guid>
+    <pubDate>Fri, 18 Feb 2011 17:59:06 +0000</pubDate>
+    <title>Atlantic Ocean</title>
+    <description><![CDATA[<div dir="ltr">reportKey=ANY:ATLANTICOCEAN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            23.160561 -78.870850
+            30.826780 -81.540520
+            32.212799 -80.793449
+            35.137871 -76.607658
+            38.013470 -75.476067
+            40.747257 -73.498535
+            41.685219 -70.356445
+            42.358543 -71.070557
+            43.675812 -70.257561
+            45.767521 -64.643547
+            45.951149 -50.229488
+            25.324160 -48.867180
+            23.160561 -78.870850
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+</channel>
+</rss>

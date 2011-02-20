@@ -54,11 +54,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            33.400494 -80.146637
-            33.622623 -80.216675
-            33.762024 -80.635529
-            33.347736 -80.437775
-            33.400494 -80.146637
+            33.564285 -79.972229
+            33.762020 -80.635521
+            33.172043 -80.384216
+            33.564285 -79.972229
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -74,11 +73,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            33.474979 -80.038147
-            33.246727 -80.227661
-            33.190434 -80.035400
-            33.356915 -79.910431
-            33.474979 -80.038147
+            33.510483 -80.032654
+            33.245571 -80.304558
+            33.180088 -80.016174
+            33.305283 -79.887085
+            33.510483 -80.032654
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -94,11 +93,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            34.535976 -80.922546
-            34.383114 -80.647888
-            34.306007 -80.735779
+            34.533146 -80.894737
+            34.383110 -80.647881
+            34.306000 -80.735771
             34.462410 -80.995331
-            34.535976 -80.922546
+            34.533146 -80.894737
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -134,11 +133,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            34.012829 -82.387848
-            33.678638 -82.121429
-            33.555130 -82.624054
-            34.015102 -82.663879
-            34.012829 -82.387848
+            34.025349 -82.361755
+            33.678638 -82.121422
+            33.555119 -82.624046
+            34.016243 -82.674866
+            34.025349 -82.361755
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -174,12 +173,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            34.313950 -82.828674
+            34.313950 -82.828667
             34.695332 -82.589722
-            34.746124 -82.846527
-            34.638294 -83.010635
-            34.531448 -83.202209
-            34.313950 -82.828674
+            34.754025 -82.873993
+            34.531448 -83.202202
+            34.313950 -82.828667
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -195,12 +193,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            34.684605 -82.968063
-            34.743305 -82.891159
-            34.981064 -82.810822
-            34.945332 -82.954674
-            34.738792 -83.040161
-            34.684605 -82.968063
+            34.742741 -82.898712
+            34.981060 -82.810822
+            34.938858 -82.981110
+            34.616257 -83.082733
+            34.742741 -82.898712
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -259,6 +256,481 @@
             34.406910 -81.359253
             34.227699 -81.311188
             34.383114 -81.513748
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7c7a7a2ce6fdd47</guid>
+    <pubDate>Thu, 17 Feb 2011 15:59:11 +0000</pubDate>
+    <title>Fishing Creek Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:FISHINGCREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.597889 -80.901947
+            34.600151 -80.869675
+            34.697872 -80.845642
+            34.818596 -80.878601
+            34.713676 -80.908470
+            34.597889 -80.901947
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7c81c1389926251</guid>
+    <pubDate>Thu, 17 Feb 2011 16:01:13 +0000</pubDate>
+    <title>Great Falls Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:GREATFALLS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.597324 -80.904350
+            34.599018 -80.875854
+            34.578102 -80.876884
+            34.548416 -80.896454
+            34.597324 -80.904350
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7c85555ae2a227f</guid>
+    <pubDate>Thu, 17 Feb 2011 16:02:13 +0000</pubDate>
+    <title>Cedar Creek Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:CEDARCREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.587433 -80.870361
+            34.538803 -80.903664
+            34.507122 -80.851135
+            34.587433 -80.870361
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7c8c38d19d0d5cd</guid>
+    <pubDate>Thu, 17 Feb 2011 16:04:09 +0000</pubDate>
+    <title>Lake Robinson</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:ROBINSON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.526924 -80.185776
+            34.444290 -80.097885
+            34.361008 -80.178909
+            34.526924 -80.185776
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7cb595a8e72f792</guid>
+    <pubDate>Thu, 17 Feb 2011 16:15:43 +0000</pubDate>
+    <title>Calibogue Sound</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:CALIBOGUE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.005741 -80.867607
+            32.202339 -80.675346
+            32.289455 -80.885468
+            32.096531 -81.069481
+            32.005741 -80.867607
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7cb92be7a837f67</guid>
+    <pubDate>Thu, 17 Feb 2011 16:16:43 +0000</pubDate>
+    <title>Port Royal Sound</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:PORTROYAL</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.204659 -80.673981
+            32.316151 -80.943138
+            32.656719 -80.859367
+            32.305706 -80.505066
+            32.204659 -80.673981
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7cbcf499ba97a2b</guid>
+    <pubDate>Thu, 17 Feb 2011 16:17:46 +0000</pubDate>
+    <title>Saint Helena Sound</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:SAINTHELENA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.487755 -80.294952
+            32.305698 -80.505058
+            32.542179 -80.742638
+            32.797665 -80.428162
+            32.487755 -80.294952
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7cc9809459273ab</guid>
+    <pubDate>Thu, 17 Feb 2011 16:21:17 +0000</pubDate>
+    <title>Lake Robinson</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:ROBINSON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.548416 -80.161743
+            34.437496 -80.208435
+            34.360443 -80.119171
+            34.548416 -80.161743
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7ccd15800746875</guid>
+    <pubDate>Thu, 17 Feb 2011 16:22:17 +0000</pubDate>
+    <title>Fishing Creek Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:FISHINGCREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.595909 -80.929413
+            34.604107 -80.835342
+            34.861145 -80.875854
+            34.595909 -80.929413
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7cd1fb69d3dc294</guid>
+    <pubDate>Thu, 17 Feb 2011 16:23:39 +0000</pubDate>
+    <title>Great Falls Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:GREATFALLS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.596195 -80.920143
+            34.548134 -80.894394
+            34.601562 -80.860405
+            34.596195 -80.920143
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7cd592823d36829</guid>
+    <pubDate>Thu, 17 Feb 2011 16:24:39 +0000</pubDate>
+    <title>Cedar Creek Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:CEDARCREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.583759 -80.872421
+            34.500332 -80.858345
+            34.527489 -80.906754
+            34.583759 -80.872421
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7ce19007c29f2db</guid>
+    <pubDate>Thu, 17 Feb 2011 16:28:01 +0000</pubDate>
+    <title>Par Pond</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:PARPOND</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.219734 -81.588593
+            33.245007 -81.460876
+            33.369530 -81.548767
+            33.219734 -81.588593
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7d32ada6326c904</guid>
+    <pubDate>Thu, 17 Feb 2011 16:50:41 +0000</pubDate>
+    <title>Wadmalaw Sound</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:WADMALAW</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.488914 -80.296326
+            32.560703 -80.145264
+            32.793049 -80.112305
+            32.702957 -80.384216
+            32.488914 -80.296326
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7d4365c38b06bbc</guid>
+    <pubDate>Thu, 17 Feb 2011 16:55:22 +0000</pubDate>
+    <title>Charleston Harbor</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:CHARLESTON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.783810 -79.785461
+            32.671749 -79.881592
+            32.824211 -80.016174
+            32.891121 -79.880219
+            32.783810 -79.785461
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7d5b9a223b2d287</guid>
+    <pubDate>Thu, 17 Feb 2011 17:02:08 +0000</pubDate>
+    <title>Sewee Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:SEWEE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.963451 -79.641602
+            32.903805 -79.587708
+            32.880451 -79.635078
+            32.913891 -79.691040
+            32.963451 -79.641602
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7d5b9a4a52cab04</guid>
+    <pubDate>Thu, 17 Feb 2011 17:02:08 +0000</pubDate>
+    <title>Mark Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:MARKBAY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.882469 -79.735329
+            32.913311 -79.691040
+            32.879292 -79.635773
+            32.844982 -79.690704
+            32.882469 -79.735329
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7d6163dc747e081</guid>
+    <pubDate>Thu, 17 Feb 2011 17:03:45 +0000</pubDate>
+    <title>Copahee Sound</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:COPAHEE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.881889 -79.736359
+            32.844982 -79.691391
+            32.814980 -79.716110
+            32.858238 -79.773781
+            32.881889 -79.736359
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7d694cd29c12b50</guid>
+    <pubDate>Thu, 17 Feb 2011 17:05:58 +0000</pubDate>
+    <title>Hamlin Sound</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:HAMLIN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.809784 -79.712677
+            32.857090 -79.775162
+            32.827095 -79.820480
+            32.784672 -79.782372
+            32.809784 -79.712677
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7d701ca6f4b01af</guid>
+    <pubDate>Thu, 17 Feb 2011 17:07:52 +0000</pubDate>
+    <title>Winyah Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:WINYAHBAY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.484146 -79.232025
+            33.188133 -79.164734
+            33.107647 -79.243011
+            33.304134 -79.405060
+            33.484146 -79.232025
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c8145fcfab837a92</guid>
+    <pubDate>Thu, 17 Feb 2011 21:42:25 +0000</pubDate>
+    <title>Bull Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:BULLBAY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.057018 -79.524536
+            33.007511 -79.464111
+            32.896885 -79.584961
+            32.970078 -79.647446
+            33.057018 -79.524536
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c81499da36266534</guid>
+    <pubDate>Thu, 17 Feb 2011 21:43:26 +0000</pubDate>
+    <title>Cape Romain Harbor</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:CAPEROMAIN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.060471 -79.528656
+            32.953369 -79.385834
+            33.111099 -79.243011
+            33.188133 -79.308929
+            33.060471 -79.528656
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c8184bfbeabedea8</guid>
+    <pubDate>Thu, 17 Feb 2011 21:59:58 +0000</pubDate>
+    <title>Long Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:LONGBAY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            33.344296 -79.200439
+            33.207668 -79.166107
+            33.855591 -78.537140
+            33.822514 -78.714294
+            33.630630 -79.006805
+            33.344296 -79.200439
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c819bb3f0d6a0c43</guid>
+    <pubDate>Thu, 17 Feb 2011 22:06:23 +0000</pubDate>
+    <title>Folly Beach</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:FOLLY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.693710 -80.053253
+            32.598892 -80.001068
+            32.670593 -79.881592
+            32.743393 -79.947510
+            32.693710 -80.053253
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c819bb409db46c47</guid>
+    <pubDate>Thu, 17 Feb 2011 22:06:23 +0000</pubDate>
+    <title>Kiawah Island</title>
+    <description><![CDATA[<div dir="ltr">reportKey=SC:KIAWAH</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.656719 -80.130157
+            32.564175 -80.142517
+            32.600048 -80.003815
+            32.685619 -80.051880
+            32.656719 -80.130157
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>

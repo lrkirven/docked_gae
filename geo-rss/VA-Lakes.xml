@@ -14,11 +14,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            37.074352 -80.670547
-            37.089146 -80.562057
-            36.925743 -80.746765
-            36.983356 -80.753632
-            37.074352 -80.670547
+            37.090240 -80.545578
+            36.845558 -80.833282
+            37.077641 -80.816803
+            37.090240 -80.545578
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -34,11 +33,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            37.407120 -76.920609
-            37.444199 -76.858635
-            37.466274 -76.895714
-            37.455917 -76.949783
-            37.407120 -76.920609
+            37.435066 -76.970215
+            37.407253 -76.847305
+            37.458508 -76.864471
+            37.490116 -76.968842
+            37.435066 -76.970215
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -54,11 +53,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            37.961521 -77.756424
-            38.024837 -77.691193
-            38.195023 -77.895126
+            37.961521 -77.756416
+            38.025375 -77.684326
+            38.203655 -77.899933
             38.118351 -77.984390
-            37.961521 -77.756424
+            37.961521 -77.756416
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -74,11 +73,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            37.325397 -77.698059
-            37.215565 -77.494812
-            37.204628 -77.519188
-            37.265038 -77.743034
-            37.325397 -77.698059
+            37.340137 -77.706299
+            37.211739 -77.479706
+            37.236889 -77.785950
+            37.340137 -77.706299
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -132,10 +130,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            37.084763 -79.519043
-            36.985554 -79.459991
-            37.119812 -79.332275
-            37.084763 -79.519043
+            37.084759 -79.519043
+            36.958672 -79.461365
+            37.119808 -79.332268
+            37.084759 -79.519043
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -171,11 +169,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            36.867947 -80.128616
-            36.759930 -80.067162
-            36.780418 -80.007248
-            36.879894 -80.077972
-            36.867947 -80.128616
+            36.867939 -80.128609
+            36.759918 -80.067146
+            36.775192 -79.984589
+            36.892799 -80.073166
+            36.867939 -80.128609
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -229,12 +227,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            37.450603 -77.674370
-            37.418163 -77.638321
-            37.398392 -77.683640
-            37.437523 -77.705612
-            37.455647 -77.702866
-            37.450603 -77.674370
+            37.418163 -77.634201
+            37.378342 -77.715912
+            37.484665 -77.702179
+            37.418163 -77.634201
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -335,9 +331,9 @@
         <gml:LinearRing>
           <gml:posList>
             36.743561 -76.604401
-            36.734894 -76.595047
-            36.714943 -76.603973
-            36.719898 -76.620110
+            36.734890 -76.595039
+            36.714939 -76.603973
+            36.717834 -76.621574
             36.743561 -76.604401
           </gml:posList>
         </gml:LinearRing>
@@ -360,6 +356,289 @@
             36.772373 -76.665176
             36.775055 -76.618912
             36.762886 -76.608696
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c6bf75527fc34d45</guid>
+    <pubDate>Wed, 16 Feb 2011 20:17:11 +0000</pubDate>
+    <title>Hampton Roads</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:HAMPTONROADS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.082840 -76.273270
+            36.970188 -76.427422
+            36.849407 -76.439438
+            36.956470 -76.252670
+            37.082840 -76.273270
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c6c05ba72ac225d3</guid>
+    <pubDate>Wed, 16 Feb 2011 20:21:13 +0000</pubDate>
+    <title>Batten Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:BATTEN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.969090 -76.489899
+            36.918056 -76.484413
+            36.873020 -76.559601
+            36.908176 -76.569214
+            36.969090 -76.489899
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c6c3ca349fbd33ae</guid>
+    <pubDate>Wed, 16 Feb 2011 20:36:34 +0000</pubDate>
+    <title>Mobjack Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:MOBJACK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.485756 -76.566467
+            37.470497 -76.360474
+            37.330856 -76.256104
+            37.243446 -76.445618
+            37.485756 -76.566467
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7b7b3290340b266</guid>
+    <pubDate>Thu, 17 Feb 2011 14:47:48 +0000</pubDate>
+    <title>Briery Creek Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:BRIERY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.196014 -78.485809
+            37.144173 -78.476196
+            37.215565 -78.415436
+            37.196014 -78.485809
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7b8498fc9364879</guid>
+    <pubDate>Thu, 17 Feb 2011 14:50:26 +0000</pubDate>
+    <title>Speights Run Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:SPEIGHTS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.721825 -76.648178
+            36.714600 -76.603889
+            36.709576 -76.605690
+            36.703453 -76.663628
+            36.721825 -76.648178
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7b967d3d570f437</guid>
+    <pubDate>Thu, 17 Feb 2011 14:55:26 +0000</pubDate>
+    <title>Nansemond River</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:NANSEMOND</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.917507 -76.482697
+            36.904881 -76.436691
+            36.735859 -76.579857
+            36.776840 -76.582603
+            36.845284 -76.565781
+            36.917507 -76.482697
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7ba05a26df19168</guid>
+    <pubDate>Thu, 17 Feb 2011 14:58:12 +0000</pubDate>
+    <title>James River</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:JAMES</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.044216 -76.431885
+            36.949890 -76.522522
+            37.292629 -77.334137
+            37.443245 -77.345123
+            37.258751 -76.867218
+            37.235794 -76.648865
+            37.044216 -76.431885
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7bab1d3c59190c2</guid>
+    <pubDate>Thu, 17 Feb 2011 15:01:12 +0000</pubDate>
+    <title>Chickahominy River</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:CHICKAHOMINY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.436157 -77.040939
+            37.402893 -76.858292
+            37.258751 -76.850739
+            37.274052 -76.901550
+            37.436157 -77.040939
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7bb50c95e546b2b</guid>
+    <pubDate>Thu, 17 Feb 2011 15:03:59 +0000</pubDate>
+    <title>York River</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:YORKRIVER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.257114 -76.490250
+            37.218845 -76.528015
+            37.467228 -76.837006
+            37.663170 -77.253113
+            37.859676 -76.982574
+            37.257114 -76.490250
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7bc8608e16425a3</guid>
+    <pubDate>Thu, 17 Feb 2011 15:09:23 +0000</pubDate>
+    <title>Potomac River</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:POTOMAC</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.874851 -76.242371
+            38.434227 -77.596436
+            38.792625 -77.041626
+            38.475094 -76.786194
+            38.151836 -76.316528
+            37.874851 -76.242371
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7be50a1545dc08b</guid>
+    <pubDate>Thu, 17 Feb 2011 15:17:24 +0000</pubDate>
+    <title>Patuxent River</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:PATUXENT</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.338963 -76.405106
+            38.249504 -76.416092
+            38.762650 -76.898804
+            38.807610 -76.728516
+            38.338963 -76.405106
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7bfe7be2f9a1f67</guid>
+    <pubDate>Thu, 17 Feb 2011 15:24:31 +0000</pubDate>
+    <title>Rappahannock River</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:RAPPAHANNOCK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.620758 -76.279449
+            37.547844 -76.306915
+            37.616405 -76.611786
+            38.292091 -77.338257
+            38.061066 -76.754608
+            37.620758 -76.279449
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7c5c176aaa0b161</guid>
+    <pubDate>Thu, 17 Feb 2011 15:50:41 +0000</pubDate>
+    <title>Carvins Cove Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:CARVINS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            37.415573 -79.982529
+            37.357330 -79.974632
+            37.390347 -79.921249
+            37.415573 -79.982529
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c7c633fd91fe79ec</guid>
+    <pubDate>Thu, 17 Feb 2011 15:52:41 +0000</pubDate>
+    <title>Lake Louisa</title>
+    <description><![CDATA[<div dir="ltr">reportKey=VA:LOUISA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            38.126453 -77.999153
+            38.112411 -78.057861
+            38.090527 -78.017349
+            38.126453 -77.999153
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>

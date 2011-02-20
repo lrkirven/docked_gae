@@ -374,5 +374,288 @@
       </gml:exterior>
     </gml:Polygon>
   </item>
+  <item>
+    <guid isPermaLink="false">00049c901e01626e95e14</guid>
+    <pubDate>Fri, 18 Feb 2011 15:24:59 +0000</pubDate>
+    <title>Portersville Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:PORTERSVILLE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.334360 -88.324585
+            30.288124 -88.197556
+            30.382353 -88.157387
+            30.417889 -88.292313
+            30.334360 -88.324585
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c902196ac030e618</guid>
+    <pubDate>Fri, 18 Feb 2011 15:25:59 +0000</pubDate>
+    <title>Grand Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:GRAND</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.404860 -88.439255
+            30.342066 -88.391876
+            30.352139 -88.318405
+            30.419071 -88.292999
+            30.404860 -88.439255
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c90252b79e1e4190</guid>
+    <pubDate>Fri, 18 Feb 2011 15:26:59 +0000</pubDate>
+    <title>Weeks Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:WEEKSBAY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.407822 -87.879639
+            30.358656 -87.806854
+            30.397753 -87.769089
+            30.494835 -87.799988
+            30.407822 -87.879639
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c9028c067eda33e1</guid>
+    <pubDate>Fri, 18 Feb 2011 15:27:59 +0000</pubDate>
+    <title>Chacaloochee Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:CHACALOOCHEE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.648546 -87.907104
+            30.695791 -88.041687
+            30.810270 -88.101425
+            30.967602 -87.869339
+            30.648546 -87.907104
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c902f79a98912dd9</guid>
+    <pubDate>Fri, 18 Feb 2011 15:29:52 +0000</pubDate>
+    <title>Bon Secour Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:BONSECOUR</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.426176 -87.906418
+            30.354509 -87.803421
+            30.328436 -87.701111
+            30.259068 -87.706604
+            30.232374 -87.981262
+            30.426176 -87.906418
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c903dcd499e03b86</guid>
+    <pubDate>Fri, 18 Feb 2011 15:33:52 +0000</pubDate>
+    <title>Mobile Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:MOBILE</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.695791 -88.044434
+            30.646774 -87.902298
+            30.429138 -87.907791
+            30.232374 -87.982635
+            30.285753 -88.196869
+            30.480635 -88.115158
+            30.695791 -88.044434
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c904163c2cffe4e6</guid>
+    <pubDate>Fri, 18 Feb 2011 15:34:53 +0000</pubDate>
+    <title>Pelican Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:PELICANBAY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.227036 -87.961349
+            30.181341 -88.253174
+            30.235340 -88.336258
+            30.260845 -88.098679
+            30.227036 -87.961349
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c90487d64d1b92ad</guid>
+    <pubDate>Fri, 18 Feb 2011 15:36:52 +0000</pubDate>
+    <title>Big Creek Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:BIGCREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.843288 -88.326645
+            30.731213 -88.409042
+            30.669218 -88.250427
+            30.843288 -88.326645
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c905821d5f11ade1</guid>
+    <pubDate>Fri, 18 Feb 2011 15:41:14 +0000</pubDate>
+    <title>Little Lagoon</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:LITTLELAGOON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.245424 -87.840500
+            30.224365 -87.837067
+            30.247501 -87.682571
+            30.261143 -87.684975
+            30.245424 -87.840500
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c905bb70fce046be</guid>
+    <pubDate>Fri, 18 Feb 2011 15:42:14 +0000</pubDate>
+    <title>Shelby Lakes</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:SHELBY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.273893 -87.687035
+            30.247501 -87.682915
+            30.268259 -87.582321
+            30.291386 -87.581635
+            30.273893 -87.687035
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c905f4c0796c8342</guid>
+    <pubDate>Fri, 18 Feb 2011 15:43:14 +0000</pubDate>
+    <title>Wolf Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:WOLFBAY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.362951 -87.652534
+            30.280861 -87.648750
+            30.299093 -87.537521
+            30.362509 -87.554688
+            30.362951 -87.652534
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c90667460117fb22</guid>
+    <pubDate>Fri, 18 Feb 2011 15:45:14 +0000</pubDate>
+    <title>Amica Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:AMICA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.326954 -87.518639
+            30.302946 -87.515717
+            30.299093 -87.537003
+            30.332731 -87.546448
+            30.326954 -87.518639
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c906a08da39ae817</guid>
+    <pubDate>Fri, 18 Feb 2011 15:46:15 +0000</pubDate>
+    <title>Bayou Saint John</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:BAYOUSAINTJOHN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.302502 -87.516060
+            30.279528 -87.511597
+            30.269594 -87.581635
+            30.291386 -87.581291
+            30.302502 -87.516060
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049c907137721191ac7</guid>
+    <pubDate>Fri, 18 Feb 2011 15:48:15 +0000</pubDate>
+    <title>Perdido Bay</title>
+    <description><![CDATA[<div dir="ltr">reportKey=AL:PERDIDOBAY</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.278044 -87.511940
+            30.378799 -87.524300
+            30.521160 -87.443619
+            30.436241 -87.325516
+            30.295238 -87.444305
+            30.278044 -87.511940
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
 </channel>
 </rss>
