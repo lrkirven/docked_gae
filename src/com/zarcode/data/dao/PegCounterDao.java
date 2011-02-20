@@ -20,6 +20,12 @@ public class PegCounterDao extends BaseDao {
 	public static String NO_BUZZ_COMMENTS = "NO_BUZZ_COMMENTS_";
 	public static String NO_HOT_SPOTS = "NO_HOTSPOTS_";
 
+	/**
+	 * Gets requested peg based upon the provided name.
+	 * 
+	 * @param pegName
+	 * @return
+	 */
 	public PegCounterDO getPegCounter(String pegName) {
 		List<PegCounterDO> res = null;
 		PegCounterDO target = null;
@@ -33,32 +39,33 @@ public class PegCounterDao extends BaseDao {
 		}
 		return target;
 	}
-	
+
+	/**
+	 * This method adds new peg for counting.
+	 * 
+	 * @param peg
+	 * @return
+	 */
 	public PegCounterDO addPegCounter(PegCounterDO peg) {
 		PegCounterDO newPeg = null;
 		Transaction tx = pm.currentTransaction();
 		double lat = 0;
 		double lng = 0;
 		
-		try {
-			tx.begin();
-			Date now = new Date();
-			peg.setPegCounterId(null);
-			peg.setLastUpdate(new Date());
-			newPeg = pm.makePersistent(peg); 
-			//
-			// commit changes
-			//
-			tx.commit();
-		}
-		finally {
-			if (tx.isActive()) {
-				tx.rollback();
-			}
-		}
+		Date now = new Date();
+		peg.setPegCounterId(null);
+		peg.setLastUpdate(new Date());
+		newPeg = pm.makePersistent(peg); 
+		
 		return newPeg;
 	}
 	
+	/**
+	 * Increment the requested peg based upon the provided name.
+	 * 
+	 * @param pegName
+	 * @param val
+	 */
 	public void increment(String pegName, long val) {
 		PegCounterDO res = null;
 		Transaction tx = pm.currentTransaction();
@@ -83,6 +90,12 @@ public class PegCounterDao extends BaseDao {
 		}
 	}
 	
+	/**
+	 * This method updates the actual peg count.
+	 * 
+	 * @param pegName
+	 * @param val
+	 */
 	public void update(String pegName, long val) {
 		PegCounterDO res = null;
 		Transaction tx = pm.currentTransaction();
