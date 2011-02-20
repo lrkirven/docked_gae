@@ -41,7 +41,7 @@ import com.zarcode.platform.model.AppPropDO;
 import com.zarcode.security.AppRegister;
 import com.zarcode.security.BlockTea;
 
-@Path("/users")
+@Path("/v1/users")
 public class User extends ResourceBase {
 	
 	private Logger logger = Logger.getLogger(User.class.getName());
