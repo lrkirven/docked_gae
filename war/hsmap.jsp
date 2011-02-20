@@ -131,10 +131,11 @@
  		var markers = [];
  		var bounds = new google.maps.LatLngBounds();
  		var hotSpotId = '<%= pageContext.getAttribute("hotSpotId") %>';
+ 		var version = '<%= pageContext.getAttribute("version") %>';
  			
  		$.ajax({
  			type: "GET",
-  			url: "resources/hotspots/" + hotSpotId,
+  			url: "resources/" + version + "/hotspots/" + hotSpotId,
   			dataType: "json",
   			success: function(json) {
     			console.log("Got response from service: " + json);
