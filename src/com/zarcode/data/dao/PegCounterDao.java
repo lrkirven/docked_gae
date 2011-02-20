@@ -20,14 +20,14 @@ public class PegCounterDao extends BaseDao {
 	public static String NO_BUZZ_COMMENTS = "NO_BUZZ_COMMENTS_";
 	public static String NO_HOT_SPOTS = "NO_HOTSPOTS_";
 
-	public PegCounterDO getPegCounter(String name) {
+	public PegCounterDO getPegCounter(String pegName) {
 		List<PegCounterDO> res = null;
 		PegCounterDO target = null;
 		StringBuilder sb = new StringBuilder();
 		Query query = pm.newQuery(PegCounterDO.class);
-		query.setFilter("name == nameParam");
-		query.declareParameters("String nameParam");
-		res = (List<PegCounterDO>)query.execute(name);
+		query.setFilter("pegName == pegNameParam");
+		query.declareParameters("String pegNameParam");
+		res = (List<PegCounterDO>)query.execute(pegName);
 		if (res != null && res.size() > 0) {
 			target = res.get(0);
 		}
