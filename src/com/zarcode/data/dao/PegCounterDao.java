@@ -26,7 +26,7 @@ public class PegCounterDao extends BaseDao {
 		StringBuilder sb = new StringBuilder();
 		Query query = pm.newQuery(PegCounterDO.class);
 		query.setFilter("name == nameParam");
-		query.declareParameters("String name");
+		query.declareParameters("String nameParam");
 		res = (List<PegCounterDO>)query.execute(name);
 		if (res != null && res.size() > 0) {
 			target = res.get(0);
