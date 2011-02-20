@@ -200,6 +200,9 @@ public class GeoRSSWrite extends HttpServlet {
 	 				report.append("\n\nTOTAL ADDED: " + resAdded);
 	 				logger.info("Processing is done on index=" + i);
 	 				EmailHelper.sendAppAlert("Docked" + ": GeoRSSFeed Status", report.toString() , "Docked");
+	 				logger.info("Trying to delete temporary blob to upload Geo RSS feed ..");
+	 				blobstoreService.delete(blobKey);
+	 				logger.info("Blob DELETED.");
 	 			}
 			}
 			else {
