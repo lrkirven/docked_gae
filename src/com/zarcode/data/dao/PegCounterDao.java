@@ -8,6 +8,7 @@ import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import com.zarcode.data.model.BucketDO;
+import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.data.model.PegCounterDO;
 import com.zarcode.platform.dao.BaseDao;
 
@@ -59,6 +60,19 @@ public class PegCounterDao extends BaseDao {
 		newPeg = pm.makePersistent(peg); 
 		
 		return newPeg;
+	}
+	
+	public void deleteInstance(PegCounterDO peg) {
+		long rows = 0;
+		pm.deletePersistent(peg);
+	}
+	
+	public List<PegCounterDO> getAllPegCounters() {
+		int i = 0;
+		List<PegCounterDO> list = null;
+		Query query = pm.newQuery(PegCounterDO.class);
+		list = (List<PegCounterDO>)query.execute();
+		return list;
 	}
 	
 	/**

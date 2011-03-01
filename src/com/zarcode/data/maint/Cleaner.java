@@ -18,9 +18,11 @@ import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.EmailHelper;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.BuzzDao;
+import com.zarcode.data.dao.PegCounterDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.gdata.PicasaClient;
 import com.zarcode.data.model.BuzzMsgDO;
+import com.zarcode.data.model.PegCounterDO;
 import com.zarcode.data.model.ReadOnlyUserDO;
 import com.zarcode.platform.model.AppPropDO;
 
@@ -31,6 +33,7 @@ public class Cleaner extends HttpServlet {
 	private StringBuilder report = null;
 
 	private static int MAX_DAYS_MESSAGE_IN_SYS = 90;
+	private static int MAX_DAYS_PEGCOUNTER_IN_SYS = 30;
 	private static int MAX_DAYS_ANONYMOUS_USER_IN_SYS = 7;
 	private static long MSEC_IN_DAY = 86400000;
 	
@@ -144,6 +147,40 @@ public class Cleaner extends HttpServlet {
 		}
 		return buzzMsgsDeleted;
 	}
+	
+	private int cleanPegCounters() {
+		int i = 0;
+		int pegCountersDeleted = 0;
+		
+    	PegCounterDao pegDao = null;
+    	UserDao userDao = null;
+		List<PegCounterDO> list = null;
+		PegCounterDO peg = null;
+		Calendar now = Calendar.getInstance();
+		
+		long msgLife = now.getTimeInMillis() - (MAX_DAYS_PEGCOUNTER_IN_SYS * MSEC_IN_DAY);
+		
+		try {
+			pegDao = new PegCounterDao();
+			list = pegDao.getAllPegCounters();
+			if (list != null && list.size() > 0) {
+				for (i=0; i<list.size(); i++) {
+					peg = list.get(i);
+					if (peg.getLastUpdate().getTime() < msgLife) {
+						pegDao.deleteInstance(peg);
+						pegCountersDeleted++;
+					}
+				}
+			}
+			
+		}
+		catch (Exception e) {
+			String str = "[EXCEPTION ::: PICASA CLEANING FAILED]\n" + Util.getStackTrace(e);
+			report.append(str + "\n");
+			logger.severe(str);
+		}
+		return pegCountersDeleted;
+	}
     
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -168,6 +205,10 @@ public class Cleaner extends HttpServlet {
 			logger.info("# of buzz msg(s) deleted: " + buzzMsgsDeleted);
 			report.append("# of buzz msg(s) deleted: " + buzzMsgsDeleted + "\n");
 	
+			int pegCounterDeleted = cleanPegCounters();
+			logger.info("# of peg counter(s) deleted: " + pegCounterDeleted);
+			report.append("# of peg counter(s) deleted: " + pegCounterDeleted + "\n");
+			
 			/*
 			int photosDeleted = cleanPicasaPhotos();
 			logger.info("# of picasa photo(s) deleted: " + photosDeleted);
