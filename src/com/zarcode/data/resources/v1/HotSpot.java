@@ -66,6 +66,7 @@ public class HotSpot extends ResourceBase {
 		PegCounterDao pegDao = new PegCounterDao();
 		Format formatter = new SimpleDateFormat("ddMMMyyyy");
 		String tm = formatter.format(new Date());
+		tm = tm.toUpperCase();
 		pegDao.increment(PegCounterDao.NO_HOT_SPOTS + tm, 1);
 	}
 	

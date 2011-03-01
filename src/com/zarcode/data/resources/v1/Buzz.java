@@ -73,6 +73,7 @@ public class Buzz extends ResourceBase {
 		PegCounterDao pegDao = new PegCounterDao();
 		Format formatter = new SimpleDateFormat("ddMMMyyyy");
 		String tm = formatter.format(new Date());
+		tm = tm.toUpperCase();
 		pegDao.increment(PegCounterDao.NO_BUZZ_MSG + tm, 1);
 	}
 	
