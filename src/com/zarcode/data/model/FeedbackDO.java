@@ -3,10 +3,17 @@ package com.zarcode.data.model;
 import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
+@XmlRootElement(name = "Feedback") 
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class FeedbackDO {
 	
 	@PrimaryKey 
@@ -32,6 +39,7 @@ public class FeedbackDO {
 	public FeedbackDO() {
 	}
 	
+	@XmlElement
 	public Long getFeedbackId() {
 		return feedbackId;
 	}
@@ -40,6 +48,7 @@ public class FeedbackDO {
 		this.feedbackId = feedbackId;
 	}
 	
+	@XmlElement
 	public String getLlId() {
 		return llId;
 	}
@@ -48,6 +57,7 @@ public class FeedbackDO {
 		this.llId = llId;
 	}
 	
+	@XmlTransient
 	public String getEmailAddr() {
 		return emailAddr;
 	}
@@ -56,6 +66,7 @@ public class FeedbackDO {
 		this.emailAddr = emailAddr;
 	}
 	
+	@XmlElement
 	public String getValue() {
 		return value;
 	}
@@ -63,7 +74,8 @@ public class FeedbackDO {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	
+
+	@XmlElement
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -71,7 +83,8 @@ public class FeedbackDO {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
+
+	@XmlElement
 	public int getResult() {
 		return result;
 	}

@@ -234,6 +234,7 @@ public class User extends ResourceBase {
 		}
 		else {
 			logger.warning("**** Unable to find user account with llId = " + llId);
+			throw new BadUserDataProvidedException();
 		}
 		return feedback;
 	}
