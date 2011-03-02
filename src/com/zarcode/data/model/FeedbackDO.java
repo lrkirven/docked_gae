@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -20,8 +21,11 @@ public class FeedbackDO {
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Long feedbackId = null; 
 
-	@Persistent
+	@NotPersistent
 	private String llId = null;
+	
+	@Persistent
+	private String idClear = null;
 	
 	@Persistent
 	private String emailAddr = null;
@@ -55,6 +59,15 @@ public class FeedbackDO {
 	
 	public void setLlId(String llId) {
 		this.llId = llId;
+	}
+	
+	@XmlTransient
+	public String getIdClear() {
+		return idClear;
+	}
+
+	public void setIdClear(String idClear) {
+		this.idClear = idClear;
 	}
 	
 	@XmlTransient

@@ -224,6 +224,7 @@ public class User extends ResourceBase {
 		res = dao.getUserByIdClear(plainText);
 		if (res != null) {
 			try {
+				feedback.setIdClear(plainText);
 				feedback.setEmailAddr(res.getEmailAddr());
 				FeedbackDao feedbackDao = new FeedbackDao();
 				feedback = feedbackDao.addFeedback(feedback);
