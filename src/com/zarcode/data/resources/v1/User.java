@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.zarcode.app.AppCommon;
 import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.Util;
+import com.zarcode.data.dao.FeedbackDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.UserTokenDao;
 import com.zarcode.data.dao.WaterResourceDao;
@@ -33,6 +34,7 @@ import com.zarcode.data.model.ReadOnlyUserDO;
 import com.zarcode.data.model.RegisterTokenDO;
 import com.zarcode.data.model.SecurityTokenDO;
 import com.zarcode.data.model.UpdateTaskDO;
+import com.zarcode.data.model.FeedbackDO;
 import com.zarcode.data.model.UserDO;
 import com.zarcode.data.model.UserTokenDO;
 import com.zarcode.data.model.WaterResourceDO;
@@ -165,6 +167,76 @@ public class User extends ResourceBase {
 		return sToken;
 		
 	} // register
+	
+	@POST
+	@Produces("application/json")
+	@Path("/feedback")
+	public FeedbackDO addFeedback(String rawFeedbackJson) {
+		UserDO res = null;
+		UserDao dao = null;
+		int rows = 0;
+		String resp = null;
+		UserDO newUser = null;
+		FeedbackDO feedback = null;
+		String llId = null;
+		String value = null;
+		String plainText = null;
+		
+		
+		requireSSL(context, logger);
+		
+		if (rawFeedbackJson != null && rawFeedbackJson.length() > 0) {
+			feedback = new Gson().fromJson(rawFeedbackJson, FeedbackDO.class);
+			try {
+				llId = feedback.getLlId();
+				logger.info("BEFORE llId [" + llId + "]");
+				// llId = new URI(llId).toASCIIString();
+				llId = URLDecoder.decode(llId);
+				logger.info("AFTER llId [" + llId + "]");
+				value = feedback.getValue();
+				// value = new URI(value).toASCIIString();
+				value = URLDecoder.decode(value);
+			}
+			catch (Exception e1) {
+				logger.warning("EXCEPTION ::: " + Util.getStackTrace(e1));
+				throw new BadUserDataProvidedException();
+			}
+		}
+		
+		if (llId == null || llId.length() == 0) {
+			logger.warning("*** Incoming llId is not VALID ***");
+			throw new BadUserDataProvidedException();
+		}
+		
+		if (!AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
+			AppPropDO prop = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
+			BlockTea.BIG_ENDIAN = false;
+			plainText = BlockTea.decrypt(llId, prop.getStringValue());
+			logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
+			llId = plainText;
+		}
+		else {
+			logger.warning("*** Anonymous user can update the displayName ***");
+			throw new BadUserDataProvidedException();
+		}
+		
+		dao = new UserDao();
+		res = dao.getUserByIdClear(plainText);
+		if (res != null) {
+			try {
+				feedback.setEmailAddr(res.getEmailAddr());
+				FeedbackDao feedbackDao = new FeedbackDao();
+				feedback = feedbackDao.addFeedback(feedback);
+			}
+			catch (Exception e) {
+				logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
+			}
+		}
+		else {
+			logger.warning("**** Unable to find user account with llId = " + llId);
+		}
+		return feedback;
+	}
 
 	@POST
 	@Produces("application/json")

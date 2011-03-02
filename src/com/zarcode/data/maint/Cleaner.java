@@ -18,10 +18,12 @@ import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.EmailHelper;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.BuzzDao;
+import com.zarcode.data.dao.FeedbackDao;
 import com.zarcode.data.dao.PegCounterDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.gdata.PicasaClient;
 import com.zarcode.data.model.BuzzMsgDO;
+import com.zarcode.data.model.FeedbackDO;
 import com.zarcode.data.model.PegCounterDO;
 import com.zarcode.data.model.ReadOnlyUserDO;
 import com.zarcode.platform.model.AppPropDO;
@@ -34,6 +36,7 @@ public class Cleaner extends HttpServlet {
 
 	private static int MAX_DAYS_MESSAGE_IN_SYS = 90;
 	private static int MAX_DAYS_PEGCOUNTER_IN_SYS = 30;
+	private static int MAX_DAYS_FEEDBACK_IN_SYS = 30;
 	private static int MAX_DAYS_ANONYMOUS_USER_IN_SYS = 7;
 	private static long MSEC_IN_DAY = 86400000;
 	
@@ -181,6 +184,37 @@ public class Cleaner extends HttpServlet {
 		}
 		return pegCountersDeleted;
 	}
+	
+	private List<FeedbackDO> retrieveFeedback() {
+		int i = 0;
+		int pegCountersDeleted = 0;
+		
+    	FeedbackDao feedbackDao = null;
+    	UserDao userDao = null;
+		List<FeedbackDO> list = null;
+		FeedbackDO feedback = null;
+		Calendar now = Calendar.getInstance();
+		
+		long msgLife = now.getTimeInMillis() - (MAX_DAYS_PEGCOUNTER_IN_SYS * MSEC_IN_DAY);
+		
+		try {
+			feedbackDao = new FeedbackDao();
+			list = feedbackDao.getAll();
+			if (list != null && list.size() > 0) {
+				for (i=0; i<list.size(); i++) {
+					feedback = list.get(i);
+					feedbackDao.deleteInstance(feedback);
+				}
+			}
+			
+		}
+		catch (Exception e) {
+			String str = "[EXCEPTION ::: PICASA CLEANING FAILED]\n" + Util.getStackTrace(e);
+			report.append(str + "\n");
+			logger.severe(str);
+		}
+		return list;
+	}
     
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -219,6 +253,27 @@ public class Cleaner extends HttpServlet {
 			Calendar done = Calendar.getInstance();
 			logger.info("# of anonymous user(s) deleted: " + anonymousUsersDeleted);
 			report.append("# of anonymous user(s) deleted: " + anonymousUsersDeleted + "\n");
+			
+			List<FeedbackDO> feedbackList = retrieveFeedback();
+			FeedbackDO item = null;
+			report.append("\n\nFeedback Report\n");
+			report.append("---------------\n\n");
+			if (feedbackList != null && feedbackList.size() > 0) {
+				for (i=0; i<feedbackList.size(); i++) {
+					item = feedbackList.get(i);
+					report.append("FROM: ");
+					report.append(item.getEmailAddr());
+					report.append(" DATE: ");
+					report.append(item.getCreateDate());
+					report.append("\n");
+					report.append("COMMENTS:\n\n");
+					report.append(item.getValue());
+					if ((i+1) < feedbackList.size()) {
+						report.append("\n\n***\n\n");
+					}
+				}
+			}
+			
 			
 			long duration = done.getTimeInMillis() - now.getTimeInMillis();
 			report.append("----------------------------------------------------------\n");
