@@ -33,7 +33,7 @@ public class PegCounter {
 	public static void customIncr(String pegName, String key, int freq) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(pegName);
-		sb.append(":");
+		sb.append("-");
 		if (key != null) {
 			key = key.toUpperCase();
 			sb.append(key);
