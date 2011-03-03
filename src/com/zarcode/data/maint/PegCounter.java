@@ -14,6 +14,7 @@ public class PegCounter {
 	public static final String NO_BUZZ_COMMENTS = "NO_BUZZ_COMMENTS_";
 	public static final String NO_HOT_SPOTS = "NO_HOTSPOTS_";
 	public static final String NO_PINGS_PER_RESOURCE = "NO_PINGS_PER_RESOURCE";
+	public static final String NO_PINGS_TODAY = "NO_PINGS_TODAY_";
 	
 	public static final int DAILY = 0;
 	public static final int WEEKLY = 1;

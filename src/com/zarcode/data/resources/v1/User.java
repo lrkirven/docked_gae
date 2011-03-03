@@ -501,6 +501,7 @@ public class User extends ResourceBase {
 			if (totalActiveUsers != null) {
 				status.setNumOfLazyLakers(totalActiveUsers.size());
 			}
+			PegCounter.incr(PegCounter.NO_PINGS_TODAY, PegCounter.DAILY);
 		}
 		catch (Exception e) {
 			logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
