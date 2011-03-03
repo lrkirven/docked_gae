@@ -28,6 +28,7 @@ import com.zarcode.data.dao.UserTokenDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.exception.BadUserDataProvidedException;
 import com.zarcode.data.exception.UnableToDecodeRequestException;
+import com.zarcode.data.maint.PegCounter;
 import com.zarcode.data.model.LocalStatusDO;
 import com.zarcode.data.model.PingDataDO;
 import com.zarcode.data.model.ReadOnlyUserDO;
@@ -484,6 +485,8 @@ public class User extends ResourceBase {
 				usersAtLake = userDao.getUsersByResourceId(best.getResourceId());
 				int totalUsers = userDao.getTotalUsersByResourceId(best.getResourceId());
 				status.setHowManyOnWater(totalUsers);
+				// increment peg for water resource
+				PegCounter.customIncr(PegCounter.NO_PINGS_PER_RESOURCE, best.getReportKey(), PegCounter.DAILY);
 			}
 			else {
 				if (anonymous) {

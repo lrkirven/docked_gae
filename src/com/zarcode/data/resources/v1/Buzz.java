@@ -35,6 +35,7 @@ import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.exception.BadRequestAppDataException;
 import com.zarcode.data.exception.BadUserDataProvidedException;
 import com.zarcode.data.exception.UnableToDecodeRequestException;
+import com.zarcode.data.maint.PegCounter;
 import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.data.model.CommentDO;
 import com.zarcode.data.model.HotSpotDO;
@@ -49,6 +50,8 @@ import com.zarcode.data.resources.ResourceBase;
 public class Buzz extends ResourceBase {
 	
 	private Logger logger = Logger.getLogger(Buzz.class.getName());
+	
+	private PegCounterDao pegCounter = new PegCounterDao();
 	
 	@Context 
 	HttpHeaders headers = null;
@@ -65,24 +68,6 @@ public class Buzz extends ResourceBase {
 	String container = null;
 	
 	private static final int MAXPAGE = 10;
-	
-	/**
-	 * Increments the number of messages for the day
-	 */
-	private void incrBuzzMsgPegCounter() {
-		PegCounterDao pegDao = new PegCounterDao();
-		Format formatter = new SimpleDateFormat("ddMMMyyyy");
-		String tm = formatter.format(new Date());
-		tm = tm.toUpperCase();
-		pegDao.increment(PegCounterDao.NO_BUZZ_MSG + tm, 1);
-	}
-	
-	private void incrBuzzCommentsPegCounter() {
-		PegCounterDao pegDao = new PegCounterDao();
-		Format formatter = new SimpleDateFormat("ddMMMyyyy");
-		String tm = formatter.format(new Date());
-		pegDao.increment(PegCounterDao.NO_BUZZ_COMMENTS + tm, 1);
-	}
 	
 	@POST
 	@Produces("application/json")
@@ -136,8 +121,8 @@ public class Buzz extends ResourceBase {
 					
 					dao = new BuzzDao();
 					newBuzzMsg = dao.addMsg(buzzMsg);
-					incrBuzzMsgPegCounter();
-					incrBuzzCommentsPegCounter();
+					PegCounter.incr(PegCounter.NO_BUZZ_MSG, PegCounter.DAILY);
+					PegCounter.incr(PegCounter.NO_BUZZ_COMMENTS, PegCounter.DAILY);
 					
 					//
 					// since event was created inside lake area, update last communication

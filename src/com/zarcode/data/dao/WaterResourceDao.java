@@ -231,8 +231,15 @@ public class WaterResourceDao extends BaseDao {
 				r = res.get(i);
 				polygon = r.getPolygon();
 				if (GeoUtil.containsPoint(polygon, pt)) {
-					best = r;
-					break;
+					if (best == null) {
+						best = r;
+					}
+					else {
+						// get smaller polygon
+						if (r.getApproxSize() < best.getApproxSize()) {
+							best = r;
+						}
+					}
 				}
 			}
 		}
@@ -301,6 +308,12 @@ public class WaterResourceDao extends BaseDao {
 		
 	} // findClosest
 	
+	/**
+	 * This method is using geo-hashing to find polygons closest to my location.
+	 * 
+	 * @param geoKeys
+	 * @return
+	 */
 	private List<GeoHash2ResourceMapDO> _findClosest(List<GeoHash> geoKeys) {
 		int i = 0;
 		GeoHash hash = null;

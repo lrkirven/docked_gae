@@ -21,6 +21,7 @@ import com.zarcode.data.dao.PegCounterDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.gdata.MapClient;
+import com.zarcode.data.maint.PegCounter;
 import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.data.model.UserDO;
 import com.zarcode.data.model.WaterResourceDO;
@@ -189,8 +190,7 @@ public class Lake extends ResourceBase {
 				lake.postReturn();
 				users = userDao.getUsersByResourceId(lake.getResourceId());
 				if (users != null && users.size() > 0) {
-					PegCounterDao pegDao = new PegCounterDao();
-					pegDao.update(PegCounterDao.NO_OF_ACTIVE_USERS, users.size());
+					PegCounter.clobber(PegCounter.NO_OF_ACTIVE_USERS, users.size());
 				}
 			}
 		}

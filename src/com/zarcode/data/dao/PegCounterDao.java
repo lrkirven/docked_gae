@@ -1,5 +1,7 @@
 package com.zarcode.data.dao;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -16,11 +18,6 @@ public class PegCounterDao extends BaseDao {
 	
 	private Logger logger = Logger.getLogger(PegCounterDao.class.getName());
 	
-	public static String NO_OF_ACTIVE_USERS = "NO_OF_ACTIVE_USERS";
-	public static String NO_BUZZ_MSG = "NO_BUZZ_MSG_";
-	public static String NO_BUZZ_COMMENTS = "NO_BUZZ_COMMENTS_";
-	public static String NO_HOT_SPOTS = "NO_HOTSPOTS_";
-
 	/**
 	 * Gets requested peg based upon the provided name.
 	 * 
@@ -47,13 +44,8 @@ public class PegCounterDao extends BaseDao {
 	 * @param peg
 	 * @return
 	 */
-	public PegCounterDO addPegCounter(PegCounterDO peg) {
+	private PegCounterDO addPegCounter(PegCounterDO peg) {
 		PegCounterDO newPeg = null;
-		Transaction tx = pm.currentTransaction();
-		double lat = 0;
-		double lng = 0;
-		
-		Date now = new Date();
 		peg.setPegCounterId(null);
 		peg.setCounter(new Long(0));
 		peg.setLastUpdate(new Date());

@@ -208,6 +208,15 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 	}
 	
 	@XmlElement
+	public double getApproxSize() {
+		return approxSize;
+	}
+
+	public void setApproxSize(double approxSize) {
+		this.approxSize = approxSize;
+	}
+	
+	@XmlElement
 	public String getReportKey() {
 		return reportKey;
 	}

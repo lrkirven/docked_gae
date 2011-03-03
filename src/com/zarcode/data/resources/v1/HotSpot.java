@@ -29,6 +29,7 @@ import com.zarcode.data.dao.UserTokenDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.exception.BadRequestAppDataException;
 import com.zarcode.data.exception.BadUserDataProvidedException;
+import com.zarcode.data.maint.PegCounter;
 import com.zarcode.data.model.BuzzMsgDO;
 import com.zarcode.data.model.CommentDO;
 import com.zarcode.data.model.HotSpotDO;
@@ -58,17 +59,6 @@ public class HotSpot extends ResourceBase {
 	
 	private static final int MAXPAGE = 10;
 	
-	
-	/**
-	 * Increments the number of messages for the day
-	 */
-	private void incrHotSpotPegCounter() {
-		PegCounterDao pegDao = new PegCounterDao();
-		Format formatter = new SimpleDateFormat("ddMMMyyyy");
-		String tm = formatter.format(new Date());
-		tm = tm.toUpperCase();
-		pegDao.increment(PegCounterDao.NO_HOT_SPOTS + tm, 1);
-	}
 	
 	@POST
 	@Produces("application/json")
@@ -125,7 +115,7 @@ public class HotSpot extends ResourceBase {
 						 * add it
 						 */
 						newSpot = dao.addHotSpot(spot);
-						incrHotSpotPegCounter();
+						PegCounter.incr(PegCounter.NO_HOT_SPOTS, PegCounter.DAILY);
 						logger.info("Successfully added new hotSpot -- " + newSpot);
 					}
 					/*
