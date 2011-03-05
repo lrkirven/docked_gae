@@ -114,6 +114,7 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 		else {
 			this.username = AppCommon.UNKNOWN;
 		}
+		logger.info("postReturn: timeDisplay=" + timeDisplay + " profileUrl=" + this.profileUrl);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
