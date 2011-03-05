@@ -211,7 +211,6 @@ public class Buzz extends ResourceBase {
 						throw new BadUserDataProvidedException();
 					}
 					
-					userDao.updateProfileUrl(user, comm.getProfileUrl());
 					dao = new BuzzDao();
 					newComm = dao.addComment(comm);
 					newComm.postReturn();
