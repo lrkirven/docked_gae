@@ -63,6 +63,11 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 		pm.deletePersistent(m);
 	}
 	
+	public void deleteComment(CommentDO comment) {
+		long rows = 0;
+		pm.deletePersistent(comment);
+	}
+	
 	public BuzzMsgDO addMsg(BuzzMsgDO event) {
 		BuzzMsgDO res = null;
 		Long eventId = null;

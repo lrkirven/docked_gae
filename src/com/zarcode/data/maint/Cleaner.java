@@ -23,6 +23,7 @@ import com.zarcode.data.dao.PegCounterDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.gdata.PicasaClient;
 import com.zarcode.data.model.BuzzMsgDO;
+import com.zarcode.data.model.CommentDO;
 import com.zarcode.data.model.FeedbackDO;
 import com.zarcode.data.model.PegCounterDO;
 import com.zarcode.data.model.ReadOnlyUserDO;
@@ -117,6 +118,7 @@ public class Cleaner extends HttpServlet {
 	
 	private int cleanBuzzMsgs() {
 		int i = 0;
+		int j = 0;
 		int buzzMsgsDeleted = 0;
 		
     	BuzzDao eventDao = null;
@@ -124,6 +126,7 @@ public class Cleaner extends HttpServlet {
 		List<BuzzMsgDO> list = null;
 		List<ReadOnlyUserDO> tempUsers = null;
 		BuzzMsgDO msg = null;
+		CommentDO comment = null;
 		ReadOnlyUserDO tempUser = null;
 		Calendar now = Calendar.getInstance();
 		
@@ -136,6 +139,13 @@ public class Cleaner extends HttpServlet {
 				for (i=0; i<list.size(); i++) {
 					msg = list.get(i);
 					if (msg.getCreateDate().getTime() < msgLife) {
+						List<CommentDO> comments = eventDao.getComments4BuzzMsg(msg);
+						if (comments != null && comments.size() > 0) {
+							for (j=0; j<comments.size() ; j++) {
+								comment = comments.get(j);
+								eventDao.deleteComment(comment);
+							}
+						}
 						eventDao.deleteInstance(msg);
 						buzzMsgsDeleted++;
 					}
