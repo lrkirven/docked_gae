@@ -215,7 +215,6 @@ public class Buzz extends ResourceBase {
 					dao = new BuzzDao();
 					newComm = dao.addComment(comm);
 					newComm.postReturn();
-					dao.incrementCommentCounter(comm.getMsgId());
 					//
 					// since event was created inside lake area, update last communication
 					//

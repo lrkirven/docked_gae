@@ -149,40 +149,14 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 	 * @param listOfEvents
 	 * @return
 	 */
-	private List<BuzzMsgDO> updateDynamicBuzzData(List<BuzzMsgDO> listOfEvents) {
+	private List<BuzzMsgDO> postQuery(List<BuzzMsgDO> listOfEvents) {
 		int i = 0;
 		int j = 0;
-		UserDO user = null;
-		CommentDO comment = null;
-		UserDao userDao = new UserDao();
 		
 		int len = listOfEvents.size();
 		for (i=0; i<len; i++) {
 			BuzzMsgDO msg = (listOfEvents.get(i));
-			msg.postReturn();
-			List<CommentDO> listOfComments = getComments4BuzzMsg(msg);
-			if (listOfComments.size() > 0) {
-				for (j=0; j<listOfComments.size(); j++) {
-					comment = listOfComments.get(j);
-					user = userDao.getUserByIdClear(comment.getIdClear());
-					if (user != null) {
-						comment.setUsername(user.getDisplayName());
-						comment.setProfileUrl(user.getProfileUrl());
-					}
-					else {
-						comment.setUsername(UNKNOWN);
-					}
-				}
-				msg.setComments(listOfComments);
-			}
-			user = userDao.getUserByIdClear(msg.getIdClear());
-			if (user != null) {
-				msg.setProfileUrl(user.getProfileUrl());
-				msg.setUsername(user.getDisplayName());
-			}
-			else {
-				msg.setUsername(UNKNOWN);
-			}
+			msg.postReturn(this);
 		}
 		return listOfEvents;
 	}
@@ -214,7 +188,7 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 			query.setOrdering("timestamp desc");
 			listOfEvents = (List<BuzzMsgDO>)query.execute();
 			if (listOfEvents != null && listOfEvents.size() > 0) {
-				listOfEvents = updateDynamicBuzzData(listOfEvents);
+				listOfEvents = postQuery(listOfEvents);
 			}
 		}
 		finally {
@@ -246,6 +220,9 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 			query.setRange(0, PAGESIZE);
 			query.setOrdering("sequenceNum");
 			listOfEvents = (List<BuzzMsgDO>)query.execute();
+			if (listOfEvents != null && listOfEvents.size() > 0) {
+				listOfEvents = postQuery(listOfEvents);
+			}
 		}
 		finally {
 			if (tx.isActive()) {
@@ -337,10 +314,11 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 	public BuzzMsgDO getMsgById(Long msgId) {
 		BuzzMsgDO res = null;
 		res = pm.getObjectById(BuzzMsgDO.class, msgId);
-		res.postReturn();
+		res.postReturn(this);
 		return res;
 	}
 	
+	/*
 	public void incrementCommentCounter(Long eventId) {
 		BuzzMsgDO res = null;
 		Transaction tx = pm.currentTransaction();
@@ -358,6 +336,7 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 			}
 		}
 	}
+	*/
 
 	public List<BuzzMsgDO> findClosest(double lat, double lng, long last, boolean next) {
 		int i = 0;

@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import com.google.appengine.api.datastore.Text;
 import com.zarcode.app.AppCommon;
 import com.zarcode.common.ApplicationProps;
+import com.zarcode.data.dao.UserDao;
 import com.zarcode.platform.model.AbstractLoaderDO;
 import com.zarcode.platform.model.AppPropDO;
 import com.zarcode.security.BlockTea;
@@ -95,10 +96,20 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 	}
 	
 	public void postReturn() {
+		UserDO user = null;
+		UserDao userDao = new UserDao();
 		if (responseText != null) {
 			this.response = responseText.getValue();
 		}
 		timeDisplay = AppCommon.generateTimeOffset(createDate);
+		user = userDao.getUserByIdClear(this.idClear);
+		if (user != null) {
+			setUsername(user.getDisplayName());
+			setProfileUrl(user.getProfileUrl());
+		}
+		else {
+			setUsername(AppCommon.UNKNOWN);
+		}
 		logger.info("postReturn: timeDisplay=" + timeDisplay);
 	}
 	
@@ -183,7 +194,7 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 		this.timeDisplay = timeDisplay;
 	}
 	
-	@XmlElement
+	@XmlTransient
 	public String getLlId() {
 		return llId;
 	}

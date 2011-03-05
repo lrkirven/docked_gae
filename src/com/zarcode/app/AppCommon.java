@@ -14,6 +14,8 @@ public class AppCommon {
 	
 	public static final String APPNAME = "Docked";
 	
+	public static final String UNKNOWN = "UNKNOWN";
+	
 	public static double distanceBtwAB(double lat1, double lng1, double lat2, double lng2) {
 		double earthR = 6371; // km
 		double dLat = Math.toRadians(lat2-lat1);

@@ -21,6 +21,8 @@ import ch.hsr.geohash.GeoHash;
 import com.google.appengine.api.datastore.Text;
 import com.zarcode.app.AppCommon;
 import com.zarcode.common.ApplicationProps;
+import com.zarcode.data.dao.BuzzDao;
+import com.zarcode.data.dao.UserDao;
 import com.zarcode.platform.model.AbstractLoaderDO;
 import com.zarcode.platform.model.AppPropDO;
 import com.zarcode.security.BlockTea;
@@ -38,6 +40,9 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 	
 	@NotPersistent
 	private List<CommentDO> comments = null;
+	
+	@NotPersistent
+	private int commentCounter = 0;
 	
 	@NotPersistent
 	private String messageData = null;
@@ -106,9 +111,6 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 	@Persistent
 	private int badCounter = 0;
 	
-	@Persistent
-	private int commentCounter = 0;
-	
 	
 	public void postCreation() {
 		logger.info("lat=" + lat + " lng=" + lng);
@@ -138,11 +140,32 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 		idClear = plainText;
 	}
 	
-	public void postReturn() {
+	public void postReturn(BuzzDao dao) {
+		int j = 0;
+		UserDO user = null;
+		UserDao userDao = new UserDao();
+		CommentDO comment = null;
 		if (messageDataText != null) {
 			this.messageData = messageDataText.getValue();
 		}
 		timeDisplay = AppCommon.generateTimeOffset(createDate);
+		List<CommentDO> listOfComments = dao.getComments4BuzzMsg(this);
+		if (listOfComments.size() > 0) {
+			for (j=0; j<listOfComments.size(); j++) {
+				comment = listOfComments.get(j);
+				comment.postReturn();
+			}
+			setComments(listOfComments);
+			setCommentCounter(( listOfComments == null ? 0 : listOfComments.size() ));
+		}
+		user = userDao.getUserByIdClear(this.idClear);
+		if (user != null) {
+			setProfileUrl(user.getProfileUrl());
+			setUsername(user.getDisplayName());
+		}
+		else {
+			setUsername(AppCommon.UNKNOWN);
+		}
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
