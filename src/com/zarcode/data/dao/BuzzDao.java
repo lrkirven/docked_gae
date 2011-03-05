@@ -2,6 +2,7 @@ package com.zarcode.data.dao;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -122,20 +123,23 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 		
 	}
 	
+	/**
+	 * This method returns all the comments related to a buzzMsg.
+	 * 
+	 * @param msgEvent
+	 * @return
+	 */
 	public List<CommentDO> getComments4BuzzMsg(BuzzMsgDO msgEvent) {
 		int i = 0;
 		List<CommentDO> list = null;
 		Date now = new Date();
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("(");
-		sb.append("timestamp > ");
-		sb.append(0);
-		sb.append(" && msgId == ");
+		sb.append("( msgId == ");
 		sb.append(msgEvent.getMsgId());
 		sb.append(")");
 		Query query = pm.newQuery(CommentDO.class, sb.toString());
-		query.setOrdering("timestamp desc");
+		query.setOrdering("timestamp asc");
 		list = (List<CommentDO>)query.execute();
 		if (list != null && list.size() > 0) {
 			int len = list.size();
@@ -148,20 +152,66 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 		return list;
 	}
 	
+	public HashMap<Long, List<CommentDO>> generateCommentTableByResourceId(Long resourceId) {
+		int i = 0;
+		Long buzzMsgId = null;
+		List<CommentDO> list = null;
+		Date now = new Date();
+		HashMap<Long, List<CommentDO>> commentTbl = null;
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("( resourceId == ");
+		sb.append(resourceId);
+		sb.append(")");
+		Query query = pm.newQuery(CommentDO.class, sb.toString());
+		query.setOrdering("timestamp asc");
+		list = (List<CommentDO>)query.execute();
+		if (list != null && list.size() > 0) {
+			commentTbl = new HashMap<Long, List<CommentDO>>();
+			int len = list.size();
+			for (i=0; i<len; i++) {
+				CommentDO comm = (list.get(i));
+				comm.postReturn();
+				buzzMsgId = comm.getMsgId();
+				if (commentTbl.containsKey(buzzMsgId)) {
+					list = (List<CommentDO>)commentTbl.get(buzzMsgId);
+					if (list != null) {
+						list.add(comm);
+					}
+				}
+				else {
+					list = new ArrayList<CommentDO>();
+					list.add(comm);
+					commentTbl.put(buzzMsgId, list);
+				}
+			}
+		}
+		return commentTbl;
+	}
+	
 	/**
 	 * This method updates the dynamics data for each buzz message.
 	 * 
 	 * @param listOfEvents
 	 * @return
 	 */
-	private List<BuzzMsgDO> postQuery(List<BuzzMsgDO> listOfEvents) {
+	private List<BuzzMsgDO> postQuery(List<BuzzMsgDO> listOfEvents, Long resourceId) {
 		int i = 0;
 		int j = 0;
-		
+		BuzzMsgDO msg = null;
+		List<CommentDO> comments = null;
+	
+		HashMap<Long, List<CommentDO>> commentTbl = generateCommentTableByResourceId(resourceId);
 		int len = listOfEvents.size();
 		for (i=0; i<len; i++) {
-			BuzzMsgDO msg = (listOfEvents.get(i));
-			msg.postReturn(this);
+			msg = (listOfEvents.get(i));
+			if (commentTbl.containsKey(msg.getMsgId())) {
+				comments = commentTbl.get(msg.getMsgId());
+				msg.postReturn(comments);
+			}
+			else {
+				msg.postReturn(null);
+			}
 		}
 		return listOfEvents;
 	}
@@ -193,7 +243,7 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 			query.setOrdering("timestamp desc");
 			listOfEvents = (List<BuzzMsgDO>)query.execute();
 			if (listOfEvents != null && listOfEvents.size() > 0) {
-				listOfEvents = postQuery(listOfEvents);
+				listOfEvents = postQuery(listOfEvents, resourceId);
 			}
 		}
 		finally {
@@ -226,7 +276,7 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 			query.setOrdering("sequenceNum");
 			listOfEvents = (List<BuzzMsgDO>)query.execute();
 			if (listOfEvents != null && listOfEvents.size() > 0) {
-				listOfEvents = postQuery(listOfEvents);
+				listOfEvents = postQuery(listOfEvents, resourceId);
 			}
 		}
 		finally {
@@ -319,7 +369,8 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 	public BuzzMsgDO getMsgById(Long msgId) {
 		BuzzMsgDO res = null;
 		res = pm.getObjectById(BuzzMsgDO.class, msgId);
-		res.postReturn(this);
+		List<CommentDO> comments = getComments4BuzzMsg(res);
+		res.postReturn(comments);
 		return res;
 	}
 	

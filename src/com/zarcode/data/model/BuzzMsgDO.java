@@ -140,7 +140,7 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 		idClear = plainText;
 	}
 	
-	public void postReturn(BuzzDao dao) {
+	public void postReturn(List<CommentDO> listOfComments) {
 		int j = 0;
 		UserDO user = null;
 		UserDao userDao = new UserDao();
@@ -149,8 +149,7 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 			this.messageData = messageDataText.getValue();
 		}
 		timeDisplay = AppCommon.generateTimeOffset(createDate);
-		List<CommentDO> listOfComments = dao.getComments4BuzzMsg(this);
-		if (listOfComments.size() > 0) {
+		if (listOfComments != null && listOfComments.size() > 0) {
 			for (j=0; j<listOfComments.size(); j++) {
 				comment = listOfComments.get(j);
 				comment.postReturn();
