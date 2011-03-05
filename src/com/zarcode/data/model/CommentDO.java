@@ -95,6 +95,9 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 		idClear = plainText;
 	}
 	
+	/**
+	 * This method should be called after CommentDO is retrieved from GAE.
+	 */
 	public void postReturn() {
 		UserDO user = null;
 		UserDao userDao = new UserDao();
@@ -102,15 +105,15 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 			this.response = responseText.getValue();
 		}
 		timeDisplay = AppCommon.generateTimeOffset(createDate);
+		logger.info("postReturn: timeDisplay=" + timeDisplay);
 		user = userDao.getUserByIdClear(this.idClear);
 		if (user != null) {
-			setUsername(user.getDisplayName());
-			setProfileUrl(user.getProfileUrl());
+			this.username = user.getDisplayName();
+			this.profileUrl = user.getProfileUrl();
 		}
 		else {
-			setUsername(AppCommon.UNKNOWN);
+			this.username = AppCommon.UNKNOWN;
 		}
-		logger.info("postReturn: timeDisplay=" + timeDisplay);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
