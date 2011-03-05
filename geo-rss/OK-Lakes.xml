@@ -14,11 +14,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            34.395580 -94.747467
-            34.134541 -94.781799
-            34.086788 -94.579926
-            34.403511 -94.575806
-            34.395580 -94.747467
+            34.395580 -94.747459
+            34.123173 -94.784546
+            34.086781 -94.579918
+            34.403511 -94.575798
+            34.395580 -94.747459
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -34,11 +34,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            34.189087 -95.420380
-            34.159546 -95.527496
-            33.969559 -95.465698
-            34.013966 -95.320129
-            34.189087 -95.420380
+            34.268566 -95.512390
+            33.966141 -95.553589
+            34.013966 -95.245972
+            34.268566 -95.512390
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -73,11 +72,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            36.717972 -95.625000
-            36.384808 -95.743103
-            36.375961 -95.581055
-            36.697052 -95.420380
-            36.717972 -95.625000
+            36.676128 -95.641479
+            36.425701 -95.734863
+            36.400284 -95.581055
+            36.661808 -95.449219
+            36.676128 -95.641479
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -93,11 +92,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            36.854351 -94.824371
-            36.459949 -95.181427
-            36.421284 -94.994659
-            36.704762 -94.452209
-            36.854351 -94.824371
+            36.866440 -94.718628
+            36.459942 -95.181419
+            36.421280 -94.994652
+            36.630959 -94.619751
+            36.866440 -94.718628
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -273,11 +272,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            35.269169 -97.348480
-            35.151356 -97.344360
-            35.210842 -97.164459
+            35.233841 -97.329941
+            35.173809 -97.332001
+            35.201866 -97.202225
             35.327450 -97.231750
-            35.269169 -97.348480
+            35.233841 -97.329941
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -370,11 +369,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            36.170586 -98.698425
-            36.044659 -98.639374
-            36.086285 -98.531570
-            36.168369 -98.583069
-            36.170586 -98.698425
+            36.233196 -98.838501
+            36.037994 -98.640747
+            36.137875 -98.421021
+            36.233196 -98.838501
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -409,11 +407,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            36.561771 -99.587288
-            36.498322 -99.586945
-            36.498047 -99.548492
-            36.557911 -99.550552
-            36.561771 -99.587288
+            36.578041 -99.586945
+            36.483143 -99.639130
+            36.505222 -99.466095
+            36.578041 -99.586945
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -468,10 +465,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            36.456085 -95.180740
-            36.255901 -95.011139
-            36.199406 -95.228806
-            36.456085 -95.180740
+            36.456635 -95.186234
+            36.437855 -95.094910
+            36.243168 -95.011826
+            36.199402 -95.228798
+            36.456635 -95.186234
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -506,10 +504,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            34.134541 -97.134247
-            34.107258 -97.012024
-            33.968418 -97.075882
-            34.134541 -97.134247
+            34.137951 -97.130127
+            34.107250 -97.012016
+            34.024780 -97.025070
+            34.005428 -97.105408
+            34.137951 -97.130127
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -586,6 +585,253 @@
             34.183407 -98.043365
             34.354774 -97.959595
             34.354774 -98.226013
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d0d03c1dc5033199</guid>
+    <pubDate>Thu, 24 Feb 2011 20:25:30 +0000</pubDate>
+    <title>Lake of the Arbuckles</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:ARBUCKLES</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.500332 -96.976662
+            34.390198 -96.970139
+            34.485336 -97.115707
+            34.500332 -96.976662
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d0d0b51e46743e2f</guid>
+    <pubDate>Thu, 24 Feb 2011 20:27:36 +0000</pubDate>
+    <title>Tom Steed Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:TOMSTEED</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.837479 -98.928452
+            34.705494 -98.957291
+            34.751205 -99.112473
+            34.837479 -98.928452
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d0d15226e218cc9c</guid>
+    <pubDate>Thu, 24 Feb 2011 20:30:21 +0000</pubDate>
+    <title>Lake Eucha</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:EUCHA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.391994 -94.957581
+            36.274174 -94.882050
+            36.369881 -94.761887
+            36.391994 -94.957581
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d0d1ac1db755a555</guid>
+    <pubDate>Thu, 24 Feb 2011 20:31:55 +0000</pubDate>
+    <title>Spavinaw Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:SPAVINAW</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            36.424599 -95.079803
+            36.411335 -94.950027
+            36.343891 -95.045471
+            36.424599 -95.079803
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d0d22e1c2762ce21</guid>
+    <pubDate>Thu, 24 Feb 2011 20:34:12 +0000</pubDate>
+    <title>Wister Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:WISTER</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.934917 -94.847717
+            34.964748 -94.696655
+            34.883114 -94.732361
+            34.934917 -94.847717
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d0d2bdbddc12a260</guid>
+    <pubDate>Thu, 24 Feb 2011 20:36:42 +0000</pubDate>
+    <title>Atoka Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:ATOKA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.593086 -96.014328
+            34.451653 -96.179810
+            34.392746 -96.052094
+            34.593086 -96.014328
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d98ac618d7518ff7</guid>
+    <pubDate>Thu, 03 Mar 2011 19:02:39 +0000</pubDate>
+    <title>Lake Chickasha</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:CHICKASHA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            35.196815 -98.187218
+            35.087891 -98.148079
+            35.176895 -98.071861
+            35.196815 -98.187218
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d98b3f7d5ce853da</guid>
+    <pubDate>Thu, 03 Mar 2011 19:04:46 +0000</pubDate>
+    <title>Pine Creek Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:PINECREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.318485 -95.177307
+            34.075981 -95.117569
+            34.127720 -95.010452
+            34.318485 -95.177307
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d98b737b69feace4</guid>
+    <pubDate>Thu, 03 Mar 2011 19:05:41 +0000</pubDate>
+    <title>Lake Konawa</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:KONAWA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.965591 -96.754189
+            35.006096 -96.689644
+            34.920563 -96.703720
+            34.965591 -96.754189
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d98bacb636d322b1</guid>
+    <pubDate>Thu, 03 Mar 2011 19:06:41 +0000</pubDate>
+    <title>Lake Fuqua</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:FUQUA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.642246 -97.716866
+            34.572453 -97.695923
+            34.617386 -97.641335
+            34.642246 -97.716866
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d98be6419ff93b85</guid>
+    <pubDate>Thu, 03 Mar 2011 19:07:41 +0000</pubDate>
+    <title>Clear Creek Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:CLEARCREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.627419 -97.853683
+            34.574429 -97.867584
+            34.582626 -97.811966
+            34.627419 -97.853683
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d98c2004055b9eb0</guid>
+    <pubDate>Thu, 03 Mar 2011 19:08:42 +0000</pubDate>
+    <title>Lake Humphreys</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:HUMPHREYS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.634056 -97.881828
+            34.576832 -97.880119
+            34.582203 -97.941399
+            34.634056 -97.881828
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d98c594e2457877e</guid>
+    <pubDate>Thu, 03 Mar 2011 19:09:42 +0000</pubDate>
+    <title>Lake Altus</title>
+    <description><![CDATA[<div dir="ltr">reportKey=OK:ALTUS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            34.994568 -99.348679
+            34.849312 -99.340439
+            34.902264 -99.193497
+            34.994568 -99.348679
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
