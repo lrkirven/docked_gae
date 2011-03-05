@@ -175,7 +175,7 @@ public class Buzz extends ResourceBase {
 	@POST
 	@Produces("application/json")
 	@Path("/{resourceId}/comment")
-	public CommentDO addCommentToBuzzMsg(@PathParam("resourceId") Long resourceId, @QueryParam("id") String id, String rawCommentObj) {
+	public CommentDO addCommentToBuzzMsg(@PathParam("resourceId") Long resourceId, String rawCommentObj) {
 		List<BuzzMsgDO> res = null;
 		BuzzDao dao = null;
 		UserDao userDao = null;
