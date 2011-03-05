@@ -36,6 +36,12 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 	
 	@NotPersistent
 	private String response = "END OF LIST";
+	
+	@NotPersistent
+	private String profileUrl = null;
+	
+	@NotPersistent
+	private String username = null;
 
 	@PrimaryKey 
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -67,9 +73,6 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 	
 	@Persistent
 	private Date createDate = null;
-	
-	@Persistent
-	private String profileUrl = null;
 	
 	public void postCreation() {
 		logger.info("lat=" + lat + " lng=" + lng);
@@ -185,7 +188,7 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 		return llId;
 	}
 
-	public void setUsername(String llId) {
+	public void setLlId(String llId) {
 		this.llId = llId;
 	}
 	
@@ -215,6 +218,16 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 	public void setProfileUrl(String url) {
 		this.profileUrl = url;
 	}
+	
+	@XmlElement
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 	
     @XmlElement
 	public Date getCreateDate() {

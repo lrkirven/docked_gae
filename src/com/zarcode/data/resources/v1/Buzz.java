@@ -356,7 +356,8 @@ public class Buzz extends ResourceBase {
 		BuzzDao eventDao = null;
 		WaterResourceDao waterResDao = null;
 		boolean bFindAll = false;
-		
+		Date startTM = new Date();
+	
 		try {
 			eventDao = new BuzzDao();
 			
@@ -407,7 +408,9 @@ public class Buzz extends ResourceBase {
 			logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
 			throw new BadRequestAppDataException();
 		}
-		logger.info("Exit");
+		Date endTM = new Date();
+		long diff = endTM.getTime() - startTM.getTime();
+		logger.info("Trans duration: " + diff + " msec(s) [ " + (results == null ? 0 : results.size()) + " returned ]");
 		
 		return results;
 		

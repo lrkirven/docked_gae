@@ -143,24 +143,62 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 		return list;
 	}
 	
+	/**
+	 * This method updates the dynamics data for each buzz message.
+	 * 
+	 * @param listOfEvents
+	 * @return
+	 */
+	private List<BuzzMsgDO> updateDynamicBuzzData(List<BuzzMsgDO> listOfEvents) {
+		int i = 0;
+		int j = 0;
+		UserDO user = null;
+		CommentDO comment = null;
+		UserDao userDao = new UserDao();
+		
+		int len = listOfEvents.size();
+		for (i=0; i<len; i++) {
+			BuzzMsgDO msg = (listOfEvents.get(i));
+			msg.postReturn();
+			List<CommentDO> listOfComments = getComments4BuzzMsg(msg);
+			if (listOfComments.size() > 0) {
+				for (j=0; j<listOfComments.size(); j++) {
+					comment = listOfComments.get(j);
+					user = userDao.getUserByIdClear(comment.getIdClear());
+					if (user != null) {
+						comment.setUsername(user.getDisplayName());
+						comment.setProfileUrl(user.getProfileUrl());
+					}
+					else {
+						comment.setUsername(UNKNOWN);
+					}
+				}
+				msg.setComments(listOfComments);
+			}
+			user = userDao.getUserByIdClear(msg.getIdClear());
+			if (user != null) {
+				msg.setProfileUrl(user.getProfileUrl());
+				msg.setUsername(user.getDisplayName());
+			}
+			else {
+				msg.setUsername(UNKNOWN);
+			}
+		}
+		return listOfEvents;
+	}
+	
+	
 	public List<BuzzMsgDO> getNextEventsByResourceId(Long resourceId) {
 		int i = 0;
-		String profileUrl = null;
 		List<Long> listOfKeys = null;
 		List<BuzzMsgDO> listOfEvents = null;
+		CommentDO comment = null;
 		Transaction tx = pm.currentTransaction();
 		Date now = new Date();
-		UserDao userDao = new UserDao();
 		UserDO user = null;
 		
 		logger.info("Getting messages by resourceId=" + resourceId);
 		
-		/*
-		Long limit = lastSeq + PAGESIZE;
-		if (limit > Long.MAX_VALUE) {
-			limit = Long.MAX_VALUE;
-		}
-		*/
 		try {
 			tx.begin();
 			StringBuilder sb = new StringBuilder();
@@ -176,23 +214,7 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 			query.setOrdering("timestamp desc");
 			listOfEvents = (List<BuzzMsgDO>)query.execute();
 			if (listOfEvents != null && listOfEvents.size() > 0) {
-				int len = listOfEvents.size();
-				for (i=0; i<len; i++) {
-					BuzzMsgDO msg = (listOfEvents.get(i));
-					msg.postReturn();
-					List<CommentDO> listOfComments = getComments4BuzzMsg(msg);
-					if (listOfComments.size() > 0) {
-						msg.setComments(listOfComments);
-					}
-					user = userDao.getUserByIdClear(msg.getIdClear());
-					if (user != null) {
-						msg.setProfileUrl(user.getProfileUrl());
-						msg.setUsername(user.getDisplayName());
-					}
-					else {
-						msg.setUsername(UNKNOWN);
-					}
-				}
+				listOfEvents = updateDynamicBuzzData(listOfEvents);
 			}
 		}
 		finally {
