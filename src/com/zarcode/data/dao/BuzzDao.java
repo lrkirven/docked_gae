@@ -152,10 +152,18 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 		return list;
 	}
 	
+	/**
+	 * This method gets of the comments from a specific water resource and hashes them into
+	 * a list for quick retrieval for returning buzz messages back to the client.
+	 * 
+	 * @param resourceId
+	 * @return HashMap with msgId as the key and related comments as the result
+	 */
 	public HashMap<Long, List<CommentDO>> generateCommentTableByResourceId(Long resourceId) {
 		int i = 0;
 		Long buzzMsgId = null;
 		List<CommentDO> list = null;
+		List<CommentDO> workingList = null;
 		Date now = new Date();
 		HashMap<Long, List<CommentDO>> commentTbl = null;
 		
@@ -170,19 +178,19 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 			commentTbl = new HashMap<Long, List<CommentDO>>();
 			int len = list.size();
 			for (i=0; i<len; i++) {
-				CommentDO comm = (list.get(i));
+				CommentDO comm = list.get(i);
 				comm.postReturn();
 				buzzMsgId = comm.getMsgId();
 				if (commentTbl.containsKey(buzzMsgId)) {
-					list = (List<CommentDO>)commentTbl.get(buzzMsgId);
-					if (list != null) {
-						list.add(comm);
+					workingList = (List<CommentDO>)commentTbl.get(buzzMsgId);
+					if (workingList != null) {
+						workingList.add(comm);
 					}
 				}
 				else {
-					list = new ArrayList<CommentDO>();
-					list.add(comm);
-					commentTbl.put(buzzMsgId, list);
+					workingList = new ArrayList<CommentDO>();
+					workingList.add(comm);
+					commentTbl.put(buzzMsgId, workingList);
 				}
 			}
 		}
