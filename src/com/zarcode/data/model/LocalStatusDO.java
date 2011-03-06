@@ -32,7 +32,7 @@ public class LocalStatusDO implements Serializable {
 	
 	private boolean userOnWater = false;
 	
-	private int resourceId = 0;
+	private String resKey = null;
 	
 	private String resourceName = null;
 	
@@ -61,12 +61,12 @@ public class LocalStatusDO implements Serializable {
 	}
 	
 	@XmlElement
-	public int getResourceId() {
-		return resourceId;
+	public String getResKey() {
+		return resKey;
 	}
 
-	public void setResourceId(int resourceId) {
-		this.resourceId = resourceId;
+	public void setResKey(String resKey) {
+		this.resKey = resKey;
 	}
 	
 	@XmlElement

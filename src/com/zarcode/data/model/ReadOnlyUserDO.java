@@ -25,7 +25,7 @@ public class ReadOnlyUserDO extends AbstractLoaderDO implements Serializable {
 	private String deviceId = null;
 	
 	@Persistent
-	private Long resourceId = null;
+	private String resKey = null;
 	
 	@Persistent
 	private double lat = 0;
@@ -115,12 +115,12 @@ public class ReadOnlyUserDO extends AbstractLoaderDO implements Serializable {
 	}
 	
 	@XmlElement
-	public Long getResourceId() {
-		return resourceId;
+	public String getResKey() {
+		return resKey;
 	}
 	
-	public void setResourceId(Long resourceId) {
-		this.resourceId = resourceId;
+	public void setResKey(String resKey) {
+		this.resKey = resKey;
 		setLastUpdate(new Date());
 	}
 	

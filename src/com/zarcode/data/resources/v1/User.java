@@ -467,26 +467,23 @@ public class User extends ResourceBase {
 			//
 			if (best != null) {
 				status.setUserOnWater(true);
-				Long resId = best.getResourceId();
-				if (resId != null) {
-					status.setResourceId(resId.intValue());
-				}
+				status.setResKey(best.getResKey());
 				status.setResourceState(best.getState());
 				status.setResourceName(best.getName());
 				status.setResourceLastUpdate(best.getLastUpdate());
 				if (anonymous) {
-					userDao.updateResourceAnonymous(readOnlyUser.getUserId(), best.getResourceId());
-					logger.info("Updated anonymous user [ " + readOnlyUser.getDeviceId() + " ] at resourceId=" +  best.getResourceId());
+					userDao.updateResourceAnonymous(readOnlyUser.getUserId(), best.getResKey());
+					logger.info("Updated anonymous user [ " + readOnlyUser.getDeviceId() + " ] at resKey=" +  best.getResKey());
 				}
 				else {
-					userDao.updateResource(user.getUserId(), best.getResourceId());
-					logger.info("Updated user [ " + user.getDisplayName() + " ] at resourceId=" +  best.getResourceId());
+					userDao.updateResource(user.getUserId(), best.getResKey());
+					logger.info("Updated user [ " + user.getDisplayName() + " ] at resKey=" +  best.getResKey());
 				}
-				usersAtLake = userDao.getUsersByResourceId(best.getResourceId());
-				int totalUsers = userDao.getTotalUsersByResourceId(best.getResourceId());
+				usersAtLake = userDao.getUsersByResKey(best.getResKey());
+				int totalUsers = userDao.getTotalUsersByResKey(best.getResKey());
 				status.setHowManyOnWater(totalUsers);
 				// increment peg for water resource
-				PegCounter.customIncr(PegCounter.NO_PINGS_PER_RESOURCE, best.getReportKey(), PegCounter.DAILY);
+				PegCounter.customIncr(PegCounter.NO_PINGS_PER_RESOURCE, best.getResKey(), PegCounter.DAILY);
 			}
 			else {
 				if (anonymous) {
@@ -533,30 +530,5 @@ public class User extends ResourceBase {
 		
 	} // getLocalUsers
 
-	/*
-	@GET 
-	@Path("/lake/{resourceId}")
-	@Produces("application/json")
-	public List<UserDO> getUsersByResourceId(@PathParam("resourceId") Long resourceId) {
-	*/
-	private List<UserDO> getUsersByResourceId(Long resourceId) {
-		List<UserDO> list = null;
-		List<UserDO> empty = new ArrayList<UserDO>();
-		UserDao userDao = null;
-		
-		logger.info("Entered");
-		try {
-			userDao = new UserDao();
-			list = userDao.getUsersByResourceId(resourceId);
-		}
-		catch (Exception e) {
-			logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
-		}
-		logger.info("Exit");
-		
-		return (list == null ? empty : list);
-		
-	} 
-	
 	
 } // User

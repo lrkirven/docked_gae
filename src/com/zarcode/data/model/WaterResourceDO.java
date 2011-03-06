@@ -16,11 +16,13 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import ch.hsr.geohash.WGS84Point;
 
 import com.zarcode.app.AppCommon;
 import com.zarcode.common.GeoUtil;
+import com.zarcode.data.dao.UserDao;
 import com.zarcode.platform.model.AbstractLoaderDO;
 import com.zarcode.utils.SearchJanitorUtils;
 
@@ -30,6 +32,9 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 	
 	private Logger logger = Logger.getLogger(WaterResourceDO.class.getName());
 
+	@NotPersistent
+	private int activeUsers = 0;
+	
 	@PrimaryKey 
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Long resourceId;
@@ -44,10 +49,13 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 	private String region = null;
 	
 	@Persistent
+	private String map = null;
+	
+	@Persistent
 	private List<Double> polygonPoints = null;
 	
 	@Persistent
-	private String reportKey = null;
+	private String resKey = null;
 	
 	@Persistent
 	private String guid = null;
@@ -94,6 +102,11 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 	}
 	
 	public void postReturn() {
+		UserDao userDao = new UserDao();
+		List<UserDO> users = userDao.getUsersByResKey(resKey);
+		if (users != null && users.size() > 0) {
+			this.activeUsers = users.size();
+		}
 		lastUpdateText = AppCommon.generateTimeOffset(lastUpdate);
 		logger.info("postReturn: lastUpdateText=" + lastUpdateText);
 	}
@@ -107,7 +120,7 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 		this.resourceId = resourceId;
 	}
 	
-	@XmlElement
+	@XmlTransient
 	public List<Double> getPolygonPoints() {
 		return polygonPoints;
 	}
@@ -116,6 +129,7 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 		this.polygonPoints = polygonPoints;
 	}
 	
+	@XmlTransient
 	public List<WGS84Point> getPolygon() {
 		int i = 0;
 		String latLngStr = null;
@@ -208,6 +222,15 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 	}
 	
 	@XmlElement
+	public String getMap() {
+		return map;
+	}
+
+	public void setMap(String map) {
+		this.map = map;
+	}
+	
+	@XmlElement
 	public double getApproxSize() {
 		return approxSize;
 	}
@@ -217,19 +240,19 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 	}
 	
 	@XmlElement
-	public String getReportKey() {
-		return reportKey;
+	public String getResKey() {
+		return resKey;
 	}
 
-	public void setReportKey(String reportKey) {
+	public void setResKey(String resKey) {
 		if (state == null) {
 			// reportKey format: <state-abbrev>:<lake-name>
-			String[] keyParts = reportKey.split(":");
+			String[] keyParts = resKey.split(":");
 			if (keyParts != null && keyParts.length == 2) {
 				state = keyParts[0];
 			}
 		}
-		this.reportKey = reportKey;
+		this.resKey = resKey;
 	}
 	
 	@XmlElement
@@ -251,7 +274,7 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 	}
 	
 	public String toString() {
-		String str = "WaterResourceDO::[reportKey=" + reportKey + " state=" + state + "]";
+		String str = "WaterResourceDO::[ resKey=" + resKey + " state=" + state + " ]";
 		return str;
 	}
 	

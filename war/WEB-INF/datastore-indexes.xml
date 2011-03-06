@@ -21,12 +21,12 @@
         <property name="timestamp" direction="asc"/>
     </datastore-index>
 	<datastore-index kind="BuzzMsgDO" ancestor="false" source="manual">
-        <property name="resourceId" direction="asc"/>
+        <property name="resKey" direction="asc"/>
         <property name="version" direction="asc"/>
         <property name="timestamp" direction="asc"/>
     </datastore-index>
 	<datastore-index kind="BuzzMsgDO" ancestor="false" source="manual">
-        <property name="resourceId" direction="asc"/>
+        <property name="resKey" direction="asc"/>
         <property name="version" direction="asc"/>
         <property name="timestamp" direction="desc"/>
     </datastore-index>
@@ -45,7 +45,7 @@
     </datastore-index>
 	<datastore-index kind="HotSpotDO" ancestor="false" source="manual">
 		 <property name="publicFlag" direction="asc"/>
-        <property name="resourceId" direction="asc"/>
+        <property name="resKey" direction="asc"/>
         <property name="category" direction="asc"/>
         <property name="createDate" direction="desc"/>
     </datastore-index>

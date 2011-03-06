@@ -96,9 +96,9 @@ public class RssFeedGenerator extends HttpServlet {
 		    	    feed.setFeedType(feedType);
 		    	    feed.setAuthor(AppCommon.APPNAME);
 		    	    feed.setTitle(top.getName());
-		    	    feed.setLink("http://www.lazylaker.net/");
+		    	    feed.setLink("http://www.docked.co/");
 		    	    feed.setDescription("This lake can be found in " + top.getRegion());
-		    	    List<BuzzMsgDO> msgs = buzzDao.getNextEventsByResourceId(top.getResourceId());
+		    	    List<BuzzMsgDO> msgs = buzzDao.getBuzzMsgsByResKey(top.getResKey());
 					if (msgs != null && msgs.size() > BuzzDao.PAGESIZE) {
 						logger.info("Found " + msgs.size() + " msg(s) for location: " + top.getName());
 						msgs = msgs.subList(0, BuzzDao.PAGESIZE);

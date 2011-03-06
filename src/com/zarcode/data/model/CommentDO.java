@@ -61,7 +61,7 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 	private String idClear = null;
 	
 	@Persistent
-	private Long resourceId = null;
+	private String resKey = null;
 	
 	@Persistent
 	private Text responseText = null;
@@ -181,12 +181,12 @@ public class CommentDO extends AbstractLoaderDO implements Serializable, Compara
 	}
 	
 	@XmlElement
-	public Long getResourceId() {
-		return resourceId;
+	public String getResKey() {
+		return resKey;
 	}
 
-	public void setResourceId(Long resourceId) {
-		this.resourceId = resourceId;
+	public void setResKey(String resKey) {
+		this.resKey = resKey;
 	}
 	
 	@XmlElement

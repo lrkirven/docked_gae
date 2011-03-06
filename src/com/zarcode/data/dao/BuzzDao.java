@@ -156,10 +156,10 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 	 * This method gets of the comments from a specific water resource and hashes them into
 	 * a list for quick retrieval for returning buzz messages back to the client.
 	 * 
-	 * @param resourceId
+	 * @param resKey
 	 * @return HashMap with msgId as the key and related comments as the result
 	 */
-	public HashMap<Long, List<CommentDO>> generateCommentTableByResourceId(Long resourceId) {
+	public HashMap<Long, List<CommentDO>> generateCommentTableByResKey(String resKey) {
 		int i = 0;
 		Long buzzMsgId = null;
 		List<CommentDO> list = null;
@@ -168,8 +168,8 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 		HashMap<Long, List<CommentDO>> commentTbl = null;
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("( resourceId == ");
-		sb.append(resourceId);
+		sb.append("( resKey == ");
+		sb.append(resKey);
 		sb.append(")");
 		Query query = pm.newQuery(CommentDO.class, sb.toString());
 		query.setOrdering("timestamp asc");
@@ -203,13 +203,13 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 	 * @param listOfEvents
 	 * @return
 	 */
-	private List<BuzzMsgDO> postQuery(List<BuzzMsgDO> listOfEvents, Long resourceId) {
+	private List<BuzzMsgDO> postQuery(List<BuzzMsgDO> listOfEvents, String resKey) {
 		int i = 0;
 		int j = 0;
 		BuzzMsgDO msg = null;
 		List<CommentDO> comments = null;
 	
-		HashMap<Long, List<CommentDO>> commentTbl = generateCommentTableByResourceId(resourceId);
+		HashMap<Long, List<CommentDO>> commentTbl = generateCommentTableByResKey(resKey);
 		int len = listOfEvents.size();
 		for (i=0; i<len; i++) {
 			msg = (listOfEvents.get(i));
@@ -225,6 +225,7 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 	}
 	
 	
+	/*
 	public List<BuzzMsgDO> getNextEventsByResourceId(Long resourceId) {
 		int i = 0;
 		List<Long> listOfKeys = null;
@@ -261,7 +262,46 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 		}
 		return listOfEvents;
 	}
+	*/
 	
+	public List<BuzzMsgDO> getBuzzMsgsByResKey(String resKey) {
+		int i = 0;
+		List<Long> listOfKeys = null;
+		List<BuzzMsgDO> listOfEvents = null;
+		CommentDO comment = null;
+		Transaction tx = pm.currentTransaction();
+		Date now = new Date();
+		UserDO user = null;
+		
+		logger.info("Getting messages by resourceId=" + resKey);
+		
+		try {
+			tx.begin();
+			StringBuilder sb = new StringBuilder();
+			sb.append("(");
+			sb.append("timestamp > ");
+			sb.append(0);
+			sb.append(" && version == ");
+			sb.append(CURRENT_VER);
+			sb.append(" && resKey == ");
+			sb.append(resKey);
+			sb.append(")");
+			Query query = pm.newQuery(BuzzMsgDO.class, sb.toString());
+			query.setOrdering("timestamp desc");
+			listOfEvents = (List<BuzzMsgDO>)query.execute();
+			if (listOfEvents != null && listOfEvents.size() > 0) {
+				listOfEvents = postQuery(listOfEvents, resKey);
+			}
+		}
+		finally {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
+		}
+		return listOfEvents;
+	}
+	
+	/*
 	public List<BuzzMsgDO> getPrevEventsByResourceId(Long resourceId, Long lastSeq) {
 		int i = 0;
 		List<Long> listOfKeys = null;
@@ -294,6 +334,7 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 		}
 		return listOfEvents;
 	}
+	*/
 	
 	public List<BuzzMsgDO> getAllMsgs() {
 		int i = 0;
@@ -402,6 +443,10 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 	}
 	*/
 
+	/**
+	 * This method finds the resources in your area and returns a list of buzz messages regardless
+	 * if the user is inside of the polygon or not.
+	 */
 	public List<BuzzMsgDO> findClosest(double lat, double lng, long last, boolean next) {
 		int i = 0;
 		int retryCounter = 0;

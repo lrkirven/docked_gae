@@ -58,6 +58,7 @@ public class WaterResourceDao extends BaseDao {
         			pt = list.get(i);
         			pair = new GeoHash2ResourceMapDO();
         			pair.setRegion(d.getRegion());
+        			pair.setMap(d.getMap());
         			pair.setResourceId(d.getResourceId());
         			GeoHash geoHashKey = GeoHash.withCharacterPrecision(pt.getLat(), pt.getLng(), 12);
         			pair.setGeoHashKey(geoHashKey.toBase32());
@@ -133,12 +134,12 @@ public class WaterResourceDao extends BaseDao {
 		insertResource(res);
 	}
 	
-	public void updateLastUpdate(Long resourceId) {
+	public void updateLastUpdate(String resKey) {
 		WaterResourceDO res = null;
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			res = pm.getObjectById(WaterResourceDO.class, resourceId);
+			res = pm.getObjectById(WaterResourceDO.class, resKey);
 			res.setLastUpdate(new Date());
 			tx.commit();
 		}

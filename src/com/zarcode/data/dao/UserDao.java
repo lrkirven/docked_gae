@@ -149,7 +149,7 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		}
 	}  // addReadOnlyUser
 	
-	public void updateResource(Long userId, Long resourceId) {
+	public void updateResource(Long userId, String resKey) {
 		UserDO target = null;
 		String dateString = AppCommon.generateActiveKey();
 		Transaction tx = pm.currentTransaction();
@@ -157,7 +157,7 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 			tx.begin();
 			target = pm.getObjectById(UserDO.class, userId);
 			if (target != null) {
-				target.setResourceId(resourceId);
+				target.setResKey(resKey);
 				target.setLastUpdate(new Date());
 				target.setActiveKey(dateString);
 			}
@@ -171,7 +171,7 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 	}
 	
 	
-	public void updateResourceAnonymous(Long userId, Long resourceId) {
+	public void updateResourceAnonymous(Long userId, String resKey) {
 		ReadOnlyUserDO target = null;
 		String dateString = AppCommon.generateActiveKey();
 		Transaction tx = pm.currentTransaction();
@@ -179,7 +179,7 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 			tx.begin();
 			target = pm.getObjectById(ReadOnlyUserDO.class, userId);
 			if (target != null) {
-				target.setResourceId(resourceId);
+				target.setResKey(resKey);
 				target.setLastUpdate(new Date());
 				target.setActiveKey(dateString);
 			}
@@ -306,21 +306,21 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		
 	} // isValidUser
 	
-	public int getTotalUsersByResourceId(Long resourceId) {
+	public int getTotalUsersByResKey(String resKey) {
 		int total = 0;
 		List<UserDO> res1 = null;
 		List<ReadOnlyUserDO> res2 = null;
 		
 		try {
-			res1 = getUsersByResourceId(resourceId);
+			res1 = getUsersByResKey(resKey);
 			if (res1 != null) {
 				total += res1.size();
 			}
-			res2 = this.getReadOnlyUsersByResourceId(resourceId);
+			res2 = this.getReadOnlyUsersByResKey(resKey);
 			if (res2 != null) {
 				total += res2.size();
 			}
-			logger.info("*** Total user(s) at resourceId (" + resourceId + "): " + total);
+			logger.info("*** Total user(s) at resKey (" + resKey + "): " + total);
 		}
 		catch (Exception e) {
 		}
@@ -328,21 +328,21 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		return total;
 	}
 	
-	public List<UserDO> getUsersByResourceId(Long resourceId) {
+	public List<UserDO> getUsersByResKey(String resKey) {
 		List<UserDO> res = null;
 		UserDO target = null;
 		
 		String dateString = AppCommon.generateActiveKey();
 		
-		logger.info("getUsersByResourceId(): Entered - resourceId=" + resourceId +
+		logger.info("getUsersByResKey(): Entered - resKey=" + resKey +
 				" activeKey=" + dateString);
 		//
 		// building query
 		//
 		StringBuilder sb = new StringBuilder();
 		sb.append("(");
-		sb.append("resourceId == ");
-		sb.append(resourceId);
+		sb.append("resKey == ");
+		sb.append(resKey);
 		sb.append(" && activeKey == ");
 		sb.append("'");
 		sb.append(dateString);
@@ -350,7 +350,7 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		sb.append(")");
 		
 		Query query = pm.newQuery(UserDO.class,  sb.toString());
-		res = (List<UserDO>)query.execute(resourceId);
+		res = (List<UserDO>)query.execute(resKey);
 		
 		logger.info("getUsersByResourceId(): Matches found: " + 
 				(res == null ? 0 : res.size()));
@@ -466,20 +466,20 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		return list;
 	}
 	
-	public List<ReadOnlyUserDO> getReadOnlyUsersByResourceId(Long resourceId) {
+	public List<ReadOnlyUserDO> getReadOnlyUsersByResKey(String resKey) {
 		List<ReadOnlyUserDO> list = null;
 		
 		String dateString = AppCommon.generateActiveKey();
 		
-		logger.info("getReadOnlyUsersByResourceId(): Entered - resourceId=" + resourceId +
+		logger.info("getReadOnlyUsersByResourceId(): Entered - resKey=" + resKey +
 				" activeKey=" + dateString);
 		//
 		// building query
 		//
 		StringBuilder sb = new StringBuilder();
 		sb.append("(");
-		sb.append("resourceId == ");
-		sb.append(resourceId);
+		sb.append("resKey == ");
+		sb.append(resKey);
 		sb.append(" && activeKey == ");
 		sb.append("'");
 		sb.append(dateString);
@@ -487,7 +487,7 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		sb.append(")");
 		
 		Query query = pm.newQuery(ReadOnlyUserDO.class,  sb.toString());
-		list = (List<ReadOnlyUserDO>)query.execute(resourceId);
+		list = (List<ReadOnlyUserDO>)query.execute(resKey);
 		
 		logger.info("getUsersByResourceId(): Matches found: " + 
 				(list == null ? 0 : list.size()));

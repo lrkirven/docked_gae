@@ -128,11 +128,11 @@ public class HotSpot extends ResourceBase {
 					//
 					// since event was created inside lake area, update last communication
 					//
-					if (adding && spot.getResourceId() > 0) {
+					if (adding && spot.getResKey() != null) {
 						try {
 							waterResDao = new WaterResourceDao();
-							waterResDao.updateLastUpdate(spot.getResourceId());
-							logger.info("Updated lastUpdated for resource=" + spot.getResourceId());
+							waterResDao.updateLastUpdate(spot.getResKey());
+							logger.info("Updated lastUpdated for resource=" + spot.getResKey());
 						}
 						catch (JDOObjectNotFoundException ex) {
 							logger.severe("Unable to update lastUpdated timestamp for water resource");
@@ -203,9 +203,9 @@ public class HotSpot extends ResourceBase {
 	}
 	
 	@GET 
-	@Path("/lakes/{resourceId}")
+	@Path("/lakes/{resKey}")
 	@Produces("application/json")
-	public List<HotSpotDO> getHotSpotsByResourceId(@PathParam("resourceId") Long resourceId) {
+	public List<HotSpotDO> getHotSpotsByResourceId(@PathParam("resKey") String resKey) {
 		int i = 0;
 		List<HotSpotDO> results = null;
 		HotSpotDao dao = null;
@@ -214,7 +214,7 @@ public class HotSpot extends ResourceBase {
 		logger.info("Entered");
 		try {
 			dao = new HotSpotDao();
-			results = dao.getHotSpotsByResourceId(resourceId);
+			results = dao.getHotSpotsByResKey(resKey);
 		}
 		catch (Exception e) {
 			logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));

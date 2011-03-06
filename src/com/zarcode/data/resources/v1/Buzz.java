@@ -71,8 +71,8 @@ public class Buzz extends ResourceBase {
 	
 	@POST
 	@Produces("application/json")
-	@Path("/{resourceId}/newMsg")
-	public BuzzMsgDO addBuzzMsgToLake(@PathParam("resourceId") Long resourceId, @QueryParam("addToMyHotSpots") boolean addToMyHotSpots, String rawBuzzMsg) {
+	@Path("/newMsg")
+	public BuzzMsgDO addBuzzMsgToLake(@QueryParam("addToMyHotSpots") boolean addToMyHotSpots, String rawBuzzMsg) {
 		List<BuzzMsgDO> res = null;
 		BuzzDao dao = null;
 		WaterResourceDao waterResDao = null;
@@ -127,11 +127,11 @@ public class Buzz extends ResourceBase {
 					//
 					// since event was created inside lake area, update last communication
 					//
-					if (buzzMsg.getResourceId() > 0) {
+					if (buzzMsg.getResKey() != null) {
 						try {
 							waterResDao = new WaterResourceDao();
-							waterResDao.updateLastUpdate(buzzMsg.getResourceId());
-							logger.info("Updated lastUpdated for resource=" + buzzMsg.getResourceId());
+							waterResDao.updateLastUpdate(buzzMsg.getResKey());
+							logger.info("Updated lastUpdated for resource=" + buzzMsg.getResKey());
 						}
 						catch (JDOObjectNotFoundException ex) {
 							logger.severe("Unable to update lastUpdated timestamp for water resource");
@@ -154,7 +154,7 @@ public class Buzz extends ResourceBase {
 						spot.setLat(buzzMsg.getLat());
 						spot.setLng(buzzMsg.getLng());
 						spot.setRating(0);
-						spot.setResourceId(buzzMsg.getResourceId());
+						spot.setResKey(buzzMsg.getResKey());
 						spot.postCreation();
 						HotSpotDao hotSpotDao = new HotSpotDao();
 						hotSpotDao.addHotSpot(spot);
@@ -174,8 +174,8 @@ public class Buzz extends ResourceBase {
 	
 	@POST
 	@Produces("application/json")
-	@Path("/{resourceId}/comment")
-	public CommentDO addCommentToBuzzMsg(@PathParam("resourceId") Long resourceId, String rawCommentObj) {
+	@Path("/comment")
+	public CommentDO addCommentToBuzzMsg(String rawCommentObj) {
 		List<BuzzMsgDO> res = null;
 		BuzzDao dao = null;
 		UserDao userDao = null;
@@ -217,11 +217,11 @@ public class Buzz extends ResourceBase {
 					//
 					// since event was created inside lake area, update last communication
 					//
-					if (comm.getResourceId() > 0) {
+					if (comm.getResKey() != null) {
 						try {
 							waterResDao = new WaterResourceDao();
-							waterResDao.updateLastUpdate(comm.getResourceId());
-							logger.info("Updated lastUpdated for resource=" + comm.getResourceId());
+							waterResDao.updateLastUpdate(comm.getResKey());
+							logger.info("Updated lastUpdated for resource=" + comm.getResKey());
 						}
 						catch (JDOObjectNotFoundException ex) {
 							logger.severe("Unable to update lastUpdated timestamp for water resource");
@@ -278,7 +278,7 @@ public class Buzz extends ResourceBase {
 				logger.info("RESULT: Found " + resourceList.size() + " local lakes ...");
 				for (i=0; i<resourceList.size(); i++) {
 					res = resourceList.get(i);
-					list = buzzDao.getNextEventsByResourceId(res.getResourceId());
+					list = buzzDao.getBuzzMsgsByResKey(res.getResKey());
 					if (list != null && list.size() > 0) {
 						logger.info("Num of message(s): " + list.size() + " -- at resource --> "  + res.getName() + 
 								" id=" +  res.getResourceId());
@@ -343,21 +343,21 @@ public class Buzz extends ResourceBase {
 	}
 	
 	@GET 
-	@Path("/{resourceId}")
+	@Path("/{resKey}")
 	@Produces("application/json")
-	public List<BuzzMsgDO> getBuzzMsgsByLake(@PathParam("resourceId") Long resourceId, @QueryParam("lat") double lat, @QueryParam("lng") double lng) {
+	public List<BuzzMsgDO> getBuzzMsgsByLake(@PathParam("resKey") String resKey, @QueryParam("lat") double lat, @QueryParam("lng") double lng) {
 		int i = 0;
 		List<BuzzMsgDO> results = null;
 		List<BuzzMsgDO> list = null;
 		List<WaterResourceDO> resourceList = null;
 		WaterResourceDO res = null;
-		BuzzDao eventDao = null;
+		BuzzDao buzzDao = null;
 		WaterResourceDao waterResDao = null;
 		boolean bFindAll = false;
 		Date startTM = new Date();
 	
 		try {
-			eventDao = new BuzzDao();
+			buzzDao = new BuzzDao();
 			
 			if (bFindAll) {
 				results = new ArrayList<BuzzMsgDO>();
@@ -372,7 +372,7 @@ public class Buzz extends ResourceBase {
 					logger.info("RESULT: Found " + resourceList.size() + " local lakes ...");
 					for (i=0; i<resourceList.size(); i++) {
 						res = resourceList.get(i);
-						list = eventDao.getNextEventsByResourceId(res.getResourceId());
+						list = buzzDao.getBuzzMsgsByResKey(res.getResKey());
 						if (list != null && list.size() > 0) {
 							results.addAll(list);
 						}
@@ -394,8 +394,8 @@ public class Buzz extends ResourceBase {
 				}
 			}
 			else {
-				logger.info("Trying query with resourceId=" + resourceId);
-				list = eventDao.getNextEventsByResourceId(resourceId);
+				logger.info("Trying query with resKey=" + resKey);
+				list = buzzDao.getBuzzMsgsByResKey(resKey);
 				results = list;
 				if (results != null && results.size() > BuzzDao.PAGESIZE) {
 					results = results.subList(0, BuzzDao.PAGESIZE);

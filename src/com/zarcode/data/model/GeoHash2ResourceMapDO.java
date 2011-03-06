@@ -27,6 +27,9 @@ public class GeoHash2ResourceMapDO extends AbstractLoaderDO implements Serializa
 	private String region = null;
 	
 	@Persistent
+	private String map = null;
+	
+	@Persistent
 	private String geoHashKey12 = null;
 	
 	@Persistent
@@ -47,6 +50,14 @@ public class GeoHash2ResourceMapDO extends AbstractLoaderDO implements Serializa
 
 	public void setRegion(String region) {
 		this.region = region;
+	}
+	
+	public String getMap() {
+		return map;
+	}
+
+	public void setMap(String map) {
+		this.map = map;
 	}
 	
 	public Long getResourceId() {

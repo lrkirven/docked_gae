@@ -82,7 +82,7 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 	private String location = null;
 	
 	@Persistent
-	private Long resourceId = null;
+	private String resKey = null;
 	
 	@Persistent
 	private Text messageDataText = null;
@@ -235,12 +235,12 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 	}
 	
 	@XmlElement
-	public Long getResourceId() {
-		return resourceId;
+	public String getResKey() {
+		return resKey;
 	}
 
-	public void setResourceId(Long resourceId) {
-		this.resourceId = resourceId;
+	public void setResKey(String resKey) {
+		this.resKey = resKey;
 	}
 	
 	@XmlElement

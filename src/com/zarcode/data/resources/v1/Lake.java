@@ -182,16 +182,11 @@ public class Lake extends ResourceBase {
 			results = results.subList(0, 20);
 		}
 		if (results.size() > 0) {
-			userDao = new UserDao();
 			WaterResourceDO lake = null;
 			List<UserDO> users = null;
 			for (i=0; i<results.size(); i++) {
 				lake = results.get(i);
 				lake.postReturn();
-				users = userDao.getUsersByResourceId(lake.getResourceId());
-				if (users != null && users.size() > 0) {
-					PegCounter.clobber(PegCounter.NO_OF_ACTIVE_USERS, users.size());
-				}
 			}
 		}
 	

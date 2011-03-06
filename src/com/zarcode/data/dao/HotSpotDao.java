@@ -92,7 +92,7 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 		return res;
 	}
 	
-	public List<HotSpotDO> getHotSpotsByResourceId(Long resourceId) {
+	public List<HotSpotDO> getHotSpotsByResKey(String resKey) {
 		int i = 0;
 		List<HotSpotDO> list = null;
 		Transaction tx = pm.currentTransaction();
@@ -100,8 +100,8 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 			tx.begin();
 			StringBuilder sb = new StringBuilder();
 			sb.append("(");
-			sb.append("resourceId == ");
-			sb.append(resourceId);
+			sb.append("resKey == ");
+			sb.append(resKey);
 			sb.append(" && publicFlag == ");
 			sb.append(true);
 			sb.append(")");

@@ -140,6 +140,7 @@ public class GeoRSSWrite extends HttpServlet {
 	 						res =  new WaterResourceDO();
 	 						res.setLastUpdate(new Date());
 	 						res.setRegion(rssTitle);
+	 						res.setMap(rssTitle);
 	 						
 	 						NodeList itemMembers = itemNode.getChildNodes();
 	 						memberCount = itemMembers.getLength();
@@ -165,7 +166,7 @@ public class GeoRSSWrite extends HttpServlet {
 	 	           						String descData = getCharacterDataFromElement((Element)n);
 	 	    	        				props = convertKVString2HashMap(descData);
 	 	    	        				if (props != null && props.containsKey("reportKey")) {
-	 	    	        					res.setReportKey((String)props.get("reportKey"));
+	 	    	        					res.setResKey((String)props.get("reportKey"));
 	 	    	        				}
 	 	    	        				else {
 	 	    	        					logger.warning("reportKey not found for resource=" + res.getName());
