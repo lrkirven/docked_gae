@@ -283,9 +283,9 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 			sb.append(0);
 			sb.append(" && version == ");
 			sb.append(CURRENT_VER);
-			sb.append(" && resKey == ");
+			sb.append(" && resKey == '");
 			sb.append(resKey);
-			sb.append(")");
+			sb.append("')");
 			Query query = pm.newQuery(BuzzMsgDO.class, sb.toString());
 			query.setOrdering("timestamp desc");
 			listOfEvents = (List<BuzzMsgDO>)query.execute();

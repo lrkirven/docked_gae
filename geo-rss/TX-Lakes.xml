@@ -28,45 +28,19 @@
     </gml:Polygon>
   </item>
   <item>
-    <guid isPermaLink="false">0004881ff9bda11f6b4a5</guid>
-    <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
-    <title>Lewis Creek Reservoir</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:LEWISCREEK</div>]]></description>
-    <author>lrkirven</author>
-    <gml:Polygon>
-      <gml:exterior>
-        <gml:LinearRing>
-          <gml:posList>
-            30.444916 -95.550552
-            30.426266 -95.539230
-            30.423899 -95.513474
-            30.436331 -95.516228
-            30.443436 -95.531670
-            30.448172 -95.551926
-            30.444916 -95.550552
-          </gml:posList>
-        </gml:LinearRing>
-      </gml:exterior>
-    </gml:Polygon>
-  </item>
-  <item>
     <guid isPermaLink="false">0004881ff9bda12966f02</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Houston County Lake</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:HOUSTON COUNTY</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:HOUSTONCOUNTY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            31.419479 -95.602028
-            31.410688 -95.606148
-            31.405706 -95.603058
-            31.404097 -95.580223
-            31.406733 -95.564087
-            31.425486 -95.540573
-            31.425777 -95.560486
-            31.419479 -95.602028
+            31.449753 -95.631180
+            31.364191 -95.606461
+            31.433350 -95.504837
+            31.449753 -95.631180
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -96,19 +70,16 @@
     <guid isPermaLink="false">0004881ff9bda17219f6a</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Lake Colorado City</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:COLORADO CITY</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:COLORADOCITY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            32.382950 -100.949654
-            32.355400 -100.957207
-            32.318851 -100.930763
-            32.322330 -100.915321
-            32.346409 -100.914970
-            32.380917 -100.942101
-            32.382950 -100.949654
+            32.397938 -100.949249
+            32.312672 -100.981522
+            32.314411 -100.877838
+            32.397938 -100.949249
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -124,13 +95,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            32.274448 -100.856956
-            32.296219 -100.836014
-            32.321171 -100.818504
-            32.320301 -100.829826
-            32.311306 -100.846313
-            32.292152 -100.860725
-            32.274448 -100.856956
+            32.241264 -100.855865
+            32.339939 -100.794754
+            32.305126 -100.894318
+            32.241264 -100.855865
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -146,13 +114,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            32.919483 -96.106110
-            32.843365 -96.128082
-            32.813362 -95.916595
-            32.852596 -95.878143
-            32.995533 -96.007233
-            32.944839 -96.106110
-            32.919483 -96.106110
+            32.859978 -96.212769
+            32.786121 -95.914764
+            32.842674 -95.841980
+            33.029388 -96.027374
+            32.859978 -96.212769
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -184,7 +150,7 @@
     <guid isPermaLink="false">0004881ff9bda1c96f2a6</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Lake Ray Hubbard</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:RAY HUBBARD</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:RAYHUBBARD</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -206,7 +172,7 @@
     <guid isPermaLink="false">0004881ff9bda1d853c17</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Sabine Lake</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:NORTH SABINE, SOUTH SABINE</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:SABINE</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -226,7 +192,7 @@
     <guid isPermaLink="false">0004881ff9bda1f9bb206</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Trinity Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:TRINITY BAY</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:TRINITYBAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -246,7 +212,7 @@
     <guid isPermaLink="false">0004881ff9bda20853170</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>West Galveston Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:WEST GALVESTON BAY</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:WESTGALVESTONBAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -269,7 +235,7 @@
     <guid isPermaLink="false">0004881ff9bda21d135d1</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>East Galveston Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:EAST GALVESTON BAY </div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:EASTGALVESTONBAY </div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -312,16 +278,16 @@
     <guid isPermaLink="false">0004881ff9bda2434cff4</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Corpus Christi Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:CORPUS CHRISTI</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:CORPUSCHRISTIBAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
             27.871849 -97.566833
-            27.526541 -97.224884
-            27.790489 -97.051842
-            27.818430 -97.220757
+            27.538717 -97.259216
+            27.794136 -97.095795
+            27.822075 -97.218018
             27.934959 -97.264702
             27.871849 -97.566833
           </gml:posList>
@@ -333,15 +299,15 @@
     <guid isPermaLink="false">0004881ff9bda256d86c0</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>San Antonio Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:PORT ARANSAS</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:SANANTONIOBAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
             28.465071 -96.885681
-            28.137394 -96.750412
-            28.272335 -96.536865
+            28.153135 -96.759338
+            28.278988 -96.547852
             28.520580 -96.797791
             28.465071 -96.885681
           </gml:posList>
@@ -353,17 +319,17 @@
     <guid isPermaLink="false">0004881ff9bda2650b0b3</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Redfish Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:PORT ARANSAS</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:REDFISHBAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            27.982630 -97.083656
-            27.817217 -97.202225
-            27.792315 -97.054596
-            27.928293 -96.979065
-            27.982630 -97.083656
+            27.905846 -97.147980
+            27.823288 -97.215271
+            27.795351 -97.097168
+            27.860931 -97.047729
+            27.905846 -97.147980
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -373,16 +339,16 @@
     <guid isPermaLink="false">0004881ff9bda271c2e34</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Aransas Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:PORT ARANSAS</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:ARANSASBAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
             28.136530 -97.008133
-            27.984699 -97.087555
-            27.925867 -96.977692
-            28.053198 -96.855469
+            27.909487 -97.153473
+            27.860931 -97.046356
+            28.062286 -96.874695
             28.136530 -97.008133
           </gml:posList>
         </gml:LinearRing>
@@ -393,7 +359,7 @@
     <guid isPermaLink="false">0004881ff9bda27b4bd78</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Copano Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:PORT ARANSAS</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:COPANOBAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -413,7 +379,7 @@
     <guid isPermaLink="false">0004881ff9bda28a0a83d</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Port Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:PORT ARANSAS</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:PORTBAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -432,16 +398,16 @@
     <guid isPermaLink="false">0004881ff9bda2a18cf7b</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Saint Charles Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:PORT ARANSAS</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:STCHARLESBAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
             28.335810 -96.968071
-            28.140421 -97.005157
-            28.114384 -96.963272
-            28.326139 -96.847221
+            28.140421 -97.005150
+            28.113171 -96.959839
+            28.293497 -96.821136
             28.335810 -96.968071
           </gml:posList>
         </gml:LinearRing>
@@ -452,17 +418,17 @@
     <guid isPermaLink="false">0004881ff9bda2b53e8a1</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Mesquite Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:PORT ARANSAS</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:MESQUITEBAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            28.258421 -96.800529
-            28.110748 -96.957779
-            28.051378 -96.854782
-            28.134972 -96.753845
-            28.258421 -96.800529
+            28.291080 -96.817017
+            28.110741 -96.957771
+            28.067133 -96.877441
+            28.148293 -96.760712
+            28.291080 -96.817017
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -472,17 +438,17 @@
     <guid isPermaLink="false">0004881ff9bda31d8258a</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Espiritu Santo Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:PORT ARANSAS</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:ESPIRITUSANTOBAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            28.359381 -96.626816
-            28.272335 -96.535492
-            28.357569 -96.378250
-            28.453600 -96.407089
-            28.359381 -96.626816
+            28.359381 -96.626808
+            28.282616 -96.547852
+            28.363609 -96.384430
+            28.453600 -96.407082
+            28.359381 -96.626808
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -492,19 +458,19 @@
     <guid isPermaLink="false">0004881ff9bda333614db</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Matagorda Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:MATAGORDA</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:MATAGORDABAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            28.526623 -96.514206
+            28.526621 -96.514198
             28.462650 -96.409142
-            28.361193 -96.376190
-            28.592962 -95.953217
-            28.684565 -95.987549
-            28.803165 -96.133804
-            28.526623 -96.514206
+            28.366028 -96.385803
+            28.592960 -95.953209
+            28.684561 -95.987541
+            28.803160 -96.133797
+            28.526621 -96.514198
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -514,7 +480,7 @@
     <guid isPermaLink="false">0004881ff9bda3469da0c</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Lavaca Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:WEST MATAGORDA BAY</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:LAVACABAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -534,7 +500,7 @@
     <guid isPermaLink="false">0004881ff9bda355ac074</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Carancahua Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:WEST MATAGORDA BAY</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:CARANCAHUABAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -554,7 +520,7 @@
     <guid isPermaLink="false">0004881ff9bda364dd790</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>East Matagorda Bay</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:EAST MATAGORDA BAY</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:EASTMATAGORDABAY</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -621,11 +587,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            27.189907 -97.937622
-            27.243643 -97.467957
-            27.360790 -97.418518
+            27.191128 -97.981567
+            27.174026 -97.503662
+            27.398594 -97.402039
             27.639740 -97.595673
-            27.189907 -97.937622
+            27.191128 -97.981567
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -641,12 +607,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            26.554136 -97.495422
-            26.218287 -97.432251
-            25.938288 -97.234497
-            25.972860 -97.091675
-            26.572561 -97.238617
-            26.554136 -97.495422
+            26.554136 -97.522888
+            25.629145 -97.248230
+            25.735580 -97.042236
+            26.588528 -97.226257
+            26.554136 -97.522888
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -704,13 +669,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            28.505898 -98.469482
-            28.460030 -98.372330
-            28.451576 -98.291306
-            28.473007 -98.240494
-            28.520983 -98.268295
-            28.542999 -98.362717
-            28.505898 -98.469482
+            28.345482 -98.566589
+            28.475933 -98.157349
+            28.692997 -98.506165
+            28.345482 -98.566589
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -726,13 +688,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            27.001999 -99.407272
-            26.764372 -99.375687
-            26.555733 -99.250717
-            26.571701 -99.125748
-            26.749657 -99.094162
-            26.933456 -99.188919
-            27.001999 -99.407272
+            27.210670 -99.349365
+            26.455820 -99.516907
+            26.556593 -98.852234
+            27.210670 -99.349365
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -748,12 +707,12 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            30.920252 -98.444595
-            30.876652 -98.484421
-            30.742189 -98.465195
-            30.750452 -98.419876
-            30.833031 -98.337479
-            30.920252 -98.444595
+            31.130550 -98.473206
+            31.034107 -98.587189
+            30.738295 -98.521271
+            30.726490 -98.353729
+            30.832678 -98.300171
+            31.130550 -98.473206
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -769,13 +728,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            29.913460 -98.336678
-            29.886675 -98.317451
-            29.858093 -98.256340
-            29.847969 -98.213081
-            29.859880 -98.194542
-            29.918221 -98.220634
-            29.913460 -98.336678
+            29.938274 -98.359909
+            29.852554 -98.316650
+            29.834091 -98.171082
+            29.927565 -98.209534
+            29.938274 -98.359909
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -791,13 +748,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            30.714272 -97.391853
-            30.643406 -97.424126
-            30.688885 -97.337608
-            30.714863 -97.327309
-            30.721945 -97.349968
-            30.720764 -97.380180
-            30.714272 -97.391853
+            30.769274 -97.359810
+            30.656225 -97.440491
+            30.635843 -97.430534
+            30.703173 -97.280846
+            30.769274 -97.359810
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -807,20 +762,17 @@
     <guid isPermaLink="false">0004881ff9bda45d39c10</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Lake Lyndon B Johnson</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:LBJ</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:LBJ<br>alias=LBJ</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            30.674711 -98.484993
-            30.555344 -98.431435
-            30.546473 -98.356590
-            30.570717 -98.268013
-            30.582539 -98.359337
-            30.602634 -98.386803
-            30.662899 -98.423882
-            30.674711 -98.484993
+            30.735933 -98.541870
+            30.511400 -98.467712
+            30.545704 -98.263092
+            30.726490 -98.390808
+            30.735933 -98.541870
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -836,13 +788,12 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            30.496786 -98.123817
-            30.356464 -98.037987
-            30.403261 -97.860832
-            30.438196 -97.873192
-            30.496786 -97.916451
-            30.550613 -98.127251
-            30.496786 -98.123817
+            30.538609 -98.242493
+            30.332582 -98.032379
+            30.393015 -97.835999
+            30.532694 -97.923889
+            30.608368 -98.216400
+            30.538609 -98.242493
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -878,13 +829,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            29.634350 -101.322777
-            29.436359 -101.301041
-            29.431580 -101.107399
-            29.456690 -100.939857
-            29.500572 -100.842133
-            29.697001 -100.921089
-            29.634350 -101.322777
+            29.634352 -101.387329
+            29.385765 -101.337891
+            29.455145 -100.802307
+            29.697001 -100.921082
+            29.634352 -101.387329
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -900,12 +849,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            32.611702 -99.686913
-            32.589722 -99.705109
-            32.535900 -99.714722
-            32.550373 -99.684853
-            32.613728 -99.657387
-            32.611702 -99.686913
+            32.628967 -99.713287
+            32.506866 -99.717407
+            32.623760 -99.602051
+            32.628967 -99.713287
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -932,26 +879,6 @@
     </gml:Polygon>
   </item>
   <item>
-    <guid isPermaLink="false">0004881ff9bda4b5258a2</guid>
-    <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
-    <title>Hubbard Creek Lake</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:HUBBARD CREEK</div>]]></description>
-    <author>lrkirven</author>
-    <gml:Polygon>
-      <gml:exterior>
-        <gml:LinearRing>
-          <gml:posList>
-            32.708328 -99.001350
-            32.814575 -98.931999
-            32.861305 -99.015770
-            32.786293 -99.112587
-            32.708328 -99.001350
-          </gml:posList>
-        </gml:LinearRing>
-      </gml:exterior>
-    </gml:Polygon>
-  </item>
-  <item>
     <guid isPermaLink="false">0004881ff9bda4c6885ff</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Lake Meredith</title>
@@ -961,11 +888,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            35.753868 -101.654205
-            35.570885 -101.805267
-            35.512779 -101.714630
-            35.742722 -101.503143
-            35.753868 -101.654205
+            35.690765 -101.950378
+            35.363297 -101.674347
+            35.795540 -101.486206
+            35.690765 -101.950378
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -981,11 +907,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            31.389883 -100.529564
-            31.364529 -100.517723
-            31.367020 -100.467422
-            31.400726 -100.483047
-            31.389883 -100.529564
+            31.294981 -100.487137
+            31.364191 -100.404739
+            31.436865 -100.570221
+            31.294981 -100.487137
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1001,11 +926,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            31.399158 -100.552422
-            31.374247 -100.611481
-            31.326748 -100.582291
-            31.342291 -100.514999
-            31.399158 -100.552422
+            31.434523 -100.569534
+            31.330179 -100.647812
+            31.282660 -100.480270
+            31.434523 -100.569534
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1021,11 +945,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            31.531521 -100.550018
-            31.459799 -100.533546
-            31.483810 -100.469337
-            31.516596 -100.500931
-            31.531521 -100.550018
+            31.563910 -100.578461
+            31.445066 -100.532455
+            31.490164 -100.451431
+            31.563910 -100.578461
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1041,12 +964,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            31.624912 -99.822578
-            31.494436 -99.821205
-            31.482141 -99.608345
-            31.555895 -99.601479
-            31.601522 -99.687996
-            31.624912 -99.822578
+            31.700130 -99.876709
+            31.409912 -99.846497
+            31.501287 -99.450989
+            31.700130 -99.876709
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1064,10 +985,8 @@
           <gml:posList>
             30.570530 -95.688850
             30.342060 -95.681297
-            30.353325 -95.509644
-            30.455776 -95.556335
-            30.545700 -95.563202
-            30.587090 -95.623619
+            30.353319 -95.509644
+            30.603048 -95.516510
             30.570530 -95.688850
           </gml:posList>
         </gml:LinearRing>
@@ -1084,14 +1003,12 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            30.962301 -95.337982
-            30.859795 -95.431366
-            30.732393 -95.218506
-            30.603640 -95.082550
-            30.640274 -94.983673
-            30.833857 -95.081177
-            30.943459 -95.233612
-            30.962301 -95.337982
+            31.015280 -95.294037
+            30.869225 -95.471191
+            30.556349 -95.096283
+            30.656816 -94.935608
+            30.873940 -95.075684
+            31.015280 -95.294037
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1188,9 +1105,11 @@
         <gml:LinearRing>
           <gml:posList>
             33.265091 -97.047722
-            33.090382 -97.090302
-            33.023632 -96.884308
-            33.196171 -96.873322
+            33.159397 -97.108841
+            33.085213 -97.075195
+            33.059895 -96.981125
+            33.075432 -96.880188
+            33.217438 -96.912460
             33.265091 -97.047722
           </gml:posList>
         </gml:LinearRing>
@@ -1221,7 +1140,7 @@
     <guid isPermaLink="false">0004881ff9bda7ee35850</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Joe Pool Lake</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:JOE POOL</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:JOEPOOL</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -1247,12 +1166,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            32.959129 -95.741730
-            32.918793 -95.787048
-            32.767647 -95.541229
-            32.937233 -95.450592
-            32.997147 -95.581055
-            32.959129 -95.741730
+            32.936081 -95.818634
+            32.767639 -95.541222
+            32.937229 -95.450592
+            33.008663 -95.581055
+            32.936081 -95.818634
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1262,7 +1180,7 @@
     <guid isPermaLink="false">0004881ff9bda80875ab8</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Monticello Reservoir</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:BOB SANDLIN</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:BOBSANDLIN</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -1288,11 +1206,11 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            32.989082 -94.718628
-            32.869205 -94.788666
-            32.692554 -94.568939
-            32.776882 -94.424744
-            32.989082 -94.718628
+            32.989079 -94.718620
+            32.869202 -94.788658
+            32.676373 -94.592285
+            32.776878 -94.424744
+            32.989079 -94.718620
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1302,7 +1220,7 @@
     <guid isPermaLink="false">0004881ff9bda82a0df86</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Wright Patman Lake</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:WRIGHT PATMAN</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:WRIGHTPATMAN</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -1319,46 +1237,6 @@
     </gml:Polygon>
   </item>
   <item>
-    <guid isPermaLink="false">0004881ff9bda832f72a4</guid>
-    <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
-    <title>Black Bayou Lake</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:BLACKBAYOU</div>]]></description>
-    <author>lrkirven</author>
-    <gml:Polygon>
-      <gml:exterior>
-        <gml:LinearRing>
-          <gml:posList>
-            32.942997 -94.027863
-            32.843826 -93.935852
-            32.879585 -93.845215
-            33.019028 -93.972931
-            32.942997 -94.027863
-          </gml:posList>
-        </gml:LinearRing>
-      </gml:exterior>
-    </gml:Polygon>
-  </item>
-  <item>
-    <guid isPermaLink="false">0004881ff9bda83c4dc0a</guid>
-    <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
-    <title>Millwood Lake</title>
-    <description><![CDATA[<div dir="ltr">reportKey=AR:MILLWOOD</div>]]></description>
-    <author>lrkirven</author>
-    <gml:Polygon>
-      <gml:exterior>
-        <gml:LinearRing>
-          <gml:posList>
-            33.811104 -94.209137
-            33.643208 -94.030609
-            33.680923 -93.885040
-            33.837341 -93.907013
-            33.811104 -94.209137
-          </gml:posList>
-        </gml:LinearRing>
-      </gml:exterior>
-    </gml:Polygon>
-  </item>
-  <item>
     <guid isPermaLink="false">0004881ff9bda891f3a16</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Lake Texoma</title>
@@ -1368,13 +1246,12 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            34.214073 -96.664581
-            33.961586 -97.065582
-            33.696922 -96.803284
-            33.812244 -96.487427
-            34.092472 -96.398163
-            34.194763 -96.535492
-            34.214073 -96.664581
+            34.222023 -96.609650
+            33.928547 -97.039490
+            33.715202 -96.789551
+            33.816807 -96.556091
+            34.110668 -96.508026
+            34.222023 -96.609650
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1390,11 +1267,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            33.799690 -98.407288
-            33.680923 -98.510284
-            33.607758 -98.399048
-            33.763165 -98.250732
-            33.799690 -98.407288
+            33.772297 -98.605042
+            33.580303 -98.371582
+            33.792843 -98.223267
+            33.772297 -98.605042
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1404,17 +1280,16 @@
     <guid isPermaLink="false">0004881ff9bda8cf748f3</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Possum Kingdom Lake</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:POSSUM KINGDOM</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:POSSUMKINGDOM</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            33.024784 -98.474579
-            32.819595 -98.717651
-            32.817287 -98.396301
-            33.058170 -98.319397
-            33.024784 -98.474579
+            32.819595 -98.761597
+            32.784966 -98.319397
+            33.146751 -98.366089
+            32.819595 -98.761597
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1423,18 +1298,17 @@
   <item>
     <guid isPermaLink="false">0004881ff9bda8dc7e7c4</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
-    <title>Hubbard Creek lake</title>
+    <title>Hubbard Creek Lake</title>
     <description><![CDATA[<div dir="ltr">reportKey=TX:HUBBARDCREEK</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            32.878433 -99.055481
-            32.720287 -99.136505
-            32.656719 -98.925018
-            32.850750 -98.867340
-            32.878433 -99.055481
+            32.764179 -99.253235
+            32.632435 -98.926392
+            32.944149 -98.871460
+            32.764179 -99.253235
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1450,11 +1324,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            33.329380 -97.888184
-            33.199627 -98.015900
-            33.082336 -97.789307
-            33.280029 -97.754974
-            33.329380 -97.888184
+            33.211689 -97.989799
+            33.082329 -97.789299
+            33.377560 -97.845612
+            33.211689 -97.989799
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1464,18 +1337,18 @@
     <guid isPermaLink="false">0004881ff9bda8f2ae56d</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Ray Roberts Lake</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:RAY ROBERTS</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:RAYROBERTS</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            33.528805 -96.882935
-            33.485291 -97.139740
-            33.379852 -97.152100
-            33.344296 -97.066269
-            33.423992 -96.873322
-            33.528805 -96.882935
+            33.537960 -96.863708
+            33.502468 -97.143860
+            33.379848 -97.152100
+            33.331676 -97.065582
+            33.423416 -96.869202
+            33.537960 -96.863708
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1485,7 +1358,7 @@
     <guid isPermaLink="false">0004881ff9bda90e3504c</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Richland Chambers Lake</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:RICHLAND CHAMBERS</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:RICHLANDCHAMBERS</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -1504,7 +1377,7 @@
     <guid isPermaLink="false">0004881ff9bda91d297fc</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Cedar Creek Reservoir</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:CEDAR CREEK</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:CEDARCREEK</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -1544,7 +1417,7 @@
     <guid isPermaLink="false">0004881ff9bda94b7888a</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Lake Athens</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:Athens</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:ATHENS</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
@@ -1582,17 +1455,16 @@
     <guid isPermaLink="false">0004881ff9bda9640da29</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
     <title>Martin Lake</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:MARTIN CREEK</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:MARTINCREEK</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            32.303387 -94.605331
-            32.151199 -94.673996
-            32.184910 -94.570312
-            32.288296 -94.484482
-            32.303387 -94.605331
+            32.323116 -94.604645
+            32.117474 -94.695282
+            32.274361 -94.435730
+            32.323116 -94.604645
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1608,11 +1480,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            33.843044 -99.213409
-            33.725483 -99.429016
-            33.621483 -99.180450
-            33.803116 -99.093933
-            33.843044 -99.213409
+            33.725479 -99.429008
+            33.621479 -99.180450
+            33.934246 -99.055481
+            33.725479 -99.429008
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1683,17 +1554,16 @@
     <guid isPermaLink="false">0004882a99318bd17bb79</guid>
     <pubDate>Fri, 04 Jun 2010 01:54:07 +0000</pubDate>
     <title>Navarro Mills Lake</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:NAVARRO MILLS</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:NAVARROMILLS</div>]]></description>
     <author>Lazar</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            31.964979 -96.802940
-            31.984200 -96.704063
-            31.952454 -96.684151
-            31.919823 -96.800537
-            31.964979 -96.802940
+            32.039513 -96.793671
+            31.950996 -96.659088
+            31.886887 -96.811523
+            32.039513 -96.793671
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1709,11 +1579,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            31.832941 -96.064453
-            31.763494 -96.103592
-            31.765537 -96.049690
-            31.830025 -96.029091
-            31.832941 -96.064453
+            31.755611 -96.132431
+            31.740431 -96.004715
+            31.865894 -96.039047
+            31.755611 -96.132431
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1722,21 +1591,18 @@
   <item>
     <guid isPermaLink="false">0004882ab65002ad29b5e</guid>
     <pubDate>Fri, 04 Jun 2010 02:02:15 +0000</pubDate>
-    <title>Belton Lake</title>
+    <title>Lake Belton</title>
     <description><![CDATA[<div dir="ltr">reportKey=TX:BELTON</div>]]></description>
     <author>Lazar</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            31.170509 -97.423325
-            31.305542 -97.456970
-            31.227482 -97.533875
-            31.158758 -97.522888
-            31.210451 -97.634811
-            31.191658 -97.642365
-            31.093513 -97.496109
-            31.170509 -97.423325
+            31.154058 -97.428131
+            31.310234 -97.459030
+            31.205753 -97.661591
+            31.084694 -97.489243
+            31.154058 -97.428131
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1772,11 +1638,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            29.952852 -96.757965
-            29.904203 -96.754875
-            29.915663 -96.700974
-            29.951811 -96.717453
-            29.952852 -96.757965
+            29.909710 -96.800537
+            29.885900 -96.675568
+            29.991814 -96.715393
+            29.909710 -96.800537
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1832,11 +1697,10 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            30.311543 -96.685181
-            30.374355 -96.557465
-            30.282492 -96.483650
-            30.274191 -96.674194
-            30.311543 -96.685181
+            30.469980 -96.579437
+            30.256695 -96.424255
+            30.225840 -96.866447
+            30.469980 -96.579437
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1885,17 +1749,16 @@
     <guid isPermaLink="false">0004882aff8f03400773f</guid>
     <pubDate>Fri, 04 Jun 2010 02:22:44 +0000</pubDate>
     <title>Gibbons Creek Reservoir</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:GIBBONS CREEK</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:GIBBONSCREEK</div>]]></description>
     <author>Lazar</author>
     <gml:Polygon>
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            30.668037 -96.026001
-            30.647364 -96.103592
-            30.593000 -96.076813
-            30.647364 -96.001968
-            30.668037 -96.026001
+            30.693432 -96.108398
+            30.563442 -96.096039
+            30.646183 -95.972443
+            30.693432 -96.108398
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -1924,7 +1787,7 @@
     <guid isPermaLink="false">0004882b0c8549f26b583</guid>
     <pubDate>Fri, 04 Jun 2010 02:26:21 +0000</pubDate>
     <title>Toledo Bend Reservoir</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:TOLEDO BEND</div>]]></description>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:TOLEDOBEND</div>]]></description>
     <author>Lazar</author>
     <gml:Polygon>
       <gml:exterior>
@@ -1980,27 +1843,6 @@
     </gml:Polygon>
   </item>
   <item>
-    <guid isPermaLink="false">00049c6b46a189e22fd7f</guid>
-    <pubDate>Wed, 16 Feb 2011 19:27:47 +0000</pubDate>
-    <title>Padre Island</title>
-    <description><![CDATA[<div dir="ltr">reportKey=TX:PADREISLAND</div>]]></description>
-    <author>Lazar</author>
-    <gml:Polygon>
-      <gml:exterior>
-        <gml:LinearRing>
-          <gml:posList>
-            26.570105 -97.377319
-            27.050566 -97.470703
-            27.670151 -97.294922
-            27.609322 -97.223511
-            26.581160 -97.226257
-            26.570105 -97.377319
-          </gml:posList>
-        </gml:LinearRing>
-      </gml:exterior>
-    </gml:Polygon>
-  </item>
-  <item>
     <guid isPermaLink="false">00049c8083a3d1053764d</guid>
     <pubDate>Thu, 17 Feb 2011 20:48:05 +0000</pubDate>
     <title>Christmas Bay</title>
@@ -2041,8 +1883,8 @@
     </gml:Polygon>
   </item>
   <item>
-    <guid isPermaLink="false">00049c809d7548312c907</guid>
-    <pubDate>Thu, 17 Feb 2011 20:55:18 +0000</pubDate>
+    <guid isPermaLink="false">00049ce4123c8631add01</guid>
+    <pubDate>Tue, 22 Feb 2011 19:34:39 +0000</pubDate>
     <title>Padre Island</title>
     <description><![CDATA[<div dir="ltr">reportKey=TX:PADREISLAND</div>]]></description>
     <author>Lazar</author>
@@ -2050,12 +1892,135 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            26.554136 -97.505035
-            26.572561 -97.250977
-            27.526541 -97.227631
-            27.619057 -97.311401
-            26.805687 -97.649231
-            26.554136 -97.505035
+            27.061569 -97.330620
+            26.588520 -97.248230
+            26.559050 -97.520142
+            26.794649 -97.660210
+            27.600800 -97.325127
+            27.527758 -97.196045
+            27.061569 -97.330620
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049ce4c50f1e758825c</guid>
+    <pubDate>Tue, 22 Feb 2011 20:24:39 +0000</pubDate>
+    <title>Melina Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:MELINA</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            29.671349 -98.995056
+            29.625101 -98.903389
+            29.544189 -98.893433
+            29.526567 -99.020119
+            29.671349 -98.995056
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049ce5c16a454afcb14</guid>
+    <pubDate>Tue, 22 Feb 2011 21:35:13 +0000</pubDate>
+    <title>Lake Houston</title>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:HOUSTON</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.134439 -95.080490
+            29.921019 -95.120659
+            29.908073 -95.144524
+            29.938574 -95.179024
+            30.006084 -95.141945
+            30.024515 -95.157227
+            30.063745 -95.154816
+            30.120779 -95.186401
+            30.134439 -95.080490
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049ce5c500383ba67dc</guid>
+    <pubDate>Tue, 22 Feb 2011 21:36:13 +0000</pubDate>
+    <title>Sheldon Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:SHELDONRESERVOIR</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            29.883369 -95.192924
+            29.882923 -95.155502
+            29.861935 -95.145554
+            29.848684 -95.176277
+            29.883369 -95.192924
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d0c8fd0ef2996404</guid>
+    <pubDate>Thu, 24 Feb 2011 19:53:04 +0000</pubDate>
+    <title>Squaw Creek Reservoir</title>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:SQUAWCREEK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.365753 -97.845612
+            32.316151 -97.731972
+            32.258976 -97.784157
+            32.365753 -97.845612
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d0c9ddd57464c46c</guid>
+    <pubDate>Thu, 24 Feb 2011 19:57:00 +0000</pubDate>
+    <title>Lake Georgetown</title>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:GEORGETOWN</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            30.698746 -97.738495
+            30.661245 -97.713432
+            30.656816 -97.772141
+            30.699335 -97.846298
+            30.698746 -97.738495
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049d0cc7b60506a7c60</guid>
+    <pubDate>Thu, 24 Feb 2011 20:08:42 +0000</pubDate>
+    <title>Lake Corpus Christi</title>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:CORPUSCHRISTI</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            28.308613 -98.012466
+            28.119226 -97.720642
+            27.976212 -97.951355
+            28.308613 -98.012466
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
