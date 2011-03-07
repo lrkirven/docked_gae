@@ -213,7 +213,7 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 		int len = listOfEvents.size();
 		for (i=0; i<len; i++) {
 			msg = (listOfEvents.get(i));
-			if (commentTbl.containsKey(msg.getMsgId())) {
+			if (commentTbl != null && commentTbl.containsKey(msg.getMsgId())) {
 				comments = commentTbl.get(msg.getMsgId());
 				msg.postReturn(comments);
 			}
