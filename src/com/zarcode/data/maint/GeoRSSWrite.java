@@ -90,7 +90,7 @@ public class GeoRSSWrite extends HttpServlet {
  			logger.severe("EXCEPTION :: " + e.getMessage());
  		}
  		
- 		AppPropDO p1 = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
+ 		StringBuilder kBuilder = null;
  		
 		///////////////////////////////////////////////////////////////////////////////
 		//
@@ -171,8 +171,21 @@ public class GeoRSSWrite extends HttpServlet {
 	 	    	        				props = convertKVString2HashMap(descData);
 	 	    	        				if (props != null && props.containsKey("reportKey")) {
 	 	    	        					String resKey = (String)props.get("reportKey");
-	 	    	        					String ciperText = BlockTea.encrypt(resKey, p1.getStringValue());
-	 	    	        					res.setResKey(ciperText);
+	 	    	        					String[] keyParts = resKey.split(":");
+	 	    	        					String itemState = null;
+	 	    	        					String actualKey = null;
+	 	    	        					if (keyParts != null && keyParts.length == 2) {
+	 	    	        						itemState = keyParts[0];
+	 	    	        						actualKey = keyParts[1];
+	 	    	        						res.setState(itemState);
+	 	    	        						kBuilder =  new StringBuilder();
+	 	    	        						kBuilder.append(itemState);
+	 	    	        						kBuilder.append(actualKey.hashCode());
+	 	    	        						res.setResKey(kBuilder.toString());
+	 	    	        					}
+	 	    	        					else {
+	 	    	        						logger.warning("reportKey is not formatting correctly -- " + resKey);
+	 	    	        					}
 	 	    	        				}
 	 	    	        				else {
 	 	    	        					logger.warning("reportKey not found for resource=" + res.getName());

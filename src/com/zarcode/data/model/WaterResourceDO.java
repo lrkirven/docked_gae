@@ -254,13 +254,14 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 	}
 
 	public void setResKey(String resKey) {
+		/*
 		if (state == null) {
-			// resKey format: <state-abbrev>:<lake-name>
 			String[] keyParts = resKey.split(":");
 			if (keyParts != null && keyParts.length == 2) {
 				state = keyParts[0];
 			}
 		}
+		*/
 		this.resKey = resKey;
 	}
 	
