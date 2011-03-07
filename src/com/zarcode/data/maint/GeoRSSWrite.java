@@ -25,11 +25,14 @@ import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.datastore.DatastoreFailureException;
 import com.zarcode.app.GeoRssUtil;
+import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.EmailHelper;
 import com.zarcode.common.PlatformCommon;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.exception.WebCrawlException;
 import com.zarcode.data.model.WaterResourceDO;
+import com.zarcode.platform.model.AppPropDO;
+import com.zarcode.security.BlockTea;
 
 /**
  * This is a web GeoRSS Webcrawler for accessing Google Maps feeds.
@@ -87,6 +90,7 @@ public class GeoRSSWrite extends HttpServlet {
  			logger.severe("EXCEPTION :: " + e.getMessage());
  		}
  		
+ 		AppPropDO p1 = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
  		
 		///////////////////////////////////////////////////////////////////////////////
 		//
@@ -166,7 +170,9 @@ public class GeoRSSWrite extends HttpServlet {
 	 	           						String descData = getCharacterDataFromElement((Element)n);
 	 	    	        				props = convertKVString2HashMap(descData);
 	 	    	        				if (props != null && props.containsKey("reportKey")) {
-	 	    	        					res.setResKey((String)props.get("reportKey"));
+	 	    	        					String resKey = (String)props.get("reportKey");
+	 	    	        					String ciperText = BlockTea.encrypt(resKey, p1.getStringValue());
+	 	    	        					res.setResKey(ciperText);
 	 	    	        				}
 	 	    	        				else {
 	 	    	        					logger.warning("reportKey not found for resource=" + res.getName());
