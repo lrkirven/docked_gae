@@ -168,9 +168,9 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 		HashMap<Long, List<CommentDO>> commentTbl = null;
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("( resKey == ");
+		sb.append("( resKey == '");
 		sb.append(resKey);
-		sb.append(")");
+		sb.append("')");
 		Query query = pm.newQuery(CommentDO.class, sb.toString());
 		query.setOrdering("timestamp asc");
 		list = (List<CommentDO>)query.execute();

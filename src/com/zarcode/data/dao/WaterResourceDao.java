@@ -136,11 +136,21 @@ public class WaterResourceDao extends BaseDao {
 	
 	public void updateLastUpdate(String resKey) {
 		WaterResourceDO res = null;
+		List<WaterResourceDO> list = null;
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			res = pm.getObjectById(WaterResourceDO.class, resKey);
-			res.setLastUpdate(new Date());
+			Query query = pm.newQuery(WaterResourceDO.class);
+		    query.setFilter("resKey == resKeyParam");
+		    query.declareParameters("String resKeyParam");
+		    list = (List<WaterResourceDO>)query.execute(resKey);
+		    if (list != null && list.size() > 0) {
+		    	res = list.get(0);
+		    }
+		    if (res != null) {
+		    	res = pm.getObjectById(WaterResourceDO.class, res.getResourceId());
+		    	res.setLastUpdate(new Date());
+		    }
 			tx.commit();
 		}
 		finally {
