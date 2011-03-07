@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <datastore-indexes autoGenerate="true">
 	<datastore-index kind="CommentDO" ancestor="false" source="manual">
-        <property name="resourceId" direction="asc"/>
-        <property name="timestamp" direction="asc"/>
-    </datastore-index>
-	<datastore-index kind="CommentDO" ancestor="false" source="manual">
         <property name="msgId" direction="asc"/>
         <property name="timestamp" direction="desc"/>
+    </datastore-index>
+	<datastore-index kind="CommentDO" ancestor="false" source="manual">
+        <property name="resKey" direction="asc"/>
+        <property name="timestamp" direction="asc"/>
     </datastore-index>
 	<datastore-index kind="BuzzMsgDO" ancestor="false" source="manual">
         <property name="geoHashKey2" direction="asc"/>
