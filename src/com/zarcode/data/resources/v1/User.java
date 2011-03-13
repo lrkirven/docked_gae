@@ -480,7 +480,6 @@ public class User extends ResourceBase {
 					userDao.updateResource(user.getUserId(), best.getResKey());
 					logger.info("Updated user [ " + user.getDisplayName() + " ] at resKey=" +  best.getResKey());
 				}
-				usersAtLake = userDao.getUsersByResKey(best.getResKey());
 				int totalUsers = userDao.getTotalUsersByResKey(best.getResKey());
 				status.setHowManyOnWater(totalUsers);
 				// increment peg for water resource

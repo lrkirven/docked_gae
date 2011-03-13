@@ -103,10 +103,8 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 	
 	public void postReturn() {
 		UserDao userDao = new UserDao();
-		List<UserDO> users = userDao.getUsersByResKey(resKey);
-		if (users != null && users.size() > 0) {
-			this.activeUsers = users.size();
-		}
+		int total = userDao.getTotalUsersByResKey(resKey);
+		this.activeUsers = total;
 		lastUpdateText = AppCommon.generateTimeOffset(lastUpdate);
 		logger.info("postReturn: lastUpdateText=" + lastUpdateText);
 	}
@@ -249,19 +247,20 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 	}
 	
 	@XmlElement
+	public int getActiveUsers() {
+		return activeUsers;
+	}
+
+	public void setActiveUsers(int activeUsers) {
+		this.activeUsers = activeUsers;
+	}
+	
+	@XmlElement
 	public String getResKey() {
 		return resKey;
 	}
 
 	public void setResKey(String resKey) {
-		/*
-		if (state == null) {
-			String[] keyParts = resKey.split(":");
-			if (keyParts != null && keyParts.length == 2) {
-				state = keyParts[0];
-			}
-		}
-		*/
 		this.resKey = resKey;
 	}
 	

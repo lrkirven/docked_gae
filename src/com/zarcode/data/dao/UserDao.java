@@ -352,7 +352,7 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 		Query query = pm.newQuery(UserDO.class,  sb.toString());
 		res = (List<UserDO>)query.execute(resKey);
 		
-		logger.info("getUsersByResourceId(): Matches found: " + 
+		logger.info("getUsersByResKey(): Matches found: " + 
 				(res == null ? 0 : res.size()));
 		
 		return res;
