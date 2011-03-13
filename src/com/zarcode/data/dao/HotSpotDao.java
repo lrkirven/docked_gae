@@ -91,29 +91,26 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 		}
 		return res;
 	}
-	
+
+	/**
+	 * Gets hotspots for requested water resource.
+	 * 
+	 * @param resKey
+	 * @return
+	 */
 	public List<HotSpotDO> getHotSpotsByResKey(String resKey) {
 		int i = 0;
 		List<HotSpotDO> list = null;
-		Transaction tx = pm.currentTransaction();
-		try {
-			tx.begin();
-			StringBuilder sb = new StringBuilder();
-			sb.append("(");
-			sb.append("resKey == ");
-			sb.append(resKey);
-			sb.append(" && publicFlag == ");
-			sb.append(true);
-			sb.append(")");
-			Query query = pm.newQuery(HotSpotDO.class, sb.toString());
-			query.setOrdering("category asc, createDate desc");
-			list = (List<HotSpotDO>)query.execute();
-		}
-		finally {
-			if (tx.isActive()) {
-				tx.rollback();
-			}
-		}
+		StringBuilder sb = new StringBuilder();
+		sb.append("(");
+		sb.append("resKey == ");
+		sb.append(resKey);
+		sb.append(" && publicFlag == ");
+		sb.append(true);
+		sb.append(")");
+		Query query = pm.newQuery(HotSpotDO.class, sb.toString());
+		query.setOrdering("category asc, createDate desc");
+		list = (List<HotSpotDO>)query.execute();
 		return list;
 	}
 	
