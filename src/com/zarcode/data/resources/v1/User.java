@@ -229,6 +229,7 @@ public class User extends ResourceBase {
 				feedback.setEmailAddr(res.getEmailAddr());
 				FeedbackDao feedbackDao = new FeedbackDao();
 				feedback = feedbackDao.addFeedback(feedback);
+				feedback.setResult(1);
 			}
 			catch (Exception e) {
 				logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));

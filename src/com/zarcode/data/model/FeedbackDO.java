@@ -52,7 +52,7 @@ public class FeedbackDO {
 		this.feedbackId = feedbackId;
 	}
 	
-	@XmlElement
+	@XmlTransient
 	public String getLlId() {
 		return llId;
 	}
