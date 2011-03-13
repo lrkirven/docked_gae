@@ -49,4 +49,9 @@
         <property name="category" direction="asc"/>
         <property name="createDate" direction="desc"/>
     </datastore-index>
+	<datastore-index kind="HotSpotDO" ancestor="false" source="manual">
+        <property name="publicFlag" direction="asc"/>
+        <property name="category" direction="asc"/>
+        <property name="createDate" direction="desc"/>
+    </datastore-index>
 </datastore-indexes>
