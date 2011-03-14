@@ -198,22 +198,32 @@ public class WaterResourceDao extends BaseDao {
 			logger.info("queryString=" + queryString);
 	    
 			String state = null;
+			String target = null;
 			List<String> keywords = null;
 			sr = searchAnalysis(queryString, state, keywords);
 	    	if (sr != null && sr.state != null && sr.keywords != null && sr.keywords.size() > 0) {
-	    		logger.info("Using custom specific state search ... [ state=" + state + " ]");
-	    		String expr = convertKeywordsIntoRegularExpr(keywords);
-	    		Pattern p = Pattern.compile(expr);
-	    		temp = getResourcesByState(state);
+	    		logger.info("Using custom specific state search ... [ state=" + sr.state + " ]");
+	    		String expr = convertKeywordsIntoRegularExpr(sr.keywords);
+	    		logger.info("Using regular expr: " + expr);
+	    		Pattern p = Pattern.compile(expr, Pattern.CASE_INSENSITIVE);
+	    		temp = getResourcesByState(sr.state);
 	    		Matcher m = null;
 	    		result = new ArrayList<WaterResourceDO>();
 	    		if (temp != null && temp.size() > 0) {
+	    			logger.info("Num of initial potential matches - " + temp.size());
 	    			for (i=0; i<temp.size(); i++) {
 	    				res = temp.get(i);
-	    				m = p.matcher(res.getContent());
+	    				target = res.getContent();
+	    				m = p.matcher(target);
 	    				if (m.matches()) {
+	    					logger.info("**** FOUND A MATCH :: " + res.getName());
 	    					result.add(res);
 	    				}
+	    				/*
+	    				else {
+	    					logger.info("NO MATCH :: " + target);
+	    				}
+	    				*/
 	    			}
 	    		}
 	    	}
