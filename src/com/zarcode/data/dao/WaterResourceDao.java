@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.jdo.Query;
 import javax.jdo.Transaction;
@@ -29,6 +31,61 @@ public class WaterResourceDao extends BaseDao {
     public static final int MAXIMUM_NUMBER_OF_WORDS_TO_SEARCH = 5;
     
     public static final int MAX_NUMBER_OF_WORDS_TO_PUT_IN_INDEX = 200;
+    
+    public final static HashMap US_STATE_MAP = new HashMap();
+    static
+    {
+    	US_STATE_MAP.put("AL", 1);
+    	US_STATE_MAP.put("AK", 1);
+    	US_STATE_MAP.put("AZ", 1);
+    	US_STATE_MAP.put("AR", 1);
+    	US_STATE_MAP.put("CA", 1);
+    	US_STATE_MAP.put("CO", 1);
+    	US_STATE_MAP.put("CT", 1);
+    	US_STATE_MAP.put("DE", 1);
+    	US_STATE_MAP.put("FL", 1);
+    	US_STATE_MAP.put("GA", 1);
+    	US_STATE_MAP.put("HI", 1);
+    	US_STATE_MAP.put("ID", 1);
+    	US_STATE_MAP.put("IL", 1);
+    	US_STATE_MAP.put("IN", 1);
+    	US_STATE_MAP.put("IA", 1);
+    	US_STATE_MAP.put("KS", 1);
+    	US_STATE_MAP.put("KY", 1);
+    	US_STATE_MAP.put("LA", 1);
+    	US_STATE_MAP.put("ME", 1);
+    	US_STATE_MAP.put("MD", 1);
+    	US_STATE_MAP.put("MA", 1);
+    	US_STATE_MAP.put("MI", 1);
+    	US_STATE_MAP.put("MN", 1);
+    	US_STATE_MAP.put("MS", 1);
+    	US_STATE_MAP.put("MO", 1);
+    	US_STATE_MAP.put("MT", 1);
+    	US_STATE_MAP.put("NE", 1);
+    	US_STATE_MAP.put("NV", 1);
+    	US_STATE_MAP.put("NH", 1);
+    	US_STATE_MAP.put("NJ", 1);
+    	US_STATE_MAP.put("NM", 1);
+    	US_STATE_MAP.put("NY", 1);
+    	US_STATE_MAP.put("NC", 1);
+    	US_STATE_MAP.put("ND", 1);
+    	US_STATE_MAP.put("OH", 1);
+    	US_STATE_MAP.put("OK", 1);
+    	US_STATE_MAP.put("OR", 1);
+    	US_STATE_MAP.put("PA", 1);
+    	US_STATE_MAP.put("RI", 1);
+    	US_STATE_MAP.put("SC", 1);
+    	US_STATE_MAP.put("SD", 1);
+    	US_STATE_MAP.put("TN", 1);
+    	US_STATE_MAP.put("TX", 1);
+    	US_STATE_MAP.put("UT", 1);
+    	US_STATE_MAP.put("VT", 1);
+    	US_STATE_MAP.put("VA", 1);
+    	US_STATE_MAP.put("WA", 1);
+    	US_STATE_MAP.put("WV", 1);
+    	US_STATE_MAP.put("WI", 1);
+    	US_STATE_MAP.put("WY", 1);
+    };
 	
 	/**
 	 * 10 miles (16093.44 meters)
@@ -71,46 +128,118 @@ public class WaterResourceDao extends BaseDao {
 		}
 	}
 	
+	private void searchAnalysis(String queryString, String state, List<String> keywords) {
+		int i = 0;
+		String key = null;
+	   	String[] parts = queryString.split(" ");
+	   	if (parts != null && parts.length > 1) {
+	   		if (keywords == null) {
+	   			keywords = new ArrayList<String>();
+	   		}
+	   		for (i=0; i<parts.length; i++) {
+	   			key = parts[i];
+	   			if (US_STATE_MAP.containsKey(key)) {
+	   				state = key;
+	   				break;
+	   			}
+	   			else {
+	   				keywords.add(key);
+	   			}
+	   		}
+	   	}
+	}
+	
+	private String convertKeywordsIntoExpr(List<String> keywords) {
+		int i = 0;
+		String key = null;
+		StringBuilder expr = new StringBuilder();
+		
+	
+		for (i=0; i<keywords.size(); i++) {
+			key = keywords.get(0);
+			expr.append(".*");
+			expr.append(key);
+			expr.append(".*");
+			if ((i+1) < keywords.size()) {
+				expr.append("|");
+			}
+		}
+		
+		
+		return expr.toString();
+	}
+	
+	/**
+	 * This method searches the water resources for visiting.
+	 * 
+	 * @param queryString
+	 * @return
+	 */
     public List<WaterResourceDO> search(String queryString) {
+    	int i = 0;
 	    int parameterCounter = 0;
 	    List<WaterResourceDO> result = null;
+	    List<WaterResourceDO> temp = null;
+	    WaterResourceDO res = null;
 	   
 	    if (queryString != null) {
-	    	
-		    queryString = queryString.trim();
-		    logger.info("queryString=" + queryString);
-		    
-		    StringBuffer queryBuffer = new StringBuffer();
-		    queryBuffer.append("SELECT FROM " + WaterResourceDO.class.getName() + " WHERE ");
-		    Set<String> queryTokens = SearchJanitorUtils.getTokensForIndexingOrQuery(queryString, MAXIMUM_NUMBER_OF_WORDS_TO_SEARCH);
-		    List<String> parametersForSearch = new ArrayList<String>(queryTokens);
-		    StringBuffer declareParametersBuffer = new StringBuffer();
-		    
-		    while (parameterCounter < queryTokens.size()) {
-		    	queryBuffer.append("fts == param" + parameterCounter);
-		        declareParametersBuffer.append("String param" + parameterCounter);
-		        if (parameterCounter + 1 < queryTokens.size()) {
-		        	queryBuffer.append(" && ");
-		            declareParametersBuffer.append(", ");
-		        }
-		        parameterCounter++;
-		    }
-		
-		    logger.info("QUERY: " + queryBuffer.toString());
-		    Query query = pm.newQuery(queryBuffer.toString());
-		    query.declareParameters(declareParametersBuffer.toString());
-		    
-		    try {
-		    	result = (List<WaterResourceDO>) query.executeWithArray(parametersForSearch.toArray());
-		    } 
-		    catch (DatastoreTimeoutException e) {
-		    	logger.severe(e.getMessage());
-		    	logger.severe("datastore timeout at: " + queryString);// + " - timestamp: " + discreteTimestamp);
-		    } 
-		    catch(DatastoreNeedIndexException e) {
-		    	logger.severe(e.getMessage());
-		    	logger.severe("datastore need index exception at: " + queryString);// + " - timestamp: " + discreteTimestamp);
-		    }
+			queryString = queryString.trim();
+			logger.info("queryString=" + queryString);
+	    
+			String state = null;
+			List<String> keywords = null;
+			searchAnalysis(queryString, state, keywords);
+	    	if (state != null && keywords != null && keywords.size() > 0) {
+	    		logger.info("Using custom specific state search ... [ state=" + state + " ]");
+	    		String expr = convertKeywordsIntoExpr(keywords);
+	    		Pattern p = Pattern.compile(expr);
+	    		temp = getResourcesByState(state);
+	    		Matcher m = null;
+	    		result = new ArrayList<WaterResourceDO>();
+	    		if (temp != null && temp.size() > 0) {
+	    			for (i=0; i<temp.size(); i++) {
+	    				res = temp.get(i);
+	    				m = p.matcher(res.getContent());
+	    				if (m.matches()) {
+	    					result.add(res);
+	    				}
+	    			}
+	    		}
+	    	}
+	    	else {
+	    		logger.info("Using general search ... [ " + queryString + " ]");
+			    StringBuffer queryBuffer = new StringBuffer();
+			    queryBuffer.append("SELECT FROM " + WaterResourceDO.class.getName() + " WHERE ");
+			    Set<String> queryTokens = SearchJanitorUtils.getTokensForIndexingOrQuery(queryString, MAXIMUM_NUMBER_OF_WORDS_TO_SEARCH);
+			    List<String> parametersForSearch = new ArrayList<String>(queryTokens);
+			    StringBuffer declareParametersBuffer = new StringBuffer();
+			    
+			    while (parameterCounter < queryTokens.size()) {
+			    	queryBuffer.append("fts == param" + parameterCounter);
+			        declareParametersBuffer.append("String param" + parameterCounter);
+			        if (parameterCounter + 1 < queryTokens.size()) {
+			        	queryBuffer.append(" && ");
+			            declareParametersBuffer.append(", ");
+			        }
+			        parameterCounter++;
+			    }
+			
+			    logger.info("QUERY: " + queryBuffer.toString());
+			    Query query = pm.newQuery(queryBuffer.toString());
+			    query.declareParameters(declareParametersBuffer.toString());
+			    
+			    try {
+			    	result = (List<WaterResourceDO>) query.executeWithArray(parametersForSearch.toArray());
+			    } 
+			    catch (DatastoreTimeoutException e) {
+			    	logger.severe(e.getMessage());
+			    	logger.severe("datastore timeout at: " + queryString);// + " - timestamp: " + discreteTimestamp);
+			    } 
+			    catch(DatastoreNeedIndexException e) {
+			    	logger.severe(e.getMessage());
+			    	logger.severe("datastore need index exception at: " + queryString);// + " - timestamp: " + discreteTimestamp);
+			    }
+	    	}
 	    }
 	    return result;
 	
@@ -211,6 +340,14 @@ public class WaterResourceDao extends BaseDao {
 			res = list.get(0);
 		}
 		return res;
+	}
+	
+	public List<WaterResourceDO> getResourcesByState(String stateAbbrev) {
+		List<WaterResourceDO> list = null;
+		Query query = pm.newQuery(WaterResourceDO.class, "state == stateParam");
+		query.declareParameters("String stateParam");
+		list = (List<WaterResourceDO>)query.execute(stateAbbrev);
+		return list;
 	}
 	
 	public List<WaterResourceDO> searchByKeyword(String keyword) {
