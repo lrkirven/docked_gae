@@ -131,6 +131,7 @@ public class WaterResourceDao extends BaseDao {
 	private void searchAnalysis(String queryString, String state, List<String> keywords) {
 		int i = 0;
 		String key = null;
+		String k = null;
 	   	String[] parts = queryString.split(" ");
 	   	if (parts != null && parts.length > 1) {
 	   		if (keywords == null) {
@@ -138,7 +139,8 @@ public class WaterResourceDao extends BaseDao {
 	   		}
 	   		for (i=0; i<parts.length; i++) {
 	   			key = parts[i];
-	   			if (US_STATE_MAP.containsKey(key)) {
+	   			k = key.toUpperCase();
+	   			if (US_STATE_MAP.containsKey(k)) {
 	   				state = key;
 	   				break;
 	   			}
