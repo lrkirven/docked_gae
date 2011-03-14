@@ -92,6 +92,11 @@ public class WaterResourceDao extends BaseDao {
 	 */
 	private static final double DEFAULT_RADIUS = 16093.44;
 	
+	public class SearchResults {
+		public List<String> keywords = null;
+		public String state = null;
+	};
+	
 	public void insertResource(WaterResourceDO d) {
 		int i = 0;
 		WaterResourceDO res = null;
@@ -128,8 +133,9 @@ public class WaterResourceDao extends BaseDao {
 		}
 	}
 	
-	private void searchAnalysis(String queryString, String state, List<String> keywords) {
+	private SearchResults searchAnalysis(String queryString, String state, List<String> keywords) {
 		int i = 0;
+		SearchResults res = null;
 		String key = null;
 		String k = null;
 	   	String[] parts = queryString.split(" ");
@@ -149,15 +155,17 @@ public class WaterResourceDao extends BaseDao {
 	   				keywords.add(key);
 	   			}
 	   		}
+	   		res = new SearchResults();
+	   		res.keywords = keywords;
+	   		res.state = state;
 	   	}
-	   	logger.info("Returning state=" + state + " keywords=" + keywords);
+	   	return res;
 	}
 	
-	private String convertKeywordsIntoExpr(List<String> keywords) {
+	private String convertKeywordsIntoRegularExpr(List<String> keywords) {
 		int i = 0;
 		String key = null;
 		StringBuilder expr = new StringBuilder();
-		
 	
 		for (i=0; i<keywords.size(); i++) {
 			key = keywords.get(0);
@@ -168,8 +176,6 @@ public class WaterResourceDao extends BaseDao {
 				expr.append("|");
 			}
 		}
-		
-		
 		return expr.toString();
 	}
 	
@@ -185,6 +191,7 @@ public class WaterResourceDao extends BaseDao {
 	    List<WaterResourceDO> result = null;
 	    List<WaterResourceDO> temp = null;
 	    WaterResourceDO res = null;
+	    SearchResults sr = null;
 	   
 	    if (queryString != null) {
 			queryString = queryString.trim();
@@ -192,10 +199,10 @@ public class WaterResourceDao extends BaseDao {
 	    
 			String state = null;
 			List<String> keywords = null;
-			searchAnalysis(queryString, state, keywords);
-	    	if (state != null && keywords != null && keywords.size() > 0) {
+			sr = searchAnalysis(queryString, state, keywords);
+	    	if (sr != null && sr.state != null && sr.keywords != null && sr.keywords.size() > 0) {
 	    		logger.info("Using custom specific state search ... [ state=" + state + " ]");
-	    		String expr = convertKeywordsIntoExpr(keywords);
+	    		String expr = convertKeywordsIntoRegularExpr(keywords);
 	    		Pattern p = Pattern.compile(expr);
 	    		temp = getResourcesByState(state);
 	    		Matcher m = null;
