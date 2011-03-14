@@ -137,18 +137,20 @@ public class WaterResourceDao extends BaseDao {
 	   		if (keywords == null) {
 	   			keywords = new ArrayList<String>();
 	   		}
+	   		logger.info("parts: " + parts);
 	   		for (i=0; i<parts.length; i++) {
 	   			key = parts[i];
 	   			k = key.toUpperCase();
 	   			if (US_STATE_MAP.containsKey(k)) {
-	   				state = key;
-	   				break;
+	   				logger.info("*** FOUND A STATE MATCH ---> " + k);
+	   				state = k;
 	   			}
 	   			else {
 	   				keywords.add(key);
 	   			}
 	   		}
 	   	}
+	   	logger.info("Returning state=" + state + " keywords=" + keywords);
 	}
 	
 	private String convertKeywordsIntoExpr(List<String> keywords) {
