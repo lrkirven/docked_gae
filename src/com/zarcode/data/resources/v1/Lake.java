@@ -1,6 +1,7 @@
 package com.zarcode.data.resources.v1;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -170,6 +171,7 @@ public class Lake extends ResourceBase {
 		List<WaterResourceDO> emptySet = new ArrayList<WaterResourceDO>();
 		int counter = 0;
 		GeoHash hash = null;
+		Date start = new Date();
 		
 		logger.info("keyword=" + keyword);
 		
@@ -189,6 +191,9 @@ public class Lake extends ResourceBase {
 				lake.postReturn();
 			}
 		}
+		
+		Date end = new Date();
+		logger.info("Duration: " + (end.getTime() - start.getTime()) + " msec(s)");
 	
 		return (results == null ? emptySet : results);
 	}
