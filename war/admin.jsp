@@ -24,6 +24,11 @@
 	<p><h2>Admin Access</h2></p>
 	<hr>
 	<br>
+	<a href="/initApp">Reset Application to Default</a>
+	<br>
+	<br>
+	<hr>
+	<br>
 	<FORM ENCTYPE="multipart/form-data" ACTION="/upload" METHOD=POST>
 	  	<table border="2" >
             <tr><center><td colspan="2"><p align="center"><B>UPLOAD MY APP LOADER</B><center></td></tr>

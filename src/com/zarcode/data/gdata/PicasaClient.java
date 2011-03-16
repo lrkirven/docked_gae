@@ -5,6 +5,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gdata.client.authn.oauth.GoogleOAuthHelper;
+import com.google.gdata.client.authn.oauth.GoogleOAuthParameters;
+import com.google.gdata.client.authn.oauth.OAuthException;
+import com.google.gdata.client.authn.oauth.OAuthHmacSha1Signer;
+import com.google.gdata.client.authn.oauth.OAuthSigner;
 import com.google.gdata.client.photos.PicasawebService;
 import com.google.gdata.data.Link;
 import com.google.gdata.data.photos.AlbumEntry;
@@ -17,35 +22,77 @@ import com.google.gdata.data.photos.TagEntry;
 import com.google.gdata.data.photos.UserFeed;
 import com.google.gdata.util.AuthenticationException;
 import com.google.gdata.util.ServiceException;
+import com.zarcode.common.ApplicationProps;
+import com.zarcode.platform.model.AppPropDO;
 
 public class PicasaClient {
 
   private static final String API_PREFIX = "http://picasaweb.google.com/data/feed/api/user/";
 
   private final PicasawebService service;
+  
+  private static final String SCOPE = "http://picasaweb.google.com/data/"; 
 
   /**
    * Constructs a new un-authenticated client.
    */
+  /*
   public PicasaClient(PicasawebService service) {
     this(service, null, null);
   }
+  */
 
   /**
    * Constructs a new client with the given username and password.
    */
-  public PicasaClient(PicasawebService service, String uname,
-      String passwd) {
+  public PicasaClient(PicasawebService service) throws Exception {
     this.service = service;
 
-    if (uname != null && passwd != null) {
       try {
-    	  service.setUserCredentials(uname, passwd);
+    	  OAuthSigner signer = new OAuthHmacSha1Signer();
+    	  // Finally create a new GoogleOAuthHelperObject.  This is the object you
+    	  // will use for all OAuth-related interaction.
+    	  GoogleOAuthHelper oauthHelper = new GoogleOAuthHelper(signer);
+    	  GoogleOAuthParameters params = setupOAuthCredentials();
+    	  service.setOAuthCredentials(params, signer);
       } 
-      catch (AuthenticationException e) {
-    	  throw new IllegalArgumentException("Illegal username/password combination.");
+      catch (OAuthException e) {
+    	  throw new Exception("Unable to configure OAuth credentials");
       }
-    }
+  }
+  
+  private GoogleOAuthParameters setupOAuthCredentials() {
+	  GoogleOAuthParameters oauthParameters = new GoogleOAuthParameters();
+
+	  // Set your OAuth Consumer Key (which you can register at
+	  // https://www.google.com/accounts/ManageDomains).
+	  AppPropDO p1 = ApplicationProps.getInstance().getProp("GDATA_OAUTH_CONSUMER_KEY");
+	  AppPropDO p2 = ApplicationProps.getInstance().getProp("GDATA_OAUTH_CONSUMER_SECRET");
+	  String consumerKey = p1.getStringValue();
+	  oauthParameters.setOAuthConsumerKey(consumerKey);
+
+	  // Initialize the OAuth Signer.  2-Legged OAuth must use HMAC-SHA1, which
+	  // uses the OAuth Consumer Secret to sign the request.  The OAuth Consumer
+	  // Secret can be obtained at https://www.google.com/accounts/ManageDomains.
+	  oauthParameters.setOAuthConsumerSecret(p2.getStringValue());
+	  
+	  // Set the scope for this particular service.
+	  oauthParameters.setScope(SCOPE); 
+	  
+	  return oauthParameters;
+  }
+  
+  private URL prepareUrl(String url) {
+	  URL feedUrl = null;
+	  AppPropDO p1 = ApplicationProps.getInstance().getProp("PICASA_USER");
+	  url += "?xoauth_requestor_id=" + p1.getStringValue();
+	  try {
+		  feedUrl = new URL(url);
+	  }
+	  catch (Exception e) {
+		  
+	  }
+	  return feedUrl;
   }
 
   /**
@@ -55,15 +102,16 @@ public class PicasaClient {
       ServiceException {
 
     String albumUrl = API_PREFIX + username;
-    UserFeed userFeed = getFeed(albumUrl, UserFeed.class);
-
+    URL feedUrl = prepareUrl(albumUrl);
+    UserFeed userFeed = getFeedByURL(feedUrl, UserFeed.class);
+    
     List<GphotoEntry> entries = userFeed.getEntries();
     List<AlbumEntry> albums = new ArrayList<AlbumEntry>();
     for (GphotoEntry entry : entries) {
-      GphotoEntry adapted = entry.getAdaptedEntry();
-      if (adapted instanceof AlbumEntry) {
-        albums.add((AlbumEntry) adapted);
-      }
+    	GphotoEntry adapted = entry.getAdaptedEntry();
+    	if (adapted instanceof AlbumEntry) {
+    		albums.add((AlbumEntry) adapted);
+    	}
     }
     return albums;
   }
@@ -73,7 +121,7 @@ public class PicasaClient {
    * to calling {@link #getAlbums(String)} with "default" as the username.
    */
   public List<AlbumEntry> getAlbums() throws IOException, ServiceException {
-    return getAlbums("default");
+	  return getAlbums("default");
   }
 
   /**
@@ -82,18 +130,19 @@ public class PicasaClient {
    */
   public List<TagEntry> getTags(String uname) throws IOException,
       ServiceException {
-    String tagUrl = API_PREFIX + uname + "?kind=tag";
-    UserFeed userFeed = getFeed(tagUrl, UserFeed.class);
+	  String tagUrl = API_PREFIX + uname + "?kind=tag";
+	  UserFeed userFeed = getFeedByURL(prepareUrl(tagUrl), UserFeed.class);
 
-    List<GphotoEntry> entries = userFeed.getEntries();
-    List<TagEntry> tags = new ArrayList<TagEntry>();
-    for (GphotoEntry entry : entries) {
-      GphotoEntry adapted = entry.getAdaptedEntry();
-      if (adapted instanceof TagEntry) {
-        tags.add((TagEntry) adapted);
-      }
-    }
-    return tags;
+	  List<GphotoEntry> entries = userFeed.getEntries();
+	  List<TagEntry> tags = new ArrayList<TagEntry>();
+	  
+	  for (GphotoEntry entry : entries) {
+		  GphotoEntry adapted = entry.getAdaptedEntry();
+		  if (adapted instanceof TagEntry) {
+			  tags.add((TagEntry) adapted);
+		  }
+	  }
+	  return tags;
   }
 
   /**
@@ -111,7 +160,8 @@ public class PicasaClient {
       ServiceException {
 
     String feedHref = getLinkByRel(album.getLinks(), Link.Rel.FEED);
-    AlbumFeed albumFeed = getFeed(feedHref, AlbumFeed.class);
+    URL feedUrl = prepareUrl(feedHref);
+    AlbumFeed albumFeed = getFeedByURL(feedUrl, AlbumFeed.class);
 
     List<GphotoEntry> entries = albumFeed.getEntries();
     List<PhotoEntry> photos = new ArrayList<PhotoEntry>();
@@ -194,11 +244,14 @@ public class PicasaClient {
    * create the URL object for you.  Most of the Link objects have a string
    * href which must be converted into a URL by hand, this does the conversion.
    */
-  public <T extends GphotoFeed> T getFeed(String feedHref,
-      Class<T> feedClass) throws IOException, ServiceException {
-    System.out.println("Get Feed URL: " + feedHref);
-    return service.getFeed(new URL(feedHref), feedClass);
-    }
+  @Deprecated
+  public <T extends GphotoFeed> T getFeed(String feedHref, Class<T> feedClass) throws IOException, ServiceException {
+	  return service.getFeed(new URL(feedHref), feedClass);
+  }
+  
+  public <T extends GphotoFeed> T getFeedByURL(URL feedUrl, Class<T> feedClass) throws IOException, ServiceException {
+	  return service.getFeed(feedUrl, feedClass);
+  }
 
   /**
    * Helper function to add a kind parameter to a url.

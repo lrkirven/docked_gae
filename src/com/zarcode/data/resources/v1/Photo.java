@@ -82,7 +82,7 @@ public class Photo extends ResourceBase {
 			
 			try {
 				logger.info(">>> Invoking Picasa service  ... " + username + " (" + password + ")");
-				PicasaClient client = new PicasaClient(service, username, password);
+				PicasaClient client = new PicasaClient(service);
 				List<AlbumEntry> albums = client.getAlbums();
 				logger.info(">>> Got response from Picasa service  ");
 				

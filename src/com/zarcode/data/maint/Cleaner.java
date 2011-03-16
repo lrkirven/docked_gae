@@ -50,10 +50,6 @@ public class Cleaner extends HttpServlet {
 		PhotoEntry photo = null;
 		List<PhotoEntry> photos = null;
 		PicasawebService service = new PicasawebService("DockedMobile");
-		AppPropDO p1 = ApplicationProps.getInstance().getProp("PICASA_USER");
-		String username = p1.getStringValue();
-		AppPropDO p2 = ApplicationProps.getInstance().getProp("PICASA_PASSWORD");
-		String password = p2.getStringValue();
 		Date createDate = null;
 		Calendar now = Calendar.getInstance();
 		
@@ -61,7 +57,7 @@ public class Cleaner extends HttpServlet {
 		int photosDeleted = 0;
 		
 		try {
-			PicasaClient client = new PicasaClient(service, username, password);
+			PicasaClient client = new PicasaClient(service);
 			List<AlbumEntry> albums = client.getAlbums();
 			if (albums != null && albums.size() > 0) {
 				for (i=0; i<albums.size(); i++) {
