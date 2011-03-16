@@ -52,13 +52,6 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 		addMsg((BuzzMsgDO)dataObject);
 	}
 	
-	public long deleteAll(Class cls) {
-		long rows = 0;
-		Query q = pm.newQuery(cls);
-		rows = q.deletePersistentAll();
-		return rows;
-	}
-	
 	public void deleteInstance(BuzzMsgDO m) {
 		long rows = 0;
 		pm.deletePersistent(m);

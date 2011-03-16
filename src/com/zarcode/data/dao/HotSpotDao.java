@@ -36,20 +36,18 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 		addHotSpot((HotSpotDO)dataObject);
 	}
 	
-	public long deleteAll(Class cls) {
-		long rows = 0;
-		Query q = pm.newQuery(cls);
-		rows = q.deletePersistentAll();
-		return rows;
-	}
-	
 	public void deleteInstance(HotSpotDO spot) {
 		long rows = 0;
 		pm.deletePersistent(spot);
 	}
 	
-	
-	
+
+	/**
+	 * Adds hotspot to object model.
+	 * 
+	 * @param spot
+	 * @return
+	 */
 	public HotSpotDO addHotSpot(HotSpotDO spot) {
 		HotSpotDO res = null;
 		Long spotId = null;
