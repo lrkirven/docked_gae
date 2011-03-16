@@ -1,4 +1,4 @@
-<jdo-loader loaderDao="com.zarcode.data.dao.UserDao">
+<jdo-loader clobberClass="com.zarcode.platform.model.AppPropDO" loaderDao="com.zarcode.platform.dao.AppPropDao">
 	<dataObject namespace="com.zarcode.platform.model.AppPropDO">
 		<name>PICASA_USER</name>
 		<stringValue>lazylaker71@gmail.com</stringValue>
@@ -38,6 +38,18 @@
 	<dataObject namespace="com.zarcode.platform.model.AppPropDO">
 		<name>REGISTER_SECRET</name>
 		<stringValue>dont worry be happy 137103</stringValue>
+		<numberValue></numberValue>
+		<dateValue></dateValue>
+	</dataObject>
+	<dataObject namespace="com.zarcode.platform.model.AppPropDO">
+		<name>GDATA_OAUTH_CONSUMER_KEY</name>
+		<stringValue>dockedmobile.appspot.com</stringValue>
+		<numberValue></numberValue>
+		<dateValue></dateValue>
+	</dataObject>
+	<dataObject namespace="com.zarcode.platform.model.AppPropDO">
+		<name>GDATA_OAUTH_CONSUMER_SECRET</name>
+		<stringValue>83r5R8YV18g01TTnDRrvi1zg</stringValue>
 		<numberValue></numberValue>
 		<dateValue></dateValue>
 	</dataObject>
