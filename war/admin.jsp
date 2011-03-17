@@ -21,7 +21,7 @@
 	    	session.setAttribute("USER", user);
     		BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 	%>
-	<p><h2>Admin Access</h2></p>
+	<p><h2>Admin Console By ZARCODE</h2></p>
 	<hr>
 	<br>
 	<a href="/initApp">Reset Application to Default</a>
