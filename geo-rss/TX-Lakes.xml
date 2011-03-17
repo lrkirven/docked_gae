@@ -134,13 +134,12 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            33.135250 -96.558838
-            33.046200 -96.551056
-            33.020180 -96.490173
-            33.043896 -96.430206
-            33.158249 -96.394043
-            33.170433 -96.432953
-            33.135250 -96.558838
+            33.128349 -96.558495
+            33.029678 -96.547165
+            33.027664 -96.419449
+            33.168018 -96.384430
+            33.201351 -96.427002
+            33.128349 -96.558495
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -156,13 +155,13 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            33.012119 -96.480560
-            32.959129 -96.524506
-            32.896885 -96.602783
-            32.844982 -96.594543
-            32.794895 -96.493378
-            32.903343 -96.471405
-            33.012119 -96.480560
+            33.017876 -96.472321
+            33.017876 -96.493607
+            32.896881 -96.602783
+            32.844978 -96.594543
+            32.781502 -96.492233
+            32.910721 -96.462021
+            33.017876 -96.472321
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -2021,6 +2020,26 @@
             28.119226 -97.720642
             27.976212 -97.951355
             28.308613 -98.012466
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">00049e9d831a85f76f10f</guid>
+    <pubDate>Wed, 16 Mar 2011 18:14:13 +0000</pubDate>
+    <title>White Rock Lake</title>
+    <description><![CDATA[<div dir="ltr">reportKey=TX:WHITEROCK</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+            32.858826 -96.722092
+            32.833012 -96.706467
+            32.812382 -96.723976
+            32.837627 -96.741653
+            32.858826 -96.722092
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
