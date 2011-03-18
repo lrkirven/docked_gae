@@ -50,6 +50,7 @@ public class Photo extends ResourceBase {
 		bucket.setAlbumId(album.getId());
 		bucket.setBytesUsed(album.getBytesUsed());
 		bucket.setFullFlag(false);
+		bucket.setAlbumName(album.getName());
 		bucket.setRemainingPhotos(album.getPhotosLeft());
 		return bucket;
 	}

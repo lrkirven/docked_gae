@@ -34,6 +34,9 @@ public class BucketDO implements Serializable {
 	private String albumId = null; 
 	
 	@Persistent
+	private String albumName = null; 
+	
+	@Persistent
 	private Integer remainingPhotos = null;
 	
 	@Persistent
@@ -72,6 +75,15 @@ public class BucketDO implements Serializable {
 
 	public void setAlbumId(String albumId) {
 		this.albumId = albumId;
+	}
+	
+	@XmlElement
+	public String getAlbumName() {
+		return albumName;
+	}
+
+	public void setAlbumName(String albumName) {
+		this.albumName = albumName;
 	}
 	
 	@XmlElement
