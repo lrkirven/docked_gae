@@ -17,6 +17,7 @@ import com.google.gdata.data.photos.AlbumEntry;
 import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.BucketDao;
+import com.zarcode.data.exception.AllBucketsAreFullException;
 import com.zarcode.data.gdata.PicasaClient;
 import com.zarcode.data.model.BucketDO;
 import com.zarcode.data.resources.ResourceBase;
@@ -38,6 +39,12 @@ public class Photo extends ResourceBase {
 	private static int NO_ACTIVE_BUCKETS = 10;
 	
 	
+	/**
+	 * This method creates object instance of a remote bucket in Picasa.
+	 * 
+	 * @param album
+	 * @return
+	 */
 	private BucketDO createBucket(AlbumEntry album) {
 		BucketDO bucket = new BucketDO();
 		bucket.setAlbumId(album.getId());
@@ -64,24 +71,32 @@ public class Photo extends ResourceBase {
 		List<BucketDO> buckets = dao.getAllActiveBuckets();
 		logger.info("No of buckets found: " + (buckets == null ? 0 : buckets.size()));
 		
+		if (buckets != null && buckets.size() > 0) {
+			logger.info("Found a local store of buckets -- " + buckets.size());
+			for (i=0; i<buckets.size(); i++) {
+				b = buckets.get(i);
+				if (b.getRemainingPhotos() > 10) {
+					target = b;
+					break;
+				}
+				else {
+					dao.markFull(b);
+				}
+			}
+			if (target == null) {
+				logger.warning("Unable to available bucket -- all of our buckets are full.");
+				throw new AllBucketsAreFullException();
+			}
+		}
 		/*
 		 * if local store is empty, go to picasa and create a local store
 		 */
-		if (buckets == null) {
-			
+		else {
 			logger.info("Trying to go Picasa to create a local store of buckets ...");
-			
 			PicasawebService service = new PicasawebService("DockedMobile");
 			
-			AppPropDO p1 = ApplicationProps.getInstance().getProp("PICASA_USER");
-			String username = p1.getStringValue();
-			AppPropDO p2 = ApplicationProps.getInstance().getProp("PICASA_PASSWORD");
-			String password = p2.getStringValue();
-			Date createDate = null;
-			Calendar now = Calendar.getInstance();
-			
 			try {
-				logger.info(">>> Invoking Picasa service  ... " + username + " (" + password + ")");
+				logger.info(">>> Invoking Picasa service  ... ");
 				PicasaClient client = new PicasaClient(service);
 				List<AlbumEntry> albums = client.getAlbums();
 				logger.info(">>> Got response from Picasa service  ");
@@ -105,28 +120,14 @@ public class Photo extends ResourceBase {
 				}
 			}
 			catch (Exception e) {
-				logger.severe("EXCEPTION ::: TRYING TO GET TO PICASA " + Util.getStackTrace(e));
+				logger.severe("[EXCEPTION] -- Unable to complete communicatation with Picasa services --> " + e.getMessage() + "\n" + Util.getStackTrace(e));
 			}
 			
 		}
 		/*
 		 * okay, we have a local store, return first best album
 		 */
-		else {
-			
-			logger.info("Got a local store of buckets ... returning best available");
-			
-			for (i=0; i<buckets.size(); i++) {
-				b = buckets.get(i);
-				if (b.getRemainingPhotos() > 10) {
-					target = b;
-					break;
-				}
-				else {
-					dao.markFull(b);
-				}
-			}
-		}
+		
 		return target;
 		
 	} // getActiveBucket

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.google.gdata.client.authn.oauth.GoogleOAuthHelper;
 import com.google.gdata.client.authn.oauth.GoogleOAuthParameters;
@@ -23,77 +24,81 @@ import com.google.gdata.data.photos.UserFeed;
 import com.google.gdata.util.AuthenticationException;
 import com.google.gdata.util.ServiceException;
 import com.zarcode.common.ApplicationProps;
+import com.zarcode.data.resources.v1.Buzz;
 import com.zarcode.platform.model.AppPropDO;
+import com.zarcode.common.Util;
 
 public class PicasaClient {
+	
+	private Logger logger = Logger.getLogger(PicasaClient.class.getName());
 
-  private static final String API_PREFIX = "http://picasaweb.google.com/data/feed/api/user/";
+	private static final String API_PREFIX = "https://picasaweb.google.com/data/feed/api/user/";
 
-  private final PicasawebService service;
+	private final PicasawebService service;
   
-  private static final String SCOPE = "http://picasaweb.google.com/data/"; 
+	private static final String SCOPE = "https://picasaweb.google.com/data/"; 
 
-  /**
-   * Constructs a new un-authenticated client.
-   */
-  /*
-  public PicasaClient(PicasawebService service) {
-    this(service, null, null);
-  }
-  */
 
-  /**
-   * Constructs a new client with the given username and password.
-   */
-  public PicasaClient(PicasawebService service) throws Exception {
-    this.service = service;
+	/**
+	 * Constructs a new client with the given username and password.
+	 */
+	public PicasaClient(PicasawebService service) throws Exception {
+		this.service = service;
 
-      try {
-    	  OAuthSigner signer = new OAuthHmacSha1Signer();
-    	  // Finally create a new GoogleOAuthHelperObject.  This is the object you
-    	  // will use for all OAuth-related interaction.
-    	  GoogleOAuthHelper oauthHelper = new GoogleOAuthHelper(signer);
-    	  GoogleOAuthParameters params = setupOAuthCredentials();
-    	  service.setOAuthCredentials(params, signer);
-      } 
-      catch (OAuthException e) {
-    	  throw new Exception("Unable to configure OAuth credentials");
-      }
-  }
+		try {
+			/*
+			OAuthSigner signer = new OAuthHmacSha1Signer();
+			GoogleOAuthParameters params = setupOAuthCredentials();
+			service.setOAuthCredentials(params, signer);
+			GoogleOAuthHelper oauthHelper = new GoogleOAuthHelper(signer);
+			*/
+			AppPropDO p = ApplicationProps.getInstance().getProp("AUTHSUB_SESSION_TOKEN");
+			String authSubToken = p.getStringValue(); 
+			service.useSsl();
+			service.setAuthSubToken(authSubToken);
+		} 
+		catch (Exception e) {
+			throw new Exception("Unable to configure application credentials");
+		}
+	}
   
-  private GoogleOAuthParameters setupOAuthCredentials() {
-	  GoogleOAuthParameters oauthParameters = new GoogleOAuthParameters();
+	private GoogleOAuthParameters setupOAuthCredentials() {
+		GoogleOAuthParameters oauthParameters = new GoogleOAuthParameters();
 
-	  // Set your OAuth Consumer Key (which you can register at
-	  // https://www.google.com/accounts/ManageDomains).
-	  AppPropDO p1 = ApplicationProps.getInstance().getProp("GDATA_OAUTH_CONSUMER_KEY");
-	  AppPropDO p2 = ApplicationProps.getInstance().getProp("GDATA_OAUTH_CONSUMER_SECRET");
-	  String consumerKey = p1.getStringValue();
-	  oauthParameters.setOAuthConsumerKey(consumerKey);
+		// Set your OAuth Consumer Key (which you can register at
+		// https://www.google.com/accounts/ManageDomains).
+		AppPropDO p1 = ApplicationProps.getInstance().getProp("GDATA_OAUTH_CONSUMER_KEY");
+		AppPropDO p2 = ApplicationProps.getInstance().getProp("GDATA_OAUTH_CONSUMER_SECRET");
+		String consumerKey = p1.getStringValue();
+		oauthParameters.setOAuthConsumerKey(consumerKey);
 
-	  // Initialize the OAuth Signer.  2-Legged OAuth must use HMAC-SHA1, which
-	  // uses the OAuth Consumer Secret to sign the request.  The OAuth Consumer
-	  // Secret can be obtained at https://www.google.com/accounts/ManageDomains.
-	  oauthParameters.setOAuthConsumerSecret(p2.getStringValue());
-	  
-	  // Set the scope for this particular service.
-	  oauthParameters.setScope(SCOPE); 
-	  
-	  return oauthParameters;
-  }
+		// Initialize the OAuth Signer.  2-Legged OAuth must use HMAC-SHA1, which
+		// uses the OAuth Consumer Secret to sign the request.  The OAuth Consumer
+		// Secret can be obtained at https://www.google.com/accounts/ManageDomains.
+		String secret = p2.getStringValue();
+		logger.info("Consumer Key: " + consumerKey + " Secret: " + secret);
+		oauthParameters.setOAuthConsumerSecret(secret);
   
-  private URL prepareUrl(String url) {
-	  URL feedUrl = null;
-	  AppPropDO p1 = ApplicationProps.getInstance().getProp("PICASA_USER");
-	  url += "?xoauth_requestor_id=" + p1.getStringValue();
-	  try {
-		  feedUrl = new URL(url);
-	  }
-	  catch (Exception e) {
-		  
-	  }
-	  return feedUrl;
-  }
+		// Set the scope for this particular service.
+		logger.info("Scope: " + SCOPE);
+		oauthParameters.setScope(SCOPE); 
+		
+		return oauthParameters;
+	}
+  
+	private URL prepareUrl(String url) {
+		URL feedUrl = null;
+		AppPropDO p1 = ApplicationProps.getInstance().getProp("PICASA_USER");
+		String modURL = url + "?xoauth_requestor_id=" + p1.getStringValue() + "&max-results=1000";
+		try {
+			logger.info("Using Google Data Url: " + modURL);
+			feedUrl = new URL(modURL);
+		}
+		catch (Exception e) {
+			logger.severe("prepareUrl(): [EXCEPTION]\n\n" + Util.getStackTrace(e));
+		}
+		return feedUrl;
+	}
 
   /**
    * Retrieves the albums for the given user.
