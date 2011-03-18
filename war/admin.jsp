@@ -14,17 +14,23 @@
 	<%
 	    UserService userService = UserServiceFactory.getUserService();
 	    User user = userService.getCurrentUser();
-	    if (user != null) {
-	    	if (!user.getEmail().equalsIgnoreCase("lrkirven@gmail.com")) {
-	    		response.sendRedirect("/unauthorizedUser");	
-	    	}
+	    if (user != null && user.getEmail().equalsIgnoreCase("lrkirven@gmail.com")) {
+	    	
+	    	//if (!user.getEmail().equalsIgnoreCase("lrkirven@gmail.com")) {
+	    	//	response.sendRedirect("/unauthorizedUser");	
+	    	//}
 	    	session.setAttribute("USER", user);
     		BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 	%>
-	<p><h2>Admin Console By ZARCODE</h2></p>
+	<p><h2>Admin Console By ZARCODE [me] </h2></p>
 	<hr>
 	<br>
 	<a href="/initApp">Reset Application to Default</a>
+	<br>
+	<br>
+	<hr>
+	<br>
+	<a href="/_authSub?start=true">Install Google AuthSub Session Token</a>
 	<br>
 	<br>
 	<hr>
@@ -62,12 +68,25 @@
 			<tr><td colspan="2"><p align="right"><INPUT TYPE="submit" VALUE="Send File" ></p></td></tr>
         <table>
     </FORM>
+    <%
+	    } 
+	    else if (user != null && user.getEmail().equalsIgnoreCase("lazylaker71@gmail.com")) {
+	    
+	%>
+	<p><h2>Admin Console By ZARCODE [ll]</h2></p>
+	<hr>
+	<br>
+	<a href="/_authSub?start=true">Install Google AuthSub Session Token</a>
+	<br>
+	<br>
+	<hr>
+	<br>
 	<%
 	    } 
 	    else {
 	%>
 	
-	<p><b>Admin Access</b><br>
+	<p><b>Admin Console By ZARCODE</b><br>
 	<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign In</a></p>
 	
 	<%

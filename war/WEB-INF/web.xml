@@ -157,6 +157,15 @@
 	</servlet-mapping>
 	
 	<servlet> 
+  		<servlet-name>googleAuthSub</servlet-name> 
+  		<servlet-class>com.zarcode.security.AuthSubAgent</servlet-class> 
+   </servlet> 
+	<servlet-mapping> 
+  		<servlet-name>googleAuthSub</servlet-name> 
+  		<url-pattern>/_authSub</url-pattern> 
+	</servlet-mapping>
+	
+	<servlet> 
   		<servlet-name>georssupload</servlet-name> 
   		<servlet-class>com.zarcode.data.maint.GeoRSSUpload</servlet-class> 
    </servlet> 
