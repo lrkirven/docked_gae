@@ -34,6 +34,9 @@ public class BucketDO implements Serializable {
 	private String albumId = null; 
 	
 	@Persistent
+	private String urlId = null; 
+	
+	@Persistent
 	private String albumName = null; 
 	
 	@Persistent
@@ -66,6 +69,15 @@ public class BucketDO implements Serializable {
 
 	public void setTimestamp(Long timestamp) {
 		this.timestamp = timestamp;
+	}
+	
+	@XmlElement
+	public String getUrlId() {
+		return urlId;
+	}
+
+	public void setUrlId(String urlId) {
+		this.urlId = urlId;
 	}
 	
 	@XmlElement

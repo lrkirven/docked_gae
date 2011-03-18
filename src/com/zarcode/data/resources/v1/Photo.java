@@ -1,7 +1,5 @@
 package com.zarcode.data.resources.v1;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -13,15 +11,15 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
 import com.google.gdata.client.photos.PicasawebService;
+import com.google.gdata.data.TextConstruct;
 import com.google.gdata.data.photos.AlbumEntry;
-import com.zarcode.common.ApplicationProps;
+import com.google.gdata.data.photos.GphotoEntry;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.BucketDao;
 import com.zarcode.data.exception.AllBucketsAreFullException;
 import com.zarcode.data.gdata.PicasaClient;
 import com.zarcode.data.model.BucketDO;
 import com.zarcode.data.resources.ResourceBase;
-import com.zarcode.platform.model.AppPropDO;
 
 @Path("/v1/photos")
 public class Photo extends ResourceBase {
@@ -47,10 +45,16 @@ public class Photo extends ResourceBase {
 	 */
 	private BucketDO createBucket(AlbumEntry album) {
 		BucketDO bucket = new BucketDO();
-		bucket.setAlbumId(album.getId());
+		bucket.setUrlId(album.getId());
+		GphotoEntry adapted = null;
+		bucket.setUrlId(album.getId());
+		bucket.setAlbumId(album.getGphotoId());
 		bucket.setBytesUsed(album.getBytesUsed());
 		bucket.setFullFlag(false);
-		bucket.setAlbumName(album.getTitle().getPlainText());
+		TextConstruct t = album.getTitle();
+		if (t != null) {
+			bucket.setAlbumName(t.getPlainText());
+		}
 		bucket.setRemainingPhotos(album.getPhotosLeft());
 		return bucket;
 	}
