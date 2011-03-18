@@ -249,11 +249,9 @@ public class Cleaner extends HttpServlet {
 			logger.info("# of peg counter(s) deleted: " + pegCounterDeleted);
 			report.append("# of peg counter(s) deleted: " + pegCounterDeleted + "\n");
 			
-			/*
 			int photosDeleted = cleanPicasaPhotos();
 			logger.info("# of picasa photo(s) deleted: " + photosDeleted);
 			report.append("# of picasa photo(s) deleted: " + photosDeleted + "\n");
-			*/
 			
 			int anonymousUsersDeleted = cleanAnonymousUsers();
 			Calendar done = Calendar.getInstance();
