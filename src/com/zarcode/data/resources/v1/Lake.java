@@ -156,7 +156,16 @@ public class Lake extends ResourceBase {
 		logger.info("lat=" + lat + " lng=" + lng);
 		WGS84Point pt = new WGS84Point(lat, lng);
 		waterResDao = new WaterResourceDao();
-		List<WaterResourceDO> results = waterResDao.findClosest(lat, lng, 3.0, 3);
+		List<WaterResourceDO> results = waterResDao.findClosest(lat, lng, 4.0, 3);
+		
+		if (results.size() > 0) {
+			WaterResourceDO lake = null;
+			List<UserDO> users = null;
+			for (i=0; i<results.size(); i++) {
+				lake = results.get(i);
+				lake.postReturn();
+			}
+		}
 	
 		return (results == null ? emptySet : results);
 	}
