@@ -79,7 +79,7 @@ public class RssFeedGenerator extends HttpServlet {
 	    	double lat = Double.parseDouble(latParam);
 	    	double lng = Double.parseDouble(lngParam);
 	    	WaterResourceDao dao = new WaterResourceDao();
-	    	List<WaterResourceDO> res = dao.findClosest(lat, lng, 5);
+	    	List<WaterResourceDO> res = dao.findClosest(lat, lng, 0.5, 5);
 	    	
 	    	try {
 	    		if (res != null && res.size() > 0) {
