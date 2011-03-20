@@ -33,6 +33,8 @@ public class Lake extends ResourceBase {
 	
 	private Logger logger = Logger.getLogger(Lake.class.getName());
 	
+	private static final int MAX_RESOURCES_RETURNED = 20;
+	
 	@Context 
 	UriInfo uriInfo = null;
     
@@ -170,28 +172,26 @@ public class Lake extends ResourceBase {
 		UserDao userDao = null;
 		List<WaterResourceDO> emptySet = new ArrayList<WaterResourceDO>();
 		int counter = 0;
+		List<WaterResourceDO> results = null;
 		GeoHash hash = null;
 		Date start = new Date();
-		
 		logger.info("keyword=" + keyword);
-		
-		waterResDao = new WaterResourceDao();
-		List<WaterResourceDO> results = waterResDao.search(keyword);
-		
-		logger.info("# of matches: " + (results == null ? 0 : results.size()));
-		
-		if (results.size() > 20) {
-			results = results.subList(0, 20);
-		}
-		if (results.size() > 0) {
-			WaterResourceDO lake = null;
-			List<UserDO> users = null;
-			for (i=0; i<results.size(); i++) {
-				lake = results.get(i);
-				lake.postReturn();
+		if (keyword != null && keyword.length() > 0) {
+			waterResDao = new WaterResourceDao();
+			results = waterResDao.search(keyword);
+			logger.info("# of matches: " + (results == null ? 0 : results.size()));
+			if (results.size() > MAX_RESOURCES_RETURNED) {
+				results = results.subList(0, MAX_RESOURCES_RETURNED);
+			}
+			if (results.size() > 0) {
+				WaterResourceDO lake = null;
+				List<UserDO> users = null;
+				for (i=0; i<results.size(); i++) {
+					lake = results.get(i);
+					lake.postReturn();
+				}
 			}
 		}
-		
 		Date end = new Date();
 		logger.info("Duration: " + (end.getTime() - start.getTime()) + " msec(s)");
 	

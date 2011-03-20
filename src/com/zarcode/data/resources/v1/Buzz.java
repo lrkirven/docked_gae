@@ -106,7 +106,7 @@ public class Buzz extends ResourceBase {
 					userDao = new UserDao();
 					UserDO user = userDao.getUserByIdClear(buzzMsg.getIdClear());
 					if (user == null) {
-						logger.warning("*** REJECTED -- Unable to find a matching user for llId=" + llId);
+						logger.warning("*** REJECTED -- Unable to find a matching user for llId=" + buzzMsg.getIdClear());
 						throw new BadUserDataProvidedException();
 					}
 				
