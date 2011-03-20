@@ -394,7 +394,7 @@ public class WaterResourceDao extends BaseDao {
 		
 		WGS84Point pt = new WGS84Point(lat, lng);
 		
-		List<WaterResourceDO> res = findClosest(lat, lng, 1);
+		List<WaterResourceDO> res = findClosest(lat, lng, 0.5, 1);
 		if (res != null && res.size() > 0) {
 			for (i=0; i<res.size(); i++) {
 				r = res.get(i);
@@ -416,7 +416,16 @@ public class WaterResourceDao extends BaseDao {
 		
 	} // findBestResource
 	
-	public List<WaterResourceDO> findClosest(double lat, double lng, int retryLimit) {
+	/**
+	 * This method returns bodies of water within specified radius. 
+	 * 
+	 * @param lat
+	 * @param lng
+	 * @param radiusFactor factors of 10 mi radius
+	 * @param retryLimit
+	 * @return
+	 */
+	public List<WaterResourceDO> findClosest(double lat, double lng, double radiusFactor, int retryLimit) {
 		int i = 0;
 		int retryCounter = 0;
 		boolean foundOneOrMore = true;
@@ -424,7 +433,7 @@ public class WaterResourceDao extends BaseDao {
 		List<WaterResourceDO> res1 = null;
 		List<GeoHash> geoKeys = null;
 		GeoHashCircleQuery geoQuery = null;
-		double radius = DEFAULT_RADIUS/2;
+		double radius = DEFAULT_RADIUS * radiusFactor;
 		
 		logger.info("Starting with lat=" + lat + " lng=" + lng + " radius=" + radius);
 		

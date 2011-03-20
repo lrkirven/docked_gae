@@ -269,7 +269,7 @@ public class Buzz extends ResourceBase {
 			results = new ArrayList<BuzzMsgDO>();
 			waterResDao = new WaterResourceDao();
 			logger.info("QUERY: Searching for local water resources ...");
-			resourceList = waterResDao.findClosest(lat, lng, 3);
+			resourceList = waterResDao.findClosest(lat, lng, 0.5, 3);
 			//
 			// if we have found some local lakes, let's see what recents events that they 
 			// have
@@ -363,7 +363,7 @@ public class Buzz extends ResourceBase {
 				results = new ArrayList<BuzzMsgDO>();
 				waterResDao = new WaterResourceDao();
 				logger.info("QUERY: Searching for local water resources ...");
-				resourceList = waterResDao.findClosest(lat, lng, 3);
+				resourceList = waterResDao.findClosest(lat, lng, 2.0, 3);
 				//
 				// if we have found some local lakes, let's see what recents events that they 
 				// have
