@@ -1,6 +1,7 @@
 package com.zarcode.data.resources.v1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -17,6 +18,7 @@ import ch.hsr.geohash.GeoHash;
 import ch.hsr.geohash.WGS84Point;
 
 import com.google.gdata.data.maps.FeatureEntry;
+import com.zarcode.common.GeoUtil;
 import com.zarcode.data.dao.BuzzDao;
 import com.zarcode.data.dao.PegCounterDao;
 import com.zarcode.data.dao.UserDao;
@@ -147,24 +149,32 @@ public class Lake extends ResourceBase {
 	@Produces("application/json")
 	public List<WaterResourceDO> findClosest(@QueryParam("lat") double lat, @QueryParam("lng") double lng) {
 		int i = 0;
+		double dist = 0;
 		StringBuilder sb = null;
 		WaterResourceDao waterResDao = null;
 		List<WaterResourceDO> emptySet = new ArrayList<WaterResourceDO>();
-		int counter = 0;
+		WGS84Point ctr = null;
 		GeoHash hash = null;
+		Date start = new Date();
 		
 		logger.info("lat=" + lat + " lng=" + lng);
 		WGS84Point pt = new WGS84Point(lat, lng);
 		waterResDao = new WaterResourceDao();
-		List<WaterResourceDO> results = waterResDao.findClosest(lat, lng, 4.0, 3);
+		List<WaterResourceDO> results = waterResDao.findClosest(lat, lng, 0.5, 3);
 		
 		if (results.size() > 0) {
 			WaterResourceDO lake = null;
 			for (i=0; i<results.size(); i++) {
 				lake = results.get(i);
 				lake.postReturn();
+				ctr = GeoUtil.getPolygonCentroid(lake.getPolygon());
+				dist = GeoUtil.distanceBtwAB(lat, lng, ctr.getLat(), ctr.getLng());
+				lake.setDistanceAway(dist);
 			}
+			Collections.sort(results);
 		}
+		Date end = new Date();
+		logger.info("Duration: " + (end.getTime() - start.getTime()) + " msec(s)");
 	
 		return (results == null ? emptySet : results);
 	}

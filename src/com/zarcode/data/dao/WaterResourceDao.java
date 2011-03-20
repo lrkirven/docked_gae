@@ -122,8 +122,9 @@ public class WaterResourceDao extends BaseDao {
         			pair.setRegion(d.getRegion());
         			pair.setMap(d.getMap());
         			pair.setResourceId(d.getResourceId());
-        			GeoHash geoHashKey = GeoHash.withCharacterPrecision(pt.getLat(), pt.getLng(), 12);
-        			pair.setGeoHashKey(geoHashKey.toBase32());
+        			GeoHash geoHashKey = GeoHash.withBitPrecision(pt.getLat(), pt.getLng(), 60);
+        			// pair.setGeoHashKey(geoHashKey.toBase32());
+        			pair.setGeoHashBits(geoHashKey.longValue());
         			pm.makePersistent(pair);
         		}
         	}
@@ -495,59 +496,40 @@ public class WaterResourceDao extends BaseDao {
 	private List<GeoHash2ResourceMapDO> _findClosest(List<GeoHash> geoKeys) {
 		int i = 0;
 		GeoHash hash = null;
+		GeoHash sw = null;
+		GeoHash ne = null;
 		List<GeoHash2ResourceMapDO> res = null;
+		List<GeoHash2ResourceMapDO> list = null;
 		
 		logger.info("# of geo hash key(s) found: " + geoKeys.size());
 		
 		//
 		// only get keys of objects
 		//
-		StringBuilder sb = new StringBuilder();
-		sb.append("(");
 		int keyCount = geoKeys.size();
 		String geoHashKeyStr = null;
 		for (i=0; i<keyCount; i++) {
 			hash = geoKeys.get(i);
-			geoHashKeyStr = hash.toBase32();
-			logger.info( i + ") geoHashKeyStr: " + geoHashKeyStr);
-			if (geoHashKeyStr.length() == 6) {
-				sb.append("geoHashKey6 == ");
-				sb.append("'");
-				sb.append(geoHashKeyStr);
-				sb.append("'");
-			}
-			else if (geoHashKeyStr.length() == 5) {
-				sb.append("geoHashKey4 == ");
-				sb.append("'");
-				sb.append(geoHashKeyStr.substring(0, 4));
-				sb.append("'");
-			}
-			else if (geoHashKeyStr.length() == 4) {
-				sb.append("geoHashKey4 == ");
-				sb.append("'");
-				sb.append(geoHashKeyStr);
-				sb.append("'");
-			}
-			else if (geoHashKeyStr.length() == 3) {
-				sb.append("geoHashKey2 == ");
-				sb.append("'");
-				sb.append(geoHashKeyStr.substring(0, 2));
-				sb.append("'");
-			}
-			else if (geoHashKeyStr.length() == 2) {
-				sb.append("geoHashKey2 == ");
-				sb.append("'");
-				sb.append(geoHashKeyStr);
-				sb.append("'");
-			}
-			if ((i+1) < keyCount) {
-				sb.append(" || ");
+			sw = hash.getSouthernNeighbour().getWesternNeighbour();
+			ne = hash.getNorthernNeighbour().getEasternNeighbour();
+			StringBuilder sb = new StringBuilder();
+			sb.append("(");
+			sb.append("geoHashBits >= ");
+			sb.append(sw.longValue());
+			sb.append(" && ");
+			sb.append("geoHashBits <= ");
+			sb.append(ne.longValue());
+			sb.append(")");
+			logger.info("Query string: " + sb.toString());
+			Query query = pm.newQuery(GeoHash2ResourceMapDO.class, sb.toString());
+			res = (List<GeoHash2ResourceMapDO>)query.execute();
+			if (res != null && res.size() > 0) {
+				if (list == null) {
+					list = new ArrayList<GeoHash2ResourceMapDO>();
+				}
+				list.addAll(res);
 			}
 		}
-		sb.append(")");
-		logger.info("Query string: " + sb.toString());
-		Query query = pm.newQuery(GeoHash2ResourceMapDO.class, sb.toString());
-		res = (List<GeoHash2ResourceMapDO>)query.execute();
 		
 		logger.info("_findClosest(): Exit");
 		

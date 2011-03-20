@@ -30,6 +30,10 @@ public class GeoHash2ResourceMapDO extends AbstractLoaderDO implements Serializa
 	private String map = null;
 	
 	@Persistent
+	private Long geoHashBits = null;
+	
+	/*
+	@Persistent
 	private String geoHashKey12 = null;
 	
 	@Persistent
@@ -40,6 +44,7 @@ public class GeoHash2ResourceMapDO extends AbstractLoaderDO implements Serializa
 	
 	@Persistent
 	private String geoHashKey2 = null;
+	*/
 	
 	public void postCreation() {
 	}
@@ -68,16 +73,28 @@ public class GeoHash2ResourceMapDO extends AbstractLoaderDO implements Serializa
 		this.resourceId = resourceId;
 	}
 	
+	public Long getGeoHashBits() {
+		return geoHashBits;
+	}
+	
+	public void setGeoHashBits(Long val) {
+		geoHashBits = val;
+	}
+	
+	/*
 	public String getGeoHashKey() {
 		return geoHashKey12;
 	}
 
 	public void setGeoHashKey(String geoHashKey) {
-		this.geoHashKey12 = geoHashKey;
-		this.geoHashKey6 = geoHashKey.substring(0, 6);
-		this.geoHashKey4 = geoHashKey.substring(0, 4);
-		this.geoHashKey2 = geoHashKey.substring(0, 2);
+		if (geoHashKey != null && geoHashKey.length() > 0) {
+			this.geoHashKey12 = geoHashKey;
+			this.geoHashKey6 = geoHashKey.substring(0, 6);
+			this.geoHashKey4 = geoHashKey.substring(0, 4);
+			this.geoHashKey2 = geoHashKey.substring(0, 2);
+		}
 	}
+	*/
 	
 	public String toString() {
 		return "GeoHash2ResourceMapDO::" + mapId;

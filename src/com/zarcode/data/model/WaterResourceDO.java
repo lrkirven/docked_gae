@@ -28,12 +28,15 @@ import com.zarcode.utils.SearchJanitorUtils;
 
 @XmlRootElement(name = "Resource") 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
-public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
+public class WaterResourceDO  extends AbstractLoaderDO implements Serializable, Comparable {
 	
 	private Logger logger = Logger.getLogger(WaterResourceDO.class.getName());
 
 	@NotPersistent
 	private int activeUsers = 0;
+	
+	@NotPersistent
+	private double distanceAway = 0;
 	
 	@PrimaryKey 
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
@@ -108,6 +111,17 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 		lastUpdateText = AppCommon.generateTimeOffset(lastUpdate);
 		logger.info("postReturn: lastUpdateText=" + lastUpdateText);
 	}
+	
+	public int compareTo(Object o) {
+		int val = 0; 
+		if (((WaterResourceDO)o).distanceAway < this.distanceAway) {
+			val = 1;
+		}
+		else if (((WaterResourceDO)o).distanceAway > this.distanceAway) {
+			val = -1;
+		}
+		return val;
+	}
 
 	@XmlElement
 	public Long getResourceId() {
@@ -171,6 +185,15 @@ public class WaterResourceDO  extends AbstractLoaderDO implements Serializable {
 
 	public void setGuid(String guid) {
 		this.guid = guid;
+	}
+	
+	@XmlElement
+	public Double getDistanceAway() {
+		return distanceAway;
+	}
+
+	public void setDistanceAway(Double distanceAway) {
+		this.distanceAway = distanceAway;
 	}
 	
 	

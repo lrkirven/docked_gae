@@ -9,18 +9,6 @@
         <property name="timestamp" direction="asc"/>
     </datastore-index>
 	<datastore-index kind="BuzzMsgDO" ancestor="false" source="manual">
-        <property name="geoHashKey2" direction="asc"/>
-        <property name="timestamp" direction="asc"/>
-    </datastore-index>
-	<datastore-index kind="BuzzMsgDO" ancestor="false" source="manual">
-        <property name="geoHashKey4" direction="asc"/>
-        <property name="timestamp" direction="asc"/>
-    </datastore-index>
-	<datastore-index kind="BuzzMsgDO" ancestor="false" source="manual">
-        <property name="geoHashKey6" direction="asc"/>
-        <property name="timestamp" direction="asc"/>
-    </datastore-index>
-	<datastore-index kind="BuzzMsgDO" ancestor="false" source="manual">
         <property name="resKey" direction="asc"/>
         <property name="version" direction="asc"/>
         <property name="timestamp" direction="asc"/>
