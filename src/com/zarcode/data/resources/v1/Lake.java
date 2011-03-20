@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
@@ -181,17 +182,17 @@ public class Lake extends ResourceBase {
 	
 	
 	@GET 
-	@Path("/search")
+	@Path("/search/{keyword}")
 	@Produces("application/json")
-	public List<WaterResourceDO> searchLakes(@QueryParam("keyword") String keyword) {
+	public List<WaterResourceDO> searchLakes(@PathParam("keyword") String keyword, @QueryParam("lat") double lat, @QueryParam("lng") double lng) {
 		int i = 0;
+		double dist = 0;
 		StringBuilder sb = null;
 		WaterResourceDao waterResDao = null;
-		UserDao userDao = null;
 		List<WaterResourceDO> emptySet = new ArrayList<WaterResourceDO>();
-		int counter = 0;
+		WGS84Point ctr = null;
 		List<WaterResourceDO> results = null;
-		GeoHash hash = null;
+		
 		Date start = new Date();
 		logger.info("keyword=" + keyword);
 		if (keyword != null && keyword.length() > 0) {
@@ -207,7 +208,11 @@ public class Lake extends ResourceBase {
 				for (i=0; i<results.size(); i++) {
 					lake = results.get(i);
 					lake.postReturn();
+					ctr = GeoUtil.getPolygonCentroid(lake.getPolygon());
+					dist = GeoUtil.distanceBtwAB(lat, lng, ctr.getLat(), ctr.getLng());
+					lake.setDistanceAway(dist);
 				}
+				Collections.sort(results);
 			}
 		}
 		Date end = new Date();
