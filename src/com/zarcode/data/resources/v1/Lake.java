@@ -160,7 +160,6 @@ public class Lake extends ResourceBase {
 		
 		if (results.size() > 0) {
 			WaterResourceDO lake = null;
-			List<UserDO> users = null;
 			for (i=0; i<results.size(); i++) {
 				lake = results.get(i);
 				lake.postReturn();
