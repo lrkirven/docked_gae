@@ -414,4 +414,19 @@ public class Buzz extends ResourceBase {
 		
 	}
 	
+	@GET 
+	@Path("/msgId/{msgId}")
+	@Produces("application/json")
+	public BuzzMsgDO getSpecificBuzzMsg(@PathParam("msgId") Long msgId) {
+		int i = 0;
+		List<BuzzMsgDO> results = null;
+		BuzzMsgDO res = null;
+		BuzzDao buzzDao = null;
+		if (msgId != null) {
+			buzzDao = new BuzzDao();
+			res = buzzDao.getMsgById(msgId);
+		}
+		return res;
+	}
+	
 } // Buzz
