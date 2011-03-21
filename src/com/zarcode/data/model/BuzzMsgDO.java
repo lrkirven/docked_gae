@@ -21,6 +21,7 @@ import ch.hsr.geohash.GeoHash;
 import com.google.appengine.api.datastore.Text;
 import com.zarcode.app.AppCommon;
 import com.zarcode.common.ApplicationProps;
+import com.zarcode.common.GeoUtil;
 import com.zarcode.data.dao.BuzzDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.platform.model.AbstractLoaderDO;
@@ -94,16 +95,7 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 	private double lng = 0;
 	
 	@Persistent
-	private String geoHashKey12 = null;
-	
-	@Persistent
-	private String geoHashKey6 = null;
-	
-	@Persistent
-	private String geoHashKey4 = null;
-	
-	@Persistent
-	private String geoHashKey2 = null;
+	private Long geoHashBits = null;
 	
 	@Persistent
 	private Date createDate = null;
@@ -114,8 +106,8 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 	
 	public void postCreation() {
 		logger.info("lat=" + lat + " lng=" + lng);
-		GeoHash geoKey = GeoHash.withCharacterPrecision(lat, lng, 12);
-		setGeoHashKey(geoKey.toBase32());
+		GeoHash geoKey = GeoHash.withBitPrecision(lat, lng, GeoUtil.MAX_GEOHASH_BIT_PRECISION);
+		setGeoHashBits(geoKey.longValue());
 		createDate = new Date();
 		/*
 		 * check max message length
@@ -196,15 +188,12 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 	}
 	
 	@XmlElement
-	public String getGeoHashKey() {
-		return geoHashKey12;
+	public Long getGeoHashBits() {
+		return geoHashBits;
 	}
 
-	public void setGeoHashKey(String geoHashKey) {
-		this.geoHashKey12 = geoHashKey;
-		this.geoHashKey6 = geoHashKey.substring(0, 6);
-		this.geoHashKey4 = geoHashKey.substring(0, 4);
-		this.geoHashKey2 = geoHashKey.substring(0, 2);
+	public void setGeoHashBits(Long geoHashBits) {
+		this.geoHashBits = geoHashBits;
 	}
 	
 	@XmlElement

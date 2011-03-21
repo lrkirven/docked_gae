@@ -14,9 +14,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import ch.hsr.geohash.GeoHash;
+import com.zarcode.common.GeoUtil;
 
-import com.zarcode.platform.model.AbstractLoaderDO;
+import ch.hsr.geohash.GeoHash;
 
 @XmlRootElement(name = "HotSpot") 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
@@ -62,16 +62,7 @@ public class HotSpotDO implements Serializable {
 	private String location = null;
 	
 	@Persistent
-	private String geoHashKey12 = null;
-	
-	@Persistent
-	private String geoHashKey6 = null;
-	
-	@Persistent
-	private String geoHashKey4 = null;
-	
-	@Persistent
-	private String geoHashKey2 = null;
+	private Long geoHashBits = null;
 	
 	@Persistent
 	private Date createDate = null;
@@ -84,8 +75,8 @@ public class HotSpotDO implements Serializable {
 	
 	public void postCreation() {
 		logger.info("lat=" + lat + " lng=" + lng);
-		GeoHash geoKey = GeoHash.withCharacterPrecision(lat, lng, 12);
-		setGeoHashKey(geoKey.toBase32());
+		GeoHash geoKey = GeoHash.withBitPrecision(lat, lng, GeoUtil.MAX_GEOHASH_BIT_PRECISION);
+		setGeoHashBits(geoKey.longValue());
 	}
 	
 	public void postReturn() {
@@ -108,15 +99,12 @@ public class HotSpotDO implements Serializable {
 	}
 	
 	@XmlElement
-	public String getGeoHashKey() {
-		return geoHashKey12;
+	public Long getGeoHashBits() {
+		return geoHashBits;
 	}
 
-	public void setGeoHashKey(String geoHashKey) {
-		this.geoHashKey12 = geoHashKey;
-		this.geoHashKey6 = geoHashKey.substring(0, 6);
-		this.geoHashKey4 = geoHashKey.substring(0, 4);
-		this.geoHashKey2 = geoHashKey.substring(0, 2);
+	public void setGeoHashBits(Long geoHashBits) {
+		this.geoHashBits = geoHashBits;
 	}
 	
 	@XmlElement

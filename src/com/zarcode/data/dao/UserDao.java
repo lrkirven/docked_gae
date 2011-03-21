@@ -14,6 +14,7 @@ import ch.hsr.geohash.queries.GeoHashCircleQuery;
 
 import com.zarcode.app.AppCommon;
 import com.zarcode.common.ApplicationProps;
+import com.zarcode.common.GeoUtil;
 import com.zarcode.data.model.ReadOnlyUserDO;
 import com.zarcode.data.model.UserDO;
 import com.zarcode.platform.dao.BaseDao;
@@ -203,8 +204,8 @@ public class UserDao extends BaseDao implements AbstractLoaderDao {
 				target.setLat(lat);
 				target.setLng(lng);
 				target.setActiveKey(dateString);
-				GeoHash geoHashKey = GeoHash.withCharacterPrecision(lat, lng, 12);
-				target.setGeoHashKey(geoHashKey.toBase32());
+				GeoHash geoHashKey = GeoHash.withBitPrecision(lat, lng, GeoUtil.MAX_GEOHASH_BIT_PRECISION);
+				target.setGeoHashBits(geoHashKey.longValue());
 			}
 			tx.commit();
 		}

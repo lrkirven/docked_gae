@@ -34,16 +34,7 @@ public class ReadOnlyUserDO extends AbstractLoaderDO implements Serializable {
 	private double lng = 0;
 	
 	@Persistent
-	private String geoHashKey12 = null;
-	
-	@Persistent
-	private String geoHashKey6 = null;
-	
-	@Persistent
-	private String geoHashKey4 = null;
-	
-	@Persistent
-	private String geoHashKey2 = null;
+	private Long geoHashBits = null;
 	
 	@Persistent
 	private String activeKey = null;
@@ -84,15 +75,12 @@ public class ReadOnlyUserDO extends AbstractLoaderDO implements Serializable {
 	}
 	
 	@XmlElement
-	public String getGeoHashKey() {
-		return geoHashKey12;
+	public Long getGeoHashBits() {
+		return geoHashBits;
 	}
 
-	public void setGeoHashKey(String geoHashKey) {
-		this.geoHashKey12 = geoHashKey;
-		this.geoHashKey6 = geoHashKey.substring(0, 6);
-		this.geoHashKey4 = geoHashKey.substring(0, 4);
-		this.geoHashKey2 = geoHashKey.substring(0, 2);
+	public void setGeoHashBits(Long geoHashBits) {
+		this.geoHashBits = geoHashBits;
 		setLastUpdate(new Date());
 	}
 	

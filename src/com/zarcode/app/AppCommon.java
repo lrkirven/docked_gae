@@ -16,6 +16,8 @@ public class AppCommon {
 	
 	public static final String UNKNOWN = "UNKNOWN";
 	
+	public static final int MAX_GEOHASH_BIT_PRECISION = 60;
+	
 	public static double distanceBtwAB(double lat1, double lng1, double lat2, double lng2) {
 		double earthR = 6371; // km
 		double dLat = Math.toRadians(lat2-lat1);
