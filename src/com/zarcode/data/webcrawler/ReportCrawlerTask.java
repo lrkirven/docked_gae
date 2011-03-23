@@ -99,7 +99,7 @@ public class ReportCrawlerTask extends HttpServlet {
     			sb.append("\n\n");
     			sb.append("[EXCEPTION]\n");
     			sb.append(Util.getStackTrace(e));
-    			EmailHelper.sendAppAlert("*** pix fishing crawling changes ****", sb.toString(), AppCommon.APPNAME);
+    			EmailHelper.sendAppAlert("*** Docked Crawling Report ***", sb.toString(), AppCommon.APPNAME);
     			logger.severe("Crawling failed for state=" + state + " [EXCEPTION]\n" + Util.getStackTrace(e));
     		}
     	}

@@ -89,7 +89,6 @@ public abstract class WebCrawler  {
 			Transformer t = TransformerFactory.newInstance().newTransformer();
 			t.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 			t.transform(new DOMSource(node), new StreamResult(sw));
-
 		} 
 		catch (TransformerException te) {
 		   logger.severe("nodeToString Transformer Exception");
@@ -114,20 +113,43 @@ public abstract class WebCrawler  {
 	protected String getNodeContents(Node node) {
 		String res = null;
 		Node n = null;
+		int childNodeCount = 0;
 		int i = 0;
+		
 		StringBuilder sb = null;
 		NodeList children = node.getChildNodes();
 		if (children != null && children.getLength() > 0) {
-			logger.info("Node=" + node.getNodeName() + " : # of children: " + children.getLength());
-			for (i=0; i<children.getLength(); i++) {
+			childNodeCount = children.getLength();
+			logger.info("Node=[" + node.getNodeName() + "] -- # of children: " + childNodeCount);
+			for (i=0; i<childNodeCount; i++) {
 				n = children.item(i);
-				if (n.getNodeName().equalsIgnoreCase("#comment")) {
-					continue;
+				if (n != null) {
+					if (n.getNodeName() == null) {
+						String str = node.getNodeValue();
+						logger.warning("**** Child NODE's Nodename is NULL for index=" + i + " --- Converting whole node to a string: " + str);
+						if (sb == null) {
+							sb = new StringBuilder();
+						}
+						sb.append(str);
+						break;
+					}
+					if (n.getNodeName().equalsIgnoreCase("#comment")) {
+						continue;
+					}
+					if (sb == null) {
+						sb = new StringBuilder();
+					}
+					sb.append(nodeToString(n));
 				}
-				if (sb == null) {
-					sb = new StringBuilder();
+				else {
+					logger.warning("**** Child NODE is NULL for index=" + i + " --- Converting whole node to a string: " + node);
+					String str = node.getTextContent();
+					if (sb == null) {
+						sb = new StringBuilder();
+					}
+					sb.append(str);
+					break;
 				}
-				sb.append(nodeToString(n));
 			}
 		}
 		else {

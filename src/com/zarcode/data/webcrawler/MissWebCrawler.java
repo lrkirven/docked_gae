@@ -173,17 +173,31 @@ public class MissWebCrawler extends WebCrawler {
 	            }
 	            
 	            Tidy tidy = new Tidy();
-	            tidy.setMakeClean(true);
 	            tidy.setQuiet(false);
-	            tidy.setBreakBeforeBR(true);
+	           
+	            tidy.setMakeClean(true);
+	            tidy.setEncloseText(true);
+	            tidy.setWriteback(true);
+	            tidy.setBreakBeforeBR(false);
 	            tidy.setOutputEncoding("latin1");
 	 			tidy.setXmlOut(false);
+	 			tidy.setXmlTags(false);
 	 			tidy.setNumEntities(true);
 	 			tidy.setDropFontTags(true);
 	 			tidy.setSpaces(2);
 	 			tidy.setIndentAttributes(false);
 	 	 	   	tidy.setHideComments(true);
 	 	 	   	tidy.setShowWarnings(false);
+	 	 	   	tidy.setWord2000(true);
+	 	 	   	tidy.setWraplen(72);
+	 	 	   	tidy.setNumEntities(true);
+	 	 	   	tidy.setDropFontTags(true);
+	 	 	   	tidy.setDropEmptyParas(true);
+	 	 	   	tidy.setQuoteMarks(true);
+	 	 	   	tidy.setQuoteAmpersand(true);
+	 	 	   	tidy.setQuoteNbsp(true);
+	 	 	   	tidy.setTidyMark(false);
+	 	 	   	tidy.setLiteralAttribs(false);
 	 	 	   	
 	 			OutputStream os = null;
 	 			StringReader r = new StringReader(res);
@@ -237,7 +251,7 @@ public class MissWebCrawler extends WebCrawler {
 	    	        				throw new WebCrawlException(e.getMessage(), urlStr);
 	    	        			}
 	    		    		}
-	    		    		else if (id.getNodeValue().equalsIgnoreCase("ctl00_ContentPlaceHolder1_FormView1_FishingReportLabel")) {
+	    		    		else if (id.getNodeValue().equalsIgnoreCase("ctl00_ContentPlaceHolder1_FormView1_FishingReportLabel2")) {
 	    		    			reportStr = getNodeContents(node);
 	    	        			logger.info("Using report text: " + reportStr);
 	    		    			//
@@ -273,6 +287,10 @@ public class MissWebCrawler extends WebCrawler {
     		throw new WebCrawlException(e.getMessage(), urlStr);
         }
     	catch (IOException e) {
+    		logger.severe(Util.getStackTrace(e));
+    		throw new WebCrawlException(e.getMessage(), urlStr);
+        }
+    	catch (Exception e) {
     		logger.severe(Util.getStackTrace(e));
     		throw new WebCrawlException(e.getMessage(), urlStr);
         }

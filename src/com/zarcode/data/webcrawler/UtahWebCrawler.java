@@ -225,5 +225,9 @@ public class UtahWebCrawler extends WebCrawler {
     		logger.severe(Util.getStackTrace(e));
     		throw new WebCrawlException(e.getMessage(), urlStr);
         }
+    	catch (Exception e) {
+    		logger.severe(Util.getStackTrace(e));
+    		throw new WebCrawlException(e.getMessage(), urlStr);
+        }
     } // doCrawl
 }

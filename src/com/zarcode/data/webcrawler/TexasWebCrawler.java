@@ -234,5 +234,9 @@ public class TexasWebCrawler extends WebCrawler {
     		logger.severe(Util.getStackTrace(e));
     		throw new WebCrawlException(e.getMessage(), str);
         }
+    	catch (Exception e) {
+    		logger.severe(Util.getStackTrace(e));
+    		throw new WebCrawlException(e.getMessage(), str);
+        }
     } // doCrawl
 }
