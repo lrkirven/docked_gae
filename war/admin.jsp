@@ -35,6 +35,11 @@
 	<br>
 	<hr>
 	<br>
+	<a href="/cleaner">Run Cleaner ...</a>
+	<br>
+	<br>
+	<hr>
+	<br>
 	<FORM ENCTYPE="multipart/form-data" ACTION="/upload" METHOD=POST>
 	  	<table border="2" >
             <tr><center><td colspan="2"><p align="center"><B>UPLOAD MY APP LOADER</B><center></td></tr>
