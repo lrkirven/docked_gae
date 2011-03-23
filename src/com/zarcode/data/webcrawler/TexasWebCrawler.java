@@ -34,6 +34,8 @@ import com.zarcode.platform.loader.JDOLoaderServlet;
 import com.zarcode.data.model.ReportDO;
 
 public class TexasWebCrawler extends WebCrawler {
+	
+	private static final String PROVIDER = "tpwd.state.tx.us";
 
 	private Logger logger = Logger.getLogger(TexasWebCrawler.class.getName());
 	
@@ -185,6 +187,7 @@ public class TexasWebCrawler extends WebCrawler {
 		    	        				findMatchingNodes(tdTag, Node.TEXT_NODE, textList);
 		    	        				if (textList.size() > 0) {
 		    	        					report = new ReportDO();
+		    	        					report.setReportedBy(PROVIDER);
 		    	        					report.setState(STATE);
 		    	        					report.setReportDate(reportDate);
 		    	        					String tdValue = EscapeChars.forXML(textList.get(0));

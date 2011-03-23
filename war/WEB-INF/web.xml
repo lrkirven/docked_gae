@@ -139,13 +139,22 @@
 	-->
 
 	<servlet> 
-  		<servlet-name>crawler</servlet-name> 
-  		<servlet-class>com.zarcode.data.webcrawler.CronCrawler</servlet-class> 
+  		<servlet-name>reportCrawler</servlet-name> 
+  		<servlet-class>com.zarcode.data.webcrawler.ReportCrawler</servlet-class> 
    </servlet> 
 	<servlet-mapping> 
-  		<servlet-name>crawler</servlet-name> 
-  		<url-pattern>/crawler</url-pattern> 
+  		<servlet-name>reportCrawler</servlet-name> 
+  		<url-pattern>/reportCrawler</url-pattern> 
 	</servlet-mapping> 
+	
+	<servlet> 
+  		<servlet-name>reportCrawlerTask</servlet-name> 
+  		<servlet-class>com.zarcode.data.webcrawler.ReportCrawlerTask</servlet-class> 
+   </servlet> 
+	<servlet-mapping> 
+  		<servlet-name>reportCrawlerTask</servlet-name> 
+  		<url-pattern>/reportCrawlerTask</url-pattern> 
+	</servlet-mapping>
 	
 	<servlet> 
   		<servlet-name>georssload</servlet-name> 
@@ -260,7 +269,7 @@
 	
     <security-constraint> 
         <web-resource-collection> 
-            <url-pattern>/crawler</url-pattern> 
+            <url-pattern>/reportCrawler</url-pattern> 
         </web-resource-collection> 
         <auth-constraint> 
             <role-name>admin</role-name> 

@@ -24,21 +24,22 @@ import com.zarcode.common.Util;
 import com.zarcode.data.exception.WebCrawlException;
 import com.zarcode.platform.loader.JDOLoaderServlet;
 
-public class CronCrawler extends HttpServlet {
+/**
+ * This servlet actually does the work as a Queue Task crawl the supported
+ * report sites and gathering the data.
+ * 
+ * @author lazar
+ *
+ */
+public class ReportCrawlerTask extends HttpServlet {
 
-	private Logger logger = Logger.getLogger(CronCrawler.class.getName());
-	
+	private Logger logger = Logger.getLogger(ReportCrawlerTask.class.getName());
+
 	private final static String TEXAS 		= "TX";
 	private final static String UTAH 		= "UT";
 	private final static String MINN 		= "MN";
 	private final static String MISS 		= "MS";
 
-	/*
-	private final String[] SRC_LIST =  {
-		TEXAS,
-		UTAH	
-	};
-	*/
 	private final String[] SRC_LIST =  {
 		// TEXAS,	
 		// UTAH,
@@ -47,9 +48,7 @@ public class CronCrawler extends HttpServlet {
 	};
 	
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-    	logger.info("doPost(): Entered"); 
     	int counter = doCrawl(req);
-    	logger.info("doPost(): Processing Done"); 
     	resp.setContentType("text/plain");
     	resp.getWriter().println(counter);
     }

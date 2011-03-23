@@ -37,6 +37,8 @@ public class UtahWebCrawler extends WebCrawler {
 
 	private Logger logger = Logger.getLogger(UtahWebCrawler.class.getName());
 	
+	private static final String PROVIDER = "wildlife.utah.gov";
+	
 	private final String[] URL_LIST =  {
 		"http://wildlife.utah.gov/hotspots/reports_cr.php",
 		"http://wildlife.utah.gov/hotspots/reports_nr.php",
@@ -169,6 +171,7 @@ public class UtahWebCrawler extends WebCrawler {
     	        								if (findCounter == 0) {
     	        									if (report == null) {
     	        										report = new ReportDO();
+    	        										report.setReportedBy(PROVIDER);
     	        										report.setState(STATE);
     	        									}
     	        									report.setKeyword(textList.get(0));

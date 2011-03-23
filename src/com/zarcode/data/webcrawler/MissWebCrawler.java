@@ -40,6 +40,8 @@ public class MissWebCrawler extends WebCrawler {
 
 	private Logger logger = Logger.getLogger(MissWebCrawler.class.getName());
 	
+	private static final String PROVIDER = "mdwfp.com";
+	
 	private final String[] URL_LIST =  {
 		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=1",
 		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=2",
@@ -207,6 +209,7 @@ public class MissWebCrawler extends WebCrawler {
 	 			ReportDO report = null;
 	 			Node tdTag = null;
 	 			ReportDao reportDao = new ReportDao();
+	 			report.setReportedBy(PROVIDER);
 	 			String keyword = null;
 	 			String dateStr = null;
 	 			String reportStr = null;
