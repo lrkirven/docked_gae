@@ -5,19 +5,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.StringWriter;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
@@ -28,13 +24,11 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.w3c.tidy.Tidy;
 
 import com.zarcode.common.Util;
-import com.zarcode.platform.loader.JDOLoaderServlet;
-import com.zarcode.data.model.ReportDO;
 import com.zarcode.data.dao.ReportDao;
 import com.zarcode.data.exception.WebCrawlException;
+import com.zarcode.data.model.ReportDO;
 
 public abstract class WebCrawler  {
 	
@@ -46,6 +40,24 @@ public abstract class WebCrawler  {
     public boolean readyToCrawl() {
     	logger.severe("* THIS METHOD SHOULD NEVER BE EXECUTED *");
     	return false;
+    }
+    
+    protected void printDocument(Document doc, Logger log) throws IOException {
+    	try {
+    		TransformerFactory tf = TransformerFactory.newInstance();
+        	Transformer transformer = tf.newTransformer();
+        	transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+        	transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+        	transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        	transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        	transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+        	StringWriter sw = new StringWriter();
+        	transformer.transform(new DOMSource(doc), new StreamResult(sw));
+        	log.info("printDocument():\n\n" + sw.getBuffer().toString());
+    	}
+    	catch (Exception e) {
+    		logger.severe("printDocument(): EXCEPTION -- " + Util.getStackTrace(e));
+    	}
     }
     
 	protected void findMatchingNodes(Node node, short nodeType, List lostAndFoundList) {

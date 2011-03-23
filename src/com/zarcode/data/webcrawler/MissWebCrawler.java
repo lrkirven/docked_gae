@@ -205,6 +205,8 @@ public class MissWebCrawler extends WebCrawler {
 	 			Document doc = tidy.parseDOM(r, w);
 	 			Date reportDate = null;
 	 			
+	 			printDocument(doc, logger);
+	 			
 	 			// 05/10/2010
 	 			DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 					
