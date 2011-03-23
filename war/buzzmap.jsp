@@ -11,9 +11,11 @@
 	String redirectURL = "http://maps.google.com/";
 	String lat = request.getParameter("lat");
 	String lng = request.getParameter("lng");
+	String resKey = request.getParameter("resKey");
 	String version = request.getParameter("version");
 	pageContext.setAttribute("lat", lat);
 	pageContext.setAttribute("lng", lng);
+	pageContext.setAttribute("resKey", resKey);
 	pageContext.setAttribute("version", version);
 	pageContext.setAttribute("draggable", "true");	
 %>
@@ -168,6 +170,7 @@
     	console.log("CLIENT: Trying to retrieve buzz msgs ...");
     	
     	var version = '<%= pageContext.getAttribute("version") %>';
+    	var key = '<%= pageContext.getAttribute("resKey") %>';
 		var foundUser = false;
  		var markers = [];
  		var bounds = new google.maps.LatLngBounds();
@@ -175,7 +178,7 @@
  			
  		$.ajax({
  			type: "GET",
-  			url: "resources/" + version + "/buzz/bylatlng?lat=" + center.lat() + "&lng=" + center.lng(),
+  			url: "resources/" + version + "/buzz/" + key + "?lat=" + center.lat() + "&lng=" + center.lng(),
   			dataType: "json",
   			success: function(json) {
     			console.log("Got response from service: " + json);
