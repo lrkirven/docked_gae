@@ -67,7 +67,7 @@ public class Cleaner extends HttpServlet {
 						photosDeleted = 0;
 						for (j=0; j<photos.size(); j++) {
 							photo = photos.get(j);
-							createDate = photo.getFeaturedDate();
+							createDate = photo.getTimestamp();
 							if (createDate.getTime() < photoLife) {
 								photo.delete();
 								photosDeleted++;
