@@ -242,7 +242,7 @@ public class CleanerTask extends HttpServlet {
 	}
     
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 	    	int i = 0;
 	    	BuzzDao eventDao = null;
 	    	UserDao userDao = null;
