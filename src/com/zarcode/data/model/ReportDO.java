@@ -140,6 +140,15 @@ public class ReportDO extends AbstractLoaderDO implements Serializable {
 		this.state = state;
 	}
 	
+	@XmlElement
+	public String getReportedBy() {
+		return reportedBy;
+	}
+
+	public void setReportedBy(String reportedBy) {
+		this.reportedBy = reportedBy;
+	}
+	
     @XmlElement
 	public Date getLastUpdated() {
 		return lastUpdated;
