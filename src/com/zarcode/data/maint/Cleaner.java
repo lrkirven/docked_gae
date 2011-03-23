@@ -286,5 +286,8 @@ public class Cleaner extends HttpServlet {
 			
 			EmailHelper.sendAppAlert("*** Docked CleanUp Report ***", report.toString(), AppCommon.APPNAME);
 			
+			resp.setContentType("text/html");
+ 			resp.getWriter().println("<p>" + report.toString() + "</p>");
+			
 	    } // doGet
 }
