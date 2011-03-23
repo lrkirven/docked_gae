@@ -134,12 +134,13 @@
       <gml:exterior>
         <gml:LinearRing>
           <gml:posList>
-            33.128349 -96.558495
-            33.029678 -96.547165
-            33.027664 -96.419449
-            33.168018 -96.384430
-            33.201351 -96.427002
-            33.128349 -96.558495
+            33.128349 -96.558487
+            33.029678 -96.543388
+            33.032845 -96.418076
+            33.168011 -96.384430
+            33.191151 -96.413780
+            33.158680 -96.539612
+            33.128349 -96.558487
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
@@ -680,7 +681,7 @@
   <item>
     <guid isPermaLink="false">0004881ff9bda417cc921</guid>
     <pubDate>Thu, 03 Jun 2010 13:13:42 +0000</pubDate>
-    <title>Falcon Reservoir</title>
+    <title>Lake Falcon</title>
     <description><![CDATA[<div dir="ltr">reportKey=TX:FALCON</div>]]></description>
     <author>lrkirven</author>
     <gml:Polygon>
@@ -1104,11 +1105,11 @@
         <gml:LinearRing>
           <gml:posList>
             33.265091 -97.047722
-            33.159397 -97.108841
-            33.085213 -97.075195
-            33.059895 -96.981125
-            33.075432 -96.880188
-            33.217438 -96.912460
+            33.159397 -97.095284
+            33.085209 -97.075188
+            33.059891 -96.981117
+            33.075432 -96.880180
+            33.217430 -96.912460
             33.265091 -97.047722
           </gml:posList>
         </gml:LinearRing>

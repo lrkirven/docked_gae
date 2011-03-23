@@ -29,7 +29,7 @@ public class HotSpotDO implements Serializable {
 	
 	@NotPersistent
 	private double distanceAwayInMiles = 0;
-
+	
 	@PrimaryKey 
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Long hotSpotId = null; 
