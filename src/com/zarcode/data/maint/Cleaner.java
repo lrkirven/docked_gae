@@ -47,6 +47,5 @@ public class Cleaner extends HttpServlet {
 			resp.setContentType("text/html");
  			resp.getWriter().println("<b>Cleaner Task has been started -- Wait for email for results</b><br><br><a href=\"/_admin\">Back to Admin Console</a>");
 			
-			
 	    } // doGet
 }
