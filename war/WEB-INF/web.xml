@@ -228,6 +228,15 @@
             <role-name>admin</role-name> 
         </auth-constraint> 
     </security-constraint> 
+	
+	<servlet> 
+  		<servlet-name>cleanerTask</servlet-name> 
+  		<servlet-class>com.zarcode.data.maint.CleanerTask</servlet-class> 
+   </servlet> 
+	<servlet-mapping> 
+  		<servlet-name>cleanerTask</servlet-name> 
+  		<url-pattern>/cleanerTask</url-pattern> 
+	</servlet-mapping>
  
   <!--  handle incoming mail --> 
   <!-- 
