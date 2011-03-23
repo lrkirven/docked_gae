@@ -209,7 +209,6 @@ public class MissWebCrawler extends WebCrawler {
 	 			ReportDO report = null;
 	 			Node tdTag = null;
 	 			ReportDao reportDao = new ReportDao();
-	 			report.setReportedBy(PROVIDER);
 	 			String keyword = null;
 	 			String dateStr = null;
 	 			String reportStr = null;
@@ -245,6 +244,7 @@ public class MissWebCrawler extends WebCrawler {
 		        				// create report object
 		        				//
 		        				report = new ReportDO();
+		        				report.setReportedBy(PROVIDER);
 		        				report.setKeyword(keyword);
 		        				report.setReportDate(reportDate);
 		        				report.setReportBody(reportStr);
