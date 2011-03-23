@@ -45,7 +45,7 @@ public class Cleaner extends HttpServlet {
  			queue.add(TaskOptions.Builder.withUrl("/cleanerTask"));
  			
 			resp.setContentType("text/html");
- 			resp.getWriter().println("<b>Cleaner Task has been started -- Wait for email for results</b>");
+ 			resp.getWriter().println("<b>Cleaner Task has been started -- Wait for email for results</b><br><br><a href=\"/_admin\">Back to Admin Console</a>");
 			
 			
 	    } // doGet

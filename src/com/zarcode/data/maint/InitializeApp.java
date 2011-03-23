@@ -19,7 +19,7 @@ public class InitializeApp extends HttpServlet {
     	AppPropDao dao = new AppPropDao();
     	dao.addAppVersion(Version.SERVICE_VERSION);
  		resp.setContentType("text/html");
- 		resp.getWriter().println("<b>Successfully initialized the app.</b><br><br><a href=\"/_admin\">Admin Console</a>");
+ 		resp.getWriter().println("<b>Successfully initialized the app.</b><br><br><a href=\"/_admin\">Back to Admin Console</a>");
     }
 	
 }
