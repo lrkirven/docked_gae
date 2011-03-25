@@ -21,6 +21,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.htmlcleaner.TagNode;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -121,6 +122,8 @@ public abstract class WebCrawler  {
 	    is.close();
 	    return sb.toString();
 	}
+	
+	
 	
 	protected String getNodeContents(Node node) {
 		String res = null;

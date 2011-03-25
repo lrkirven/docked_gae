@@ -4,14 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,21 +15,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.w3c.dom.Document;
+import org.htmlcleaner.CleanerProperties;
+import org.htmlcleaner.CommentNode;
+import org.htmlcleaner.HtmlCleaner;
+import org.htmlcleaner.HtmlNode;
+import org.htmlcleaner.TagNode;
+import org.htmlcleaner.TagNodeVisitor;
+import org.htmlcleaner.Utils;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.w3c.tidy.Tidy;
 
 import com.zarcode.common.EscapeChars;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.ReportDao;
 import com.zarcode.data.exception.WebCrawlException;
-import com.zarcode.platform.loader.JDOLoaderServlet;
 import com.zarcode.data.model.ReportDO;
 
 public class MissWebCrawler extends WebCrawler {
@@ -103,6 +101,78 @@ public class MissWebCrawler extends WebCrawler {
 	};
 	*/
 	
+	public class MissTagNodeVisitor implements TagNodeVisitor {
+	
+		private String keyword = null;
+  	    private String dateStr = null;
+  	    private String reportStr = null;
+  	    private Date reportDate = null;
+  	    
+  	    public MissTagNodeVisitor() {
+  	    }
+		
+		public boolean visit(TagNode tagNode, HtmlNode htmlNode) {
+  	    	ReportDO report = null;
+  	    	String urlStr = null;
+  	    	
+  	    	ReportDao reportDao = new ReportDao();
+  	    	
+  	    	// 05/10/2010
+	 		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+  	    	
+  	        if (htmlNode instanceof TagNode) {
+  	            TagNode tag = (TagNode) htmlNode;
+  	            String tagName = tag.getName();
+  	            if ("span".equalsIgnoreCase(tagName)) {
+  	               String idName = tag.getAttributeByName("id");
+  	               logger.info("SPAN :: " + idName); 
+  	               if (idName != null) {
+      	              if (idName.equalsIgnoreCase("ctl00_ContentPlaceHolder1_FormView1_NameLabel")) {
+	    		    			keyword = getTagNodeContents(tag);
+	    		    			logger.info("Found keyword: " + keyword);
+	    		    		}
+	    		    		else if (idName.equalsIgnoreCase("ctl00_ContentPlaceHolder1_FormView1_Label1")) {
+	    		    			dateStr = getTagNodeContents(tag);
+	    		    			logger.info("Found dateStr: " + dateStr);
+	    	        			try {
+	    	        				reportDate = formatter.parse(dateStr);
+	    	        			}
+	    	        			catch (Exception e) {
+	    	        				// throw new WebCrawlException(e.getMessage(), urlStr);
+	    	        			}
+	    		    		}
+	    		    		else if (idName.equalsIgnoreCase("ctl00_ContentPlaceHolder1_FormView1_FishingReportLabel2")) {
+	    		    			reportStr = getTagNodeContents(tag);
+	    	        			logger.info("Using report text: " + reportStr);
+	    		    			//
+		        				// create report object
+		        				//
+		        				report = new ReportDO();
+		        				report.setReportedBy(PROVIDER);
+		        				report.setKeyword(keyword);
+		        				report.setReportDate(reportDate);
+		        				report.setReportBody(reportStr);
+		        				report.setState(STATE);
+		        				StringBuilder sb = new StringBuilder();
+								sb.append(STATE);
+								sb.append(":");
+								String uniqueKey = report.getKeyword();
+								uniqueKey= uniqueKey.toUpperCase();
+								uniqueKey = EscapeChars.forXML(uniqueKey);
+								sb.append(uniqueKey);
+								report.setReportKey(sb.toString());
+								reportDao.addOrUpdateReport(report);
+	    		    		}
+  	               		}
+  	            	}
+  	        	} 
+  	        	// tells visitor to continue traversing the DOM tree
+  	        	return true;
+  	        	
+  	    	} // visit
+		 
+	} // MissTagNodeVisitor
+	
 	public static final Map<Integer, Integer> CRAWL_MAP = new HashMap<Integer, Integer>()  {
         {
              put(Calendar.SUNDAY, 1);
@@ -128,6 +198,7 @@ public class MissWebCrawler extends WebCrawler {
 			if (CRAWL_MAP.containsKey(dayOfWeek)) {
 				flag = true;
 			}
+			flag = true;
 		}
 		return flag;
 	}
@@ -146,6 +217,38 @@ public class MissWebCrawler extends WebCrawler {
 	    return sb.toString();
 	}
 
+	protected String getTagNodeContents(TagNode node) {
+		String res = null;
+		Node n = null;
+		TagNode t = null;
+		int i = 0;
+	
+		if (node.getText() != null) {
+			res = node.getText().toString();
+			logger.info("Top found -- Returning res : " + res);
+		}
+		else {
+			String found = null;
+			TagNode[] list = node.getElementsByAttValue("class", "MsoNormal", true, false);
+			for (i=0; i<list.length; i++) {
+				t = list[i];
+				if (found == null && t.getText() != null) {
+					found = t.getText().toString();
+					logger.info("Found option : " + found);
+				}
+				else if (t.getText() != null) {
+					String str = t.getText().toString();
+					if (str != null && str.length() > found.length()) {
+						found = str;
+						logger.info("Found better option : " + found);
+					}
+				}
+			}
+			res = found;
+		}
+		
+		return res;
+	}
 
 	@Override
     public void doCrawl(HttpServletRequest req) throws WebCrawlException {
@@ -154,134 +257,30 @@ public class MissWebCrawler extends WebCrawler {
     	int k = 0;
     	String msg = null;
     	String urlStr = null;
+		String keyword = null;
+	 	Date reportDate = null;
     	
     	try {
     		for (k=0; k<URL_LIST.length; k++) {
-    			
     			urlStr = URL_LIST[k];
-    			
     			logger.info("Processing URL: " + urlStr);
-    			
 	            URL url = new URL(urlStr);
-	            
 	            InputStream is = url.openStream();
 	            String res = null;
 	            try {
 	            	res = convertStreamToString(is);
 	            }
 	            catch (Exception e) {
+	            	logger.severe("EXCEPTION :: " + Util.getStackTrace(e));
 	            }
 	            
-	            Tidy tidy = new Tidy();
-	            tidy.setQuiet(false);
-	           
-	            tidy.setMakeClean(true);
-	            tidy.setEncloseText(true);
-	            tidy.setWriteback(true);
-	            tidy.setBreakBeforeBR(false);
-	            tidy.setOutputEncoding("latin1");
-	 			tidy.setXmlOut(false);
-	 			tidy.setXmlTags(false);
-	 			tidy.setNumEntities(true);
-	 			tidy.setDropFontTags(true);
-	 			tidy.setSpaces(2);
-	 			tidy.setIndentAttributes(false);
-	 	 	   	tidy.setHideComments(true);
-	 	 	   	tidy.setShowWarnings(false);
-	 	 	   	tidy.setWord2000(true);
-	 	 	   	tidy.setWraplen(72);
-	 	 	   	tidy.setNumEntities(true);
-	 	 	   	tidy.setDropFontTags(true);
-	 	 	   	tidy.setDropEmptyParas(true);
-	 	 	   	tidy.setQuoteMarks(true);
-	 	 	   	tidy.setQuoteAmpersand(true);
-	 	 	   	tidy.setQuoteNbsp(true);
-	 	 	   	tidy.setTidyMark(false);
-	 	 	   	tidy.setLiteralAttribs(false);
-	 	 	   	
-	 			OutputStream os = null;
-	 			StringReader r = new StringReader(res);
-	 			StringWriter w = new StringWriter();
-	 			Document doc = tidy.parseDOM(r, w);
-	 			Date reportDate = null;
-	 			
-	 			printDocument(doc, logger);
-	 			
-	 			// 05/10/2010
-	 			DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-					
-	
-	 			//
-	 			// try parsing out the reports
-	 			//
-	 			NodeList spanList = doc.getElementsByTagName("span");
-	 			if (spanList != null && spanList.getLength() > 0) {
-	 				logger.info("Found expected span tag(s) on the page");
-	 			}
-	 			else {
-	 				throw new WebCrawlException("Unexpected number of <table> tags", urlStr);
-	 			}
-	 		
-	 			ReportDO report = null;
-	 			Node tdTag = null;
-	 			ReportDao reportDao = new ReportDao();
-	 			String keyword = null;
-	 			String dateStr = null;
-	 			String reportStr = null;
-	 			List<String> textList = null;
-	 			NamedNodeMap attribMap = null;
-	 			//
-	 			// traverse span tags
-	 			//
-	 			for (i=0; i<spanList.getLength(); i++) {
-	 				Node node = spanList.item(i);
-	    	        if (node != null) {
-	    	        	attribMap = node.getAttributes();
-	    		    	Node id = attribMap.getNamedItem("id");
-	    		    	if (id != null) {
-	    		    		if (id.getNodeValue().equalsIgnoreCase("ctl00_ContentPlaceHolder1_FormView1_NameLabel")) {
-	    		    			keyword = getNodeContents(node);
-	    		    			logger.info("Found keyword: " + keyword);
-	    		    		}
-	    		    		else if (id.getNodeValue().equalsIgnoreCase("ctl00_ContentPlaceHolder1_FormView1_Label1")) {
-	    		    			dateStr = getNodeContents(node);
-	    		    			logger.info("Found dateStr: " + dateStr);
-	    	        			try {
-	    	        				reportDate = formatter.parse(dateStr);
-	    	        			}
-	    	        			catch (Exception e) {
-	    	        				throw new WebCrawlException(e.getMessage(), urlStr);
-	    	        			}
-	    		    		}
-	    		    		else if (id.getNodeValue().equalsIgnoreCase("ctl00_ContentPlaceHolder1_FormView1_FishingReportLabel2")) {
-	    		    			reportStr = getNodeContents(node);
-	    	        			logger.info("Using report text: " + reportStr);
-	    		    			//
-		        				// create report object
-		        				//
-		        				report = new ReportDO();
-		        				report.setReportedBy(PROVIDER);
-		        				report.setKeyword(keyword);
-		        				report.setReportDate(reportDate);
-		        				report.setReportBody(reportStr);
-		        				report.setState(STATE);
-		        				StringBuilder sb = new StringBuilder();
-								sb.append(STATE);
-								sb.append(":");
-								String uniqueKey = report.getKeyword();
-								uniqueKey= uniqueKey.toUpperCase();
-								uniqueKey = EscapeChars.forXML(uniqueKey);
-								sb.append(uniqueKey);
-								report.setReportKey(sb.toString());
-								reportDao.addOrUpdateReport(report);
-								break;
-	    		    		}
-	    		    		else {
-	    		    			throw new WebCrawlException("Unknown <span id='" + id.getNodeValue() + "'> tag; page might have changed.", urlStr);
-	    		    		}
-	    		    	}
-	    	        }
-	 			}
+	            CleanerProperties props = new CleanerProperties();
+	            // set some properties to non-default values
+	         	props.setTranslateSpecialEntities(true);
+	         	props.setTransResCharsToNCR(true);
+	         	props.setOmitComments(true);
+	         	TagNode root = new HtmlCleaner(props).clean(url);
+	         	root.traverse(new MissTagNodeVisitor());
     		}
         } 
     	catch (MalformedURLException e) {
