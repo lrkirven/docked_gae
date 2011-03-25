@@ -35,7 +35,12 @@
 	<br>
 	<hr>
 	<br>
-	<a href="/cleaner">Run Cleaner ...</a>
+	<a href="/cleaner">Run Cleaner</a>
+	<br>
+	<br>
+	<hr>
+	<br>
+	<a href="/reportCrawler">Run Report Crawler</a>
 	<br>
 	<br>
 	<hr>
