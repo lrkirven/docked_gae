@@ -60,7 +60,7 @@ public class ReportDO extends AbstractLoaderDO implements Serializable {
 		if (reportBodyText != null) {
 			this.reportBody = reportBodyText.getValue();
 		}
-		timeDisplay = AppCommon.generateTimeOffset(lastUpdated);
+		timeDisplay = AppCommon.generateTimeOffset(reportDate);
 	}
 	
 	public String toString() {
