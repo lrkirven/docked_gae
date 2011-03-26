@@ -47,7 +47,7 @@ public class GeoRSSUpload extends HttpServlet {
 
  	        }
  			resp.setContentType("text/html");
- 			resp.getWriter().println("<b>GeoRSS has been loaded -- Wait for email for results</b><br><br><a href=\"/_admin\">Back to Admin Console</a>");
+ 			resp.getWriter().println("<b>GeoRSS has been loaded -- Wait for results email</b><br><br><a href=\"/_admin\">Back to Admin Console</a>");
         }
         else {
  			resp.setContentType("text/html");

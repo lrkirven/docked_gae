@@ -46,7 +46,7 @@ public class ReportCrawler extends HttpServlet {
     	Queue queue = QueueFactory.getDefaultQueue();
 		queue.add(TaskOptions.Builder.withUrl("/reportCrawlerTask"));
 		resp.setContentType("text/html");
-		resp.getWriter().println("<b>Report Crawler has been started -- Wait for email for results</b><br><br><a href=\"/_admin\">Back to Admin Console</a>");
+		resp.getWriter().println("<b>Report Crawler has been started -- Wait for results email</b><br><br><a href=\"/_admin\">Back to Admin Console</a>");
     }
     
 }

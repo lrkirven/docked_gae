@@ -16,11 +16,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.htmlcleaner.CleanerProperties;
+import org.htmlcleaner.HtmlCleaner;
+import org.htmlcleaner.HtmlNode;
+import org.htmlcleaner.TagNode;
+import org.htmlcleaner.TagNodeVisitor;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -32,6 +39,7 @@ import com.zarcode.data.dao.ReportDao;
 import com.zarcode.data.exception.WebCrawlException;
 import com.zarcode.platform.loader.JDOLoaderServlet;
 import com.zarcode.data.model.ReportDO;
+import com.zarcode.data.webcrawler.MissWebCrawler.MissTagNodeVisitor;
 
 public class TexasWebCrawler extends WebCrawler {
 	
@@ -54,6 +62,89 @@ public class TexasWebCrawler extends WebCrawler {
     };
 	
 	private final String STATE = "TX";
+	
+	public class TexasTagNodeVisitor implements TagNodeVisitor {
+		
+  	    private Date reportDate = null;
+  	    private ReportDO report = null;
+  	    private boolean reportsFound = false;
+  	    private ReportDao reportDao = new ReportDao();
+  	   	// March 23, 2010
+	 	private DateFormat formatter = new SimpleDateFormat("MMMMM d, yyyy");
+  	    
+  	    public TexasTagNodeVisitor() {
+  	    }
+		
+		public boolean visit(TagNode tagNode, HtmlNode htmlNode) {
+  	    	String tagValue = null;
+  	    	
+  	        if (htmlNode instanceof TagNode) {
+  	            TagNode tag = (TagNode) htmlNode;
+  	            String tagName = tag.getName();
+  	            if ("th".equalsIgnoreCase(tagName)) {
+  	            	tagValue = tag.getText().toString();
+  	            	if (tagValue != null && tagValue.equalsIgnoreCase("report")) {
+  	            		reportsFound = true;
+  	            	}
+  	            }
+  	            else if ("h2".equalsIgnoreCase(tagName)) {
+	            	tagValue = tag.getText().toString();
+	            	if (tagValue != null) {
+	            		Pattern p1 = Pattern.compile("Week of.*", Pattern.CASE_INSENSITIVE);
+	            		Pattern p2 = Pattern.compile("Week of ", Pattern.CASE_INSENSITIVE);
+	    	    		Matcher m1 = p1.matcher(tagValue);
+	    	    		if (m1.matches()) {
+	    	    			Matcher m2 = p2.matcher(tagValue);
+    	        			logger.info("Got a Report Date -- " + tagValue);
+	    	    			String dateStr = m2.replaceAll("");
+	    	    			try {
+    	        				reportDate = formatter.parse(dateStr);
+    	        				logger.info("Report Date: " + reportDate);
+    	        			}
+    	        			catch (Exception e) {
+    	        				logger.warning("Unable to parse report date --- " + dateStr);
+    	        			}
+	    	    		}
+	    	    		else {
+    	        			logger.info("No Match  -- " + tagValue);
+	    	    		}
+	            	}
+	            }
+  	            else if ("a".equalsIgnoreCase(tagName) && reportsFound) {
+  	               tagValue = tag.getText().toString();
+  	               if (tagValue != null) {
+  	            	   report = new ReportDO();
+  	            	   report.setReportedBy(PROVIDER);
+  	            	   report.setKeyword(tagValue);
+  	            	   report.setReportDate(reportDate);
+  	            	   report.setState(STATE);
+  	            	   StringBuilder sb = new StringBuilder();
+  	            	   sb.append(STATE);
+  	            	   sb.append(":");
+  	            	   String uniqueKey = report.getKeyword();
+  	            	   uniqueKey= uniqueKey.toUpperCase();
+  	            	   uniqueKey = EscapeChars.forXML(uniqueKey);
+  	            	   sb.append(uniqueKey);
+  	            	   report.setReportKey(sb.toString());
+  	            	}
+  	        	} 
+  	            else if ("td".equalsIgnoreCase(tagName) && reportsFound) {
+  	            	tagValue = tag.getText().toString();
+  	            	if (report != null && tagValue != null) {
+  	            		report.setReportBody(tagValue);
+  	            		// logger.info("Adding report --> " + report.getKeyword());
+  	            		reportDao.addOrUpdateReport(report);
+  	            		report = null;
+  	            	}
+  	            }
+  	        }
+  	            
+  	        // tells visitor to continue traversing the DOM tree
+  	        return true;
+  	        	
+  	    } // visit
+		 
+	} // TexasTagNodeVisitor
 	
 	@Override
 	public boolean readyToCrawl() {
@@ -91,12 +182,19 @@ public class TexasWebCrawler extends WebCrawler {
     	
     	try {
     		for (k=0; k<URL_LIST.length; k++) {
-    			
-    			// get URLs
     			str = URL_LIST[k];
     			
     			logger.info("Processing URL: " + str);
+    			URL url = new URL(str);
+ 	            CleanerProperties props = new CleanerProperties();
+ 	            // set some properties to non-default values
+ 	         	props.setTranslateSpecialEntities(true);
+ 	         	props.setTransResCharsToNCR(true);
+ 	         	props.setOmitComments(true);
+ 	         	TagNode root = new HtmlCleaner(props).clean(url);
+ 	         	root.traverse(new TexasTagNodeVisitor());
     			
+ 	         	/*
 	            URL url = new URL(str);
 	            
 	            InputStream is = url.openStream();
@@ -224,6 +322,7 @@ public class TexasWebCrawler extends WebCrawler {
 		    	        }
 	 				}
 	 			}
+	 			*/
     		}
         } 
     	catch (MalformedURLException e) {

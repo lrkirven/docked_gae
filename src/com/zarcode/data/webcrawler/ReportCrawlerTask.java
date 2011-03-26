@@ -41,7 +41,7 @@ public class ReportCrawlerTask extends HttpServlet {
 	private final static String MISS 		= "MS";
 
 	private final String[] SRC_LIST =  {
-		// TEXAS,	
+		TEXAS,	
 		// UTAH,
 		// MINN,
 		MISS

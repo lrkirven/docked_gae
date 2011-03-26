@@ -265,6 +265,8 @@ public class MissWebCrawler extends WebCrawler {
     			urlStr = URL_LIST[k];
     			logger.info("Processing URL: " + urlStr);
 	            URL url = new URL(urlStr);
+	            
+	            /*
 	            InputStream is = url.openStream();
 	            String res = null;
 	            try {
@@ -273,6 +275,7 @@ public class MissWebCrawler extends WebCrawler {
 	            catch (Exception e) {
 	            	logger.severe("EXCEPTION :: " + Util.getStackTrace(e));
 	            }
+	            */
 	            
 	            CleanerProperties props = new CleanerProperties();
 	            // set some properties to non-default values
