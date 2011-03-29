@@ -6,4 +6,10 @@
     <schedule>every wednesday 02:00</schedule>
     <timezone>America/Chicago</timezone>
   </cron>
+   <cron>
+    <url>/reportCrawler</url>
+    <description>Crawl websites for fishing reports</description>
+    <schedule>every tue,fri 02:00</schedule>
+    <timezone>America/Chicago</timezone>
+  </cron>
 </cronentries>
