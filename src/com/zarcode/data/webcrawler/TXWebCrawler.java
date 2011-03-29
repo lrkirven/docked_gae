@@ -39,13 +39,12 @@ import com.zarcode.data.dao.ReportDao;
 import com.zarcode.data.exception.WebCrawlException;
 import com.zarcode.platform.loader.JDOLoaderServlet;
 import com.zarcode.data.model.ReportDO;
-import com.zarcode.data.webcrawler.MissWebCrawler.MissTagNodeVisitor;
 
-public class TexasWebCrawler extends WebCrawler {
+public class TXWebCrawler extends WebCrawler {
 	
 	private static final String PROVIDER = "tpwd.state.tx.us";
 
-	private Logger logger = Logger.getLogger(TexasWebCrawler.class.getName());
+	private Logger logger = Logger.getLogger(TXWebCrawler.class.getName());
 	
 	private final String[] URL_LIST =  {
 		"http://www.tpwd.state.tx.us/fishboat/fish/action/reptform1.php?water=Fresh",
@@ -55,8 +54,9 @@ public class TexasWebCrawler extends WebCrawler {
 	public static final Map<Integer, Integer> CRAWL_MAP =  new HashMap<Integer, Integer>() 
     {
         {
-             put(Calendar.MONDAY, 1);
-             put(Calendar.WEDNESDAY, 1);
+        	 put(Calendar.MONDAY, 1);
+             put(Calendar.TUESDAY, 1);
+             put(Calendar.THURSDAY, 1);
              put(Calendar.FRIDAY, 1);
         }
     };
@@ -150,8 +150,6 @@ public class TexasWebCrawler extends WebCrawler {
 	public boolean readyToCrawl() {
 		boolean flag = false;
 		
-		logger.info("Entered");
-		
 		if (isFeedUpdated(STATE)) {
 			logger.info("Feed is updated --> " + STATE);
 			return flag;
@@ -163,9 +161,9 @@ public class TexasWebCrawler extends WebCrawler {
 			Integer dayOfWeek = now.get(Calendar.DAY_OF_WEEK);
 			if (CRAWL_MAP.containsKey(dayOfWeek)) {
 				flag = true;
-			}
-			else {
-				logger.info("Not day of week to crawl for this state=" + STATE);
+				ReportDao reportDao = new ReportDao();
+				long rows = reportDao.deleteByState(STATE);
+				logger.info("Existing rows deleted --> " + rows);
 			}
 		}
 		return flag;
@@ -193,136 +191,6 @@ public class TexasWebCrawler extends WebCrawler {
  	         	props.setOmitComments(true);
  	         	TagNode root = new HtmlCleaner(props).clean(url);
  	         	root.traverse(new TexasTagNodeVisitor());
-    			
- 	         	/*
-	            URL url = new URL(str);
-	            
-	            InputStream is = url.openStream();
-	            
-	            Tidy tidy = new Tidy();
-	 			tidy.setMakeClean(true);
-	 			tidy.setXmlOut(true);
-	 			tidy.setDropFontTags(true);
-	 			tidy.setXHTML(true);
-	 	 	   	tidy.setRawOut(true);
-	 	 	   	tidy.setSmartIndent(true);
-	 	 	   	tidy.setWord2000(true);
-	 	 	   	tidy.setDropEmptyParas(true);
-	 	 	   	tidy.setShowWarnings(false);
-	 	 	   	tidy.setFixComments(true);
-	 	 	   	
-	 			OutputStream os = null;
-	 			Document doc = tidy.parseDOM(is, os);
-	 			Date reportDate = null;
-	 			
-	
-	 			NodeList headerList = doc.getElementsByTagName("h2");
-	 			if (headerList.getLength() == 2) {
-	 				logger.info("Found date header");
-	 				Node headerNode = headerList.item(1);
-	 				if (headerNode.getNodeType() == Node.TEXT_NODE) {
-	 					String headerStr = headerNode.getNodeValue();
-	 					if (headerStr != null) {
-	 						String dataStr = headerStr.substring(8, headerStr.length()-1);
-	 						dataStr = dataStr.trim();
-	 						try {
-	 							// May 5, 2010
-	 							DateFormat formatter = new SimpleDateFormat("MMM dd yyyy");
-	 							reportDate = (Date)formatter.parse(dataStr);
-	 						}
-	 						catch (Exception e) {
-	 							throw new WebCrawlException("Page data format has changed", str);
-	 						}
-	 					}
-	 					else {
-	 						throw new WebCrawlException("Page header is EMPTY", str);
-	 					}
-	 				}
-	 				else {
-	 					
-	 				}
-	 			}
-	 			else {
-	 				throw new WebCrawlException("Page header might have changed", str);
-	 			}
-	 			
-	 			//
-	 			// try parsing out the reports
-	 			//
-	 			NodeList tableList = doc.getElementsByTagName("table");
-	 			if (tableList != null && tableList.getLength() == 1) {
-	 				logger.info("Found main reports table");
-	 			}
-	 			else {
-	 				throw new WebCrawlException("Page expected table count has changed", str);
-	 			}
-	 		
-	 			ReportDO report = null;
-	 			Node dataTag = null;
-	 			Node tdTag = null;
-	 			List<String> textList = null;
-	 			ReportDao reportDao = new ReportDao();
-	 			
-	 			//
-	 			// find table
-	 			//
-	 			if (tableList != null) {
-	 				Node node = null;
-	 				int count = tableList.getLength();
-	 				for (i=0; i<count; i++) {
-	 					node = tableList.item(i);
-		    	        if (node != null) {
-		    	        	NodeList rowList = node.getChildNodes();
-		    	        	for (j=0; j<rowList.getLength(); j++) {
-		    	        		Node n = rowList.item(j);
-		    	        		if (n.getNodeName().equalsIgnoreCase("tr")) {
-		    	        			tdTag = n.getFirstChild();
-		    	        			if (tdTag != null && tdTag.getNodeName().equalsIgnoreCase("td")) {
-		    	        				//
-		    	        				// retrieve data from <td> tags
-		    	        				//
-		    	        				textList = new ArrayList<String>();
-		    	        				findMatchingNodes(tdTag, Node.TEXT_NODE, textList);
-		    	        				if (textList.size() > 0) {
-		    	        					report = new ReportDO();
-		    	        					report.setReportedBy(PROVIDER);
-		    	        					report.setState(STATE);
-		    	        					report.setReportDate(reportDate);
-		    	        					String tdValue = EscapeChars.forXML(textList.get(0));
-		    	        					report.setKeyword(tdValue);
-		    	        					StringBuilder sb = new StringBuilder();
-    	        							sb.append(STATE);
-    	        							sb.append(":");
-    	        							sb.append(report.getKeyword());
-    	        							report.setReportKey(sb.toString());
-		    	        				}
-		    	        			}
-		    	        			else {
-		    	        				continue;
-		    	        			}
-		    	        			//
-		    	        			// get next <td> column 
-		    	        			//
-		    	        			NodeList tdList = n.getChildNodes();
-		    	        			if (tdList != null && tdList.getLength() > 1) {
-		    	        				tdTag = tdList.item(1);
-		    	        				if (tdTag != null) {
-		    	        					textList = new ArrayList<String>();
-		    	        					findMatchingNodes(tdTag, Node.TEXT_NODE, textList);
-		    	        					if (textList.size() > 0) {
-		    	        						report.setReportBody(textList.get(0));
-		    	        						logger.info("Adding/Updating report --> " + report.getKeyword());
-		    	        						reportDao.addOrUpdateReport(report);
-		    	        						report = null;
-		    	        					}
-		    	        				}
-		    	        			}
-		    	        		}
-		    	        	}
-		    	        }
-	 				}
-	 			}
-	 			*/
     		}
         } 
     	catch (MalformedURLException e) {

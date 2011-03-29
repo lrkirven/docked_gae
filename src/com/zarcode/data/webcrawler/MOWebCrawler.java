@@ -34,88 +34,35 @@ import com.zarcode.data.dao.ReportDao;
 import com.zarcode.data.exception.WebCrawlException;
 import com.zarcode.data.model.ReportDO;
 
-public class MissWebCrawler extends WebCrawler {
+public class MOWebCrawler extends WebCrawler {
 
-	private Logger logger = Logger.getLogger(MissWebCrawler.class.getName());
+	private Logger logger = Logger.getLogger(MOWebCrawler.class.getName());
 	
 	private static final String PROVIDER = "mdwfp.com";
 	
 	private final String[] URL_LIST =  {
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=1",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=2",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=3",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=4",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=5",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=6",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=7",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=8",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=9",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=10",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=11",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=12",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=14",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=15",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=19",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=20",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=21",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=22",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=23",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=24",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=25",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=26",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=27",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=28",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=31",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=33",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=36",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=37",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=38",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=39",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=40",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=41",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=43",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=44",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=45",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=47",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=49",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=50",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=52",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=53",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=108",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=109",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=110",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=111",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=112",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=115",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=118",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=120",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=127",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=129",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=135",
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=137"
+		"extra.mdc.mo.gov",
 	};
 	
-	/*
-	private final String[] URL_LIST =  {
-		"http://home.mdwfp.com/Fisheries/FishingReportsInfo.aspx?id=109",
-	};
-	*/
 	
-	public class MissTagNodeVisitor implements TagNodeVisitor {
+	public class MOTagNodeVisitor implements TagNodeVisitor {
 	
 		private String keyword = null;
   	    private String dateStr = null;
   	    private String reportStr = null;
   	    private Date reportDate = null;
+  	   	private ReportDao reportDao = new ReportDao();
   	    
-  	    public MissTagNodeVisitor() {
+  	    public MOTagNodeVisitor() {
   	    }
 		
 		public boolean visit(TagNode tagNode, HtmlNode htmlNode) {
   	    	ReportDO report = null;
   	    	String urlStr = null;
+  	    	String tagValue = null;
+  	    	boolean bOpen = false;
+  	    	String resName = null;
   	    	
-  	    	ReportDao reportDao = new ReportDao();
   	    	
   	    	// 05/10/2010
 	 		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
@@ -123,7 +70,25 @@ public class MissWebCrawler extends WebCrawler {
   	        if (htmlNode instanceof TagNode) {
   	            TagNode tag = (TagNode) htmlNode;
   	            String tagName = tag.getName();
-  	            if ("span".equalsIgnoreCase(tagName)) {
+  	            if ("h4".equalsIgnoreCase(tagName)) {
+  	            	tagValue = tag.getText().toString();
+  	            	if (tagValue != null && tagValue.equalsIgnoreCase("LAKES")) {
+  	            		bOpen = true;
+  	            	}
+  	            	else if (bOpen) {
+  	            		resName = tagValue.substring(0, tagValue.length()-2);
+  	            		report = new ReportDO();
+        				report.setReportedBy(PROVIDER);
+        				report.setKeyword(resName);
+        				report.setReportDate(reportDate);
+        				report.setReportBody(reportStr);
+        				report.setState(STATE);
+  	            	}
+  	            }
+  	            else if ("hr".equalsIgnoreCase(tagName)) {
+	            	bOpen = false;
+	            }
+  	            else if ("span".equalsIgnoreCase(tagName)) {
   	               String idName = tag.getAttributeByName("id");
   	               logger.info("SPAN :: " + idName); 
   	               if (idName != null) {
@@ -175,14 +140,11 @@ public class MissWebCrawler extends WebCrawler {
 	
 	public static final Map<Integer, Integer> CRAWL_MAP = new HashMap<Integer, Integer>()  {
         {
-             put(Calendar.SUNDAY, 1);
-             put(Calendar.MONDAY, 1);
-             put(Calendar.TUESDAY, 1);
-             put(Calendar.WEDNESDAY, 1);
+             put(Calendar.THURSDAY, 1);
         }
     };
 
-	private final String STATE = "MS";
+	private final String STATE = "MO";
 	
 	@Override
 	public boolean readyToCrawl() {
@@ -265,25 +227,15 @@ public class MissWebCrawler extends WebCrawler {
     			urlStr = URL_LIST[k];
     			logger.info("Processing URL: " + urlStr);
 	            URL url = new URL(urlStr);
-	            
 	            /*
-	            InputStream is = url.openStream();
-	            String res = null;
-	            try {
-	            	res = convertStreamToString(is);
-	            }
-	            catch (Exception e) {
-	            	logger.severe("EXCEPTION :: " + Util.getStackTrace(e));
-	            }
-	            */
-	            
+	             * start-up HtmlCleaner
+	             */
 	            CleanerProperties props = new CleanerProperties();
-	            // set some properties to non-default values
 	         	props.setTranslateSpecialEntities(true);
 	         	props.setTransResCharsToNCR(true);
 	         	props.setOmitComments(true);
 	         	TagNode root = new HtmlCleaner(props).clean(url);
-	         	root.traverse(new MissTagNodeVisitor());
+	         	root.traverse(new MOTagNodeVisitor());
     		}
         } 
     	catch (MalformedURLException e) {

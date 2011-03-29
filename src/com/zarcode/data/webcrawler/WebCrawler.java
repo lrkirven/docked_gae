@@ -195,7 +195,7 @@ public abstract class WebCrawler  {
 			diff = (diff/60);
 			// in days
 			diff = (diff/24);
-			if (diff < 3) {
+			if (diff < 6) {
 				return UPDATED;
 			}
 		}

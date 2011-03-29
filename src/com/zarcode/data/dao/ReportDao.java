@@ -8,8 +8,10 @@ import java.util.logging.Logger;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import com.zarcode.data.model.GeoHash2ResourceMapDO;
 import com.zarcode.data.model.ReportDO;
 import com.zarcode.data.model.ShortReportDO;
+import com.zarcode.data.model.WaterResourceDO;
 import com.zarcode.platform.dao.BaseDao;
 
 public class ReportDao extends BaseDao {
@@ -118,6 +120,15 @@ public class ReportDao extends BaseDao {
 		
 	} // getReportsByState
 	
+	public long deleteByState(String state) {
+		long rows = 0;
+		Query query = pm.newQuery(ReportDO.class);
+	    query.setFilter("state == stateParam");
+	    query.declareParameters("String stateParam");
+	    rows = query.deletePersistentAll(state);
+	    return rows;
+	}
+	
 	
 	ReportDO getReportByReportKey(String reportKey) {
 		List<ReportDO> res = null;
@@ -185,19 +196,5 @@ public class ReportDao extends BaseDao {
 		return list;
 	}
 	*/
-	
-	private double distanceBtwAB(double lat1, double lng1, double lat2, double lng2) {
-		double earthR = 6371; // km
-		double dLat = Math.toRadians(lat2-lat1);
-		double dlng = Math.toRadians(lng2-lng1);
-		double a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
-			Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *  
-			Math.sin(dlng/2) * Math.sin(dlng/2); 
-		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-		// dist in km
-		double d = earthR * c;
-		double distInMiles = (d/0.621371192);
-		return distInMiles;
-	}
 	
 }

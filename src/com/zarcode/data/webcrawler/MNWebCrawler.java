@@ -42,9 +42,9 @@ import com.zarcode.data.exception.WebCrawlException;
 import com.zarcode.platform.loader.JDOLoaderServlet;
 import com.zarcode.data.model.ReportDO;
 
-public class MinnWebCrawler extends WebCrawler {
+public class MNWebCrawler extends WebCrawler {
 
-	private Logger logger = Logger.getLogger(MinnWebCrawler.class.getName());
+	private Logger logger = Logger.getLogger(MNWebCrawler.class.getName());
 	
 	private final String RSS_FEED_URL = "http://clicks.skem1.com/archive/rss.php?c=4027&l=11";
 	

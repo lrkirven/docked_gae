@@ -1,28 +1,16 @@
 package com.zarcode.data.webcrawler;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.tidy.Tidy;
-
 import com.zarcode.app.AppCommon;
 import com.zarcode.common.EmailHelper;
 import com.zarcode.common.Util;
 import com.zarcode.data.exception.WebCrawlException;
-import com.zarcode.platform.loader.JDOLoaderServlet;
 
 /**
  * This servlet actually does the work as a Queue Task crawl the supported
@@ -35,16 +23,18 @@ public class ReportCrawlerTask extends HttpServlet {
 
 	private Logger logger = Logger.getLogger(ReportCrawlerTask.class.getName());
 
-	private final static String TEXAS 		= "TX";
-	private final static String UTAH 		= "UT";
-	private final static String MINN 		= "MN";
-	private final static String MISS 		= "MS";
+	private final static String TX 		= "TX";
+	private final static String UT 		= "UT";
+	private final static String MN 		= "MN";
+	private final static String MS 		= "MS";
+	private final static String MO 		= "MO";
 
 	private final String[] SRC_LIST =  {
-		TEXAS,	
-		// UTAH,
+		TX,	
+		UT,
 		// MINN,
-		MISS
+		// MO,
+		MS
 	};
 	
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -67,17 +57,17 @@ public class ReportCrawlerTask extends HttpServlet {
     	
     	for (i=0; i<SRC_LIST.length; i++) {
     		state = SRC_LIST[i];
-    		if (state.equalsIgnoreCase(TEXAS)) {
-    			crawler = new TexasWebCrawler();
+    		if (state.equalsIgnoreCase(TX)) {
+    			crawler = new TXWebCrawler();
     		}
-    		else  if (state.equalsIgnoreCase(UTAH)) {
-    			crawler = new UtahWebCrawler();
+    		else  if (state.equalsIgnoreCase(UT)) {
+    			crawler = new UTWebCrawler();
     		}
-    		else  if (state.equalsIgnoreCase(MINN)) {
-    			crawler = new MinnWebCrawler();
+    		else  if (state.equalsIgnoreCase(MN)) {
+    			crawler = new MNWebCrawler();
     		}
-    		else  if (state.equalsIgnoreCase(MISS)) {
-    			crawler = new MissWebCrawler();
+    		else  if (state.equalsIgnoreCase(MS)) {
+    			crawler = new MSWebCrawler();
     		}
     		try {
     			if (crawler.readyToCrawl()) {
