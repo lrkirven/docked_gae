@@ -41,28 +41,24 @@ public class MOWebCrawler extends WebCrawler {
 	private static final String PROVIDER = "mdwfp.com";
 	
 	private final String[] URL_LIST =  {
-		"extra.mdc.mo.gov",
+		"http://extra.mdc.mo.gov/fish/fishrt/",
 	};
 	
 	
 	public class MOTagNodeVisitor implements TagNodeVisitor {
 	
-		private String keyword = null;
-  	    private String dateStr = null;
-  	    private String reportStr = null;
   	    private Date reportDate = null;
   	   	private ReportDao reportDao = new ReportDao();
+  	    private ReportDO report = null;
   	    
   	    public MOTagNodeVisitor() {
   	    }
 		
 		public boolean visit(TagNode tagNode, HtmlNode htmlNode) {
-  	    	ReportDO report = null;
-  	    	String urlStr = null;
   	    	String tagValue = null;
+  	    	boolean bStart = false;
   	    	boolean bOpen = false;
   	    	String resName = null;
-  	    	
   	    	
   	    	// 05/10/2010
 	 		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
@@ -70,8 +66,17 @@ public class MOWebCrawler extends WebCrawler {
   	        if (htmlNode instanceof TagNode) {
   	            TagNode tag = (TagNode) htmlNode;
   	            String tagName = tag.getName();
-  	            if ("h4".equalsIgnoreCase(tagName)) {
+  	            if ("h3".equalsIgnoreCase(tagName)) {
   	            	tagValue = tag.getText().toString();
+  	            	if (tagValue != null && tagValue.equalsIgnoreCase("Statewide Weekly Fishing Report")) {
+  	            		bStart = true;
+  	            	}
+  	            }
+  	            else if ("h4".equalsIgnoreCase(tagName)) {
+  	            	tagValue = tag.getText().toString();
+  	            	if (tagValue != null && tagValue.equalsIgnoreCase("RIVERS")) {
+  	            		return true;
+  	            	}
   	            	if (tagValue != null && tagValue.equalsIgnoreCase("LAKES")) {
   	            		bOpen = true;
   	            	}
@@ -81,62 +86,44 @@ public class MOWebCrawler extends WebCrawler {
         				report.setReportedBy(PROVIDER);
         				report.setKeyword(resName);
         				report.setReportDate(reportDate);
-        				report.setReportBody(reportStr);
         				report.setState(STATE);
   	            	}
   	            }
   	            else if ("hr".equalsIgnoreCase(tagName)) {
 	            	bOpen = false;
 	            }
-  	            else if ("span".equalsIgnoreCase(tagName)) {
-  	               String idName = tag.getAttributeByName("id");
-  	               logger.info("SPAN :: " + idName); 
-  	               if (idName != null) {
-      	              if (idName.equalsIgnoreCase("ctl00_ContentPlaceHolder1_FormView1_NameLabel")) {
-	    		    			keyword = getTagNodeContents(tag);
-	    		    			logger.info("Found keyword: " + keyword);
-	    		    		}
-	    		    		else if (idName.equalsIgnoreCase("ctl00_ContentPlaceHolder1_FormView1_Label1")) {
-	    		    			dateStr = getTagNodeContents(tag);
-	    		    			logger.info("Found dateStr: " + dateStr);
-	    	        			try {
-	    	        				reportDate = formatter.parse(dateStr);
-	    	        			}
-	    	        			catch (Exception e) {
-	    	        				// throw new WebCrawlException(e.getMessage(), urlStr);
-	    	        			}
-	    		    		}
-	    		    		else if (idName.equalsIgnoreCase("ctl00_ContentPlaceHolder1_FormView1_FishingReportLabel2")) {
-	    		    			reportStr = getTagNodeContents(tag);
-	    	        			logger.info("Using report text: " + reportStr);
-	    		    			//
-		        				// create report object
-		        				//
-		        				report = new ReportDO();
-		        				report.setReportedBy(PROVIDER);
-		        				report.setKeyword(keyword);
-		        				report.setReportDate(reportDate);
-		        				report.setReportBody(reportStr);
-		        				report.setState(STATE);
-		        				StringBuilder sb = new StringBuilder();
-								sb.append(STATE);
-								sb.append(":");
-								String uniqueKey = report.getKeyword();
-								uniqueKey= uniqueKey.toUpperCase();
-								uniqueKey = EscapeChars.forXML(uniqueKey);
-								sb.append(uniqueKey);
-								report.setReportKey(sb.toString());
-								reportDao.addOrUpdateReport(report);
-	    		    		}
-  	               		}
+  	            else if ("p".equalsIgnoreCase(tagName)) {
+  	            	if (report != null) {
+  	            		tagValue = tag.getText().toString();
+  	            		if (tagValue != null) {
+  	            			report.setReportBody(tagValue);
+  	            		}
+  	            		reportDao.addOrUpdateReport(report);
+  	            		report = null;
+  	            	}
+  	            	if (bStart) {
+  	            		bStart = false;
+  	            		tagValue = tag.getText().toString();
+  	            		if (tagValue != null) {
+  	            			String[] dateStrArry = tagValue.split("at");
+  	            			if (dateStrArry.length > 0) {
+  	            				String dateStr = dateStrArry[0];
+  	            				try {
+    	        					reportDate = formatter.parse(dateStr);
+    	        				}
+    	        				catch (Exception e) {
+    	        				}
+  	            			}
+;  	            		}
   	            	}
   	        	} 
-  	        	// tells visitor to continue traversing the DOM tree
-  	        	return true;
+  	        }
+  	        // tells visitor to continue traversing the DOM tree
+  	        return true;
   	        	
-  	    	} // visit
+  	    } // visit
 		 
-	} // MissTagNodeVisitor
+	} // MOTagNodeVisitor
 	
 	public static final Map<Integer, Integer> CRAWL_MAP = new HashMap<Integer, Integer>()  {
         {
@@ -165,20 +152,6 @@ public class MOWebCrawler extends WebCrawler {
 		return flag;
 	}
 	
-	@Override
-	public  String convertStreamToString(InputStream is) throws Exception {
-	    BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-	    StringBuilder sb = new StringBuilder();
-	    String line = null;
-	    while ((line = reader.readLine()) != null) {
-	    	line = line.replace("<p>", "");
-	    	line = line.replace("</p>", "");
-	    	sb.append(line + "\n");
-	    }
-	    is.close();
-	    return sb.toString();
-	}
-
 	protected String getTagNodeContents(TagNode node) {
 		String res = null;
 		Node n = null;
@@ -208,7 +181,6 @@ public class MOWebCrawler extends WebCrawler {
 			}
 			res = found;
 		}
-		
 		return res;
 	}
 
@@ -217,10 +189,7 @@ public class MOWebCrawler extends WebCrawler {
     	int i = 0;
     	int j = 0;
     	int k = 0;
-    	String msg = null;
     	String urlStr = null;
-		String keyword = null;
-	 	Date reportDate = null;
     	
     	try {
     		for (k=0; k<URL_LIST.length; k++) {
