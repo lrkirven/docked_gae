@@ -38,7 +38,7 @@ public class MOWebCrawler extends WebCrawler {
 
 	private Logger logger = Logger.getLogger(MOWebCrawler.class.getName());
 	
-	private static final String PROVIDER = "mdwfp.com";
+	private static final String PROVIDER = "mdc.mo.gov";
 	
 	private final String[] URL_LIST =  {
 		"http://extra.mdc.mo.gov/fish/fishrt/",
@@ -50,14 +50,14 @@ public class MOWebCrawler extends WebCrawler {
   	    private Date reportDate = null;
   	   	private ReportDao reportDao = new ReportDao();
   	    private ReportDO report = null;
+  	    private boolean bStart = false;
+  	    private boolean bOpen = false;
   	    
   	    public MOTagNodeVisitor() {
   	    }
 		
 		public boolean visit(TagNode tagNode, HtmlNode htmlNode) {
   	    	String tagValue = null;
-  	    	boolean bStart = false;
-  	    	boolean bOpen = false;
   	    	String resName = null;
   	    	
   	    	// 05/10/2010
@@ -81,12 +81,21 @@ public class MOWebCrawler extends WebCrawler {
   	            		bOpen = true;
   	            	}
   	            	else if (bOpen) {
-  	            		resName = tagValue.substring(0, tagValue.length()-2);
+  	            		resName = tagValue.substring(0, tagValue.length()-1);
   	            		report = new ReportDO();
         				report.setReportedBy(PROVIDER);
         				report.setKeyword(resName);
         				report.setReportDate(reportDate);
         				report.setState(STATE);
+        				report.setState(STATE);
+        				StringBuilder sb = new StringBuilder();
+						sb.append(STATE);
+						sb.append(":");
+						String uniqueKey = report.getKeyword();
+						uniqueKey= uniqueKey.toUpperCase();
+						uniqueKey = EscapeChars.forXML(uniqueKey);
+						sb.append(uniqueKey);
+						report.setReportKey(sb.toString());
   	            	}
   	            }
   	            else if ("hr".equalsIgnoreCase(tagName)) {

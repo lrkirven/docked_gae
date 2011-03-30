@@ -33,7 +33,7 @@ public class ReportCrawlerTask extends HttpServlet {
 		TX,	
 		UT,
 		// MINN,
-		// MO,
+		MO,
 		MS
 	};
 	
@@ -68,6 +68,9 @@ public class ReportCrawlerTask extends HttpServlet {
     		}
     		else  if (state.equalsIgnoreCase(MS)) {
     			crawler = new MSWebCrawler();
+    		}
+    		else  if (state.equalsIgnoreCase(MO)) {
+    			crawler = new MOWebCrawler();
     		}
     		try {
     			if (crawler.readyToCrawl()) {
