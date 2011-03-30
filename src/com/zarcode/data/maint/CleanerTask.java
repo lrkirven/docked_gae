@@ -258,7 +258,7 @@ public class CleanerTask extends HttpServlet {
 			
 			logger.info("**** CLEANER: STARTING **** [ Timestamp :: " + now.getTimeInMillis() + " ]");
 			report.append("**** CLEANER: STARTING **** [ Timestamp :: " + now.getTimeInMillis() + " ]\n");
-			report.append("----------------------------------------------------------\n");
+			report.append("---------------------------\n");
 			
 			int buzzMsgsDeleted = cleanBuzzMsgs();
 			logger.info("# of buzz msg(s) deleted: " + buzzMsgsDeleted);
@@ -280,7 +280,7 @@ public class CleanerTask extends HttpServlet {
 			List<FeedbackDO> feedbackList = retrieveFeedback();
 			FeedbackDO item = null;
 			report.append("\n\nFeedback Report\n");
-			report.append("---------------\n\n");
+			report.append("--------------------\n\n");
 			if (feedbackList != null && feedbackList.size() > 0) {
 				for (i=0; i<feedbackList.size(); i++) {
 					item = feedbackList.get(i);
@@ -299,7 +299,7 @@ public class CleanerTask extends HttpServlet {
 			
 			
 			long duration = done.getTimeInMillis() - now.getTimeInMillis();
-			report.append("----------------------------------------------------------\n");
+			report.append("-----------------------\n");
 			logger.info("**** CLEANER: DONE **** [ Elapsed Msec(s): " + duration + " ]");
 			report.append("**** CLEANER: DONE **** [ Elapsed Msec(s): " + duration + " ]\n");
 			
