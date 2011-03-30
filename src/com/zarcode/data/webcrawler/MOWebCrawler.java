@@ -155,6 +155,9 @@ public class MOWebCrawler extends WebCrawler {
 			Integer dayOfWeek = now.get(Calendar.DAY_OF_WEEK);
 			if (CRAWL_MAP.containsKey(dayOfWeek)) {
 				flag = true;
+				ReportDao reportDao = new ReportDao();
+				long rows = reportDao.deleteByState(STATE);
+				logger.info("Existing rows deleted --> " + rows);
 			}
 			flag = true;
 		}
