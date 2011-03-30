@@ -136,7 +136,10 @@ public class MOWebCrawler extends WebCrawler {
 	
 	public static final Map<Integer, Integer> CRAWL_MAP = new HashMap<Integer, Integer>()  {
         {
-             put(Calendar.THURSDAY, 1);
+        	put(Calendar.MONDAY, 1);
+            put(Calendar.TUESDAY, 1);
+            put(Calendar.THURSDAY, 1);
+            put(Calendar.FRIDAY, 1);
         }
     };
 
