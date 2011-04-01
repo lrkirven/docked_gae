@@ -97,6 +97,22 @@ public class AppCommon {
 		
 		return timeOffset;
 	}
+	
+	/* remove leading whitespace */
+    public static String ltrim(String source) {
+        return source.replaceAll("^\\s+", "");
+    }
+
+    /* remove trailing whitespace */
+    public static String rtrim(String source) {
+        return source.replaceAll("\\s+$", "");
+    }
+
+    /* replace multiple whitespaces between words with single blank */
+    public static String itrim(String source) {
+        return source.replaceAll("\\b\\s{2,}\\b", "");
+    }
+
 
 	public static String generateActiveKey() {
 		DateFormat formatter = new SimpleDateFormat("yyyy.MM.dd hh");

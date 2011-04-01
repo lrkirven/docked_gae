@@ -33,6 +33,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.tidy.Tidy;
 
+import com.zarcode.app.AppCommon;
 import com.zarcode.common.EscapeChars;
 import com.zarcode.common.Util;
 import com.zarcode.data.dao.ReportDao;
@@ -41,18 +42,18 @@ import com.zarcode.platform.loader.JDOLoaderServlet;
 import com.zarcode.data.model.ReportDO;
 import com.zarcode.data.webcrawler.TXWebCrawler.TexasTagNodeVisitor;
 
-public class UTWebCrawler extends WebCrawler {
+public class OKWebCrawler extends WebCrawler {
 
-	private Logger logger = Logger.getLogger(UTWebCrawler.class.getName());
+	private Logger logger = Logger.getLogger(OKWebCrawler.class.getName());
 	
-	private static final String PROVIDER = "wildlife.utah.gov";
+	private static final String PROVIDER = "www.wildlifedepartment.com";
 	
 	private final String[] URL_LIST =  {
-		"http://wildlife.utah.gov/hotspots/reports_cr.php",
-		"http://wildlife.utah.gov/hotspots/reports_nr.php",
-		"http://wildlife.utah.gov/hotspots/reports_ne.php",
-		"http://wildlife.utah.gov/hotspots/reports_se.php",
-		"http://wildlife.utah.gov/hotspots/reports_sr.php"
+		"http://www.wildlifedepartment.com/fishokc.htm",
+		"http://www.wildlifedepartment.com/fishne.htm",
+		"http://www.wildlifedepartment.com/fishse.htm",
+		"http://www.wildlifedepartment.com/fishsw.htm",
+		"http://www.wildlifedepartment.com/fishnw.htm"
 	};
 	
 	public static final Map<Integer, Integer> CRAWL_MAP = new HashMap<Integer, Integer>() 
@@ -65,7 +66,7 @@ public class UTWebCrawler extends WebCrawler {
         }
     };
 	
-	private final String STATE = "UT";
+	private final String STATE = "OK";
 	
 	/**
 	 * This class is custom parsing to return fishing reports on the wildlife.utah.gov.
@@ -73,44 +74,50 @@ public class UTWebCrawler extends WebCrawler {
 	 * @author lazar
 	 *
 	 */
-	public class UtahTagNodeVisitor implements TagNodeVisitor {
+	public class OklahomaTagNodeVisitor implements TagNodeVisitor {
 		
   	    private ReportDO report = null;
-  	    private boolean reportsFound = false;
   	    private ReportDao reportDao = new ReportDao();
-  	    private boolean bReportOpen = false;
-  	    // 2011-03-12
-	 	private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+  	   	private Date reportDate = null;
+  	   	
+  	    // March 28, 2011 11:22 AM
+	 	private DateFormat formatter = new SimpleDateFormat("MMMMM d, yyyy hh:mm aaa");
   	    
-  	    public UtahTagNodeVisitor() {
+  	    public OklahomaTagNodeVisitor() {
   	    }
 		
 		public boolean visit(TagNode tagNode, HtmlNode htmlNode) {
   	    	String tagValue = null;
-  	    	Date reportDate = null;
   	    	
   	        if (htmlNode instanceof TagNode) {
   	            TagNode tag = (TagNode) htmlNode;
   	            String tagName = tag.getName();
-  	            /*
-  	             * start and end of report object
-  	             */
-  	            if ("td".equalsIgnoreCase(tagName)) {
+  	            
+  	            if ("p".equalsIgnoreCase(tagName)) {
+	            	String alignName = tag.getAttributeByName("align");
+	            	if (alignName != null && alignName.equalsIgnoreCase("center")) {
+	            		tagValue = tag.getText().toString();
+	            		if (tagValue != null) {
+	            			String dateStr = tagValue.trim();
+	            			try {
+	        					reportDate = formatter.parse(dateStr);
+	        					logger.info("Report Date: " + reportDate);
+	        				}
+	        				catch (Exception e) {
+	        					logger.warning("Unable to parse report date --- " + dateStr + "\n" + Util.getStackTrace(e));
+	        				}
+	        				// continue
+	        				return true;
+	            		}
+	            	}
+	            }
+  	          	if ("p".equalsIgnoreCase(tagName)) {
   	            	String className = tag.getAttributeByName("class");
-  	            	if (className != null && className.equalsIgnoreCase("body12")) {
-  	            		if (report == null) {
-  	            			report = new ReportDO();
-    	            		report.setReportedBy(PROVIDER);
-    	            		report.setState(STATE);
-  	            		}
-  	            		else {
-  	            			tagValue = tag.getText().toString();
-  	            			if (tagValue != null) {
-  	            				report.setReportBody(tagValue);
-  	            			}
-  	            			reportDao.addOrUpdateReport(report);
-  	            			report = null;
-  	            		}
+  	            	if (className != null && className.equalsIgnoreCase("MsoNormal")) {
+  	            		report = new ReportDO();
+    	            	report.setReportedBy(PROVIDER);
+    	            	report.setState(STATE);
+    	            	report.setReportDate(reportDate);
   	            	}
   	            }
   	            else if ("a".equalsIgnoreCase(tagName) && report != null) {
@@ -121,28 +128,31 @@ public class UTWebCrawler extends WebCrawler {
 	  	            	sb.append(STATE);
 	  	            	sb.append(":");
 	  	            	String uniqueKey = report.getKeyword();
-	  	            	uniqueKey= uniqueKey.toUpperCase();
+	  	            	uniqueKey = uniqueKey.toUpperCase();
+	  	            	uniqueKey = AppCommon.itrim(uniqueKey);
 	  	            	uniqueKey = EscapeChars.forXML(uniqueKey);
 	  	            	sb.append(uniqueKey);
 	  	            	report.setReportKey(sb.toString());
 	            	}
 	            }
-  	            else if ("i".equalsIgnoreCase(tagName) && report != null) {
+  	            else if ("span".equalsIgnoreCase(tagName) && report != null) {
   	               tagValue = tag.getText().toString();
-  	               if (tagValue != null) {
-  	            	   if (report.getReportDate() == null) {
-  	            		   logger.info("Found dateStr: " + tagValue);
-  	            	   		try {
-  	            	   			reportDate = formatter.parse(tagValue);
+  	               if (tagValue != null && tagValue.equalsIgnoreCase(report.getKeyword())) {
+  	            	   return true;
+  	               }
+  	               if (tagValue != null && tagValue.length() < 3) {
+  	            	   return true;
+  	               }
+  	               String styleName = tag.getAttributeByName("style");
+  	               if (styleName != null && styleName.equalsIgnoreCase("font-family: Arial")) {
+  	            	   if (tagValue != null) {
+  	            		   if (report.getKeyword() != null) {
+  	            			   report.setReportBody(tagValue);
+  	            			   reportDao.addOrUpdateReport(report);
   	            	   		}
-  	            	   		catch (Exception e) {
-  	            	   			logger.warning("Unable to parse report date --- " + tagValue);
-  	            	   		}
-  	            	   		if (reportDate != null) {
-  	            	   			report.setReportDate(reportDate);
-  	            	   		}
+  	            	   		report = null;
   	               		}
-  	            	}
+  	               }
   	        	} 
 			}
   	            
@@ -194,7 +204,7 @@ public class UTWebCrawler extends WebCrawler {
  	         	props.setTransResCharsToNCR(true);
  	         	props.setOmitComments(true);
  	         	TagNode root = new HtmlCleaner(props).clean(url);
- 	         	root.traverse(new UtahTagNodeVisitor());
+ 	         	root.traverse(new OklahomaTagNodeVisitor());
     		}
         } 
     	catch (MalformedURLException e) {
