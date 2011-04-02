@@ -85,7 +85,7 @@ public class OKWebCrawler extends WebCrawler {
   	    
   	    public OklahomaTagNodeVisitor() {
   	    }
-		
+  	    
 		public boolean visit(TagNode tagNode, HtmlNode htmlNode) {
   	    	String tagValue = null;
   	    	
@@ -105,6 +105,7 @@ public class OKWebCrawler extends WebCrawler {
 	        				}
 	        				catch (Exception e) {
 	        					logger.warning("Unable to parse report date --- " + dateStr + "\n" + Util.getStackTrace(e));
+	        					reportDate = new Date();
 	        				}
 	        				// continue
 	        				return true;
@@ -120,7 +121,7 @@ public class OKWebCrawler extends WebCrawler {
     	            	report.setReportDate(reportDate);
   	            	}
   	            }
-  	            else if ("a".equalsIgnoreCase(tagName) && report != null) {
+  	            else if ("b".equalsIgnoreCase(tagName) && report != null) {
 	            	tagValue = tag.getText().toString();
 	            	if (tagValue != null) {
 	            		report.setKeyword(tagValue);
@@ -128,6 +129,7 @@ public class OKWebCrawler extends WebCrawler {
 	  	            	sb.append(STATE);
 	  	            	sb.append(":");
 	  	            	String uniqueKey = report.getKeyword();
+	  	            	uniqueKey = uniqueKey.trim();
 	  	            	uniqueKey = uniqueKey.toUpperCase();
 	  	            	uniqueKey = AppCommon.itrim(uniqueKey);
 	  	            	uniqueKey = EscapeChars.forXML(uniqueKey);
@@ -137,21 +139,21 @@ public class OKWebCrawler extends WebCrawler {
 	            }
   	            else if ("span".equalsIgnoreCase(tagName) && report != null) {
   	               tagValue = tag.getText().toString();
-  	               if (tagValue != null && tagValue.equalsIgnoreCase(report.getKeyword())) {
+  	               if (tagValue != null) {
+  	            	   String t = tagValue.trim();
+  	            	   if (t.equalsIgnoreCase(report.getKeyword())) {
+  	            		   return true;
+  	            	   }
+  	               }
+  	               if (tagValue != null && tagValue.length() < 10) {
   	            	   return true;
   	               }
-  	               if (tagValue != null && tagValue.length() < 3) {
-  	            	   return true;
-  	               }
-  	               String styleName = tag.getAttributeByName("style");
-  	               if (styleName != null && styleName.equalsIgnoreCase("font-family: Arial")) {
-  	            	   if (tagValue != null) {
-  	            		   if (report.getKeyword() != null) {
-  	            			   report.setReportBody(tagValue);
-  	            			   reportDao.addOrUpdateReport(report);
-  	            	   		}
-  	            	   		report = null;
-  	               		}
+  	               if (tagValue != null) {
+  	            	   if (report.getKeyword() != null) {
+  	            		   report.setReportBody(tagValue);
+  	            		   reportDao.addOrUpdateReport(report);
+  	            	   	}
+  	            	   	report = null;
   	               }
   	        	} 
 			}
@@ -180,6 +182,7 @@ public class OKWebCrawler extends WebCrawler {
 				logger.info("Existing rows deleted --> " + rows);
 			}
 			else {
+				flag = true;
 				logger.warning("Not day of week to crawl --> " + dayOfWeek);
 			}
 		}
