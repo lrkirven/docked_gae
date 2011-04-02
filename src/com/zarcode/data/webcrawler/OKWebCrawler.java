@@ -125,6 +125,7 @@ public class OKWebCrawler extends WebCrawler {
 	            	tagValue = tag.getText().toString();
 	            	if (tagValue != null) {
 	            		String t = tagValue.trim();
+	            		logger.info("b tag ---->" + t + "<----");
 	            		if (report.getKeyword() != null) {
 	            			t = report.getKeyword() + t;
 	            		}
@@ -154,7 +155,8 @@ public class OKWebCrawler extends WebCrawler {
   	               }
   	               if (tagValue != null) {
   	            	   if (report.getKeyword() != null) {
-  	            		   report.setReportBody(tagValue);
+  	            		   String b = tagValue.trim();
+  	            		   report.setReportBody(b);
   	            		   reportDao.addOrUpdateReport(report);
   	            	   	}
   	            	   	report = null;
