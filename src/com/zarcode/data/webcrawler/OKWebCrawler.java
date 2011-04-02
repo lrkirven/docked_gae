@@ -124,7 +124,11 @@ public class OKWebCrawler extends WebCrawler {
   	            else if ("b".equalsIgnoreCase(tagName) && report != null) {
 	            	tagValue = tag.getText().toString();
 	            	if (tagValue != null) {
-	            		report.setKeyword(tagValue);
+	            		String t = tagValue.trim();
+	            		if (report.getKeyword() != null) {
+	            			t = report.getKeyword() + t;
+	            		}
+	            		report.setKeyword(t);
 	            		StringBuilder sb = new StringBuilder();
 	  	            	sb.append(STATE);
 	  	            	sb.append(":");
@@ -145,7 +149,7 @@ public class OKWebCrawler extends WebCrawler {
   	            		   return true;
   	            	   }
   	               }
-  	               if (tagValue != null && tagValue.length() < 10) {
+  	               if (tagValue != null && tagValue.length() < 25) {
   	            	   return true;
   	               }
   	               if (tagValue != null) {
