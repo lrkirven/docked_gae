@@ -23,6 +23,7 @@ public class ReportCrawlerTask extends HttpServlet {
 
 	private Logger logger = Logger.getLogger(ReportCrawlerTask.class.getName());
 
+	private final static String AR 		= "AR";
 	private final static String MO 		= "MO";
 	private final static String MN 		= "MN";
 	private final static String MS 		= "MS";
@@ -31,6 +32,7 @@ public class ReportCrawlerTask extends HttpServlet {
 	private final static String UT 		= "UT";
 
 	private final String[] SRC_LIST =  {
+		AR,
 		TX,	
 		OK,
 		UT,
@@ -76,6 +78,9 @@ public class ReportCrawlerTask extends HttpServlet {
     		}
     		else  if (state.equalsIgnoreCase(OK)) {
     			crawler = new OKWebCrawler();
+    		}
+    		else  if (state.equalsIgnoreCase(AR)) {
+    			crawler = new ARWebCrawler();
     		}
     		try {
     			if (crawler.readyToCrawl()) {
