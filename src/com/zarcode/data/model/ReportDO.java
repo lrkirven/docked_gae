@@ -124,7 +124,7 @@ public class ReportDO extends AbstractLoaderDO implements Serializable {
 	
 	@XmlElement
 	public String getReportBody() {
-		return reportBodyText.getValue();
+		return (reportBodyText != null ? reportBodyText.getValue() : null);
 	}
 
 	public void setReportBody(String reportBody) {
