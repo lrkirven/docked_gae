@@ -129,6 +129,10 @@ public class OKWebCrawler extends WebCrawler {
 	            		if (report.getKeyword() != null) {
 	            			t = report.getKeyword() + t;
 	            		}
+	            		char c = t.charAt(t.length()-1);
+	            		if (c == ':') {
+	            			t = t.substring(0, t.length()-1);
+	            		}
 	            		report.setKeyword(t);
 	            		StringBuilder sb = new StringBuilder();
 	  	            	sb.append(STATE);
