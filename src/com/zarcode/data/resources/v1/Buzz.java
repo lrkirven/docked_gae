@@ -75,6 +75,7 @@ public class Buzz extends ResourceBase {
 	public BuzzMsgDO addBuzzMsgToLake(@QueryParam("addToMyHotSpots") boolean addToMyHotSpots, String rawBuzzMsg) {
 		List<BuzzMsgDO> res = null;
 		BuzzDao dao = null;
+		String purifiedMsg = null;
 		WaterResourceDao waterResDao = null;
 		UserDao userDao = null;
 		int rows = 0;
@@ -120,6 +121,10 @@ public class Buzz extends ResourceBase {
 					
 					
 					dao = new BuzzDao();
+					
+					purifiedMsg = doWebPurify(logger, buzzMsg.getMessageData().toString());
+					buzzMsg.setMessageDataText(purifiedMsg);
+					
 					newBuzzMsg = dao.addMsg(buzzMsg);
 					PegCounter.incr(PegCounter.NO_BUZZ_MSG, PegCounter.DAILY);
 					PegCounter.incr(PegCounter.NO_BUZZ_COMMENTS, PegCounter.DAILY);

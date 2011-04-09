@@ -54,10 +54,10 @@ public class ARWebCrawler extends WebCrawler {
 	public static final Map<Integer, Integer> CRAWL_MAP =  new HashMap<Integer, Integer>() 
     {
         {
-        	 put(Calendar.MONDAY, 1);
              put(Calendar.TUESDAY, 1);
              put(Calendar.THURSDAY, 1);
              put(Calendar.FRIDAY, 1);
+             put(Calendar.SATURDAY, 1);
         }
     };
 	
@@ -152,7 +152,6 @@ public class ARWebCrawler extends WebCrawler {
 		}
 		else {
 			logger.info("Feed is NOT UPDATED.");
-			flag = true;
 			Calendar now = Calendar.getInstance();
 			Integer dayOfWeek = now.get(Calendar.DAY_OF_WEEK);
 			if (CRAWL_MAP.containsKey(dayOfWeek)) {
@@ -160,6 +159,9 @@ public class ARWebCrawler extends WebCrawler {
 				ReportDao reportDao = new ReportDao();
 				long rows = reportDao.deleteByState(STATE);
 				logger.info("Existing rows deleted --> " + rows);
+			}
+			else {
+				logger.warning("Not schedued to run today");
 			}
 		}
 		return flag;

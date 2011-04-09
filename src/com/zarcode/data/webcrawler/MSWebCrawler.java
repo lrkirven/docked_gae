@@ -188,12 +188,16 @@ public class MSWebCrawler extends WebCrawler {
 			return flag;
 		}
 		else {
+			logger.info("Feed is NOT UPDATED.");
 			Integer dayOfWeek = now.get(Calendar.DAY_OF_WEEK);
 			if (CRAWL_MAP.containsKey(dayOfWeek)) {
 				flag = true;
 				ReportDao reportDao = new ReportDao();
 				long rows = reportDao.deleteByState(STATE);
 				logger.info("Existing rows deleted --> " + rows);
+			}
+			else {
+				logger.warning("Not schedued to run today");
 			}
 		}
 		return flag;

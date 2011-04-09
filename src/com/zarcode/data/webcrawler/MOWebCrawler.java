@@ -155,6 +155,7 @@ public class MOWebCrawler extends WebCrawler {
 			return flag;
 		}
 		else {
+			logger.info("Feed is NOT UPDATED.");
 			Integer dayOfWeek = now.get(Calendar.DAY_OF_WEEK);
 			if (CRAWL_MAP.containsKey(dayOfWeek)) {
 				flag = true;
@@ -162,7 +163,9 @@ public class MOWebCrawler extends WebCrawler {
 				long rows = reportDao.deleteByState(STATE);
 				logger.info("Existing rows deleted --> " + rows);
 			}
-			flag = true;
+			else {
+				logger.warning("Not schedued to run today");
+			}
 		}
 		return flag;
 	}

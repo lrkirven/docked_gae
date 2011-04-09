@@ -313,6 +313,15 @@ public class BuzzMsgDO extends AbstractLoaderDO implements Serializable, Compara
 		this.messageData = messageData;
 	}
 	
+	@XmlTransient
+	public String getMessageDataText() {
+		return (messageDataText == null ? "" : messageDataText.toString());
+	}
+
+	public void setMessageDataText(String m) {
+		messageDataText = new Text(m);
+	}
+	
 	public void setComments(List<CommentDO> list) {
 		this.comments = list;
 	}

@@ -192,8 +192,7 @@ public class OKWebCrawler extends WebCrawler {
 				logger.info("Existing rows deleted --> " + rows);
 			}
 			else {
-				flag = true;
-				logger.warning("Not day of week to crawl --> " + dayOfWeek);
+				logger.warning("Not schedued to run today");
 			}
 		}
 		return flag;
