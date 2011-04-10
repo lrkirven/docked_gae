@@ -5,12 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
@@ -21,7 +18,9 @@ import com.dominicsayers.isemail.IsEMailResult;
 import com.google.gson.Gson;
 import com.zarcode.app.AppCommon;
 import com.zarcode.common.ApplicationProps;
+import com.zarcode.common.EmailHelper;
 import com.zarcode.common.Util;
+import com.zarcode.data.dao.AbuseReportDao;
 import com.zarcode.data.dao.FeedbackDao;
 import com.zarcode.data.dao.UserDao;
 import com.zarcode.data.dao.UserTokenDao;
@@ -29,13 +28,14 @@ import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.exception.BadUserDataProvidedException;
 import com.zarcode.data.exception.UnableToDecodeRequestException;
 import com.zarcode.data.maint.PegCounter;
+import com.zarcode.data.model.AbuseReportDO;
+import com.zarcode.data.model.FeedbackDO;
 import com.zarcode.data.model.LocalStatusDO;
 import com.zarcode.data.model.PingDataDO;
 import com.zarcode.data.model.ReadOnlyUserDO;
 import com.zarcode.data.model.RegisterTokenDO;
 import com.zarcode.data.model.SecurityTokenDO;
 import com.zarcode.data.model.UpdateTaskDO;
-import com.zarcode.data.model.FeedbackDO;
 import com.zarcode.data.model.UserDO;
 import com.zarcode.data.model.UserTokenDO;
 import com.zarcode.data.model.WaterResourceDO;
@@ -240,6 +240,80 @@ public class User extends ResourceBase {
 			throw new BadUserDataProvidedException();
 		}
 		return feedback;
+	}
+	
+	@POST
+	@Produces("application/json")
+	@Path("/reportAbuse")
+	public AbuseReportDO reportAbuse(String rawReportAbuseJson) {
+		UserDO res = null;
+		UserDao dao = null;
+		int rows = 0;
+		String resp = null;
+		UserDO newUser = null;
+		AbuseReportDO report = null;
+		String llId = null;
+		String value = null;
+		String plainText = null;
+		
+		
+		requireSSL(context, logger);
+		
+		if (rawReportAbuseJson != null && rawReportAbuseJson.length() > 0) {
+			report = new Gson().fromJson(rawReportAbuseJson, AbuseReportDO.class);
+			try {
+				llId = report.getLlId();
+				logger.info("BEFORE llId [" + llId + "]");
+				// llId = new URI(llId).toASCIIString();
+				llId = URLDecoder.decode(llId);
+				logger.info("AFTER llId [" + llId + "]");
+				value = report.getValue();
+				// value = new URI(value).toASCIIString();
+				value = URLDecoder.decode(value);
+			}
+			catch (Exception e1) {
+				logger.warning("EXCEPTION ::: " + Util.getStackTrace(e1));
+				throw new BadUserDataProvidedException();
+			}
+		}
+		
+		if (llId == null || llId.length() == 0) {
+			logger.warning("*** Incoming llId is not VALID ***");
+			throw new BadUserDataProvidedException();
+		}
+		
+		if (!AppCommon.ANONYMOUS.equalsIgnoreCase(llId)) {
+			AppPropDO prop = ApplicationProps.getInstance().getProp("CLIENT_TO_SERVER_SECRET");
+			BlockTea.BIG_ENDIAN = false;
+			plainText = BlockTea.decrypt(llId, prop.getStringValue());
+			logger.info("Decrypted llId: " + plainText + " Encrypted llId: " + llId);
+			llId = plainText;
+		}
+		else {
+			logger.warning("*** Anonymous user can update the displayName ***");
+			throw new BadUserDataProvidedException();
+		}
+		
+		dao = new UserDao();
+		res = dao.getUserByIdClear(plainText);
+		if (res != null) {
+			try {
+				report.setIdClear(plainText);
+				report.setEmailAddr(res.getEmailAddr());
+				AbuseReportDao reportDao = new AbuseReportDao();
+				report = reportDao.addReport(report);
+				report.setResult(1);
+				EmailHelper.sendAppAlert("*** Docked Abuse Report ***", report.toString(), AppCommon.APPNAME);
+			}
+			catch (Exception e) {
+				logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
+			}
+		}
+		else {
+			logger.warning("**** Unable to find user account with llId = " + llId);
+			throw new BadUserDataProvidedException();
+		}
+		return report;
 	}
 
 	@POST
