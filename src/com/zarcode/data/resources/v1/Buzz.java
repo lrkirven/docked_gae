@@ -121,10 +121,8 @@ public class Buzz extends ResourceBase {
 					
 					
 					dao = new BuzzDao();
-					
 					purifiedMsg = doWebPurify(logger, buzzMsg.getMessageData().toString());
 					buzzMsg.setMessageDataText(purifiedMsg);
-					
 					newBuzzMsg = dao.addMsg(buzzMsg);
 					PegCounter.incr(PegCounter.NO_BUZZ_MSG, PegCounter.DAILY);
 					PegCounter.incr(PegCounter.NO_BUZZ_COMMENTS, PegCounter.DAILY);
@@ -364,6 +362,7 @@ public class Buzz extends ResourceBase {
 		try {
 			buzzDao = new BuzzDao();
 			
+			/*
 			if (bFindAll) {
 				results = new ArrayList<BuzzMsgDO>();
 				waterResDao = new WaterResourceDao();
@@ -399,13 +398,20 @@ public class Buzz extends ResourceBase {
 				}
 			}
 			else {
-				logger.info("Trying query with resKey=" + resKey);
-				list = buzzDao.getBuzzMsgsByResKey(resKey);
-				results = list;
-				if (results != null && results.size() > BuzzDao.PAGESIZE) {
-					results = results.subList(0, BuzzDao.PAGESIZE);
-				}
+			*/
+			
+			logger.info("Trying query with resKey=" + resKey);
+			list = buzzDao.getBuzzMsgsByResKey(resKey);
+			results = list;
+			if (results != null && results.size() > BuzzDao.PAGESIZE) {
+				results = results.subList(0, BuzzDao.PAGESIZE);
 			}
+			/*
+			BuzzMsgDO b = results.get(0);
+			logger.info("Calling WebPurify ...");
+			String pureMsg = doWebPurify(logger, b.getMessageData());
+			logger.info("WebPurify Result: " + pureMsg);
+			*/
 		}
 		catch (Exception e) {
 			logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));

@@ -1,7 +1,8 @@
 package com.zarcode.data.resources;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -20,17 +21,17 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.google.appengine.api.memcache.jsr107cache.GCacheFactory;
+import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.Util;
 import com.zarcode.data.exception.RequestNotSecureException;
+import com.zarcode.platform.model.AppPropDO;
 
 
 public class ResourceBase {
 
 	protected Cache cache = null;
 	
-	private static final String WEBPURIFY_API_KEY = "0c27007ca617fcfa2858805a018a3758";
-	
-	private static String WEB_PURIFY_URL = "http://api1.webpurify.com/services/rest/?api_key=" + WEBPURIFY_API_KEY;
+	private static String WEB_PURIFY_URL = "http://api1.webpurify.com/services/rest/?api_key="; 
 	
 	public ResourceBase() {
         Map props = new HashMap();
@@ -62,12 +63,32 @@ public class ResourceBase {
 		final String REPLACESYMBOL = "*";
 		
 		purifiedText = userProvidedMsg;
+		AppPropDO p = ApplicationProps.getInstance().getProp("WEBPURIFY_API_KEY");
+		String apiKey = p.getStringValue(); 
 		
 		try {
-			String targetUrl = WEB_PURIFY_URL + "&method=" + METHOD + "&replacesymbol=" + REPLACESYMBOL + "&text=" + userProvidedMsg;
-			
+			String baseUrl = WEB_PURIFY_URL + apiKey;
+			String targetUrl = baseUrl + "&method=" + METHOD + "&replacesymbol=" + REPLACESYMBOL + "&text=" + userProvidedMsg;
 			logger.info("Trying URL: " + targetUrl);
 			URL webPurifyWS = new URL(targetUrl);
+			
+			/*
+			URLFetchService fetcher = URLFetchServiceFactory.getURLFetchService();
+			HTTPResponse response = fetcher.fetch(webPurifyWS);
+
+			byte[] content = response.getContent();
+			URL finalUrl = response.getFinalUrl();
+			int responseCode = response.getResponseCode();
+			logger.info("RESP CODe :: " + responseCode);
+			List<HTTPHeader> headers = response.getHeaders();
+
+			for (HTTPHeader header : headers) {
+				String headerName = header.getName();
+				logger.info("HEADER :: " + headerName);
+				String headerValue = header.getValue();
+			}
+			*/
+
 			
 			/*
 	        BufferedReader reader = new BufferedReader(new InputStreamReader(webPurifyWS.openStream()));
@@ -78,13 +99,16 @@ public class ResourceBase {
 	        */
 		
 			/*
-			URLConnection conn = webPurifyWS.openConnection();
+			HttpURLConnection conn = (HttpURLConnection) webPurifyWS.openConnection();
 			conn.setRequestProperty("Accept", "application/xml");
 			conn.setRequestProperty("Content-Language", "en-US");
+			conn.addRequestProperty("Pragma","no-cache");
+			conn.setRequestMethod("GET");
+			conn.setUseCaches(false);
+			InputStream in = conn.getInputStream();
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); 
 			DocumentBuilder builder = factory.newDocumentBuilder(); 
-			Document doc = builder.parse(conn.getInputStream());
-			
+			Document doc = builder.parse(in);
 
 			Node node = null;
 			NodeList list = doc.getChildNodes();
