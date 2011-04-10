@@ -28,6 +28,7 @@ import com.zarcode.app.GeoRssUtil;
 import com.zarcode.common.ApplicationProps;
 import com.zarcode.common.EmailHelper;
 import com.zarcode.common.PlatformCommon;
+import com.zarcode.common.Util;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.exception.WebCrawlException;
 import com.zarcode.data.model.WaterResourceDO;
@@ -87,7 +88,8 @@ public class GeoRSSWrite extends HttpServlet {
  			doc = PlatformCommon.bytesToXml(rawDoc);
  		}
  		catch (Exception e) {
- 			logger.severe("EXCEPTION :: " + e.getMessage());
+ 			logger.severe("Request blobKey --> " + blobKeyParam);
+ 			logger.severe("[EXCEPTION]\n" + Util.getStackTrace(e));
  		}
  		
  		StringBuilder kBuilder = null;
@@ -98,15 +100,15 @@ public class GeoRSSWrite extends HttpServlet {
 		//
 		///////////////////////////////////////////////////////////////////////////////
  		
- 		logger.info("Start process GeoRSS header ...");
- 		processGeoRSSHeader(doc);
- 		logger.info("GeoRSS header Done.");
- 		int resAdded = 0;
- 		
- 		dao.deleteByRegion(rssTitle);
-		
-		try {
-			if (doc != null) {
+ 		if (doc != null) {
+	 		logger.info("Start process GeoRSS header ...");
+	 		processGeoRSSHeader(doc);
+	 		logger.info("GeoRSS header Done.");
+	 		int resAdded = 0;
+	 		
+	 		dao.deleteByRegion(rssTitle);
+			
+			try {
 	 			NodeList lakeItemList = doc.getElementsByTagName("item");
 	 			if (lakeItemList != null && lakeItemList.getLength() > 0) {
 	 				itemCount = lakeItemList.getLength();
@@ -119,11 +121,6 @@ public class GeoRSSWrite extends HttpServlet {
 		        		long durationInSecs = (now.getTime() - startTimestamp.getTime())/1000;
 		        		if (durationInSecs > MAX_TIME_THREHOLD) {
 		        			logger.warning("Hitting ending of processing time -- Queuing task to handle late!");
-		        			/*
-		            		Queue queue = QueueFactory.getDefaultQueue();
-		            		String nextIndex = "" + i;
-		            		queue.add(TaskOptions.Builder.withUrl("/georssload").param("url", urlParam).param("start", nextIndex).param("delete", "false"));
-		            		*/
 		            		return;
 		        		}
 		        		else {
@@ -228,14 +225,14 @@ public class GeoRSSWrite extends HttpServlet {
 	 				blobstoreService.delete(blobKey);
 	 				logger.info("Blob DELETED.");
 	 			}
-			}
-			else {
-				logger.warning("Document is NULL -- Write FAILED");
-			}
-        } 
-		catch (DatastoreFailureException e) {
- 			logger.severe("EXCEPTION :: " + e.getMessage());
-        }
+	        } 
+			catch (DatastoreFailureException e) {
+	 			logger.severe("EXCEPTION :: " + e.getMessage());
+	        }
+ 		}
+		else {
+			logger.warning("Document is NULL -- Write FAILED");
+		}
     }
     
     /**
