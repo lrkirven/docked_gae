@@ -60,6 +60,7 @@ public class RegionDao extends BaseDao {
 	public void updateRegionByState(String state, Date reportDate) {
 		ReportRegionDO res = null;
 		Date now = new Date();
+		logger.info("updateRegionByState(): Updating state --> " + state + " " + reportDate);
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
