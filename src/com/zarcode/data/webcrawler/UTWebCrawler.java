@@ -60,6 +60,7 @@ public class UTWebCrawler extends WebCrawler {
     {
         {
              put(Calendar.TUESDAY, 1);
+             put(Calendar.WEDNESDAY, 1);
              put(Calendar.FRIDAY, 1);
              put(Calendar.SATURDAY, 1);
         }
