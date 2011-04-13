@@ -101,6 +101,29 @@ public class Report extends ResourceBase {
 	}
 	
 	@GET 
+	@Path("/toplevel")
+	@Produces("application/json")
+	public List<ReportDO> getTopLevel() {
+		int i = 0;
+		List<ReportDO> list = null;
+		ReportDao reportDao = null;
+		WaterResourceDO res = null;
+		
+		logger.info("getTopLevel(): Entered");
+		
+		try {
+			if (res != null) {
+				// list = reportDao.getReportsByRadius(lat, lng, radius);
+			}
+		}
+		catch (Exception e) {
+			logger.severe("getTopLevel: " + Util.getStackTrace(e));
+			throw new BadRequestAppDataException();
+		}
+		return list;
+	}
+	
+	@GET 
 	@Path("/reportId/{reportId}")
 	@Produces("application/json")
 	public ReportDO getReportByReportId(@PathParam("reportId") long reportId) {

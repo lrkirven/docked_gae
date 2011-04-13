@@ -35,6 +35,7 @@ import org.w3c.tidy.Tidy;
 
 import com.zarcode.common.EscapeChars;
 import com.zarcode.common.Util;
+import com.zarcode.data.dao.RegionDao;
 import com.zarcode.data.dao.ReportDao;
 import com.zarcode.data.exception.WebCrawlException;
 import com.zarcode.platform.loader.JDOLoaderServlet;
@@ -68,12 +69,18 @@ public class ARWebCrawler extends WebCrawler {
 		private boolean reportsFound = false;
   	    private Date reportDate = null;
   	    private ReportDO report = null;
+  	    private boolean bReportRegionUpdated = false;
   	    private ReportDao reportDao = new ReportDao();
   	   	// March 23, 2010
 	 	private DateFormat formatter = new SimpleDateFormat("MMMMM d, yyyy");
 	 	
   	    public ArkTagNodeVisitor(Date reportDate) {
   	    	this.reportDate = reportDate;
+  	    	if (!bReportRegionUpdated) {
+				bReportRegionUpdated = true;
+				RegionDao regionDao = new RegionDao();
+				regionDao.updateRegionByState(STATE, reportDate);
+			}
   	    }
   	    
   	    public void setReportDate(Date d) {

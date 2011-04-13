@@ -36,6 +36,7 @@ import org.w3c.tidy.Tidy;
 import com.zarcode.app.AppCommon;
 import com.zarcode.common.EscapeChars;
 import com.zarcode.common.Util;
+import com.zarcode.data.dao.RegionDao;
 import com.zarcode.data.dao.ReportDao;
 import com.zarcode.data.exception.WebCrawlException;
 import com.zarcode.platform.loader.JDOLoaderServlet;
@@ -79,6 +80,7 @@ public class OKWebCrawler extends WebCrawler {
   	    private ReportDO report = null;
   	    private ReportDao reportDao = new ReportDao();
   	   	private Date reportDate = null;
+  	   	private boolean bReportRegionUpdated = false;
   	   	
   	    // March 28, 2011 11:22 AM
 	 	private DateFormat formatter = new SimpleDateFormat("MMMMM d, yyyy hh:mm aaa");
@@ -102,6 +104,11 @@ public class OKWebCrawler extends WebCrawler {
 	            			try {
 	        					reportDate = formatter.parse(dateStr);
 	        					logger.info("Report Date: " + reportDate);
+	        					if (!bReportRegionUpdated) {
+	        						bReportRegionUpdated = true;
+    	        					RegionDao regionDao = new RegionDao();
+    	        					regionDao.updateRegionByState(STATE, reportDate);
+    	        				}
 	        				}
 	        				catch (Exception e) {
 	        					logger.warning("Unable to parse report date --- " + dateStr + "\n" + Util.getStackTrace(e));

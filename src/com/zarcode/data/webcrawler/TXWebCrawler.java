@@ -1,43 +1,31 @@
 package com.zarcode.data.webcrawler;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.htmlcleaner.CleanerProperties;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.HtmlNode;
 import org.htmlcleaner.TagNode;
 import org.htmlcleaner.TagNodeVisitor;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.tidy.Tidy;
 
 import com.zarcode.common.EscapeChars;
 import com.zarcode.common.Util;
+import com.zarcode.data.dao.RegionDao;
 import com.zarcode.data.dao.ReportDao;
 import com.zarcode.data.exception.WebCrawlException;
-import com.zarcode.platform.loader.JDOLoaderServlet;
 import com.zarcode.data.model.ReportDO;
 
 public class TXWebCrawler extends WebCrawler {
@@ -69,6 +57,7 @@ public class TXWebCrawler extends WebCrawler {
   	    private ReportDO report = null;
   	    private boolean reportsFound = false;
   	    private ReportDao reportDao = new ReportDao();
+  	    private boolean bReportRegionUpdated = false;
   	   	// March 23, 2010
 	 	private DateFormat formatter = new SimpleDateFormat("MMMMM d, yyyy");
   	    
@@ -100,6 +89,11 @@ public class TXWebCrawler extends WebCrawler {
 	    	    			try {
     	        				reportDate = formatter.parse(dateStr);
     	        				logger.info("Report Date: " + reportDate);
+    	        				if (!bReportRegionUpdated) {
+    	        					bReportRegionUpdated = true;
+    	        					RegionDao regionDao = new RegionDao();
+    	        					regionDao.updateRegionByState(STATE, reportDate);
+    	        				}
     	        			}
     	        			catch (Exception e) {
     	        				logger.warning("Unable to parse report date --- " + dateStr);

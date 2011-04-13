@@ -30,6 +30,7 @@ import org.w3c.dom.NodeList;
 
 import com.zarcode.common.EscapeChars;
 import com.zarcode.common.Util;
+import com.zarcode.data.dao.RegionDao;
 import com.zarcode.data.dao.ReportDao;
 import com.zarcode.data.exception.WebCrawlException;
 import com.zarcode.data.model.ReportDO;
@@ -52,6 +53,7 @@ public class MOWebCrawler extends WebCrawler {
   	    private ReportDO report = null;
   	    private boolean bStart = false;
   	    private boolean bOpen = false;
+  	    private boolean bReportRegionUpdated = false;
   	    
   	    public MOTagNodeVisitor() {
   	    }
@@ -119,6 +121,11 @@ public class MOWebCrawler extends WebCrawler {
   	            				String dateStr = dateStrArry[0];
   	            				try {
     	        					reportDate = formatter.parse(dateStr);
+    	        					if (!bReportRegionUpdated) {
+    	        						bReportRegionUpdated = true;
+        	        					RegionDao regionDao = new RegionDao();
+        	        					regionDao.updateRegionByState(STATE, reportDate);
+        	        				}
     	        				}
     	        				catch (Exception e) {
     	        				}
