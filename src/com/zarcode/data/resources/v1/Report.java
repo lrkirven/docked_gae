@@ -13,10 +13,12 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
 import com.zarcode.common.Util;
+import com.zarcode.data.dao.RegionDao;
 import com.zarcode.data.dao.ReportDao;
 import com.zarcode.data.dao.WaterResourceDao;
 import com.zarcode.data.exception.BadRequestAppDataException;
 import com.zarcode.data.model.ReportDO;
+import com.zarcode.data.model.ReportRegionDO;
 import com.zarcode.data.model.ShortReportDO;
 import com.zarcode.data.model.WaterResourceDO;
 import com.zarcode.data.resources.ResourceBase;
@@ -103,21 +105,18 @@ public class Report extends ResourceBase {
 	@GET 
 	@Path("/toplevel")
 	@Produces("application/json")
-	public List<ReportDO> getTopLevel() {
+	public List<ReportRegionDO> getReportRegions() {
 		int i = 0;
-		List<ReportDO> list = null;
-		ReportDao reportDao = null;
-		WaterResourceDO res = null;
+		List<ReportRegionDO> list = null;
+		RegionDao dao = new RegionDao();
 		
-		logger.info("getTopLevel(): Entered");
+		logger.info("getReportRegions(): Entered");
 		
 		try {
-			if (res != null) {
-				// list = reportDao.getReportsByRadius(lat, lng, radius);
-			}
+			list = dao.getAllRegions();
 		}
 		catch (Exception e) {
-			logger.severe("getTopLevel: " + Util.getStackTrace(e));
+			logger.severe("getReportRegions: " + Util.getStackTrace(e));
 			throw new BadRequestAppDataException();
 		}
 		return list;
