@@ -48,7 +48,7 @@ public class ReportRegionDO extends AbstractLoaderDO implements Serializable {
 	
 	
 	@XmlElement
-	public Long getReportId() {
+	public Long getRegionId() {
 		return regionId;
 	}
 

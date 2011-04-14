@@ -32,6 +32,7 @@ public class RegionDao extends BaseDao {
 		region.setLastUpdated(now);
 		region.setRegionId(null);
 		newRegion = pm.makePersistent(region); 
+		logger.info("addRegion(): Added ReportRegion --> " + newRegion);
 		return newRegion;
 	}
 	
