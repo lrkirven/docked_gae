@@ -49,7 +49,6 @@ public class RegionDao extends BaseDao {
 		sb.append("'");
 		Query query = pm.newQuery(ReportRegionDO.class);
 		query.setFilter("state == stateParam");
-		query.setOrdering("keyword asc");
 		query.declareParameters("String stateParam");
 		res = (List<ReportRegionDO>)query.execute(state);
 		if (res.size() > 0) {
