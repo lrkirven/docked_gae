@@ -67,14 +67,17 @@ public class RegionDao extends BaseDao {
 			tx.begin();
 			res = getRegionByState(state);
 			if (res == null) {
+				logger.info("updateRegionByState(): Adding missing ReportRegion ...");
 				res = new ReportRegionDO();
 				res.setState(state);
 				res.setLastReportDate(reportDate);
 				res = addRegion(res);
 			}
 			else {
-				res.setLastUpdated(now);
-				res.setLastReportDate(reportDate);
+				ReportRegionDO r = (ReportRegionDO)pm.getObjectById(ReportRegionDO.class, res.getRegionId());
+				logger.info("updateRegionByState(): Updating lastUpdate/reportDate ...");
+				r.setLastUpdated(now);
+				r.setLastReportDate(reportDate);
 			}
 			tx.commit();
 		}
