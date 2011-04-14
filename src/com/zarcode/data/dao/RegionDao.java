@@ -12,9 +12,10 @@ import com.zarcode.data.model.ReportDO;
 import com.zarcode.data.model.ReportRegionDO;
 import com.zarcode.data.model.UserDO;
 import com.zarcode.platform.dao.BaseDao;
+import com.zarcode.platform.loader.AbstractLoaderDao;
 import com.zarcode.common.*;
 
-public class RegionDao extends BaseDao {
+public class RegionDao extends BaseDao implements AbstractLoaderDao {
 	
 	private Logger logger = Logger.getLogger(RegionDao.class.getName());
 
@@ -90,6 +91,11 @@ public class RegionDao extends BaseDao {
 				tx.rollback();
 			}
 		}
+	}
+
+	@Override
+	public void loadObject(Object dataObject) {
+		this.addRegion((ReportRegionDO)dataObject);
 	}
 	
 	
