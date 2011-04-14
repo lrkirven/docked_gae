@@ -12,6 +12,7 @@ import com.zarcode.data.model.ReportDO;
 import com.zarcode.data.model.ReportRegionDO;
 import com.zarcode.data.model.UserDO;
 import com.zarcode.platform.dao.BaseDao;
+import com.zarcode.common.*;
 
 public class RegionDao extends BaseDao {
 	
@@ -65,6 +66,7 @@ public class RegionDao extends BaseDao {
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
+			logger.info("updateRegionByState(): Getting instance for state=" + state);
 			res = getRegionByState(state);
 			if (res == null) {
 				logger.info("updateRegionByState(): Adding missing ReportRegion ...");
@@ -80,6 +82,9 @@ public class RegionDao extends BaseDao {
 				r.setLastReportDate(reportDate);
 			}
 			tx.commit();
+		}
+		catch (Exception e) {
+			logger.severe("updateRegionByState: FAILED -- [EXCEPTION]\n" + Util.getStackTrace(e));
 		}
 		finally {
 			if (tx.isActive()) {
