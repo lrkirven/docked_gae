@@ -35,6 +35,8 @@ public class SecurityTokenDO {
 	
 	private String fbSecret = null;
 	
+	private String wpApiKey = null;
+	
 	private String serverSecret = null;
 	
 	private int status = 0;
@@ -55,6 +57,21 @@ public class SecurityTokenDO {
 	}
 	
 	public void postCreation() {
+	}
+	
+	public String getWpApiKey() {
+		return wpApiKey;
+	}
+	
+	public void setWpApiKey(String wpApiKey) {
+		this.wpApiKey = wpApiKey;
+	}
+	
+	public void encryptThenSetWpApiKey(String key) {
+		AppPropDO prop = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
+		BlockTea.BIG_ENDIAN = false;
+		String cipherText = BlockTea.encrypt(key, prop.getStringValue());
+		this.wpApiKey = cipherText;
 	}
 	
 	public String getFbKey() {

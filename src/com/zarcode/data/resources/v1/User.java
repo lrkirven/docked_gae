@@ -146,6 +146,7 @@ public class User extends ResourceBase {
 				AppPropDO p1 = ApplicationProps.getInstance().getProp("PICASA_PASSWORD");
 				AppPropDO p2 = ApplicationProps.getInstance().getProp("FB_API_KEY");
 				AppPropDO p3 = ApplicationProps.getInstance().getProp("FB_SECRET");
+				AppPropDO p4 = ApplicationProps.getInstance().getProp("WEBPURIFY_API_KEY");
 				logger.warning("Encrypting data and adding to SecurityToken ...");
 				sToken = new SecurityTokenDO();
 				sToken.encryptThenSetEmailAddr(emailAddr);
@@ -155,6 +156,7 @@ public class User extends ResourceBase {
 				sToken.encryptThenSetPicasaPassword(p1.getStringValue());
 				sToken.encryptThenSetFbKey(p2.getStringValue());
 				sToken.encryptThenSetFbSecret(p3.getStringValue());
+				sToken.encryptThenSetWpApiKey(p4.getStringValue());
 				logger.warning("SecurityToken is COMPLETE.");
 			}
 			else {
