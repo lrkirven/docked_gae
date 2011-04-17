@@ -71,10 +71,10 @@ public class ResourceBase {
 			String targetUrl = baseUrl + "&method=" + METHOD + "&replacesymbol=" + REPLACESYMBOL + "&text=" + userProvidedMsg;
 			logger.info("Trying URL: " + targetUrl);
 			URL webPurifyWS = new URL(targetUrl);
-			
+		
 			/*
 			URLFetchService fetcher = URLFetchServiceFactory.getURLFetchService();
-			HTTPResponse response = fetcher.fetch(webPurifyWS);
+			HTTPResponse response = fetcher.fetch(webPurifyWS, );
 
 			byte[] content = response.getContent();
 			URL finalUrl = response.getFinalUrl();
@@ -87,23 +87,22 @@ public class ResourceBase {
 				logger.info("HEADER :: " + headerName);
 				String headerValue = header.getValue();
 			}
-			*/
 
 			
-			/*
 	        BufferedReader reader = new BufferedReader(new InputStreamReader(webPurifyWS.openStream()));
 	        while ((line = reader.readLine()) != null) {
 	        	logger.info("LINE :: " + line);
 	        }
 	        reader.close();
 	        */
-		
-			/*
+			
 			HttpURLConnection conn = (HttpURLConnection) webPurifyWS.openConnection();
 			conn.setRequestProperty("Accept", "application/xml");
 			conn.setRequestProperty("Content-Language", "en-US");
 			conn.addRequestProperty("Pragma","no-cache");
+			conn.setRequestProperty("Content-Length", null);
 			conn.setRequestMethod("GET");
+			conn.setConnectTimeout(10);
 			conn.setUseCaches(false);
 			InputStream in = conn.getInputStream();
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); 
@@ -118,7 +117,6 @@ public class ResourceBase {
 					logger.info("Node Name --> " + node.getNodeName() + " Val --> " + node.getNodeValue());
 				}
 			}
-			*/
 			
 		}
 		catch (Exception e) {

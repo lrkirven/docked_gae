@@ -24,7 +24,7 @@ public class BuzzDao extends BaseDao implements AbstractLoaderDao {
 	
 	private Logger logger = Logger.getLogger(BuzzDao.class.getName());
 
-	public static final int PAGESIZE = 50;
+	public static final int PAGESIZE = 100;
 
 	/**
 	 * 10 miles (16093.44 meters)
