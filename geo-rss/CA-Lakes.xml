@@ -722,7 +722,7 @@
     <guid isPermaLink="false">0004891862bece5dc0153</guid>
     <pubDate>Tue, 15 Jun 2010 21:35:35 +0000</pubDate>
     <title>Lale Morena</title>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[<div dir="ltr">reprotKey=CA:MORENA</div>]]></description>
     <author>Lazar</author>
     <gml:Polygon>
       <gml:exterior>
@@ -732,6 +732,48 @@
             32.696781 -116.524261
             32.679337 -116.529579
             32.685658 -116.552238
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+   <item>
+    <guid isPermaLink="false">0004891862bece5dc0153</guid>
+    <pubDate>Tue, 15 Jun 2010 21:35:35 +0000</pubDate>
+    <title>Will Rogers State Beach</title>
+    <description><![CDATA[<div dir="ltr">reprotKey=CA:WILLROGERS</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+          	-118.546341 34.038151
+			-118.526428 34.028904
+            -118.523598 34.031322
+            -118.535187 34.037655
+            -118.545914 34.040783
+          	-118.546341 34.038151
+          </gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </item>
+  <item>
+    <guid isPermaLink="false">0004891862bece5dc0153</guid>
+    <pubDate>Tue, 15 Jun 2010 21:35:35 +0000</pubDate>
+    <title>La Jolla Shores Beach</title>
+    <description><![CDATA[<div dir="ltr">reprotKey=CA:LAJOLLABEACH</div>]]></description>
+    <author>Lazar</author>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList>
+          	-117.255753 32.864052
+            -117.253647 32.863258
+            -117.256653 32.852337
+            -117.266609 32.847794
+            -117.273727 32.850246
+            -117.255753 32.864052
           </gml:posList>
         </gml:LinearRing>
       </gml:exterior>
