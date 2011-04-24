@@ -193,6 +193,15 @@
 	</servlet-mapping>
 	
 	<servlet> 
+  		<servlet-name>kml2geo</servlet-name> 
+  		<servlet-class>com.zarcode.data.maint.KML2GeoConverter</servlet-class> 
+   </servlet> 
+	<servlet-mapping> 
+  		<servlet-name>kml2geo</servlet-name> 
+  		<url-pattern>/kml2geo</url-pattern> 
+	</servlet-mapping>
+	
+	<servlet> 
   		<servlet-name>initApp</servlet-name> 
   		<servlet-class>com.zarcode.data.maint.InitializeApp</servlet-class> 
    </servlet> 
