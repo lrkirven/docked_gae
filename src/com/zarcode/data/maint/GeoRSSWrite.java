@@ -185,7 +185,8 @@ public class GeoRSSWrite extends HttpServlet {
 	 	    	        					}
 	 	    	        				}
 	 	    	        				else {
-	 	    	        					logger.warning("reportKey not found for resource=" + res.getName());
+	 	    	        					logger.warning("reportKey not found for resource=" + res.getName() + 
+	 	    	        							"[descDate:" + descData + "]");
 	 	    	        				}
 	 	    	        				if (props != null && props.containsKey("alias")) {
 	 	    	        					String alias = (String)props.get("alias");
