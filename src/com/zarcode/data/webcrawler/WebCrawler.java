@@ -22,7 +22,9 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.htmlcleaner.TagNode;
+import org.w3c.dom.CharacterData;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -121,6 +123,22 @@ public abstract class WebCrawler  {
 	    }
 	    is.close();
 	    return sb.toString();
+	}
+	
+	public String getCharacterDataFromElement(Element elem) {
+		Node child = elem.getFirstChild();
+	    if (child instanceof CharacterData) {
+	    	CharacterData cd = (CharacterData) child;
+	    	String str = cd.getData();
+	    	// take of html
+	    	str = str.substring(15);
+	    	str = str.substring(0, str.length()-6);
+	    	str = str.trim();
+	    	logger.info("Data --> " + str);
+	    	return str;
+	    }
+	   	logger.warning("First child is not instanceof 'CharacterData'");
+	    return "";
 	}
 	
 	

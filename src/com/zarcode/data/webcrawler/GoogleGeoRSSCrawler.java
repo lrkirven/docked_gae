@@ -229,22 +229,6 @@ public class GoogleGeoRSSCrawler extends WebCrawler {
         }
     }
 	
-	public String getCharacterDataFromElement(Element elem) {
-		Node child = elem.getFirstChild();
-	    if (child instanceof CharacterData) {
-	    	CharacterData cd = (CharacterData) child;
-	    	String str = cd.getData();
-	    	// take of html
-	    	str = str.substring(15);
-	    	str = str.substring(0, str.length()-6);
-	    	str = str.trim();
-	    	logger.info("Data --> " + str);
-	    	return str;
-	    }
-	   	logger.warning("First child is not instanceof 'CharacterData'");
-	    return "";
-	}
-	
 	private List<WGS84Point> convertGMLPosList2Polygon(String dataStr) {
 		int i = 0;
 		List<WGS84Point> res = null;

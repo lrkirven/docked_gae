@@ -166,6 +166,15 @@
 	</servlet-mapping>
 	
 	<servlet> 
+  		<servlet-name>kmlload</servlet-name> 
+  		<servlet-class>com.zarcode.data.webcrawler.KMLCrawler</servlet-class> 
+   </servlet> 
+	<servlet-mapping> 
+  		<servlet-name>kmlload</servlet-name> 
+  		<url-pattern>/kmlload</url-pattern> 
+	</servlet-mapping>
+	
+	<servlet> 
   		<servlet-name>googleAuthSub</servlet-name> 
   		<servlet-class>com.zarcode.security.AuthSubAgent</servlet-class> 
    </servlet> 
@@ -223,6 +232,15 @@
 	 <security-constraint> 
         <web-resource-collection> 
             <url-pattern>/georssload</url-pattern> 
+        </web-resource-collection> 
+        <auth-constraint> 
+            <role-name>admin</role-name> 
+        </auth-constraint> 
+    </security-constraint>
+	
+	 <security-constraint> 
+        <web-resource-collection> 
+            <url-pattern>/kmlload</url-pattern> 
         </web-resource-collection> 
         <auth-constraint> 
             <role-name>admin</role-name> 
