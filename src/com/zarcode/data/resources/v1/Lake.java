@@ -174,6 +174,9 @@ public class Lake extends ResourceBase {
 			}
 			Collections.sort(results);
 		}
+		if (results != null && results.size() > MAX_RESOURCES_RETURNED) {
+			results = results.subList(0, MAX_RESOURCES_RETURNED);
+		}
 		Date end = new Date();
 		logger.info("Duration: " + (end.getTime() - start.getTime()) + " msec(s)");
 	
