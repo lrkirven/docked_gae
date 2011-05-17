@@ -36,7 +36,7 @@ public class Lake extends ResourceBase {
 	
 	private Logger logger = Logger.getLogger(Lake.class.getName());
 	
-	private static final int MAX_RESOURCES_RETURNED = 10;
+	private static final int MAX_RESOURCES_RETURNED = 8;
 	
 	@Context 
 	UriInfo uriInfo = null;
