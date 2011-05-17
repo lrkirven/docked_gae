@@ -102,7 +102,9 @@ public class HotSpotDao extends BaseDao implements AbstractLoaderDao {
 		StringBuilder sb = new StringBuilder();
 		sb.append("(");
 		sb.append("resKey == ");
+		sb.append("'");
 		sb.append(resKey);
+		sb.append("'");
 		sb.append(" && publicFlag == ");
 		sb.append(true);
 		sb.append(")");
