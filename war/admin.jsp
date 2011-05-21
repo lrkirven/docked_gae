@@ -70,6 +70,20 @@
 	<br>
 	<hr>
 	<br>
+	<FORM ACTION="/kmlload" METHOD=POST>
+		<input type="hidden" name="start" value="0">
+		<input type="hidden" name="delete" value="true">
+	  	<table border="2" >
+            <tr><center><td colspan="2"><p align="center"><B>LOAD KML URL</B><center></td></tr>
+            <tr><td><b>Enter Map Region:</b></td><td><input type="text" name="region" size="30"  /></td></tr>
+            <tr><td><b>Enter Google KML URL to load:</b></td><td><input type="text" name="url" size="150"  /></td></tr>
+			<tr><td colspan="2"><p align="right"><INPUT TYPE="submit" VALUE="Load URL" ></p></td></tr>
+        <table>
+     </center>      
+	</FORM>
+	<br>
+	<hr>
+	<br>
     <FORM action="<%= blobstoreService.createUploadUrl("/georssupload") %>" method="POST" enctype="multipart/form-data">
     	<table border="2" >
             <tr><center><td colspan="2"><p align="center"><B>UPLOAD GEO RSS FILE</B><center></td></tr>
