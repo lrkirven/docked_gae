@@ -147,6 +147,8 @@ public class User extends ResourceBase {
 				AppPropDO p2 = ApplicationProps.getInstance().getProp("FB_API_KEY");
 				AppPropDO p3 = ApplicationProps.getInstance().getProp("FB_SECRET");
 				AppPropDO p4 = ApplicationProps.getInstance().getProp("WEBPURIFY_API_KEY");
+				AppPropDO p5 = ApplicationProps.getInstance().getProp("TW_API_KEY");
+				AppPropDO p6 = ApplicationProps.getInstance().getProp("TW_SECRET");
 				logger.warning("Encrypting data and adding to SecurityToken ...");
 				sToken = new SecurityTokenDO();
 				sToken.encryptThenSetEmailAddr(emailAddr);
@@ -157,6 +159,8 @@ public class User extends ResourceBase {
 				sToken.encryptThenSetFbKey(p2.getStringValue());
 				sToken.encryptThenSetFbSecret(p3.getStringValue());
 				sToken.encryptThenSetWpApiKey(p4.getStringValue());
+				sToken.encryptThenSetTwKey(p5.getStringValue());
+				sToken.encryptThenSetTwSecret(p6.getStringValue());
 				logger.warning("SecurityToken is COMPLETE.");
 			}
 			else {
