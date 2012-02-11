@@ -134,6 +134,9 @@ public class AppRegister extends HttpServlet {
 	    	UserDao userDao = new UserDao();
 	    	UserDO newUser = new UserDO();
 	    	UserDO res = null;
+	    	
+	    	logger.info("createNewUserAccountByEmailAddr2(): Entered.");
+	    	
 	    	if (emailAddr != null && emailAddr.length() > 0) {
 	    		String email = emailAddr.toLowerCase();
     			newUser.setEmailAddr(email);
