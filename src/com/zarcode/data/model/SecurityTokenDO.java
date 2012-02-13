@@ -35,6 +35,14 @@ public class SecurityTokenDO {
 	
 	private String fbSecret = null;
 	
+	private String twKey = null;
+	
+	private String twSecret = null;
+	
+	private String awsKey = null;
+	
+	private String awsSecret = null;
+	
 	private String wpApiKey = null;
 	
 	private String serverSecret = null;
@@ -74,6 +82,91 @@ public class SecurityTokenDO {
 		this.wpApiKey = cipherText;
 	}
 	
+	
+	/**
+	 * Twitter API key
+	 * @return
+	 */
+	public String getTwKey() {
+		return twKey;
+	}
+	
+	public void setTwKey(String twKey) {
+		this.twKey = twKey;
+	}
+	
+	public void encryptThenSetTwKey(String key) {
+		AppPropDO prop = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
+		BlockTea.BIG_ENDIAN = false;
+		String cipherText = BlockTea.encrypt(key, prop.getStringValue());
+		this.twKey = cipherText;
+	}
+
+	/**
+	 * Twitter Secret 
+	 * @return
+	 */
+	public String getTwSecret() {
+		return twSecret;
+	}
+	
+	public void setTwSecret(String twSecret) {
+		this.twSecret = twSecret;
+	}
+	
+	public void encryptThenSetTwSecret(String secret) {
+		AppPropDO prop = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
+		BlockTea.BIG_ENDIAN = false;
+		String cipherText = BlockTea.encrypt(secret, prop.getStringValue());
+		this.twSecret = cipherText;
+	}
+	
+	
+	
+	/**
+	 * Amazon Web Service (AWS) key
+	 * @return
+	 */
+	public String getAwsKey() {
+		return awsKey;
+	}
+	
+	public void setAwsKey(String awsKey) {
+		this.awsKey = awsKey;
+	}
+	
+	public void encryptThenSetAwsKey(String key) {
+		AppPropDO prop = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
+		BlockTea.BIG_ENDIAN = false;
+		String cipherText = BlockTea.encrypt(key, prop.getStringValue());
+		this.awsKey = cipherText;
+	}
+	
+	
+	/**
+	 * Amazon Web Service (AWS) Secret 
+	 * @return
+	 */
+	public String getAwsSecret() {
+		return awsSecret;
+	}
+	
+	public void setAwsSecret(String awsSecret) {
+		this.awsSecret = awsSecret;
+	}
+	
+	public void encryptThenSetAwsSecret(String secret) {
+		AppPropDO prop = ApplicationProps.getInstance().getProp("SERVER_TO_CLIENT_SECRET");
+		BlockTea.BIG_ENDIAN = false;
+		String cipherText = BlockTea.encrypt(secret, prop.getStringValue());
+		this.awsSecret = cipherText;
+	}
+	
+	
+	/**
+	 * Facebook Key
+	 * @return
+	 */
 	public String getFbKey() {
 		return fbKey;
 	}

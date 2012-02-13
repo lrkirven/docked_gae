@@ -149,6 +149,8 @@ public class User extends ResourceBase {
 				AppPropDO p4 = ApplicationProps.getInstance().getProp("WEBPURIFY_API_KEY");
 				AppPropDO p5 = ApplicationProps.getInstance().getProp("TW_API_KEY");
 				AppPropDO p6 = ApplicationProps.getInstance().getProp("TW_SECRET");
+				AppPropDO p7 = ApplicationProps.getInstance().getProp("AWS_KEY");
+				AppPropDO p8 = ApplicationProps.getInstance().getProp("AWS_SECRET");
 				logger.warning("Encrypting data and adding to SecurityToken ...");
 				sToken = new SecurityTokenDO();
 				sToken.encryptThenSetEmailAddr(emailAddr);
@@ -161,6 +163,9 @@ public class User extends ResourceBase {
 				sToken.encryptThenSetWpApiKey(p4.getStringValue());
 				sToken.encryptThenSetTwKey(p5.getStringValue());
 				sToken.encryptThenSetTwSecret(p6.getStringValue());
+				sToken.encryptThenSetAwsKey(p7.getStringValue());
+				sToken.encryptThenSetAwsSecret(p8.getStringValue());
+				
 				logger.warning("SecurityToken is COMPLETE.");
 			}
 			else {
